@@ -1,0 +1,221 @@
+.resume-section {
+  background: var(--bg-tertiary);
+}
+
+.resume-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+}
+
+.resume-block {
+  margin-bottom: 3rem;
+}
+
+.resume-block-title {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.block-icon {
+  font-size: 1.75rem;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent-500), var(--accent-300));
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -2rem;
+  top: 1.5rem;
+  width: 12px;
+  height: 12px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+  border: 3px solid var(--bg-primary);
+  box-shadow: 0 0 0 3px var(--accent-light);
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-marker {
+  transform: scale(1.5);
+  background: var(--accent-600);
+}
+
+.timeline-content {
+  margin-left: 1rem;
+}
+
+.timeline-period {
+  display: inline-block;
+  background: var(--accent-light);
+  color: var(--accent-dark);
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.timeline-title {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.timeline-company {
+  color: var(--accent-secondary);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Education */
+.education-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.education-card {
+  position: relative;
+  padding-left: 5rem;
+}
+
+.edu-year {
+  position: absolute;
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--accent-500);
+}
+
+.edu-degree {
+  font-size: 1.125rem;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.edu-school {
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.edu-focus {
+  color: var(--accent-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Skills */
+.skills-block {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 2rem;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  background: linear-gradient(135deg, var(--accent-light), var(--accent-lighter));
+  color: var(--accent-dark);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: default;
+}
+
+.skill-tag:hover {
+  background: linear-gradient(135deg, var(--accent-500), var(--accent-600));
+  color: var(--white);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+}
+
+/* Download Card */
+.resume-download {
+  text-align: center;
+  padding: 2.5rem 2rem;
+}
+
+.download-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.resume-download h4 {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.resume-download p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .resume-content {
+    grid-template-columns: 1fr;
+  }
+
+  .resume-sidebar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .skills-block,
+  .resume-download {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .education-card {
+    padding-left: 1.5rem;
+  }
+
+  .edu-year {
+    position: static;
+    transform: none;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+}
