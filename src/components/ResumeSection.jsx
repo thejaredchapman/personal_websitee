@@ -3,7 +3,7 @@ import './ResumeSection.css'
 function ResumeSection() {
   const experience = [
     {
-      title: 'Developer Support Engineer',
+      title: 'Developer Support Engineer - Generative AI Applications',
       company: 'AbbVie | Los Angeles, California',
       period: 'August 2024 - Present',
       description: 'Supporting and educating developers on LLM integration, driving organizational adoption of generative AI products. Primary technical bridge between the EPIC team and internal developers.',
@@ -61,7 +61,12 @@ function ResumeSection() {
             {/* Experience */}
             <div className="resume-block">
               <h3 className="resume-block-title">
-                <span className="block-icon">💼</span>
+                <span className="block-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+                    <rect x="2" y="7" width="20" height="14" rx="2" />
+                    <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
+                  </svg>
+                </span>
                 Experience
               </h3>
               <div className="timeline">
@@ -82,7 +87,12 @@ function ResumeSection() {
             {/* Education */}
             <div className="resume-block">
               <h3 className="resume-block-title">
-                <span className="block-icon">🎓</span>
+                <span className="block-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                    <path d="M6 12v5c0 1.657 2.686 3 6 3s6-1.343 6-3v-5" />
+                  </svg>
+                </span>
                 Education
               </h3>
               <div className="education-grid">
@@ -102,7 +112,11 @@ function ResumeSection() {
             {/* Skills */}
             <div className="resume-block skills-block">
               <h3 className="resume-block-title">
-                <span className="block-icon">⚡</span>
+                <span className="block-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                  </svg>
+                </span>
                 Skills
               </h3>
               <div className="skills-list">
@@ -114,10 +128,17 @@ function ResumeSection() {
 
             {/* Download Resume */}
             <div className="resume-download card">
-              <div className="download-icon">📄</div>
+              <div className="download-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+                  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="12" y1="18" x2="12" y2="12" />
+                  <polyline points="9 15 12 18 15 15" />
+                </svg>
+              </div>
               <h4>Download Full Resume</h4>
               <p>Get the complete PDF version with all details</p>
-              <button className="btn btn-primary">Download PDF</button>
+              <a href="/Jared_Chapman_Resume.docx" download className="btn btn-primary">Download Resume</a>
             </div>
           </div>
         </div>

@@ -18,7 +18,7 @@ function Hero({ onPlayGame }) {
           </p>
           <div className="hero-buttons">
             <a href="#ai" className="btn btn-primary">Explore My AI Work</a>
-            <a href="#comedy" className="btn btn-secondary">Watch My Comedy</a>
+            {/* <a href="#comedy" className="btn btn-secondary">Watch My Comedy</a> */}
             <button onClick={onPlayGame} className="btn btn-game">
               Play Asteroids
             </button>

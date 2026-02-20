@@ -13,7 +13,13 @@ function EmbedsSection() {
           {/* Spotify Embed */}
           <div className="embed-card">
             <div className="embed-header">
-              <span className="embed-icon">🎵</span>
+              <span className="embed-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+                  <path d="M9 18V5l12-2v13" />
+                  <circle cx="6" cy="18" r="3" />
+                  <circle cx="18" cy="16" r="3" />
+                </svg>
+              </span>
               <h3>Now Playing</h3>
             </div>
             <div className="embed-content spotify-embed">
@@ -33,7 +39,12 @@ function EmbedsSection() {
           {/* Instagram Embed */}
           <div className="embed-card">
             <div className="embed-header">
-              <span className="embed-icon">📸</span>
+              <span className="embed-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+                  <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" />
+                  <circle cx="12" cy="13" r="4" />
+                </svg>
+              </span>
               <h3>Instagram</h3>
             </div>
             <div className="embed-content instagram-embed">
@@ -53,7 +64,14 @@ function EmbedsSection() {
           {/* Google Calendar Embed */}
           <div className="embed-card embed-card-full">
             <div className="embed-header">
-              <span className="embed-icon">📅</span>
+              <span className="embed-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="18" rx="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+              </span>
               <h3>My Schedule</h3>
             </div>
             <div className="embed-content calendar-embed">

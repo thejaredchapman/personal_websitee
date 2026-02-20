@@ -48,7 +48,14 @@
 }
 
 .embed-icon {
-  font-size: 1.5rem;
+  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.embed-icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 .embed-header h3 {

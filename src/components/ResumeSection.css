@@ -22,7 +22,15 @@
 }
 
 .block-icon {
-  font-size: 1.75rem;
+  display: inline-flex;
+  width: 1.75rem;
+  height: 1.75rem;
+  color: var(--accent-500);
+}
+
+.block-icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 /* Timeline */
@@ -174,8 +182,15 @@
 }
 
 .download-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto 1rem;
+  color: var(--accent-500);
+}
+
+.download-icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 .resume-download h4 {

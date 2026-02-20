@@ -37,9 +37,20 @@
 }
 
 .ai-card-icon {
-  font-size: 3rem;
+  width: 3rem;
+  height: 3rem;
   margin-bottom: 1rem;
-  transition: transform 0.3s ease;
+  color: var(--accent-500);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.ai-card-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.ai-card:hover .ai-card-icon {
+  color: var(--accent-600);
 }
 
 .ai-card:hover .ai-card-icon {
