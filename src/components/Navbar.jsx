@@ -45,6 +45,11 @@ function Navbar() {
     //     <line x1="15" y1="9" x2="15.01" y2="9" />
     //   </svg>
     // )},
+    { href: '#projects', label: 'Projects', icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+        <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" />
+      </svg>
+    )},
     { href: '#resume', label: 'Resume', icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
         <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" />
