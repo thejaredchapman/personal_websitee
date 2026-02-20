@@ -20,7 +20,7 @@ function Footer() {
               I'd love to hear from you.
             </p>
             <a href="mailto:thejaredchapman@gmail.com" className="footer-email">
-              thejaredchapman@gmail.com
+              Contact Jared
             </a>
           </div>
 

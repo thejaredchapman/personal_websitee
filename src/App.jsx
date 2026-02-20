@@ -8,7 +8,7 @@ import ResumeSection from './components/ResumeSection'
 import PhotoGallery from './components/PhotoGallery'
 import EmbedsSection from './components/EmbedsSection'
 import Footer from './components/Footer'
-import Chatbot from './components/Chatbot'
+// import Chatbot from './components/Chatbot'
 import BackgroundShapes from './components/BackgroundShapes'
 import AsteroidsGame from './components/AsteroidsGame'
 
@@ -22,13 +22,13 @@ function App() {
       <main>
         <Hero onPlayGame={() => setShowGame(true)} />
         <AISection />
-        <ComedySection />
+        {/* <ComedySection /> */}
         <ResumeSection />
         <PhotoGallery />
         <EmbedsSection />
       </main>
       <Footer />
-      <Chatbot />
+      {/* <Chatbot /> */}
       {showGame && <AsteroidsGame onClose={() => setShowGame(false)} />}
     </div>
   )

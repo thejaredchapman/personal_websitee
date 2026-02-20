@@ -5,17 +5,27 @@ function PhotoGallery() {
   const [selectedPhoto, setSelectedPhoto] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0)
 
-  // Sample photos - replace with your own images
   const photos = [
-    { id: 1, src: 'https://picsum.photos/800/600?random=1', alt: 'Photo 1', caption: 'Comedy Show 2024' },
-    { id: 2, src: 'https://picsum.photos/600/800?random=2', alt: 'Photo 2', caption: 'Behind the Scenes' },
-    { id: 3, src: 'https://picsum.photos/800/800?random=3', alt: 'Photo 3', caption: 'Team Photo' },
-    { id: 4, src: 'https://picsum.photos/800/600?random=4', alt: 'Photo 4', caption: 'Conference Talk' },
-    { id: 5, src: 'https://picsum.photos/600/800?random=5', alt: 'Photo 5', caption: 'Hackathon Winner' },
-    { id: 6, src: 'https://picsum.photos/800/600?random=6', alt: 'Photo 6', caption: 'Open Mic Night' },
-    { id: 7, src: 'https://picsum.photos/800/800?random=7', alt: 'Photo 7', caption: 'Workshop Session' },
-    { id: 8, src: 'https://picsum.photos/600/800?random=8', alt: 'Photo 8', caption: 'Podcast Recording' },
-    { id: 9, src: 'https://picsum.photos/800/600?random=9', alt: 'Photo 9', caption: 'Award Ceremony' },
+    { id: 1, src: '/photos/IMG_0531.jpg', alt: 'Photo 1' },
+    { id: 2, src: '/photos/IMG_1454.jpg', alt: 'Photo 2' },
+    { id: 3, src: '/photos/IMG_1848.jpg', alt: 'Photo 3' },
+    { id: 4, src: '/photos/IMG_3337.jpg', alt: 'Photo 4' },
+    { id: 5, src: '/photos/IMG_4003.jpg', alt: 'Photo 5' },
+    { id: 6, src: '/photos/IMG_4437.jpg', alt: 'Photo 6' },
+    { id: 7, src: '/photos/IMG_4917.jpg', alt: 'Photo 7' },
+    { id: 8, src: '/photos/IMG_4985.jpg', alt: 'Photo 8' },
+    { id: 9, src: '/photos/IMG_6048.jpg', alt: 'Photo 9' },
+    { id: 10, src: '/photos/IMG_6067.jpg', alt: 'Photo 10' },
+    { id: 11, src: '/photos/IMG_7269.jpg', alt: 'Photo 11' },
+    { id: 12, src: '/photos/IMG_7802.jpg', alt: 'Photo 12' },
+    { id: 13, src: '/photos/IMG_7843.jpg', alt: 'Photo 13' },
+    { id: 14, src: '/photos/IMG_7919.jpg', alt: 'Photo 14' },
+    { id: 15, src: '/photos/IMG_8082.jpg', alt: 'Photo 15' },
+    { id: 16, src: '/photos/IMG_8290.jpg', alt: 'Photo 16' },
+    { id: 17, src: '/photos/IMG_8347.jpg', alt: 'Photo 17' },
+    { id: 18, src: '/photos/IMG_9188.jpg', alt: 'Photo 18' },
+    { id: 19, src: '/photos/IMG_9591.jpg', alt: 'Photo 19' },
+    { id: 20, src: '/photos/2acfb0d4-1cd7-4b9f-860e-5db03757e714.jpg', alt: 'Photo 20' },
   ]
 
   const openLightbox = (photo, index) => {
@@ -72,7 +82,6 @@ function PhotoGallery() {
                     <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
                   </svg>
                 </span>
-                <span className="gallery-caption">{photo.caption}</span>
               </div>
             </div>
           ))}
@@ -111,7 +120,6 @@ function PhotoGallery() {
               className="lightbox-image"
             />
             <div className="lightbox-info">
-              <p className="lightbox-caption">{selectedPhoto.caption}</p>
               <p className="lightbox-counter">{currentIndex + 1} / {photos.length}</p>
             </div>
           </div>

@@ -6,15 +6,15 @@ function Hero({ onPlayGame }) {
       <div className="hero-content container">
         <div className="hero-text">
           <p className="hero-greeting">Hello, I'm</p>
-          <h1 className="hero-name">Your Name</h1>
+          <h1 className="hero-name">Jared Chapman</h1>
           <h2 className="hero-tagline">
-            <span className="highlight">AI Engineer</span> by Day,{' '}
+            <span className="highlight">Software Engineer</span> by Day,{' '}
             <span className="highlight">Comedian</span> by Night
           </h2>
           <p className="hero-description">
-            I build intelligent systems that make life easier and tell jokes that make
-            life funnier. Combining the precision of algorithms with the chaos of
-            stand-up comedy.
+            Building intelligent systems with LLMs and GenAI at scale. From Google BigQuery
+            to enterprise AI solutions, I bridge the gap between complex technology
+            and real-world impact.
           </p>
           <div className="hero-buttons">
             <a href="#ai" className="btn btn-primary">Explore My AI Work</a>
@@ -27,9 +27,7 @@ function Hero({ onPlayGame }) {
 
         <div className="hero-image">
           <div className="image-wrapper">
-            <div className="image-placeholder">
-              <span>Your Photo</span>
-            </div>
+            <img src="/selfie.jpg" alt="Jared Chapman" className="profile-photo" />
           </div>
         </div>
       </div>

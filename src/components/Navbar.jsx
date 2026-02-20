@@ -30,14 +30,14 @@ function Navbar() {
         <path d="M9 14c.5 1 1.5 2 3 2s2.5-1 3-2" />
       </svg>
     )},
-    { href: '#comedy', label: 'Comedy', icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-        <line x1="9" y1="9" x2="9.01" y2="9" />
-        <line x1="15" y1="9" x2="15.01" y2="9" />
-      </svg>
-    )},
+    // { href: '#comedy', label: 'Comedy', icon: (
+    //   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    //     <circle cx="12" cy="12" r="10" />
+    //     <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+    //     <line x1="9" y1="9" x2="9.01" y2="9" />
+    //     <line x1="15" y1="9" x2="15.01" y2="9" />
+    //   </svg>
+    // )},
     { href: '#resume', label: 'Resume', icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" />
@@ -63,7 +63,7 @@ function Navbar() {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <a href="#" className="logo">
-          <span className="logo-text">YourName</span>
+          <span className="logo-text">Jared Chapman</span>
         </a>
 
         <button

@@ -3,28 +3,28 @@ import './AISection.css'
 function AISection() {
   const projects = [
     {
-      title: 'Neural Network Optimizer',
-      description: 'Built a custom optimizer that improved training convergence by 40% on large language models.',
-      tags: ['PyTorch', 'CUDA', 'Transformers'],
-      icon: '🧠'
+      title: 'LLM Developer Support Platform',
+      description: 'Supporting and educating developers on LLM integration, conducting A/B testing between models to optimize results for internal and external customers.',
+      tags: ['LLMs', 'Vertex AI', 'REST APIs'],
+      icon: '🤖'
     },
     {
-      title: 'Computer Vision Pipeline',
-      description: 'Developed real-time object detection system processing 60fps with 95% accuracy.',
-      tags: ['TensorFlow', 'OpenCV', 'Edge AI'],
-      icon: '👁️'
+      title: 'BigQuery DataFrames',
+      description: 'Developed and tested BigQuery Python and DataFrames APIs using Pandas, Ibis, and PyArrow for scalable data processing.',
+      tags: ['Python', 'Pandas', 'BigQuery'],
+      icon: '📊'
     },
     {
-      title: 'NLP Chatbot Framework',
-      description: 'Created an enterprise chatbot framework serving 1M+ daily conversations.',
-      tags: ['LLMs', 'RAG', 'FastAPI'],
-      icon: '💬'
+      title: 'Ibis Open Source Contribution',
+      description: 'Contributed to the Ibis library enabling users to write SQL with Python. Added microsecond precision method and tests.',
+      tags: ['Open Source', 'Python', 'SQL'],
+      icon: '🔧'
     },
     {
-      title: 'ML Infrastructure',
-      description: 'Architected scalable ML infrastructure reducing deployment time from days to hours.',
-      tags: ['Kubernetes', 'MLOps', 'AWS'],
-      icon: '⚡'
+      title: 'Searchmark Performance Tools',
+      description: 'Designed code architecture using OOP principles in Java for critical Google Search performance tools. Refactored APIs using protocol buffers (gRPC).',
+      tags: ['Java', 'gRPC', 'Performance'],
+      icon: '🔍'
     }
   ]
 
@@ -53,16 +53,16 @@ function AISection() {
 
         <div className="ai-stats">
           <div className="stat-item">
-            <span className="stat-number">50+</span>
-            <span className="stat-label">ML Models Deployed</span>
+            <span className="stat-number">3+</span>
+            <span className="stat-label">Years in Tech</span>
           </div>
           <div className="stat-item">
-            <span className="stat-number">10M+</span>
-            <span className="stat-label">Predictions Daily</span>
+            <span className="stat-number">Google</span>
+            <span className="stat-label">Former Employer</span>
           </div>
           <div className="stat-item">
-            <span className="stat-number">5</span>
-            <span className="stat-label">Years Experience</span>
+            <span className="stat-number">LLMs</span>
+            <span className="stat-label">Current Focus</span>
           </div>
         </div>
       </div>

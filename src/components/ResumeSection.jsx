@@ -3,44 +3,52 @@ import './ResumeSection.css'
 function ResumeSection() {
   const experience = [
     {
-      title: 'Senior AI Engineer',
-      company: 'Tech Company',
-      period: '2022 - Present',
-      description: 'Leading ML infrastructure and deploying production models at scale.',
+      title: 'Developer Support Engineer',
+      company: 'AbbVie | Los Angeles, California',
+      period: 'August 2024 - Present',
+      description: 'Supporting and educating developers on LLM integration, driving organizational adoption of generative AI products. Primary technical bridge between the EPIC team and internal developers.',
     },
     {
-      title: 'Machine Learning Engineer',
-      company: 'AI Startup',
-      period: '2020 - 2022',
-      description: 'Built NLP systems and computer vision pipelines for enterprise clients.',
+      title: 'Software Engineer',
+      company: 'Google | Chicago, Illinois',
+      period: 'September 2022 - May 2024',
+      description: 'Worked on Google Searchmark (performance tools) and BigQuery DataFrames. Designed code architecture using OOP principles, developed Python and DataFrames APIs using Pandas, Ibis, and PyArrow.',
     },
     {
-      title: 'Data Scientist',
-      company: 'Analytics Firm',
-      period: '2018 - 2020',
-      description: 'Developed predictive models and data-driven insights for Fortune 500 companies.',
+      title: 'Appraisal Desk Team Lead',
+      company: 'Guaranteed Rate | Chicago, Illinois',
+      period: 'May 2018 - September 2021',
+      description: 'Created automated daily dashboards in Excel, managed appraisal orders and escalations for multiple companies, providing cross-functional support.',
     },
   ]
 
   const education = [
     {
-      degree: 'M.S. Computer Science',
-      school: 'University Name',
-      year: '2018',
-      focus: 'Machine Learning & AI',
+      degree: 'Software Development Bootcamp',
+      school: 'Multiverse',
+      year: '2024',
+      focus: 'Full Stack Development & Agile Frameworks',
     },
     {
-      degree: 'B.S. Computer Science',
-      school: 'University Name',
-      year: '2016',
-      focus: 'Software Engineering',
+      degree: 'Data Analytics Professional Certificate',
+      school: 'Google / Coursera',
+      year: '2022',
+      focus: 'R, Tableau, Data Analytics',
+    },
+    {
+      degree: 'Bachelor of Science',
+      school: 'Georgia State University',
+      year: '2014',
+      focus: 'General Studies',
     },
   ]
 
   const skills = [
-    'Python', 'PyTorch', 'TensorFlow', 'Transformers', 'LLMs',
-    'Computer Vision', 'NLP', 'MLOps', 'AWS', 'Kubernetes',
-    'FastAPI', 'React', 'SQL', 'Docker', 'Git'
+    'Python', 'Java', 'JavaScript', 'HTML', 'CSS',
+    'LLMs', 'Vertex AI', 'Prompt Engineering', 'API Design',
+    'GCP', 'BigQuery', 'PostgreSQL', 'gRPC',
+    'React', 'Angular', 'Spring Boot', 'Django', 'Git',
+    'Pandas', 'PyArrow', 'Ibis'
   ]
 
   return (
