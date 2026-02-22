@@ -19,14 +19,11 @@ function Hero({ onPlayGame }) {
           <div className="hero-buttons">
             <a href="#ai" className="btn btn-primary">Explore My AI Work</a>
             {/* <a href="#comedy" className="btn btn-secondary">Watch My Comedy</a> */}
-            <button onClick={onPlayGame} className="btn btn-game">
-              Play Asteroids
-            </button>
           </div>
         </div>
 
         <div className="hero-image">
-          <div className="image-wrapper">
+          <div className="image-wrapper" onClick={onPlayGame} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onPlayGame()} title="Click me...">
             <img src="/selfie.jpg" alt="Jared Chapman" className="profile-photo" />
           </div>
         </div>

@@ -72,8 +72,9 @@
 
 .image-wrapper {
   position: relative;
-  width: 320px;
-  height: 320px;
+  width: 400px;
+  height: 400px;
+  cursor: pointer;
 }
 
 .image-wrapper::before {
@@ -217,8 +218,8 @@
   }
 
   .image-wrapper {
-    width: 260px;
-    height: 260px;
+    width: 320px;
+    height: 320px;
   }
 }
 
@@ -232,7 +233,7 @@
   }
 
   .image-wrapper {
-    width: 200px;
-    height: 200px;
+    width: 260px;
+    height: 260px;
   }
 }
