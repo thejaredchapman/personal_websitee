@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useState } from 'react'
 const ColorContext = createContext(undefined)
 
 const COLOR_KEY = 'accent-color-preference'
+const CUSTOM_COLOR_KEY = 'accent-custom-color'
 
 export const colorThemes = {
   orange: {
@@ -111,22 +112,141 @@ export const colorThemes = {
   },
 }
 
+// --- Color conversion utilities ---
+
+function hexToRgb(hex) {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+  return result
+    ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16),
+      }
+    : null
+}
+
+function rgbToHsl(r, g, b) {
+  r /= 255
+  g /= 255
+  b /= 255
+  const max = Math.max(r, g, b)
+  const min = Math.min(r, g, b)
+  let h,
+    s,
+    l = (max + min) / 2
+
+  if (max === min) {
+    h = s = 0
+  } else {
+    const d = max - min
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
+    switch (max) {
+      case r:
+        h = ((g - b) / d + (g < b ? 6 : 0)) / 6
+        break
+      case g:
+        h = ((b - r) / d + 2) / 6
+        break
+      case b:
+        h = ((r - g) / d + 4) / 6
+        break
+    }
+  }
+  return { h: Math.round(h * 360), s: Math.round(s * 100), l: Math.round(l * 100) }
+}
+
+function hslToHex(h, s, l) {
+  s /= 100
+  l /= 100
+  const a = s * Math.min(l, 1 - l)
+  const f = (n) => {
+    const k = (n + h / 30) % 12
+    const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1)
+    return Math.round(255 * Math.max(0, Math.min(1, color)))
+      .toString(16)
+      .padStart(2, '0')
+  }
+  return `#${f(0)}${f(8)}${f(4)}`
+}
+
+export function hexToHsl(hex) {
+  const rgb = hexToRgb(hex)
+  if (!rgb) return null
+  return rgbToHsl(rgb.r, rgb.g, rgb.b)
+}
+
+export function hslToHexExport(h, s, l) {
+  return hslToHex(h, s, l)
+}
+
+// Generate a full 50-900 palette from a single hex color
+export function generatePalette(hex) {
+  const rgb = hexToRgb(hex)
+  if (!rgb) return null
+  const { h, s } = rgbToHsl(rgb.r, rgb.g, rgb.b)
+
+  // Lightness values for each shade tier
+  const shades = {
+    50: { s: Math.min(100, s + 10), l: 97 },
+    100: { s: Math.min(100, s + 5), l: 93 },
+    200: { s: Math.min(100, s + 2), l: 86 },
+    300: { s: s, l: 74 },
+    400: { s: s, l: 60 },
+    500: { s: s, l: 48 },
+    600: { s: Math.min(100, s + 5), l: 40 },
+    700: { s: Math.min(100, s + 8), l: 32 },
+    800: { s: Math.min(100, s + 8), l: 26 },
+    900: { s: Math.min(100, s + 10), l: 20 },
+  }
+
+  const palette = { name: 'Custom' }
+  for (const [key, val] of Object.entries(shades)) {
+    palette[key] = hslToHex(h, val.s, val.l)
+  }
+  return palette
+}
+
+export function isValidHex(hex) {
+  return /^#?([a-f\d]{3}|[a-f\d]{6})$/i.test(hex)
+}
+
+// Normalize 3-digit hex to 6-digit
+function normalizeHex(hex) {
+  hex = hex.replace('#', '')
+  if (hex.length === 3) {
+    hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2]
+  }
+  return '#' + hex
+}
+
 export function ColorProvider({ children }) {
   const [accentColor, setAccentColor] = useState(() => {
     if (typeof window !== 'undefined') {
       const stored = localStorage.getItem(COLOR_KEY)
-      if (stored && colorThemes[stored]) {
-        return stored
-      }
+      if (stored === 'custom') return 'custom'
+      if (stored && colorThemes[stored]) return stored
     }
     return 'orange'
   })
 
-  useEffect(() => {
-    const theme = colorThemes[accentColor]
-    const root = document.documentElement
+  const [customHex, setCustomHex] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem(CUSTOM_COLOR_KEY)
+      if (stored && isValidHex(stored)) return normalizeHex(stored)
+    }
+    return '#6366f1'
+  })
 
-    // Set CSS custom properties for the accent color
+  useEffect(() => {
+    let theme
+    if (accentColor === 'custom') {
+      theme = generatePalette(customHex)
+      if (!theme) theme = colorThemes.orange
+    } else {
+      theme = colorThemes[accentColor]
+    }
+
+    const root = document.documentElement
     root.style.setProperty('--accent-50', theme[50])
     root.style.setProperty('--accent-100', theme[100])
     root.style.setProperty('--accent-200', theme[200])
@@ -138,14 +258,19 @@ export function ColorProvider({ children }) {
     root.style.setProperty('--accent-800', theme[800])
     root.style.setProperty('--accent-900', theme[900])
 
-    // Update shadow accent color
     const rgb500 = hexToRgb(theme[500])
     if (rgb500) {
-      root.style.setProperty('--shadow-accent', `rgba(${rgb500.r}, ${rgb500.g}, ${rgb500.b}, 0.4)`)
+      root.style.setProperty(
+        '--shadow-accent',
+        `rgba(${rgb500.r}, ${rgb500.g}, ${rgb500.b}, 0.4)`
+      )
     }
 
     localStorage.setItem(COLOR_KEY, accentColor)
-  }, [accentColor])
+    if (accentColor === 'custom') {
+      localStorage.setItem(CUSTOM_COLOR_KEY, customHex)
+    }
+  }, [accentColor, customHex])
 
   const changeColor = (colorName) => {
     if (colorThemes[colorName]) {
@@ -153,8 +278,24 @@ export function ColorProvider({ children }) {
     }
   }
 
+  const setCustomColor = (hex) => {
+    const normalized = normalizeHex(hex)
+    setCustomHex(normalized)
+    setAccentColor('custom')
+  }
+
   return (
-    <ColorContext.Provider value={{ accentColor, changeColor, colorThemes }}>
+    <ColorContext.Provider
+      value={{
+        accentColor,
+        changeColor,
+        colorThemes,
+        customHex,
+        setCustomColor,
+        hexToHsl,
+        hslToHexExport,
+      }}
+    >
       {children}
     </ColorContext.Provider>
   )
@@ -166,13 +307,4 @@ export function useColor() {
     throw new Error('useColor must be used within a ColorProvider')
   }
   return context
-}
-
-function hexToRgb(hex) {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
-  return result ? {
-    r: parseInt(result[1], 16),
-    g: parseInt(result[2], 16),
-    b: parseInt(result[3], 16)
-  } : null
 }

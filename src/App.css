@@ -68,12 +68,12 @@ section {
 .btn-primary {
   background: linear-gradient(135deg, var(--accent-500), var(--accent-600));
   color: var(--white);
-  box-shadow: 0 4px 14px 0 rgba(249, 115, 22, 0.4);
+  box-shadow: 0 4px 14px 0 var(--shadow-accent);
 }
 
 .btn-primary:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.5);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px var(--shadow-accent);
   color: var(--white);
 }
 
