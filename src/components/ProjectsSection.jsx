@@ -70,7 +70,7 @@ function ProjectsSection() {
     {
       title: 'Chess Learning App',
       description: 'An interactive chess learning platform designed to help players study openings, practice tactics, and improve their game through structured lessons and exercises.',
-      tags: ['React', 'Chess', 'Education'],
+      tags: ['Angular', 'Chess', 'Education'],
       url: 'https://chess-learning-app-teal.vercel.app/',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
