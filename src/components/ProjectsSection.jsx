@@ -68,6 +68,18 @@ function ProjectsSection() {
       )
     },
     {
+      title: 'Chess Learning App',
+      description: 'An interactive chess learning platform designed to help players study openings, practice tactics, and improve their game through structured lessons and exercises.',
+      tags: ['React', 'Chess', 'Education'],
+      url: 'https://chess-learning-app-teal.vercel.app/',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+          <path d="M12 2a2 2 0 012 2c0 .74-.4 1.39-1 1.73V7h1a3 3 0 013 3h1a1 1 0 011 1v1a1 1 0 01-1 1h-1v2l2 4H5l2-4v-2H6a1 1 0 01-1-1v-1a1 1 0 011-1h1a3 3 0 013-3h1V5.73A2 2 0 0112 2z" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M7 21h10" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )
+    },
+    {
       title: 'Camp Javery Wedding',
       description: 'A summer camp-themed wedding celebration site for a Labor Day weekend event in Newaygo, Michigan, featuring event details and scheduling.',
       tags: ['React', 'Wedding', 'Event'],
