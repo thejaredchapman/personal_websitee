@@ -149,6 +149,66 @@
   font-family: 'Courier New', monospace;
 }
 
+/* Touch controls */
+.asteroids-touch-controls {
+  display: none;
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  right: 0;
+  padding: 0 20px;
+  justify-content: space-between;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.touch-controls-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+.touch-rotate-row {
+  display: flex;
+  gap: 8px;
+}
+
+.touch-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-500);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--accent-400);
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  pointer-events: auto;
+  transition: background 0.1s ease;
+}
+
+.touch-btn:active {
+  background: var(--accent-500);
+  color: #000;
+}
+
+.touch-fire {
+  width: 72px;
+  height: 72px;
+  font-size: 2rem;
+}
+
+.controls-mobile {
+  display: none;
+}
+
 /* Responsive */
 @media (max-width: 850px) {
   .asteroids-game-container {
@@ -179,5 +239,17 @@
 
   .asteroids-game-over h2 {
     font-size: 2rem;
+  }
+
+  .asteroids-touch-controls {
+    display: flex;
+  }
+
+  .controls-desktop {
+    display: none;
+  }
+
+  .controls-mobile {
+    display: block;
   }
 }

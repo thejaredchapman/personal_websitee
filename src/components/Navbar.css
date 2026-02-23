@@ -115,20 +115,79 @@
   height: 16px;
 }
 
-/* Nav Controls (Theme & Color) */
-.nav-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-left: 0.75rem;
-  padding-left: 0.75rem;
-  border-left: 1px solid var(--border-light);
+
+/* ---- Navbar Theme Panel ---- */
+.nav-theme-li {
+  position: relative;
 }
 
-.theme-toggle-wrapper,
-.color-picker-wrapper {
+.nav-theme-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+.nav-theme-btn.active {
+  color: var(--accent-primary);
+  background: var(--accent-lighter);
+}
+
+.nav-theme-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-medium);
+  border-radius: 16px;
+  box-shadow: 0 12px 40px var(--shadow-color);
+  min-width: 300px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  animation: nav-theme-in 0.25s ease;
+  z-index: 1002;
+}
+
+@keyframes nav-theme-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.nav-theme-panel-header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.nav-theme-panel-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.nav-theme-panel-body {
+  padding: 1rem 1.25rem;
+}
+
+.nav-theme-panel::-webkit-scrollbar {
+  width: 4px;
+}
+
+.nav-theme-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.nav-theme-panel::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: 2px;
 }
 
 /* Mobile Menu Toggle */
@@ -255,21 +314,27 @@
     padding: 0.875rem 1rem !important;
   }
 
-  .nav-controls {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 1rem;
-    margin-left: 0;
-    margin-top: 1.5rem;
-    padding-left: 0;
-    padding-top: 1.5rem;
-    border-left: none;
-    border-top: 1px solid var(--border-light);
+  .nav-theme-li {
+    position: static;
+    width: 100%;
   }
 
-  .theme-toggle-wrapper,
-  .color-picker-wrapper {
-    justify-content: center;
+  .nav-theme-btn {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+    border-radius: 12px;
+  }
+
+  .nav-theme-panel {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-top: 0.5rem;
+    min-width: unset;
+    width: 100%;
+    box-shadow: none;
+    border: 1px solid var(--border-light);
   }
 }
 

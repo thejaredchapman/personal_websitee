@@ -6,7 +6,10 @@ import './Navbar.css'
 function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [themeOpen, setThemeOpen] = useState(false)
   const ticking = useRef(false)
+  const themeBtnRef = useRef(null)
+  const themePanelRef = useRef(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +24,22 @@ function Navbar() {
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        themeOpen &&
+        themePanelRef.current &&
+        !themePanelRef.current.contains(e.target) &&
+        themeBtnRef.current &&
+        !themeBtnRef.current.contains(e.target)
+      ) {
+        setThemeOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [themeOpen])
 
   const navItems = [
     { href: '#about', label: 'About', icon: (
@@ -97,6 +116,36 @@ function Navbar() {
               </a>
             </li>
           ))}
+          <li className="nav-theme-li">
+            <button
+              ref={themeBtnRef}
+              className={`nav-item nav-theme-btn ${themeOpen ? 'active' : ''}`}
+              onClick={() => setThemeOpen(!themeOpen)}
+              aria-label="Theme settings"
+              title="Theme settings"
+            >
+              <span className="nav-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                  <path d="M12 2.7c5.1 0 9.3 4.2 9.3 9.3 0 3-1.4 4.8-4.6 4.8h-1.8c-1.2 0-2.2 1-2.2 2.2 0 .5.2 1 .5 1.3.3.4.5.8.5 1.3 0 1.2-1 2.2-2.2 2.2C6.4 23.7 2.2 19.6 2.2 14.4c0-6.5 5.3-11.7 9.8-11.7z" />
+                  <circle cx="8" cy="11" r="2" fill="var(--accent-400)" stroke="none" />
+                  <circle cx="13" cy="7.5" r="2" fill="var(--accent-300)" stroke="none" />
+                  <circle cx="17.5" cy="11" r="2" fill="var(--accent-500)" stroke="none" />
+                </svg>
+              </span>
+              <span className="nav-label">Theme</span>
+            </button>
+            {themeOpen && (
+              <div ref={themePanelRef} className="nav-theme-panel">
+                <div className="nav-theme-panel-header">
+                  <span className="nav-theme-panel-title">Theme</span>
+                  <ThemeToggle />
+                </div>
+                <div className="nav-theme-panel-body">
+                  <ColorPicker />
+                </div>
+              </div>
+            )}
+          </li>
           <li>
             <a href="#contact" className="btn btn-primary nav-cta" onClick={() => setMenuOpen(false)}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="cta-icon" aria-hidden="true">
@@ -105,14 +154,6 @@ function Navbar() {
               </svg>
               Contact
             </a>
-          </li>
-          <li className="nav-controls">
-            <div className="theme-toggle-wrapper">
-              <ThemeToggle />
-            </div>
-            <div className="color-picker-wrapper">
-              <ColorPicker />
-            </div>
           </li>
         </ul>
       </div>

@@ -4,6 +4,7 @@ import './AsteroidsGame.css'
 function AsteroidsGame({ onClose }) {
   const canvasRef = useRef(null)
   const gameRef = useRef(null)
+  const shootRef = useRef(null)
   const [score, setScore] = useState(0)
   const [lives, setLives] = useState(3)
   const [gameOver, setGameOver] = useState(false)
@@ -117,6 +118,8 @@ function AsteroidsGame({ onClose }) {
         })
       }
     }
+
+    shootRef.current = shoot
 
     function createExplosion(x, y, color, count = 15) {
       for (let i = 0; i < count; i++) {
@@ -416,6 +419,23 @@ function AsteroidsGame({ onClose }) {
     initGame()
   }
 
+  const touchStart = (key) => (e) => {
+    e.preventDefault()
+    const game = gameRef.current
+    if (!game) return
+    game.keys[key] = true
+    if (key === 'Space' && shootRef.current) {
+      shootRef.current()
+    }
+  }
+
+  const touchEnd = (key) => (e) => {
+    e.preventDefault()
+    const game = gameRef.current
+    if (!game) return
+    game.keys[key] = false
+  }
+
   return (
     <div className="asteroids-game-overlay">
       <div className="asteroids-game-container">
@@ -444,8 +464,36 @@ function AsteroidsGame({ onClose }) {
           </div>
         )}
 
+        <div className="asteroids-touch-controls">
+          <div className="touch-controls-left">
+            <button
+              className="touch-btn touch-thrust"
+              onTouchStart={touchStart('ArrowUp')}
+              onTouchEnd={touchEnd('ArrowUp')}
+            >▲</button>
+            <div className="touch-rotate-row">
+              <button
+                className="touch-btn touch-left"
+                onTouchStart={touchStart('ArrowLeft')}
+                onTouchEnd={touchEnd('ArrowLeft')}
+              >←</button>
+              <button
+                className="touch-btn touch-right"
+                onTouchStart={touchStart('ArrowRight')}
+                onTouchEnd={touchEnd('ArrowRight')}
+              >→</button>
+            </div>
+          </div>
+          <button
+            className="touch-btn touch-fire"
+            onTouchStart={touchStart('Space')}
+            onTouchEnd={touchEnd('Space')}
+          >●</button>
+        </div>
+
         <div className="asteroids-controls">
-          <p>Arrow Keys or WASD to move | Space to shoot</p>
+          <p className="controls-desktop">Arrow Keys or WASD to move | Space to shoot</p>
+          <p className="controls-mobile">Use on-screen buttons</p>
         </div>
       </div>
     </div>
