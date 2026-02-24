@@ -5,7 +5,7 @@ function Hero({ onPlayGame }) {
     <section id="about" className="hero">
       <div className="hero-content container">
         <div className="hero-text">
-          <p className="hero-greeting">Hello, I'm</p>
+          <p className="hero-greeting">"Hello,World", I'm</p>
           <h1 className="hero-name">Jared Chapman</h1>
           <h2 className="hero-tagline">
             <span className="highlight">Software Engineer</span> by Day,{' '}

@@ -80,6 +80,21 @@ function ProjectsSection() {
       )
     },
     {
+      title: 'AI Explorer',
+      description: 'An interactive application for exploring and experimenting with artificial intelligence concepts and capabilities.',
+      tags: ['React', 'AI', 'Interactive'],
+      url: 'https://app-dun-phi.vercel.app/',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+          <path d="M12 2a4 4 0 014 4c0 1.1-.45 2.1-1.17 2.83L12 12l-2.83-3.17A4 4 0 0112 2z" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M12 12l4.24 4.24M12 12l-4.24 4.24M12 12v6" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="12" cy="21" r="1" fill="currentColor" />
+          <circle cx="16.24" cy="16.24" r="1" fill="currentColor" />
+          <circle cx="7.76" cy="16.24" r="1" fill="currentColor" />
+        </svg>
+      )
+    },
+    {
       title: 'Camp Javery Wedding',
       description: 'A summer camp-themed wedding celebration site for a Labor Day weekend event in Newaygo, Michigan, featuring event details and scheduling.',
       tags: ['React', 'Wedding', 'Event'],
