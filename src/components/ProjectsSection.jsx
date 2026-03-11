@@ -110,7 +110,7 @@ function ProjectsSection() {
       title: 'Break Into Tech',
       description: 'A career transition platform offering structured guidance for breaking into cybersecurity, featuring roadmaps, certification paths, free resources, and apprenticeship programs.',
       tags: ['Next.js', 'Cybersecurity', 'Education'],
-      url: 'https://break-into-tech.vercel.app/cybersecurity',
+      url: 'https://break-into-tech.vercel.app/',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
           <rect x="3" y="11" width="18" height="11" rx="2" ry="2" strokeLinecap="round" strokeLinejoin="round" />
