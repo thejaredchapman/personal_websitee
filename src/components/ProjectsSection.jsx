@@ -95,6 +95,31 @@ function ProjectsSection() {
       )
     },
     {
+      title: 'The Daily Impact',
+      description: 'A personalized news application that curates and delivers stories that matter most to you, focusing on impact-driven journalism and relevance.',
+      tags: ['React', 'News', 'AI'],
+      url: 'https://news-impact-app-omega.vercel.app/',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+          <path d="M4 4h16a1 1 0 011 1v14a1 1 0 01-1 1H4a1 1 0 01-1-1V5a1 1 0 011-1z" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M7 8h4v4H7zM13 8h4M13 11h4M7 15h10" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )
+    },
+    {
+      title: 'Break Into Tech',
+      description: 'A career transition platform offering structured guidance for breaking into cybersecurity, featuring roadmaps, certification paths, free resources, and apprenticeship programs.',
+      tags: ['Next.js', 'Cybersecurity', 'Education'],
+      url: 'https://break-into-tech.vercel.app/cybersecurity',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M7 11V7a5 5 0 0110 0v4" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="12" cy="16" r="1" fill="currentColor" />
+        </svg>
+      )
+    },
+    {
       title: 'Camp Javery Wedding',
       description: 'A summer camp-themed wedding celebration site for a Labor Day weekend event in Newaygo, Michigan, featuring event details and scheduling.',
       tags: ['React', 'Wedding', 'Event'],
