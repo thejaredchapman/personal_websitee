@@ -1,9 +1,15 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@import "tailwindcss";
+
+/* ============================================
+   TAILWIND THEME EXTENSIONS
+   ============================================ */
+@theme {
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
+/* ============================================
+   CSS CUSTOM PROPERTIES
+   ============================================ */
 :root {
   /* Dynamic Accent Colors (set by ColorContext) */
   --accent-50: #fff7ed;
@@ -18,13 +24,13 @@
   --accent-900: #7c2d12;
 
   /* Neutral colors */
-  --white: #ffffff;
-  --gray-50: #fafafa;
-  --gray-100: #f4f4f5;
-  --gray-200: #e4e4e7;
-  --gray-300: #d4d4d8;
-  --gray-400: #a1a1aa;
-  --gray-500: #71717a;
+  --white: #faf6f1;
+  --gray-50: #f5f0e8;
+  --gray-100: #ebe5db;
+  --gray-200: #ddd5c8;
+  --gray-300: #c9bfb0;
+  --gray-400: #a89e8e;
+  --gray-500: #7a7060;
   --gray-600: #52525b;
   --gray-700: #3f3f46;
   --gray-800: #27272a;
@@ -56,12 +62,13 @@
   --shadow-color: rgba(0, 0, 0, 0.1);
   --shadow-accent: rgba(249, 115, 22, 0.4);
 
-  --glass-bg: rgba(255, 255, 255, 0.95);
-  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-bg: rgba(250, 246, 241, 0.85);
+  --glass-border: rgba(250, 246, 241, 0.3);
 
-  --card-bg: var(--white);
-  --card-border: var(--gray-100);
-  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  /* OS-specific */
+  --win-bg: rgba(250, 246, 241, 0.92);
+  --win-border: rgba(0, 0, 0, 0.1);
+  --dock-icon-color: rgba(0, 0, 0, 0.45);
 
   --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 
@@ -96,20 +103,25 @@
 
   --shadow-color: rgba(0, 0, 0, 0.3);
 
-  --glass-bg: rgba(24, 24, 27, 0.95);
-  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-bg: rgba(24, 24, 27, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.08);
 
-  --card-bg: var(--gray-800);
-  --card-border: var(--gray-700);
-  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+  --win-bg: rgba(24, 24, 27, 0.92);
+  --win-border: rgba(255, 255, 255, 0.08);
+  --dock-icon-color: rgba(255, 255, 255, 0.45);
 }
 
+/* ============================================
+   BASE STYLES
+   ============================================ */
 body {
   margin: 0;
   min-width: 320px;
   background-color: var(--bg-primary);
   color: var(--text-secondary);
   transition: var(--theme-transition);
+  overflow: hidden;
+  height: 100vh;
 }
 
 a {
@@ -132,12 +144,307 @@ img {
   height: auto;
 }
 
-section {
-  padding: 5rem 2rem;
+/* ============================================
+   OS WALLPAPER
+   ============================================ */
+.os-wallpaper {
+  background: var(--bg-primary);
+  transition: background 0.5s ease;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
+.os-wallpaper-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  animation: pulse 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.os-wallpaper-blob-1 {
+  width: 40vw;
+  height: 40vw;
+  top: -10%;
+  left: -10%;
+  background: var(--accent-500);
+  animation-delay: 0s;
+}
+
+.os-wallpaper-blob-2 {
+  width: 35vw;
+  height: 35vw;
+  bottom: -5%;
+  right: -10%;
+  background: var(--accent-400);
+  animation-delay: -3s;
+}
+
+.os-wallpaper-blob-3 {
+  width: 25vw;
+  height: 25vw;
+  top: 40%;
+  left: 50%;
+  background: var(--accent-600);
+  animation-delay: -5s;
+}
+
+/* ============================================
+   OS MENUBAR
+   ============================================ */
+.os-menubar {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+/* ============================================
+   OS DOCK
+   ============================================ */
+.os-dock {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.os-dock-icon {
+  background: rgba(128, 128, 128, 0.08);
+}
+
+.os-dock-icon:hover {
+  background: rgba(128, 128, 128, 0.18);
+}
+
+.os-dock-icon-active {
+  background: var(--accent-500);
+  background: linear-gradient(135deg, var(--accent-400), var(--accent-600));
+}
+
+.os-tooltip {
+  background: var(--bg-inverse);
+  color: var(--text-inverse);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   OS WINDOW
+   ============================================ */
+.os-titlebar-active {
+  background: var(--glass-bg);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.os-titlebar-inactive {
+  background: var(--glass-bg);
+  border-bottom: 1px solid var(--glass-border);
+  opacity: 0.75;
+}
+
+.os-window-content {
+  background: var(--win-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.os-window-open {
+  animation: windowOpen 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.os-window-close {
+  animation: windowClose 0.2s ease forwards;
+}
+
+.os-window-minimize {
+  animation: windowMinimize 0.25s ease forwards;
+}
+
+/* ============================================
+   OS NOTIFICATIONS
+   ============================================ */
+.os-notification {
+  animation: notifIn 0.3s ease;
+}
+
+/* ============================================
+   KEYFRAME ANIMATIONS
+   ============================================ */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes bootLineIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes windowOpen {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes windowClose {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+}
+
+@keyframes windowMinimize {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.5) translateY(100px);
+  }
+}
+
+@keyframes dockBounce {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-16px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(-8px); }
+}
+
+@keyframes tooltipIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 4px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes notifIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ============================================
+   THEME TOGGLE ICON STATES
+   ============================================ */
+[data-theme="dark"] .theme-icon-sun {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+[data-theme="dark"] .theme-icon-moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* ============================================
+   COLOR PICKER SLIDERS
+   ============================================ */
+.hue-slider {
+  background: linear-gradient(
+    to right,
+    hsl(0, 100%, 50%),
+    hsl(60, 100%, 50%),
+    hsl(120, 100%, 50%),
+    hsl(180, 100%, 50%),
+    hsl(240, 100%, 50%),
+    hsl(300, 100%, 50%),
+    hsl(360, 100%, 50%)
+  );
+}
+
+.lightness-slider {
+  background: linear-gradient(
+    to right,
+    var(--sl-left),
+    var(--sl-mid),
+    var(--sl-right)
+  );
+}
+
+.color-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: box-shadow 0.15s ease;
+}
+
+.color-slider::-webkit-slider-thumb:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.color-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+/* Hide number input spinners */
+.rgb-number-input::-webkit-outer-spin-button,
+.rgb-number-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.rgb-number-input {
+  -moz-appearance: textfield;
+}
+
+/* ============================================
+   SCROLLBAR STYLES FOR WINDOWS
+   ============================================ */
+.os-window-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.os-window-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.os-window-content::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.2);
+  border-radius: 3px;
+}
+
+.os-window-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(128, 128, 128, 0.35);
 }
