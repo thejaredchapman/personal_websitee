@@ -20,9 +20,6 @@ function AboutApp() {
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1 max-[768px]:justify-center">
               <h1 className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>Jared Chapman</h1>
-              <span className="py-0.5 px-2 rounded-full text-[10px] font-semibold" style={{ background: 'var(--accent-100)', color: 'var(--accent-700)' }}>
-                Open to work
-              </span>
             </div>
             <p className="text-sm font-medium mb-2" style={{ color: 'var(--accent-500)' }}>Software Engineer & Comedian</p>
             <div className="flex items-center gap-3 text-xs flex-wrap max-[768px]:justify-center" style={{ color: 'var(--text-tertiary)' }}>
