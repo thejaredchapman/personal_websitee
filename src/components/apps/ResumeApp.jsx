@@ -1,47 +1,64 @@
 const experience = [
   {
-    role: 'Developer Support Engineer (GenAI)',
-    company: 'AbbVie',
-    period: '2024 — Present',
+    role: 'Developer Support Engineer',
+    team: 'ILIAD & Go/AI Team | Supporting & Educating Users and Developers of various LLMs',
+    company: 'AbbVie — Los Angeles, CA',
+    period: 'Aug 2024 — Now',
     bullets: [
-      'Supporting developers on LLM integration and A/B testing models',
-      'Building enterprise AI solutions with Vertex AI',
-      'Prompt engineering and model evaluation at scale',
+      'Created learning materials and educational content that explains AI concepts in accessible, layman\'s terms, empowering new users to adopt Enterprise AI products.',
+      'Onboarded new users onto generative AI platforms, providing hands-on guidance and setting up Claude Code environments to accelerate productivity.',
+      'Developed prompt engineering strategies and templates enabling users to transform and reshape their data with ease using LLM-powered tools.',
+      'Provided critical support to developers by explaining features, debugging applications interfacing with LLMs, and resolving support tickets related to unexpected REST API behavior.',
     ],
   },
   {
     role: 'Software Engineer',
-    company: 'Google',
-    period: '2022 — 2024',
+    team: 'Google Searchmark | Search performance tools for capacity & latency',
+    company: 'Google — Chicago, IL',
+    period: 'Aug 2023 — May 2024',
     bullets: [
-      'Built BigQuery DataFrames APIs using Pandas, Ibis, PyArrow',
-      'Contributed microsecond precision method to Ibis open source library',
-      'Developed OOP architecture in Java for Search performance tools',
+      'Refactored Searchmark API using agile changes with Java protocol buffers (gRPC) Microservices to improve user results communication.',
+      'Designed the code architecture, integrating OOP principles in Java to ensure easy testing and maintainability for critical performance tools.',
+      'Supported Google infrastructure performance testing tool by lowering CPU usage for distributed systems.',
+      'Deployed code over Google\'s internal and automated testing framework to enhance CPU usage.',
     ],
   },
   {
-    role: 'Appraisal Team Lead',
-    company: 'Guaranteed Rate',
-    period: '2018 — 2021',
+    role: 'Software Engineer',
+    team: 'Google BigQuery | BigQuery DataFrames',
+    company: 'Google — Chicago, IL',
+    period: 'Sep 2022 — Aug 2023',
     bullets: [
-      'Led appraisal operations and team management',
-      'Streamlined processes and improved team efficiency',
+      'Wrote, expanded, refactored and tested BigQuery Python API as well as BQ Dataframes API, writing accommodating documentation.',
+      'Planned and authored a design document that outlined engineering solutions and architecture for a new feature for BQ Dataframes.',
+      'Executed plans by writing and testing datetime method APIs using Pandas, Ibis, and PyArrow Python libraries for public release.',
+      'Contributed to Ibis open source to ensure cross-functionality between Ibis and Pandas libraries, a key tool for data handling.',
+    ],
+  },
+  {
+    role: 'Appraisal Desk Team Lead',
+    company: 'Guaranteed Rate — Chicago, IL',
+    period: 'May 2018 — Sep 2021',
+    bullets: [
+      'Created daily dashboards for the department using Microsoft Excel by compiling and cleaning data from various sources.',
+      'Monitored and processed appraisal orders, issues and escalations for various mortgage executives, underwriting teams, appraisers, and other clients.',
+      'Provided cross-functional service support while managing an appraisal desk solely for three simultaneous companies.',
+      'Led appraisal desk operations, coordinating workflows and resolving escalations to ensure timely completion of mortgage processes.',
     ],
   },
 ]
 
 const education = [
-  { school: 'Multiverse', degree: 'Software Engineering Apprenticeship', year: '2024' },
-  { school: 'Google / Coursera', degree: 'IT Support Professional Certificate', year: '2022' },
-  { school: 'Georgia State University', degree: 'Bachelor of Arts', year: '2014' },
+  { school: 'Multiverse', degree: 'Multiverse Bootcamp', year: '2024' },
+  { school: 'Coursera', degree: 'Google Data Analytics Professional Certificate', year: '2022' },
+  { school: 'Georgia State University', degree: 'Bachelors of Science', year: '2014' },
 ]
 
 const skills = [
-  'Python', 'Java', 'JavaScript', 'TypeScript', 'HTML', 'CSS',
-  'React', 'Angular', 'Next.js', 'Spring Boot', 'Django',
-  'LLMs', 'Vertex AI', 'Prompt Engineering',
-  'BigQuery', 'Pandas', 'PyArrow', 'Ibis', 'PostgreSQL',
-  'GCP', 'Git', 'gRPC',
+  'Python', 'Java', 'JavaScript', 'HTML', 'CSS',
+  'API Design', 'React', 'Angular', 'Spring Boot', 'Django',
+  'Testing', 'Documentation', 'Github',
+  'PostgreSQL', 'GCP', 'Git / Version Control', 'Protocol Buffers', 'SDLC',
 ]
 
 function ResumeApp() {
@@ -53,7 +70,7 @@ function ResumeApp() {
           <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>Experience, education & skills</p>
         </div>
         <a
-          href="/Jared_Chapman_Resume.docx"
+          href="/resume.pdf"
           download
           className="flex items-center gap-1.5 py-2 px-3 rounded-lg text-xs font-medium no-underline transition-all hover:opacity-80"
           style={{ background: 'var(--accent-500)', color: 'white' }}
@@ -76,6 +93,7 @@ function ResumeApp() {
               <div>
                 <h4 className="font-semibold text-sm" style={{ color: 'var(--text-primary)' }}>{exp.role}</h4>
                 <p className="text-xs font-medium" style={{ color: 'var(--accent-500)' }}>{exp.company}</p>
+                {exp.team && <p className="text-[11px] italic mt-0.5" style={{ color: 'var(--text-tertiary)' }}>{exp.team}</p>}
               </div>
               <span className="text-[11px] font-mono shrink-0" style={{ color: 'var(--text-tertiary)' }}>{exp.period}</span>
             </div>

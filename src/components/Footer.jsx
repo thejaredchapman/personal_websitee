@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import './Footer.css'
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 function Footer() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [sectionRef, isVisible] = useScrollAnimation({ threshold: 0.1 })
 
   const socialLinks = [
     { name: 'GitHub', url: 'https://github.com/thejaredchapman', icon: (
@@ -33,25 +34,26 @@ function Footer() {
   }
 
   return (
-    <footer id="contact" className="footer">
+    <footer ref={sectionRef} id="contact" className="pt-20 px-8 pb-8 relative z-1 scroll-mt-20" style={{ background: 'linear-gradient(135deg, var(--gray-900) 0%, var(--black) 100%)', color: 'var(--white)' }}>
       <div className="container">
-        <div className="footer-content">
-          <div className="footer-main">
-            <h2 className="footer-title">Let's Connect</h2>
-            <p className="footer-description">
+        <div className="grid grid-cols-[2fr_1fr] gap-16 mb-16 max-[768px]:grid-cols-1 max-[768px]:gap-12">
+          <div className={`max-w-[500px] transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+            <h2 className="text-[2.5rem] mb-4 bg-gradient-to-br from-[var(--accent-400)] to-[var(--accent-500)] bg-clip-text max-[768px]:text-[2rem]" style={{ WebkitTextFillColor: 'transparent' }}>Let's Connect</h2>
+            <p className="text-lg leading-7 mb-6" style={{ color: 'var(--gray-200)' }}>
               Whether you want to discuss AI, book me for a show, or just say hi —
               I'd love to hear from you.
             </p>
 
-            <form className="contact-form" onSubmit={handleSubmit}>
-              <div className="form-row">
+            <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
+              <div className="grid grid-cols-2 gap-3 max-[768px]:grid-cols-1">
                 <input
                   type="text"
                   placeholder="Your Name"
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="form-input"
+                  className="py-3 px-4 bg-white/[0.08] border border-white/15 rounded-[10px] text-[0.95rem] font-[inherit] transition-all duration-300 focus:outline-none focus:border-[var(--accent-400)] focus:bg-white/[0.12] placeholder:text-[var(--gray-400)]"
+                  style={{ color: 'var(--white)' }}
                 />
                 <input
                   type="email"
@@ -59,7 +61,8 @@ function Footer() {
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="form-input"
+                  className="py-3 px-4 bg-white/[0.08] border border-white/15 rounded-[10px] text-[0.95rem] font-[inherit] transition-all duration-300 focus:outline-none focus:border-[var(--accent-400)] focus:bg-white/[0.12] placeholder:text-[var(--gray-400)]"
+                  style={{ color: 'var(--white)' }}
                 />
               </div>
               <textarea
@@ -68,36 +71,43 @@ function Footer() {
                 rows={4}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="form-input form-textarea"
+                className="py-3 px-4 bg-white/[0.08] border border-white/15 rounded-[10px] text-[0.95rem] font-[inherit] transition-all duration-300 focus:outline-none focus:border-[var(--accent-400)] focus:bg-white/[0.12] resize-y min-h-[100px] placeholder:text-[var(--gray-400)]"
+                style={{ color: 'var(--white)' }}
               />
-              <button type="submit" className="btn btn-primary contact-submit">
+              <button type="submit" className="btn btn-primary self-start mt-1 max-[768px]:self-stretch">
                 {submitted ? 'Opening Mail Client...' : 'Send Message'}
               </button>
             </form>
           </div>
 
-          <div className="footer-social">
-            <h3>Find Me Online</h3>
-            <div className="social-links">
+          <div className={`transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+            <h3 className="text-xl mb-6" style={{ color: 'var(--white)' }}>Find Me Online</h3>
+            <div className="flex flex-col gap-3 max-[768px]:flex-row max-[768px]:flex-wrap">
               {socialLinks.map((link, index) => (
                 <a
                   key={index}
                   href={link.url}
-                  className="social-link"
+                  className="flex items-center gap-3 py-3 px-4 bg-white/5 rounded-xl transition-all duration-300 no-underline hover:bg-[var(--accent-500)] hover:translate-x-2.5 max-[768px]:flex-1 max-[768px]:min-w-[140px] max-[768px]:justify-center max-[768px]:hover:translate-x-0 max-[768px]:hover:-translate-y-[5px]"
+                  style={{ color: 'var(--gray-200)' }}
                   aria-label={link.name}
+                  onMouseEnter={(e) => e.currentTarget.style.color = 'var(--white)'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = 'var(--gray-200)'}
                 >
-                  <span className="social-icon">{link.icon}</span>
-                  <span className="social-name">{link.name}</span>
+                  <span className="inline-flex w-6 h-6 transition-transform duration-300 group-hover:scale-120">{link.icon}</span>
+                  <span className="font-medium">{link.name}</span>
                 </a>
               ))}
             </div>
           </div>
         </div>
 
-        <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} Jared Chapman. All rights reserved.</p>
-          <p className="footer-tagline">
-            Built with <span className="heart">❤️</span> and a healthy dose of caffeine
+        <div className="text-center pt-8 border-t border-white/10">
+          <p className="mb-2" style={{ color: 'var(--gray-200)' }}>&copy; {new Date().getFullYear()} Jared Chapman. All rights reserved.</p>
+          <p className="text-sm" style={{ color: 'var(--gray-700)' }}>
+            Built with <span className="inline-block animate-[heartbeat_1.5s_infinite]">❤️</span> and a healthy dose of caffeine
+          </p>
+          <p className="text-xs mt-2 opacity-30 font-mono" style={{ color: 'var(--gray-500)' }}>
+            Try the Konami Code...
           </p>
         </div>
       </div>

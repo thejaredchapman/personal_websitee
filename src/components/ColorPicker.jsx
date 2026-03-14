@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useColor, hexToHsl, hslToHexExport, isValidHex } from '../context/ColorContext'
-import './ColorPicker.css'
 
 function hslToRgbValues(h, s, l) {
   s /= 100
@@ -52,7 +51,6 @@ function ColorPicker() {
   const lastLightnessRef = useRef(null)
   const internalUpdate = useRef(false)
 
-  // Sync all values when customHex changes externally
   useEffect(() => {
     if (internalUpdate.current) {
       internalUpdate.current = false
@@ -72,14 +70,12 @@ function ColorPicker() {
     }
   }, [customHex])
 
-  // Draw color wheel on canvas
   useEffect(() => {
     if (!showWheel) return
     const canvas = canvasRef.current
     if (!canvas) return
     const ctx = canvas.getContext('2d')
 
-    // Only recompute wheel pixel data when lightness changes
     if (lastLightnessRef.current !== lightness || !wheelImageRef.current) {
       const imageData = ctx.createImageData(WHEEL_SIZE, WHEEL_SIZE)
       const data = imageData.data
@@ -108,10 +104,8 @@ function ColorPicker() {
       lastLightnessRef.current = lightness
     }
 
-    // Paint cached wheel
     ctx.putImageData(wheelImageRef.current, 0, 0)
 
-    // Draw selection indicator
     const angle = (hslValues.h * Math.PI) / 180
     const dist = (hslValues.s / 100) * (WHEEL_RADIUS - 1)
     const ix = WHEEL_RADIUS + dist * Math.cos(angle)
@@ -262,12 +256,12 @@ function ColorPicker() {
   }
 
   return (
-    <div className="color-picker">
-      <div className="color-presets">
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-1.5 flex-wrap items-center">
         {Object.entries(colorThemes).map(([key, theme]) => (
           <button
             key={key}
-            className={`color-swatch ${accentColor === key ? 'active' : ''}`}
+            className={`w-7 h-7 rounded-full border-[2.5px] border-transparent cursor-pointer transition-all duration-200 p-0 relative hover:scale-115 ${accentColor === key ? 'border-[var(--text-primary)] shadow-[0_0_0_2px_var(--bg-primary)]' : ''}`}
             onClick={() => handlePresetClick(key)}
             style={{ backgroundColor: theme[500] }}
             aria-label={`Select ${theme.name} theme`}
@@ -275,12 +269,13 @@ function ColorPicker() {
           />
         ))}
         <button
-          className={`color-swatch color-swatch-custom ${showWheel ? 'active' : ''} ${accentColor === 'custom' ? 'selected' : ''}`}
+          className={`w-7 h-7 rounded-full border-[2.5px] border-transparent cursor-pointer transition-all duration-200 p-0 relative hover:scale-115 flex items-center justify-center ${showWheel || accentColor === 'custom' ? 'border-[var(--text-primary)] shadow-[0_0_0_2px_var(--bg-primary)]' : ''}`}
+          style={{ background: 'conic-gradient(#f87171, #fb923c, #facc15, #4ade80, #60a5fa, #a855f7, #ec4899, #f87171)' }}
           onClick={handleCustomToggle}
           aria-label="Custom color"
           title="Custom"
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" className="custom-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" className={`w-3.5 h-3.5 transition-transform duration-200 drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)] ${showWheel ? 'rotate-45' : ''}`}>
             <line x1="12" y1="5" x2="12" y2="19" />
             <line x1="5" y1="12" x2="19" y2="12" />
           </svg>
@@ -288,57 +283,58 @@ function ColorPicker() {
       </div>
 
       {showWheel && (
-        <div className="color-wheel-panel">
-          <div className="color-wheel-wrapper">
+        <div className="flex flex-col gap-3 pt-3 border-t animate-[wheel-slide-in_0.25s_ease]" style={{ borderColor: 'var(--border-light)' }}>
+          <div className="flex justify-center py-1">
             <canvas
               ref={canvasRef}
               width={WHEEL_SIZE}
               height={WHEEL_SIZE}
-              className="color-wheel-canvas"
+              className="w-[180px] h-[180px] rounded-full cursor-crosshair shadow-[0_2px_12px_rgba(0,0,0,0.12)] touch-none"
               onMouseDown={handleWheelPointerDown}
               onTouchStart={handleWheelPointerDown}
             />
           </div>
 
-          <div className="color-slider-row">
-            <label className="color-slider-label">Hue</label>
+          <div className="flex items-center gap-2">
+            <label className="text-[0.7rem] font-semibold uppercase tracking-wide min-w-[34px]" style={{ color: 'var(--text-tertiary)' }}>Hue</label>
             <input
               type="range"
               min="0"
               max="360"
               value={hslValues.h}
               onChange={handleHueChange}
-              className="color-slider hue-slider"
+              className="color-slider hue-slider flex-1 h-2.5 appearance-none rounded-[5px] outline-none cursor-pointer border border-black/[0.08]"
             />
-            <span className="color-slider-value">{hslValues.h}</span>
+            <span className="font-mono text-[0.7rem] min-w-[26px] text-right" style={{ color: 'var(--text-tertiary)' }}>{hslValues.h}</span>
           </div>
 
-          <div className="color-slider-row">
-            <label className="color-slider-label">Light</label>
+          <div className="flex items-center gap-2">
+            <label className="text-[0.7rem] font-semibold uppercase tracking-wide min-w-[34px]" style={{ color: 'var(--text-tertiary)' }}>Light</label>
             <input
               type="range"
               min="5"
               max="95"
               value={lightness}
               onChange={handleLightnessChange}
-              className="color-slider lightness-slider"
+              className="color-slider lightness-slider flex-1 h-2.5 appearance-none rounded-[5px] outline-none cursor-pointer border border-black/[0.08]"
               style={{
                 '--sl-left': hslToHexExport(hslValues.h, hslValues.s, 5),
                 '--sl-mid': hslToHexExport(hslValues.h, hslValues.s, 50),
                 '--sl-right': hslToHexExport(hslValues.h, hslValues.s, 95),
               }}
             />
-            <span className="color-slider-value">{lightness}</span>
+            <span className="font-mono text-[0.7rem] min-w-[26px] text-right" style={{ color: 'var(--text-tertiary)' }}>{lightness}</span>
           </div>
 
-          <div className="color-inputs-section">
-            <div className="color-input-group">
-              <label className="color-input-label">HEX</label>
-              <div className="hex-input-row">
+          <div className="flex flex-col gap-2.5 pt-2 border-t" style={{ borderColor: 'var(--border-light)' }}>
+            <div className="flex flex-col gap-1">
+              <label className="text-[0.65rem] font-semibold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>HEX</label>
+              <div className="flex items-center gap-1.5">
                 <span
-                  className="color-preview-swatch"
+                  className="w-[22px] h-[22px] rounded-[5px] border shrink-0"
                   style={{
                     backgroundColor: isValidHex(hexInput) ? hexInput : '#888',
+                    borderColor: 'var(--border-medium)',
                   }}
                 />
                 <input
@@ -348,23 +344,26 @@ function ColorPicker() {
                   maxLength={7}
                   placeholder="#6366f1"
                   spellCheck={false}
-                  className="color-text-input"
+                  className="font-mono text-[0.8rem] py-1.5 px-2 rounded-md border w-full outline-none transition-colors duration-200 focus:border-[var(--accent-primary)]"
+                  style={{ borderColor: 'var(--border-medium)', background: 'var(--bg-secondary)', color: 'var(--text-primary)' }}
                 />
               </div>
             </div>
 
-            <div className="color-input-group">
-              <label className="color-input-label">RGB</label>
-              <div className="rgb-input-row">
+            <div className="flex flex-col gap-1">
+              <label className="text-[0.65rem] font-semibold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>RGB</label>
+              <div className="flex gap-1.5">
                 {['r', 'g', 'b'].map((ch) => (
-                  <div key={ch} className="rgb-field">
-                    <span className="rgb-field-label">{ch.toUpperCase()}</span>
+                  <div key={ch} className="flex flex-col items-center gap-0.5 flex-1">
+                    <span className="text-[0.6rem] font-semibold uppercase" style={{ color: 'var(--text-tertiary)' }}>{ch.toUpperCase()}</span>
                     <input
                       type="number"
                       min="0"
                       max="255"
                       value={rgbValues[ch]}
                       onChange={(e) => handleRgbChange(ch, e.target.value)}
+                      className="rgb-number-input font-mono text-[0.75rem] py-1 px-1 rounded-[5px] border w-full text-center outline-none transition-colors duration-200 focus:border-[var(--accent-primary)]"
+                      style={{ borderColor: 'var(--border-medium)', background: 'var(--bg-secondary)', color: 'var(--text-primary)' }}
                     />
                   </div>
                 ))}

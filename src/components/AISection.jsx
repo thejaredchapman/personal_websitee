@@ -1,6 +1,9 @@
-import './AISection.css'
+import { useScrollAnimation, useStaggerAnimation } from '../hooks/useScrollAnimation'
 
 function AISection() {
+  const [sectionRef, isVisible] = useScrollAnimation({ threshold: 0.1 })
+  const [cardsRef, visibleCards] = useStaggerAnimation(4, { baseDelay: 120 })
+
   const projects = [
     {
       title: 'LLM Developer Support Platform',
@@ -49,20 +52,25 @@ function AISection() {
   ]
 
   return (
-    <section id="ai" className="ai-section">
+    <section ref={sectionRef} id="ai" className="py-20 px-8 relative z-1 max-[768px]:py-12 max-[768px]:px-4 scroll-mt-20" style={{ background: 'linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-tertiary) 100%)' }}>
       <div className="container">
-        <h2 className="section-title">AI & Machine Learning</h2>
-        <p className="section-subtitle">
+        <h2 className={`section-title transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>AI & Machine Learning</h2>
+        <p className={`section-subtitle transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           Pushing the boundaries of what's possible with artificial intelligence
         </p>
 
-        <div className="ai-grid grid grid-2">
+        <div ref={cardsRef} className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-8 mb-16">
           {projects.map((project, index) => (
-            <div key={index} className="ai-card card">
-              <div className="ai-card-icon">{project.icon}</div>
-              <h3 className="ai-card-title">{project.title}</h3>
-              <p className="ai-card-description">{project.description}</p>
-              <div className="ai-card-tags">
+            <div
+              key={index}
+              className={`card card-top-border relative overflow-hidden group transition-all duration-700 ${visibleCards.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+            >
+              <div className="w-12 h-12 mb-4 transition-all duration-300 group-hover:scale-120 group-hover:rotate-10" style={{ color: 'var(--accent-500)' }}>
+                {project.icon}
+              </div>
+              <h3 className="text-2xl mb-3" style={{ color: 'var(--text-primary)' }}>{project.title}</h3>
+              <p className="mb-6 leading-7" style={{ color: 'var(--text-secondary)' }}>{project.description}</p>
+              <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag, tagIndex) => (
                   <span key={tagIndex} className="tag">{tag}</span>
                 ))}
@@ -71,19 +79,17 @@ function AISection() {
           ))}
         </div>
 
-        <div className="ai-stats">
-          <div className="stat-item">
-            <span className="stat-number">3+</span>
-            <span className="stat-label">Years in Tech</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-number">Google</span>
-            <span className="stat-label">Former Employer</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-number">LLMs</span>
-            <span className="stat-label">Current Focus</span>
-          </div>
+        <div className={`flex justify-center gap-16 flex-wrap max-[768px]:gap-8 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          {[
+            { number: '3+', label: 'Years in Tech' },
+            { number: 'Google', label: 'Former Employer' },
+            { number: 'LLMs', label: 'Current Focus' },
+          ].map((stat, i) => (
+            <div key={i} className="text-center transition-transform duration-300 hover:scale-110">
+              <span className="block text-5xl font-extrabold leading-tight bg-gradient-to-br from-[var(--accent-500)] to-[var(--accent-600)] bg-clip-text max-[768px]:text-[2.5rem]" style={{ WebkitTextFillColor: 'transparent' }}>{stat.number}</span>
+              <span className="font-medium" style={{ color: 'var(--text-secondary)' }}>{stat.label}</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -1,8 +1,10 @@
 import { useState } from 'react'
-import './ProjectsSection.css'
+import { useScrollAnimation, useStaggerAnimation } from '../hooks/useScrollAnimation'
 
 function ProjectsSection() {
   const [hoveredIndex, setHoveredIndex] = useState(null)
+  const [sectionRef, isVisible] = useScrollAnimation({ threshold: 0.05 })
+  const [cardsRef, visibleCards] = useStaggerAnimation(10, { baseDelay: 100 })
 
   const projects = [
     {
@@ -133,44 +135,48 @@ function ProjectsSection() {
   ]
 
   return (
-    <section id="projects" className="projects-section">
+    <section ref={sectionRef} id="projects" className="py-20 px-8 relative z-1 max-[768px]:py-12 max-[768px]:px-4 scroll-mt-20" style={{ background: 'linear-gradient(180deg, var(--bg-tertiary) 0%, var(--bg-primary) 100%)' }}>
       <div className="container">
-        <h2 className="section-title">Projects</h2>
-        <p className="section-subtitle">
+        <h2 className={`section-title transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>Projects</h2>
+        <p className={`section-subtitle transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           Things I've built and shipped
         </p>
 
-        <div className="projects-grid">
+        <div ref={cardsRef} className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-8 max-w-[1100px] mx-auto">
           {projects.map((project, index) => (
             <a
               key={index}
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="project-card card"
+              className={`card card-top-border relative overflow-visible no-underline flex flex-col group transition-all duration-700 ${visibleCards.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+              style={{ color: 'inherit' }}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
               {hoveredIndex === index && (
-                <div className="project-preview">
+                <div className="absolute bottom-[calc(100%+12px)] left-1/2 -translate-x-1/2 w-[400px] h-[250px] rounded-xl overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.25)] border pointer-events-none z-[100] animate-[previewFadeIn_0.2s_ease] max-[768px]:hidden" style={{ borderColor: 'var(--border-color, rgba(255,255,255,0.1))', background: 'var(--bg-secondary, #1a1a2e)' }}>
                   <iframe
                     src={project.url}
                     title={`${project.title} preview`}
                     loading="lazy"
+                    className="w-[1200px] h-[750px] border-none scale-[0.333] origin-top-left pointer-events-none"
                   />
                 </div>
               )}
-              <div className="project-card-icon">{project.icon}</div>
-              <h3 className="project-card-title">{project.title}</h3>
-              <p className="project-card-description">{project.description}</p>
-              <div className="project-card-tags">
+              <div className="w-12 h-12 mb-4 transition-all duration-300 group-hover:scale-120 group-hover:rotate-10" style={{ color: 'var(--accent-500)' }}>
+                {project.icon}
+              </div>
+              <h3 className="text-2xl mb-3" style={{ color: 'var(--text-primary)' }}>{project.title}</h3>
+              <p className="mb-6 leading-7 flex-1" style={{ color: 'var(--text-secondary)' }}>{project.description}</p>
+              <div className="flex flex-wrap gap-2 mb-6">
                 {project.tags.map((tag, tagIndex) => (
                   <span key={tagIndex} className="tag">{tag}</span>
                 ))}
               </div>
-              <span className="project-card-link">
+              <span className="inline-flex items-center gap-2 font-semibold text-[0.95rem] transition-all duration-300 group-hover:gap-3" style={{ color: 'var(--accent-500)' }}>
                 Visit Project
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true">
                   <path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </span>
