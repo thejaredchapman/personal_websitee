@@ -49,6 +49,7 @@ const experience = [
 ]
 
 const education = [
+  { school: 'LinkedIn Learning', degree: 'Fundamentals to Become a Machine Learning Engineer', year: '2026' },
   { school: 'Multiverse', degree: 'Multiverse Bootcamp', year: '2024' },
   { school: 'Coursera', degree: 'Google Data Analytics Professional Certificate', year: '2022' },
   { school: 'Georgia State University', degree: 'Bachelors of Science', year: '2014' },

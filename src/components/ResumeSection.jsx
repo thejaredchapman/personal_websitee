@@ -58,6 +58,12 @@ function ResumeSection() {
 
   const education = [
     {
+      degree: 'Fundamentals to Become a Machine Learning Engineer',
+      school: 'LinkedIn Learning',
+      year: '2026',
+      focus: 'AI and machine learning principles, building ML applications, training neural networks, deep learning, and reinforcement learning.',
+    },
+    {
       degree: 'Multiverse Bootcamp',
       school: 'Multiverse',
       year: '2024',
