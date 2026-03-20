@@ -247,6 +247,11 @@ function ColorPicker() {
     setShowWheel(false)
   }
 
+  const handleRainbowClick = () => {
+    changeColor('rainbow')
+    setShowWheel(false)
+  }
+
   const handleCustomToggle = () => {
     if (!showWheel) {
       internalUpdate.current = true
@@ -278,6 +283,17 @@ function ColorPicker() {
           <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" className={`w-3.5 h-3.5 transition-transform duration-200 drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)] ${showWheel ? 'rotate-45' : ''}`}>
             <line x1="12" y1="5" x2="12" y2="19" />
             <line x1="5" y1="12" x2="19" y2="12" />
+          </svg>
+        </button>
+        <button
+          className={`w-7 h-7 rounded-full border-[2.5px] border-transparent cursor-pointer transition-all duration-200 p-0 relative hover:scale-115 flex items-center justify-center ${accentColor === 'rainbow' ? 'border-[var(--text-primary)] shadow-[0_0_0_2px_var(--bg-primary)]' : ''}`}
+          style={{ background: 'conic-gradient(#f87171, #fb923c, #facc15, #4ade80, #60a5fa, #a855f7, #ec4899, #f87171)', animation: 'spin 2s linear infinite' }}
+          onClick={handleRainbowClick}
+          aria-label="Rainbow mode"
+          title="Rainbow"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" className="w-3.5 h-3.5 drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">
+            <path d="M12 3a9 9 0 019 9M12 7a5 5 0 015 5M12 11a1 1 0 011 1" strokeLinecap="round" />
           </svg>
         </button>
       </div>

@@ -57,19 +57,6 @@ function ProjectsSection() {
       )
     },
     {
-      title: 'DDJ-FLX4 Trainer',
-      description: 'An interactive training tool for learning the Pioneer DDJ-FLX4 DJ controller, helping users master controls, effects, and mixing techniques.',
-      tags: ['React', 'Music', 'DJ'],
-      url: 'https://ddj-flx4-trainer-react.vercel.app/',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-          <path d="M9 18V5l12-2v13" strokeLinecap="round" strokeLinejoin="round" />
-          <circle cx="6" cy="18" r="3" />
-          <circle cx="18" cy="16" r="3" />
-        </svg>
-      )
-    },
-    {
       title: 'Chess Learning App',
       description: 'An interactive chess learning platform designed to help players study openings, practice tactics, and improve their game through structured lessons and exercises.',
       tags: ['Angular', 'Chess', 'Education'],
@@ -82,17 +69,15 @@ function ProjectsSection() {
       )
     },
     {
-      title: 'AI Explorer',
-      description: 'An interactive application for exploring and experimenting with artificial intelligence concepts and capabilities.',
-      tags: ['React', 'AI', 'Interactive'],
+      title: 'DDJ-FLX4 DJ Guide',
+      description: 'A comprehensive reference guide for the Pioneer DDJ-FLX4 DJ controller, covering controls, features, and operation techniques.',
+      tags: ['React', 'Music', 'DJ'],
       url: 'https://app-dun-phi.vercel.app/',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-          <path d="M12 2a4 4 0 014 4c0 1.1-.45 2.1-1.17 2.83L12 12l-2.83-3.17A4 4 0 0112 2z" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M12 12l4.24 4.24M12 12l-4.24 4.24M12 12v6" strokeLinecap="round" strokeLinejoin="round" />
-          <circle cx="12" cy="21" r="1" fill="currentColor" />
-          <circle cx="16.24" cy="16.24" r="1" fill="currentColor" />
-          <circle cx="7.76" cy="16.24" r="1" fill="currentColor" />
+          <path d="M4 19.5A2.5 2.5 0 016.5 17H20" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M12 7v6M9 10h6" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       )
     },
@@ -129,6 +114,19 @@ function ProjectsSection() {
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
           <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )
+    },
+    {
+      title: 'PyTorch Interactive Guide',
+      description: 'An interactive educational tool for learning PyTorch, offering hands-on guidance through core machine learning concepts and framework fundamentals.',
+      tags: ['React', 'ML', 'Education'],
+      url: 'https://pytorch-interactive-guide.vercel.app/',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+          <path d="M12 2L2 7l10 5 10-5-10-5z" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M2 17l10 5 10-5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M2 12l10 5 10-5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       )
     }

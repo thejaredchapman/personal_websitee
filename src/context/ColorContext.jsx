@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useRef, useState } from 'react'
 
 const ColorContext = createContext(undefined)
 
@@ -223,6 +223,7 @@ export function ColorProvider({ children }) {
   const [accentColor, setAccentColor] = useState(() => {
     if (typeof window !== 'undefined') {
       const stored = localStorage.getItem(COLOR_KEY)
+      if (stored === 'rainbow') return 'rainbow'
       if (stored === 'custom') return 'custom'
       if (stored && colorThemes[stored]) return stored
     }
@@ -237,15 +238,9 @@ export function ColorProvider({ children }) {
     return '#6366f1'
   })
 
-  useEffect(() => {
-    let theme
-    if (accentColor === 'custom') {
-      theme = generatePalette(customHex)
-      if (!theme) theme = colorThemes.orange
-    } else {
-      theme = colorThemes[accentColor]
-    }
+  const rainbowRef = useRef(null)
 
+  function applyPalette(theme) {
     const root = document.documentElement
     root.style.setProperty('--accent-50', theme[50])
     root.style.setProperty('--accent-100', theme[100])
@@ -265,6 +260,45 @@ export function ColorProvider({ children }) {
         `rgba(${rgb500.r}, ${rgb500.g}, ${rgb500.b}, 0.4)`
       )
     }
+  }
+
+  // Rainbow animation loop
+  useEffect(() => {
+    if (accentColor !== 'rainbow') {
+      if (rainbowRef.current) {
+        cancelAnimationFrame(rainbowRef.current)
+        rainbowRef.current = null
+      }
+      return
+    }
+
+    let hue = 0
+    const tick = () => {
+      hue = (hue + 1.5) % 360
+      const palette = generatePalette(hslToHex(hue, 90, 50))
+      if (palette) applyPalette(palette)
+      rainbowRef.current = requestAnimationFrame(tick)
+    }
+    rainbowRef.current = requestAnimationFrame(tick)
+
+    return () => {
+      if (rainbowRef.current) cancelAnimationFrame(rainbowRef.current)
+    }
+  }, [accentColor])
+
+  // Apply static themes
+  useEffect(() => {
+    if (accentColor === 'rainbow') return
+
+    let theme
+    if (accentColor === 'custom') {
+      theme = generatePalette(customHex)
+      if (!theme) theme = colorThemes.orange
+    } else {
+      theme = colorThemes[accentColor]
+    }
+
+    applyPalette(theme)
 
     localStorage.setItem(COLOR_KEY, accentColor)
     if (accentColor === 'custom') {
@@ -272,7 +306,18 @@ export function ColorProvider({ children }) {
     }
   }, [accentColor, customHex])
 
+  // Persist rainbow separately
+  useEffect(() => {
+    if (accentColor === 'rainbow') {
+      localStorage.setItem(COLOR_KEY, 'rainbow')
+    }
+  }, [accentColor])
+
   const changeColor = (colorName) => {
+    if (colorName === 'rainbow') {
+      setAccentColor('rainbow')
+      return
+    }
     if (colorThemes[colorName]) {
       setAccentColor(colorName)
     }

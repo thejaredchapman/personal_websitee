@@ -25,20 +25,15 @@ Things I've built and shipped
 - **Tags:** React, Immigration, Guide
 - **Description:** An informational guide to help navigate the process of moving abroad, exploring residency requirements and citizenship options across different countries.
 
-### 5. DDJ-FLX4 Trainer
-- **URL:** https://ddj-flx4-trainer-react.vercel.app/
-- **Tags:** React, Music, DJ
-- **Description:** An interactive training tool for learning the Pioneer DDJ-FLX4 DJ controller, helping users master controls, effects, and mixing techniques.
-
 ### 6. Chess Learning App
 - **URL:** https://chess-learning-app-teal.vercel.app/
 - **Tags:** Angular, Chess, Education
 - **Description:** An interactive chess learning platform designed to help players study openings, practice tactics, and improve their game through structured lessons and exercises.
 
-### 7. AI Explorer
+### 7. DDJ-FLX4 DJ Guide
 - **URL:** https://app-dun-phi.vercel.app/
-- **Tags:** React, AI, Interactive
-- **Description:** An interactive application for exploring and experimenting with artificial intelligence concepts and capabilities.
+- **Tags:** React, Music, DJ
+- **Description:** A comprehensive reference guide for the Pioneer DDJ-FLX4 DJ controller, covering controls, features, and operation techniques.
 
 ### 8. The Daily Impact
 - **URL:** https://news-impact-app-omega.vercel.app/
@@ -54,3 +49,8 @@ Things I've built and shipped
 - **URL:** https://simple-summer-camp-wedding.vercel.app/
 - **Tags:** React, Wedding, Event
 - **Description:** A summer camp-themed wedding celebration site for a Labor Day weekend event in Newaygo, Michigan, featuring event details and scheduling.
+
+### 11. PyTorch Interactive Guide
+- **URL:** https://pytorch-interactive-guide.vercel.app/
+- **Tags:** React, ML, Education
+- **Description:** An interactive educational tool for learning PyTorch, offering hands-on guidance through core machine learning concepts and framework fundamentals.
