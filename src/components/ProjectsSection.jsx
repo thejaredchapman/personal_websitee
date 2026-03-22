@@ -4,7 +4,7 @@ import { useScrollAnimation, useStaggerAnimation } from '../hooks/useScrollAnima
 function ProjectsSection() {
   const [hoveredIndex, setHoveredIndex] = useState(null)
   const [sectionRef, isVisible] = useScrollAnimation({ threshold: 0.05 })
-  const [cardsRef, visibleCards] = useStaggerAnimation(11, { baseDelay: 100 })
+  const [cardsRef, visibleCards] = useStaggerAnimation(12, { baseDelay: 100 })
 
   const projects = [
     {
@@ -19,6 +19,18 @@ function ProjectsSection() {
           <path d="M4 12h4M16 12h4" strokeLinecap="round" strokeLinejoin="round" />
           <circle cx="4" cy="12" r="1" fill="currentColor" />
           <circle cx="20" cy="12" r="1" fill="currentColor" />
+        </svg>
+      )
+    },
+    {
+      title: 'LLM Frameworks',
+      description: 'An educational resource for learning LLM orchestration frameworks like LangChain, covering chains, agents, memory, and tool integration patterns.',
+      tags: ['React', 'AI', 'LLMs'],
+      url: 'https://langchain-learning-app.vercel.app/',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+          <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       )
     },

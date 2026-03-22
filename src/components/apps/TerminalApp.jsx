@@ -144,6 +144,8 @@ function processCommand(input) {
       { text: '      app-dun-phi.vercel.app', type: 'link' },
       { text: '  [7] Break Into Tech      Cybersecurity guide', type: 'accent' },
       { text: '      break-into-tech.vercel.app', type: 'link' },
+      { text: '  [8] LLM Frameworks       LangChain learning', type: 'accent' },
+      { text: '      langchain-learning-app.vercel.app', type: 'link' },
     ],
     experience: () => [
       { text: '  [2024-Now]  AbbVie — Developer Support Engineer (GenAI)', type: 'accent' },

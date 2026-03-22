@@ -184,6 +184,8 @@ function processCommand(input) {
         { text: '      app-dun-phi.vercel.app', type: 'link' },
         { text: '  [7] Break Into Tech      - Cybersecurity career guide', type: 'accent' },
         { text: '      break-into-tech.vercel.app', type: 'link' },
+        { text: '  [8] LLM Frameworks       - LangChain learning resource', type: 'accent' },
+        { text: '      langchain-learning-app.vercel.app', type: 'link' },
         { text: '' },
         { text: '  Scroll down to the Projects section for live demos!', type: 'dim' },
       ]

@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 const projects = [
   { title: 'AI Explorer', desc: 'Foundational vocabulary for understanding how modern AI is built, customized, and deployed.', tags: ['AI', 'Explanation', 'Concepts'], url: 'https://app-dun-phi.vercel.app/' },
+  { title: 'LLM Frameworks', desc: 'Learn LLM orchestration frameworks like LangChain — chains, agents, and tools.', tags: ['React', 'AI', 'LLMs'], url: 'https://langchain-learning-app.vercel.app/' },
   { title: 'DJ Master Academy', desc: 'Training resource for mastering the Pioneer DDJ-FLX4 DJ controller.', tags: ['React', 'Music'], url: 'https://dj-master-academy.vercel.app/' },
   { title: 'LoanLens', desc: 'Amortization and affordability calculator for understanding loan financing.', tags: ['React', 'Finance'], url: 'https://amortization.vercel.app/' },
   { title: 'Art Portfolio', desc: 'Curated gallery showcasing original artwork and creative projects.', tags: ['React', 'Art'], url: 'https://art-portfolio-navy.vercel.app/' },
