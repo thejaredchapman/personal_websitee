@@ -4,14 +4,29 @@ import { useScrollAnimation, useStaggerAnimation } from '../hooks/useScrollAnima
 function ProjectsSection() {
   const [hoveredIndex, setHoveredIndex] = useState(null)
   const [sectionRef, isVisible] = useScrollAnimation({ threshold: 0.05 })
-  const [cardsRef, visibleCards] = useStaggerAnimation(10, { baseDelay: 100 })
+  const [cardsRef, visibleCards] = useStaggerAnimation(11, { baseDelay: 100 })
 
   const projects = [
     {
-      title: 'DDJ-FLX4 DJ Guide',
-      description: 'A comprehensive reference guide for the Pioneer DDJ-FLX4 DJ controller, covering controls, features, and operation techniques.',
-      tags: ['React', 'Music', 'DJ'],
+      title: 'AI Explorer',
+      description: 'The core AI concepts outlined on the AI Explorer site provide a foundational vocabulary for understanding how modern artificial intelligence is built, customized, and deployed.',
+      tags: ['AI', 'Explanation', 'What is AI?', 'Concepts', 'Tools'],
       url: 'https://app-dun-phi.vercel.app/',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+          <path d="M12 2a4 4 0 014 4c0 1.1-.45 2.1-1.17 2.83L12 12l-2.83-3.17A4 4 0 0112 2z" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M12 12v6M8 16l4 4 4-4" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M4 12h4M16 12h4" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="4" cy="12" r="1" fill="currentColor" />
+          <circle cx="20" cy="12" r="1" fill="currentColor" />
+        </svg>
+      )
+    },
+    {
+      title: 'DJ Master Academy',
+      description: 'A training resource for mastering the Pioneer DDJ-FLX4 DJ controller, covering skills, techniques, and equipment operation.',
+      tags: ['React', 'Music', 'DJ'],
+      url: 'https://dj-master-academy.vercel.app/',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
           <path d="M4 19.5A2.5 2.5 0 016.5 17H20" strokeLinecap="round" strokeLinejoin="round" />

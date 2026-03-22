@@ -1,7 +1,8 @@
 import { useState } from 'react'
 
 const projects = [
-  { title: 'DDJ-FLX4 DJ Guide', desc: 'Comprehensive reference guide for the Pioneer DDJ-FLX4 DJ controller.', tags: ['React', 'Music'], url: 'https://app-dun-phi.vercel.app/' },
+  { title: 'AI Explorer', desc: 'Foundational vocabulary for understanding how modern AI is built, customized, and deployed.', tags: ['AI', 'Explanation', 'Concepts'], url: 'https://app-dun-phi.vercel.app/' },
+  { title: 'DJ Master Academy', desc: 'Training resource for mastering the Pioneer DDJ-FLX4 DJ controller.', tags: ['React', 'Music'], url: 'https://dj-master-academy.vercel.app/' },
   { title: 'LoanLens', desc: 'Amortization and affordability calculator for understanding loan financing.', tags: ['React', 'Finance'], url: 'https://amortization.vercel.app/' },
   { title: 'Art Portfolio', desc: 'Curated gallery showcasing original artwork and creative projects.', tags: ['React', 'Art'], url: 'https://art-portfolio-navy.vercel.app/' },
   { title: 'DS&A Interview Prep', desc: 'Study resource for data structures and algorithms interview preparation.', tags: ['React', 'Education'], url: 'https://dsa-interview-prep-seven.vercel.app/' },

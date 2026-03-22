@@ -71,7 +71,7 @@ function processCommand(input) {
       { text: '  [1] LoanLens            Amortization calculator', type: 'accent' },
       { text: '  [2] Art Portfolio        Gallery showcase', type: 'accent' },
       { text: '  [3] DS&A Interview Prep  Technical prep', type: 'accent' },
-      { text: '  [4] DDJ-FLX4 Trainer    DJ controller app', type: 'accent' },
+      { text: '  [4] DJ Master Academy   DDJ-FLX4 trainer', type: 'accent' },
       { text: '  [5] Chess Learning App   Chess platform', type: 'accent' },
       { text: '  [6] AI Explorer          AI experimentation', type: 'accent' },
       { text: '  [7] Break Into Tech      Cybersecurity guide', type: 'accent' },
