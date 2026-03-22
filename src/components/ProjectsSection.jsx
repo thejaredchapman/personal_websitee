@@ -8,6 +8,19 @@ function ProjectsSection() {
 
   const projects = [
     {
+      title: 'DDJ-FLX4 DJ Guide',
+      description: 'A comprehensive reference guide for the Pioneer DDJ-FLX4 DJ controller, covering controls, features, and operation techniques.',
+      tags: ['React', 'Music', 'DJ'],
+      url: 'https://app-dun-phi.vercel.app/',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+          <path d="M4 19.5A2.5 2.5 0 016.5 17H20" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M12 7v6M9 10h6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )
+    },
+    {
       title: 'LoanLens',
       description: 'An amortization and affordability calculator that helps users understand loan financing by breaking down payments into principal and interest components over time.',
       tags: ['React', 'Finance', 'Calculator'],
@@ -65,19 +78,6 @@ function ProjectsSection() {
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
           <path d="M12 2a2 2 0 012 2c0 .74-.4 1.39-1 1.73V7h1a3 3 0 013 3h1a1 1 0 011 1v1a1 1 0 01-1 1h-1v2l2 4H5l2-4v-2H6a1 1 0 01-1-1v-1a1 1 0 011-1h1a3 3 0 013-3h1V5.73A2 2 0 0112 2z" strokeLinecap="round" strokeLinejoin="round" />
           <path d="M7 21h10" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
-    },
-    {
-      title: 'DDJ-FLX4 DJ Guide',
-      description: 'A comprehensive reference guide for the Pioneer DDJ-FLX4 DJ controller, covering controls, features, and operation techniques.',
-      tags: ['React', 'Music', 'DJ'],
-      url: 'https://app-dun-phi.vercel.app/',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-          <path d="M4 19.5A2.5 2.5 0 016.5 17H20" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M12 7v6M9 10h6" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       )
     },
