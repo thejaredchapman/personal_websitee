@@ -235,8 +235,8 @@ function ResumeSection() {
                 </svg>
               </div>
               <h4 className="text-xl mb-2" style={{ color: 'var(--text-primary)' }}>Download Full Resume</h4>
-              <p className="mb-6" style={{ color: 'var(--text-secondary)' }}>Get the complete PDF version with all details</p>
-              <a href="/resume.pdf" download className="btn btn-primary">Download Resume</a>
+              <p className="mb-6" style={{ color: 'var(--text-secondary)' }}>View the full resume with all details</p>
+              <a href="/jared_chapman_resume.html" target="_blank" rel="noopener noreferrer" className="btn btn-primary">View Resume</a>
             </div>
           </div>
         </div>

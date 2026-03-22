@@ -71,8 +71,9 @@ function ResumeApp() {
           <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>Experience, education & skills</p>
         </div>
         <a
-          href="/resume.pdf"
-          download
+          href="/jared_chapman_resume.html"
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex items-center gap-1.5 py-2 px-3 rounded-lg text-xs font-medium no-underline transition-all hover:opacity-80"
           style={{ background: 'var(--accent-500)', color: 'white' }}
         >
@@ -81,7 +82,7 @@ function ResumeApp() {
             <polyline points="7 10 12 15 17 10" strokeLinecap="round" strokeLinejoin="round" />
             <line x1="12" y1="15" x2="12" y2="3" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          Download
+          View Full Resume
         </a>
       </div>
 

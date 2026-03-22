@@ -18,6 +18,37 @@ const JOKES = [
   'Hip hop and coding are the same. You start with "Hello World" and end up with bars.',
 ]
 
+const ASCII_ART = [
+  { text: '     ██  █████  ██████  ███████ ██████ ', type: 'accent' },
+  { text: '     ██ ██   ██ ██   ██ ██      ██   ██', type: 'accent' },
+  { text: '     ██ ███████ ██████  █████   ██   ██', type: 'accent' },
+  { text: '██   ██ ██   ██ ██   ██ ██      ██   ██', type: 'accent' },
+  { text: ' █████  ██   ██ ██   ██ ███████ ██████ ', type: 'accent' },
+  { text: '' },
+  { text: '██ ███████      █████      ██    ██ ███████ ██████  ██    ██', type: 'info' },
+  { text: '██ ██          ██   ██     ██    ██ ██      ██   ██  ██  ██', type: 'info' },
+  { text: '██ ███████     ███████     ██    ██ █████   ██████    ████', type: 'info' },
+  { text: '██      ██     ██   ██      ██  ██  ██      ██   ██    ██', type: 'info' },
+  { text: '██ ███████     ██   ██       ████   ███████ ██   ██    ██', type: 'info' },
+  { text: '' },
+  { text: ' ██████  ██████   ██████  ██', type: 'joke' },
+  { text: '██      ██    ██ ██    ██ ██', type: 'joke' },
+  { text: '██      ██    ██ ██    ██ ██', type: 'joke' },
+  { text: '██      ██    ██ ██    ██ ██', type: 'joke' },
+  { text: ' ██████  ██████   ██████  ███████', type: 'joke' },
+  { text: '██████  ██      ███████ ██████  ██████', type: 'cmd' },
+  { text: '██   ██ ██      ██      ██   ██ ██   ██', type: 'cmd' },
+  { text: '██████  ██      █████   ██████  ██   ██', type: 'cmd' },
+  { text: '██   ██ ██      ██      ██   ██ ██   ██', type: 'cmd' },
+  { text: '██████  ███████ ███████ ██   ██ ██████  ██', type: 'cmd' },
+  { text: '' },
+  { text: '██████  ██       █████   ██████ ██   ██     ███    ██ ███████ ██████  ██████', type: 'link' },
+  { text: '██   ██ ██      ██   ██ ██      ██  ██      ████   ██ ██      ██   ██ ██   ██', type: 'link' },
+  { text: '██████  ██      ███████ ██      █████       ██ ██  ██ █████   ██████  ██   ██', type: 'link' },
+  { text: '██   ██ ██      ██   ██ ██      ██  ██      ██  ██ ██ ██      ██   ██ ██   ██', type: 'link' },
+  { text: '██████  ███████ ██   ██  ██████ ██   ██     ██   ████ ███████ ██   ██ ██████', type: 'link' },
+]
+
 function getRandomJoke() { return JOKES[Math.floor(Math.random() * JOKES.length)] }
 
 function processCommand(input) {
@@ -49,10 +80,41 @@ function processCommand(input) {
       { text: '  Tip: Try some secret commands too...', type: 'dim' },
     ],
     about: () => [
-      { text: '  Jared Chapman — Software Engineer & Comedian', type: 'accent' },
-      { text: '  Building intelligent systems with LLMs and GenAI at scale.', type: '' },
-      { text: '  Former Google engineer. Current AbbVie GenAI developer.', type: '' },
-      { text: '  Location: Los Angeles, CA', type: 'dim' },
+      { text: '  JARED CHAPMAN', type: 'accent' },
+      { text: '  GenAI Specialist · Rabbit Hole Explorer · Dog Dad', type: 'accent' },
+      { text: '' },
+      { text: '  Hey, I\'m Jared — GenAI specialist, professional', type: 'info' },
+      { text: '  rabbit hole explorer, and proud dog dad to', type: 'info' },
+      { text: '  Dr. Pugsley Bikini.', type: 'info' },
+      { text: '' },
+      { text: '  ── What I Do ──', type: 'accent' },
+      { text: '  I work in GenAI enabling developers to understand' },
+      { text: '  AI products, drive adoption of tools like Claude' },
+      { text: '  Code, and help teams use AI responsibly.' },
+      { text: '' },
+      { text: '  Outside work, I build interactive tools that help', type: 'cmd' },
+      { text: '  everyday people engage with AI on their own terms.', type: 'cmd' },
+      { text: '' },
+      { text: '  ── How I\'m Wired ──', type: 'accent' },
+      { text: '  If I find a rabbit hole, I map every tunnel until', type: 'joke' },
+      { text: '  I understand the whole thing. That\'s how I taught', type: 'joke' },
+      { text: '  myself to code. That\'s just how I\'m wired.', type: 'joke' },
+      { text: '' },
+      { text: '  ── Life ──', type: 'accent' },
+      { text: '  From Atlanta. Chicago holds my heart — where I' },
+      { text: '  fell in love with fiancée Avery Wine, did improv,' },
+      { text: '  and still visit for a great haircut. Now in LA.' },
+      { text: '' },
+      { text: '  At home: Avery & Dr. Pugsley Bikini, who', type: 'link' },
+      { text: '  absolutely runs the household.', type: 'link' },
+      { text: '' },
+      { text: '  ── Music ──', type: 'accent' },
+      { text: '  Stevie Wonder is home. Sade\'s Sweetest Taboo', type: 'info' },
+      { text: '  never gets old. Ring My Bell by Anita Ward', type: 'info' },
+      { text: '  makes it into the rotation every single day.', type: 'info' },
+      { text: '' },
+      { text: '  Always open to conversations & collabs.', type: 'dim' },
+      { text: '  Reach out — I love a good conversation.', type: 'dim' },
     ],
     skills: () => [
       { text: '  Languages:  Python | Java | JavaScript | HTML | CSS', type: 'info' },
@@ -69,12 +131,19 @@ function processCommand(input) {
     ],
     projects: () => [
       { text: '  [1] LoanLens            Amortization calculator', type: 'accent' },
+      { text: '      amortization.vercel.app', type: 'link' },
       { text: '  [2] Art Portfolio        Gallery showcase', type: 'accent' },
+      { text: '      art-portfolio-navy.vercel.app', type: 'link' },
       { text: '  [3] DS&A Interview Prep  Technical prep', type: 'accent' },
+      { text: '      dsa-interview-prep-seven.vercel.app', type: 'link' },
       { text: '  [4] DJ Master Academy   DDJ-FLX4 trainer', type: 'accent' },
+      { text: '      dj-master-academy.vercel.app', type: 'link' },
       { text: '  [5] Chess Learning App   Chess platform', type: 'accent' },
+      { text: '      chess-learning-app-teal.vercel.app', type: 'link' },
       { text: '  [6] AI Explorer          AI experimentation', type: 'accent' },
+      { text: '      app-dun-phi.vercel.app', type: 'link' },
       { text: '  [7] Break Into Tech      Cybersecurity guide', type: 'accent' },
+      { text: '      break-into-tech.vercel.app', type: 'link' },
     ],
     experience: () => [
       { text: '  [2024-Now]  AbbVie — Developer Support Engineer (GenAI)', type: 'accent' },
@@ -127,6 +196,7 @@ function processCommand(input) {
       { text: '  PING jaredos (127.0.0.1): 56 bytes', type: 'info' },
       { text: '  Connection: Strong (just like my WiFi jokes)', type: 'accent' },
     ],
+    ascii: () => ASCII_ART,
     hello: () => [{ text: '  Hey! Type "help" to see what you can do.', type: 'accent' }],
     hi: () => [{ text: '  Hey! Type "help" to see what you can do.', type: 'accent' }],
     vim: () => [
@@ -204,7 +274,7 @@ function TerminalApp() {
       } else { setHistIdx(-1); setInput('') }
     } else if (e.key === 'Tab') {
       e.preventDefault()
-      const cmds = ['help','about','skills','joke','projects','experience','social','hire','whoami','date','echo','sudo','clear','ls','cat','pwd','ping','coffee','matrix','vim']
+      const cmds = ['help','about','skills','joke','projects','experience','social','ascii','hire','whoami','date','echo','sudo','clear','ls','cat','pwd','ping','coffee','matrix','vim']
       const match = cmds.filter((c) => c.startsWith(input.toLowerCase()))
       if (match.length === 1) setInput(match[0])
     }

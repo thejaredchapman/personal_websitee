@@ -21,7 +21,7 @@ function AboutApp() {
             <div className="flex items-center gap-2 mb-1 max-[768px]:justify-center">
               <h1 className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>Jared Chapman</h1>
             </div>
-            <p className="text-sm font-medium mb-2" style={{ color: 'var(--accent-500)' }}>Software Engineer & Comedian</p>
+            <p className="text-sm font-medium mb-2" style={{ color: 'var(--accent-500)' }}>Generative AI Specialist</p>
             <div className="flex items-center gap-3 text-xs flex-wrap max-[768px]:justify-center" style={{ color: 'var(--text-tertiary)' }}>
               <span className="flex items-center gap-1">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3 h-3"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -47,12 +47,12 @@ function AboutApp() {
             <span className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ background: 'var(--accent-100)' }}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5" style={{ color: 'var(--accent-600)' }}><path d="M12 19V5M5 12l7-7 7 7"/></svg>
             </span>
-            <h3 className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>The Origin Story</h3>
+            <h3 className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>What I Do</h3>
           </div>
           <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            Born in Atlanta, moved to Chicago to chase improv. Performed at iO, Second City, and
-            The Annoyance. Got bored and started studying Python during the pandemic — turns out
-            debugging code scratches the same itch as debugging a set.
+            Generative AI specialist enabling developers to understand and build with AI
+            responsibly — all while keeping one foot in the community through education,
+            literacy, and the kind of connections that actually move things forward.
           </p>
         </div>
 
@@ -64,9 +64,11 @@ function AboutApp() {
             <h3 className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>The Vibe</h3>
           </div>
           <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            Extreme extrovert. Loves going down rabbit holes, learning, and kinda teaching.
-            Currently living in Los Angeles with his fianc&eacute;e, Avery, and his dog,
-            Dr. "Pugsley" Bikini.
+            Extreme extrovert who goes deep on everything that catches his curiosity. Originally
+            from Atlanta with a deep love for Chicago, now soaking up everything California has
+            to offer alongside his fianc&eacute;e Avery Wine and their son, Dr. Pugsley Bikini.
+            If you're even slightly interested in talking — reach out, because that's genuinely
+            his favorite thing to do.
           </p>
         </div>
       </div>
@@ -75,9 +77,9 @@ function AboutApp() {
       <div className="mt-4 flex gap-2 max-[768px]:flex-wrap">
         {[
           { emoji: '🍑', label: 'From', value: 'Atlanta' },
-          { emoji: '🎭', label: 'Stages', value: 'iO / Second City / Annoyance' },
-          { emoji: '🤖', label: 'Focus', value: 'LLMs & GenAI' },
-          { emoji: '🐶', label: 'Dog', value: 'Dr. Pugsley Bikini' },
+          { emoji: '🌴', label: 'Based In', value: 'Los Angeles' },
+          { emoji: '🤖', label: 'Focus', value: 'Generative AI' },
+          { emoji: '🐶', label: 'Son', value: 'Dr. Pugsley Bikini' },
         ].map((stat) => (
           <div key={stat.label} className="flex-1 min-w-0 rounded-lg py-2.5 px-3 border text-center" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border-light)' }}>
             <div className="text-base mb-0.5">{stat.emoji}</div>

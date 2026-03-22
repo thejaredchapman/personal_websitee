@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jared Chapman — Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #E8510A;
+    --orange-light: #FF6B2B;
+    --orange-pale: #FFF0E8;
+    --orange-mid: #F4824A;
+    --ink: #1A1209;
+    --ink-soft: #3D2E22;
+    --muted: #8A7668;
+    --rule: #E8DDD4;
+    --bg: #FDFAF7;
+    --cream: #F5EEE6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 0;
+    min-height: 100vh;
+  }
+
+  /* Print / A4 shell */
+  .page {
+    max-width: 860px;
+    margin: 40px auto;
+    background: #fff;
+    box-shadow: 0 4px 40px rgba(100,50,10,0.12);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Decorative sidebar stripe */
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--orange) 0%, var(--orange-mid) 60%, var(--orange-light) 100%);
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    padding: 52px 56px 36px 62px;
+    border-bottom: 1.5px solid var(--rule);
+    position: relative;
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 62px;
+    width: 80px;
+    height: 3px;
+    background: var(--orange);
+  }
+
+  .name {
+    font-size: 46px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1;
+    color: var(--ink);
+  }
+
+  .name span {
+    color: var(--orange);
+  }
+
+  .tagline {
+    font-family: 'DM Mono', monospace;
+    font-size: 11.5px;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    margin-top: 18px;
+  }
+
+  .contact-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .contact-item .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--orange);
+    flex-shrink: 0;
+  }
+
+  /* ─── BODY LAYOUT ─── */
+  .body {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 0;
+    align-items: start;
+  }
+
+  /* Main column */
+  .main {
+    padding: 40px 40px 52px 62px;
+    border-right: 1.5px solid var(--rule);
+  }
+
+  /* Sidebar column */
+  .side {
+    padding: 40px 40px 52px 36px;
+  }
+
+  /* ─── SECTION ─── */
+  .section {
+    margin-bottom: 38px;
+  }
+
+  .section:last-child {
+    margin-bottom: 0;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  /* ─── JOB ─── */
+  .job {
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px dashed var(--rule);
+  }
+
+  .job:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 2px;
+  }
+
+  .job-title {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .job-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    white-space: nowrap;
+    padding-top: 3px;
+  }
+
+  .job-company {
+    font-size: 13px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--orange);
+    margin-bottom: 10px;
+  }
+
+  .job ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .job ul li {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .job ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--orange);
+    font-size: 11px;
+    top: 2px;
+  }
+
+  /* ─── SUMMARY ─── */
+  .summary-text {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    font-weight: 300;
+    font-style: italic;
+    border-left: 3px solid var(--orange-pale);
+    padding-left: 14px;
+  }
+
+  /* ─── SIDEBAR SECTIONS ─── */
+  .skill-group {
+    margin-bottom: 22px;
+  }
+
+  .skill-group-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    background: var(--cream);
+    color: var(--ink-soft);
+    padding: 3px 9px;
+    border-radius: 3px;
+    border: 1px solid var(--rule);
+    transition: all 0.15s;
+  }
+
+  .tag.highlight {
+    background: var(--orange-pale);
+    border-color: #F4C4A8;
+    color: var(--orange);
+  }
+
+  /* ─── CERT ITEMS ─── */
+  .cert-item {
+    margin-bottom: 14px;
+  }
+
+  .cert-name {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  .cert-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* ─── EDUCATION ─── */
+  .edu-item {
+    margin-bottom: 14px;
+  }
+
+  .edu-degree {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--ink);
+  }
+
+  .edu-school {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* ─── OPEN SOURCE ─── */
+  .oss-item {
+    background: var(--orange-pale);
+    border: 1px solid #F4C4A8;
+    border-radius: 6px;
+    padding: 14px;
+    margin-bottom: 12px;
+  }
+
+  .oss-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange);
+    margin-bottom: 4px;
+  }
+
+  .oss-desc {
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    body { background: white; }
+    .page { margin: 0; box-shadow: none; }
+  }
+
+  @media (max-width: 700px) {
+    .body { grid-template-columns: 1fr; }
+    .main { border-right: none; border-bottom: 1.5px solid var(--rule); padding: 32px 28px; }
+    .side { padding: 28px; }
+    header { padding: 36px 28px 28px 34px; }
+    .name { font-size: 34px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ══ HEADER ══ -->
+  <header>
+    <div class="name">Jared <span>Chapman</span></div>
+    <div class="tagline">Software Engineer &nbsp;·&nbsp; AI/LLM Systems &nbsp;·&nbsp; Google Alumni</div>
+    <div class="contact-row">
+      <div class="contact-item"><span class="dot"></span>thejaredchapman@gmail.com</div>
+      <div class="contact-item"><span class="dot"></span>(404) 886-2473</div>
+      <div class="contact-item"><span class="dot"></span>linkedin.com/in/thejaredchapman</div>
+      <div class="contact-item"><span class="dot"></span>github.com/thejaredchapman</div>
+      <div class="contact-item"><span class="dot"></span>thejaredchapman.com</div>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <!-- ══ MAIN ══ -->
+    <div class="main">
+
+      <!-- Summary -->
+      <div class="section">
+        <div class="section-label">Profile</div>
+        <p class="summary-text">Software Engineer with 4+ years of experience building and shipping production systems at Google and deploying LLM-powered enterprise solutions at AbbVie. Combines deep technical fluency in Python, Java, and JavaScript with strong communication skills to make AI tools accessible to both engineering and non-technical audiences.</p>
+      </div>
+
+      <!-- Experience -->
+      <div class="section">
+        <div class="section-label">Experience</div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Developer Support Engineer — ILIAD &amp; Go/AI</div>
+            <div class="job-date">Aug 2024 – Present</div>
+          </div>
+          <div class="job-company">AbbVie · Los Angeles, CA</div>
+          <ul>
+            <li>Designed and deployed LLM-powered developer tools and prompt engineering frameworks for enterprise teams integrating Claude into production data workflows.</li>
+            <li>Delivered multiple AI-powered applications end-to-end with technical and non-technical stakeholders, driving adoption beyond initial launch.</li>
+            <li>Standardized Claude Code onboarding environments across engineering teams, measurably reducing setup friction and accelerating developer productivity.</li>
+            <li>Diagnosed and resolved production API failures in LLM-integrated applications, closing support ticket backlogs through root-cause analysis.</li>
+            <li>Authored internal API documentation enabling self-service integration, eliminating recurring support escalations across multiple teams.</li>
+            <li>Built and scaled an internal developer community through monthly events, directly increasing enterprise AI platform adoption.</li>
+            <li>Consulted cross-functional teams on Responsible AI practices, safety guidelines, and enterprise security standards.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Software Engineer — Searchmark</div>
+            <div class="job-date">Aug 2023 – May 2024</div>
+          </div>
+          <div class="job-company">Google · Chicago, IL</div>
+          <ul>
+            <li>Refactored the Searchmark API using Java gRPC microservices and Protocol Buffers, improving client onboarding speed and inter-service communication reliability at scale.</li>
+            <li>Optimized distributed performance testing infrastructure, reducing CPU usage across Google's automated testing framework.</li>
+            <li>Authored comprehensive unit tests against interface specifications, maintaining high code coverage and enabling faster, safer production releases.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Software Engineer — BigQuery DataFrames</div>
+            <div class="job-date">Sep 2022 – Aug 2023</div>
+          </div>
+          <div class="job-company">Google · Chicago, IL</div>
+          <ul>
+            <li>Extended the publicly released BigQuery Python API with datetime method implementations using Pandas, Ibis, and PyArrow, now used by BigQuery developers globally.</li>
+            <li>Authored the engineering design document defining full architecture and implementation plan for a new BigQuery DataFrames feature.</li>
+            <li>Contributed a microsecond datetime method to the Ibis open-source library, enabling higher-precision SQL-via-Python time handling.</li>
+            <li>Built automated test suites and resolved edge cases to meet Google's quality bar ahead of public API releases.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Appraisal Desk Team Lead</div>
+            <div class="job-date">May 2018 – Sep 2021</div>
+          </div>
+          <div class="job-company">Guaranteed Rate · Chicago, IL</div>
+          <ul>
+            <li>Built operational dashboards integrating and cleaning data from multiple systems, eliminating manual reporting processes across 3 simultaneous client companies.</li>
+            <li>Led appraisal desk operations, coordinating workflows and ensuring timely delivery of reports to support loan processing pipelines.</li>
+          </ul>
+        </div>
+
+      </div><!-- /experience -->
+
+    </div><!-- /main -->
+
+    <!-- ══ SIDEBAR ══ -->
+    <div class="side">
+
+      <!-- Skills -->
+      <div class="section">
+        <div class="section-label">Skills</div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Languages</div>
+          <div class="skill-tags">
+            <span class="tag highlight">Python</span>
+            <span class="tag highlight">Java</span>
+            <span class="tag highlight">JavaScript</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Frameworks</div>
+          <div class="skill-tags">
+            <span class="tag">React</span>
+            <span class="tag">Angular</span>
+            <span class="tag">Spring Boot</span>
+            <span class="tag">Django</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">Ibis</span>
+            <span class="tag">PyArrow</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Cloud &amp; Infra</div>
+          <div class="skill-tags">
+            <span class="tag highlight">GCP</span>
+            <span class="tag">gRPC</span>
+            <span class="tag">Protocol Buffers</span>
+            <span class="tag">REST APIs</span>
+            <span class="tag">CI/CD</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Data</div>
+          <div class="skill-tags">
+            <span class="tag highlight">BigQuery</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Data Pipelines</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">AI / ML</div>
+          <div class="skill-tags">
+            <span class="tag highlight">LLMs</span>
+            <span class="tag highlight">Claude Code</span>
+            <span class="tag">Prompt Engineering</span>
+            <span class="tag">Fine-Tuning</span>
+            <span class="tag">Responsible AI</span>
+            <span class="tag">Gen AI</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Practices</div>
+          <div class="skill-tags">
+            <span class="tag">Git / GitHub</span>
+            <span class="tag">Agile/Scrum</span>
+            <span class="tag">Technical Docs</span>
+            <span class="tag">Dev Advocacy</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Open Source -->
+      <div class="section">
+        <div class="section-label">Open Source</div>
+        <div class="oss-item">
+          <div class="oss-name">Ibis — Python Data Framework</div>
+          <div class="oss-desc">Contributed microsecond datetime support and test coverage, enabling higher-precision SQL-via-Python time handling for the open-source data community.</div>
+        </div>
+      </div>
+
+      <!-- Certifications -->
+      <div class="section">
+        <div class="section-label">Certifications</div>
+
+        <div class="cert-item">
+          <div class="cert-name">ML Engineer Fundamentals</div>
+          <div class="cert-sub">LinkedIn Learning · Mar 2026<br>7 courses · 10+ hours</div>
+        </div>
+
+        <div class="cert-item">
+          <div class="cert-name">Google Data Analytics Professional</div>
+          <div class="cert-sub">Coursera · 2022</div>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="section">
+        <div class="section-label">Education</div>
+
+        <div class="edu-item">
+          <div class="edu-degree">Software Engineering Bootcamp</div>
+          <div class="edu-school">Multiverse · 2024<br>Direct contributions to Google's production codebase</div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-degree">B.S. — Georgia State University</div>
+          <div class="edu-school">2014</div>
+        </div>
+      </div>
+
+    </div><!-- /side -->
+  </div><!-- /body -->
+</div><!-- /page -->
+</body>
+</html>
