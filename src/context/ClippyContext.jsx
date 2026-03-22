@@ -16,31 +16,41 @@ export function ClippyProvider({ children }) {
   const [isBubbleExpanded, setIsBubbleExpanded] = useState(false)
   const [hasGreeted, setHasGreeted] = useState(false)
   const abortRef = useRef(null)
+  const messagesRef = useRef([])
+
+  // Keep ref in sync with state
+  const updateMessages = useCallback((updater) => {
+    setMessages((prev) => {
+      const next = typeof updater === 'function' ? updater(prev) : updater
+      messagesRef.current = next
+      return next
+    })
+  }, [])
 
   const greet = useCallback(() => {
     if (hasGreeted) return
     setHasGreeted(true)
-    setMessages([{ id: nextId(), role: 'assistant', content: GREETING }])
-  }, [hasGreeted])
+    updateMessages([{ id: nextId(), role: 'assistant', content: GREETING }])
+  }, [hasGreeted, updateMessages])
 
   const toggleBubble = useCallback(() => {
     setIsBubbleExpanded((prev) => {
       const next = !prev
       if (next && !hasGreeted) {
         setHasGreeted(true)
-        setMessages([{ id: nextId(), role: 'assistant', content: GREETING }])
+        updateMessages([{ id: nextId(), role: 'assistant', content: GREETING }])
       }
       return next
     })
-  }, [hasGreeted])
+  }, [hasGreeted, updateMessages])
 
   const clearChat = useCallback(() => {
     if (abortRef.current) abortRef.current.abort()
-    setMessages([])
+    updateMessages([])
     setIsLoading(false)
     setError(null)
     setHasGreeted(false)
-  }, [])
+  }, [updateMessages])
 
   const sendMessage = useCallback(async (text) => {
     if (!text.trim() || isLoading) return
@@ -48,20 +58,14 @@ export function ClippyProvider({ children }) {
     const userMsg = { id: nextId(), role: 'user', content: text.trim() }
     const assistantMsg = { id: nextId(), role: 'assistant', content: '' }
 
-    setMessages((prev) => [...prev, userMsg, assistantMsg])
+    updateMessages((prev) => [...prev, userMsg, assistantMsg])
     setIsLoading(true)
     setError(null)
 
-    // Build messages for API (only role + content, skip greeting if it's not from user)
-    const apiMessages = []
-    setMessages((prev) => {
-      // Collect all messages except the empty assistant placeholder
-      for (const msg of prev) {
-        if (msg.id === assistantMsg.id) continue
-        apiMessages.push({ role: msg.role, content: msg.content })
-      }
-      return prev
-    })
+    // Build messages for API from ref (synchronous, always current)
+    const apiMessages = messagesRef.current
+      .filter((msg) => msg.id !== assistantMsg.id)
+      .map(({ role, content }) => ({ role, content }))
 
     // Keep only last 20 messages for API
     const trimmed = apiMessages.slice(-20)
@@ -102,7 +106,7 @@ export function ClippyProvider({ children }) {
           try {
             const parsed = JSON.parse(data)
             if (parsed.type === 'content_block_delta' && parsed.delta?.text) {
-              setMessages((prev) =>
+              updateMessages((prev) =>
                 prev.map((msg) =>
                   msg.id === assistantMsg.id
                     ? { ...msg, content: msg.content + parsed.delta.text }
@@ -119,12 +123,12 @@ export function ClippyProvider({ children }) {
       if (err.name === 'AbortError') return
       setError(err.message)
       // Remove the empty assistant message on error
-      setMessages((prev) => prev.filter((msg) => msg.id !== assistantMsg.id))
+      updateMessages((prev) => prev.filter((msg) => msg.id !== assistantMsg.id))
     } finally {
       setIsLoading(false)
       abortRef.current = null
     }
-  }, [isLoading])
+  }, [isLoading, updateMessages])
 
   return (
     <ClippyContext.Provider
