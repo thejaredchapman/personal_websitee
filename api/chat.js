@@ -1,3 +1,5 @@
+import Anthropic from '@anthropic-ai/sdk';
+
 const SYSTEM_PROMPT = `You are Clippy, Jared Chapman's helpful (and slightly overeager) digital assistant on his portfolio website. You are modeled after the classic Microsoft Office Clippy — helpful, enthusiastic, and occasionally offer unsolicited advice with phrases like "It looks like you're trying to..." You are friendly, witty, and in-character while being genuinely helpful.
 
 IMPORTANT RULES:
@@ -173,47 +175,46 @@ export default async function handler(req, res) {
   // Remove any empty-content messages
   cleanMessages = cleanMessages.filter((msg) => msg.content.trim().length > 0)
 
+  // Combine consecutive messages of the same role to strictly alternate (required by Claude API)
+  const alternatingMessages = []
+  for (const msg of cleanMessages) {
+    if (alternatingMessages.length > 0 && alternatingMessages[alternatingMessages.length - 1].role === msg.role) {
+      alternatingMessages[alternatingMessages.length - 1].content += '\n\n' + msg.content
+    } else {
+      alternatingMessages.push({ ...msg })
+    }
+  }
+  cleanMessages = alternatingMessages
+
   if (cleanMessages.length === 0) {
     return res.status(400).json({ error: 'No valid user messages found' })
   }
 
   try {
-    // Use non-streaming for reliability on Vercel, then send as SSE to client
-    const anthropicRes = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01',
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1024,
-        system: SYSTEM_PROMPT,
-        messages: cleanMessages,
-        stream: true,
-      }),
-    })
+    const anthropic = new Anthropic({
+      apiKey: apiKey,
+    });
 
-    if (!anthropicRes.ok) {
-      const errText = await anthropicRes.text()
-      console.error('Anthropic API error:', anthropicRes.status, errText)
-      return res.status(502).json({ error: `AI service error (${anthropicRes.status})` })
-    }
+    const stream = await anthropic.messages.create({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 1024,
+      system: SYSTEM_PROMPT,
+      messages: cleanMessages,
+      stream: true,
+    });
 
     res.writeHead(200, {
       'Content-Type': 'text/event-stream',
       'Cache-Control': 'no-cache',
       Connection: 'keep-alive',
-    })
+    });
 
-    // Use Node.js async iteration for streaming (more reliable than getReader on Vercel)
-    for await (const chunk of anthropicRes.body) {
-      const text = typeof chunk === 'string' ? chunk : new TextDecoder().decode(chunk)
-      res.write(text)
+    for await (const chunk of stream) {
+      res.write(`data: ${JSON.stringify(chunk)}\n\n`);
     }
 
-    res.end()
+    res.write('data: [DONE]\n\n');
+    res.end();
   } catch (err) {
     console.error('Chat API error:', err.message || err)
     if (!res.headersSent) {
