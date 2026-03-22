@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useCallback, useRef } from 'react'
 
 const ClippyContext = createContext(undefined)
 
-const GREETING = "Hi! I'm Clippy, Jared's digital assistant. It looks like you're checking out his portfolio! Ask me anything about his projects, experience, skills, or just ask for a joke."
+const GREETING = "Hi! I'm Clippy, Jared's digital assistant that looks similar but in no way the same. It looks like you're checking out his portfolio! Ask me anything about his projects, experience, skills, or just ask for a joke."
 
 let msgId = 0
 function nextId() {
@@ -63,8 +63,9 @@ export function ClippyProvider({ children }) {
     setError(null)
 
     // Build messages for API from ref (synchronous, always current)
+    // Filter out the empty assistant placeholder and any empty-content messages
     const apiMessages = messagesRef.current
-      .filter((msg) => msg.id !== assistantMsg.id)
+      .filter((msg) => msg.id !== assistantMsg.id && msg.content.trim().length > 0)
       .map(({ role, content }) => ({ role, content }))
 
     // Keep only last 20 messages for API

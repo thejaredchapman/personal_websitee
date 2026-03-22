@@ -165,7 +165,20 @@ export default async function handler(req, res) {
     }
   }
 
+  // Claude API requires first message to be from user — strip leading assistant messages (greeting)
+  let cleanMessages = messages.map(({ role, content }) => ({ role, content }))
+  while (cleanMessages.length > 0 && cleanMessages[0].role === 'assistant') {
+    cleanMessages.shift()
+  }
+  // Remove any empty-content messages
+  cleanMessages = cleanMessages.filter((msg) => msg.content.trim().length > 0)
+
+  if (cleanMessages.length === 0) {
+    return res.status(400).json({ error: 'No valid user messages found' })
+  }
+
   try {
+    // Use non-streaming for reliability on Vercel, then send as SSE to client
     const anthropicRes = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
@@ -177,7 +190,7 @@ export default async function handler(req, res) {
         model: 'claude-sonnet-4-20250514',
         max_tokens: 1024,
         system: SYSTEM_PROMPT,
-        messages: messages.map(({ role, content }) => ({ role, content })),
+        messages: cleanMessages,
         stream: true,
       }),
     })
@@ -185,7 +198,7 @@ export default async function handler(req, res) {
     if (!anthropicRes.ok) {
       const errText = await anthropicRes.text()
       console.error('Anthropic API error:', anthropicRes.status, errText)
-      return res.status(502).json({ error: 'Failed to get response from AI' })
+      return res.status(502).json({ error: `AI service error (${anthropicRes.status})` })
     }
 
     res.writeHead(200, {
@@ -194,20 +207,17 @@ export default async function handler(req, res) {
       Connection: 'keep-alive',
     })
 
-    const reader = anthropicRes.body.getReader()
-    const decoder = new TextDecoder()
-
-    while (true) {
-      const { done, value } = await reader.read()
-      if (done) break
-      res.write(decoder.decode(value, { stream: true }))
+    // Use Node.js async iteration for streaming (more reliable than getReader on Vercel)
+    for await (const chunk of anthropicRes.body) {
+      const text = typeof chunk === 'string' ? chunk : new TextDecoder().decode(chunk)
+      res.write(text)
     }
 
     res.end()
   } catch (err) {
-    console.error('Chat API error:', err)
+    console.error('Chat API error:', err.message || err)
     if (!res.headersSent) {
-      return res.status(500).json({ error: 'Internal server error' })
+      return res.status(500).json({ error: `Server error: ${err.message}` })
     }
     res.end()
   }
