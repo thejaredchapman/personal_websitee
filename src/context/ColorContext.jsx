@@ -2,8 +2,11 @@ import { createContext, useContext, useEffect, useRef, useState } from 'react'
 
 const ColorContext = createContext(undefined)
 
+import { characterThemes } from '../data/characterThemes'
+
 const COLOR_KEY = 'accent-color-preference'
 const CUSTOM_COLOR_KEY = 'accent-custom-color'
+const CHARACTER_THEME_KEY = 'character-theme-preference'
 
 export const colorThemes = {
   orange: {
@@ -238,6 +241,14 @@ export function ColorProvider({ children }) {
     return '#6366f1'
   })
 
+  const [activeCharacter, setActiveCharacter] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem(CHARACTER_THEME_KEY)
+      if (stored && characterThemes[stored]) return stored
+    }
+    return null
+  })
+
   const rainbowRef = useRef(null)
 
   function applyPalette(theme) {
@@ -291,7 +302,9 @@ export function ColorProvider({ children }) {
     if (accentColor === 'rainbow') return
 
     let theme
-    if (accentColor === 'custom') {
+    if (activeCharacter && characterThemes[activeCharacter]) {
+      theme = characterThemes[activeCharacter].palette
+    } else if (accentColor === 'custom') {
       theme = generatePalette(customHex)
       if (!theme) theme = colorThemes.orange
     } else {
@@ -304,7 +317,7 @@ export function ColorProvider({ children }) {
     if (accentColor === 'custom') {
       localStorage.setItem(CUSTOM_COLOR_KEY, customHex)
     }
-  }, [accentColor, customHex])
+  }, [accentColor, customHex, activeCharacter])
 
   // Persist rainbow separately
   useEffect(() => {
@@ -314,6 +327,8 @@ export function ColorProvider({ children }) {
   }, [accentColor])
 
   const changeColor = (colorName) => {
+    setActiveCharacter(null)
+    localStorage.removeItem(CHARACTER_THEME_KEY)
     if (colorName === 'rainbow') {
       setAccentColor('rainbow')
       return
@@ -324,9 +339,26 @@ export function ColorProvider({ children }) {
   }
 
   const setCustomColor = (hex) => {
+    setActiveCharacter(null)
+    localStorage.removeItem(CHARACTER_THEME_KEY)
     const normalized = normalizeHex(hex)
     setCustomHex(normalized)
     setAccentColor('custom')
+  }
+
+  const activateCharacterTheme = (characterId) => {
+    if (!characterThemes[characterId]) return
+    setActiveCharacter(characterId)
+    localStorage.setItem(CHARACTER_THEME_KEY, characterId)
+    // Stop rainbow if running
+    if (accentColor === 'rainbow') {
+      setAccentColor('orange')
+    }
+  }
+
+  const clearCharacterTheme = () => {
+    setActiveCharacter(null)
+    localStorage.removeItem(CHARACTER_THEME_KEY)
   }
 
   return (
@@ -339,6 +371,9 @@ export function ColorProvider({ children }) {
         setCustomColor,
         hexToHsl,
         hslToHexExport,
+        activeCharacter,
+        activateCharacterTheme,
+        clearCharacterTheme,
       }}
     >
       {children}

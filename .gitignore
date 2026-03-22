@@ -41,6 +41,8 @@ Thumbs.db
 
 # Testing
 coverage
+__pycache__
+.pytest_cache
 
 # Misc
 *.pem

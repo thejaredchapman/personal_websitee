@@ -1,5 +1,6 @@
 import ThemeToggle from '../ThemeToggle'
 import ColorPicker from '../ColorPicker'
+import CharacterThemePicker from '../CharacterThemePicker'
 
 function SettingsApp() {
   return (
@@ -19,10 +20,17 @@ function SettingsApp() {
       </div>
 
       {/* Color */}
-      <div className="rounded-xl p-4 border" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border-light)' }}>
+      <div className="rounded-xl p-4 border mb-4" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border-light)' }}>
         <h3 className="text-sm font-semibold mb-1" style={{ color: 'var(--text-primary)' }}>Accent Color</h3>
         <p className="text-xs mb-4" style={{ color: 'var(--text-tertiary)' }}>Choose a preset or pick your own</p>
         <ColorPicker />
+      </div>
+
+      {/* Character Themes */}
+      <div className="rounded-xl p-4 border" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border-light)' }}>
+        <h3 className="text-sm font-semibold mb-1" style={{ color: 'var(--text-primary)' }}>Character Themes</h3>
+        <p className="text-xs mb-4" style={{ color: 'var(--text-tertiary)' }}>Apply a themed wallpaper and color palette</p>
+        <CharacterThemePicker />
       </div>
     </div>
   )

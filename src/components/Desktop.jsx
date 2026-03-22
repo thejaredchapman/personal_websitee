@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
 import { useWindows } from '../context/WindowContext'
+import { useColor } from '../context/ColorContext'
+import { characterThemes } from '../data/characterThemes'
 import Window from './Window'
 
 import AboutApp from './apps/AboutApp'
@@ -11,6 +13,8 @@ import GalleryApp from './apps/GalleryApp'
 import MusicApp from './apps/MusicApp'
 import ContactApp from './apps/ContactApp'
 import SettingsApp from './apps/SettingsApp'
+import ClippyApp from './apps/ClippyApp'
+import GeometricWallpaper from './GeometricWallpaper'
 
 const APP_COMPONENTS = {
   about: AboutApp,
@@ -22,6 +26,7 @@ const APP_COMPONENTS = {
   music: MusicApp,
   contact: ContactApp,
   settings: SettingsApp,
+  clippy: ClippyApp,
 }
 
 function Notifications() {
@@ -55,6 +60,10 @@ function Notifications() {
 
 function Desktop() {
   const { windows, openWindow, notify } = useWindows()
+  const { activeCharacter } = useColor()
+  const wallpaperConfig = activeCharacter && characterThemes[activeCharacter]
+    ? characterThemes[activeCharacter].wallpaper
+    : null
 
   // Auto-open About on first render
   useEffect(() => {
@@ -66,16 +75,44 @@ function Desktop() {
   }, [])
 
   return (
-    <div className="fixed inset-0 os-wallpaper">
-      {/* Wallpaper animated gradient blobs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="os-wallpaper-blob os-wallpaper-blob-1" />
-        <div className="os-wallpaper-blob os-wallpaper-blob-2" />
-        <div className="os-wallpaper-blob os-wallpaper-blob-3" />
-      </div>
-
-      {/* Subtle grid overlay */}
-      <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'radial-gradient(var(--text-primary) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+    <div
+      className="fixed inset-0 os-wallpaper"
+      style={wallpaperConfig ? { background: wallpaperConfig.background, transition: 'background 0.8s ease' } : { transition: 'background 0.8s ease' }}
+    >
+      {/* Wallpaper */}
+      {wallpaperConfig ? (
+        <>
+          {/* Character theme blobs */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {wallpaperConfig.blobs.map((blob, i) => (
+              <div
+                key={i}
+                className="absolute rounded-[50%] pointer-events-none"
+                style={{
+                  width: blob.width,
+                  height: blob.height,
+                  top: blob.top,
+                  left: blob.left,
+                  bottom: blob.bottom,
+                  right: blob.right,
+                  background: blob.color,
+                  filter: `blur(${blob.blur}px)`,
+                  opacity: blob.opacity,
+                  animation: 'pulse 8s ease-in-out infinite',
+                  animationDelay: `${-i * 2.5}s`,
+                  transition: 'opacity 0.8s ease',
+                }}
+              />
+            ))}
+          </div>
+          {wallpaperConfig.overlay && (
+            <div className="absolute inset-0 pointer-events-none" style={wallpaperConfig.overlay} />
+          )}
+        </>
+      ) : (
+        /* Default geometric wallpaper */
+        <GeometricWallpaper />
+      )}
 
       {/* Windows area (below menubar, above dock) */}
       <div className="absolute inset-0 top-7 bottom-14">

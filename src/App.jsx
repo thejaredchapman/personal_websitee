@@ -3,6 +3,7 @@ import BootSequence from './components/BootSequence'
 import Desktop from './components/Desktop'
 import MenuBar from './components/MenuBar'
 import Dock from './components/Dock'
+import ClippyBubble from './components/ClippyBubble'
 
 const AsteroidsGame = lazy(() => import('./components/AsteroidsGame'))
 
@@ -18,6 +19,7 @@ function App() {
           <MenuBar />
           <Desktop />
           <Dock onOpenGame={() => setShowGame(true)} />
+          <ClippyBubble />
         </>
       )}
       {showGame && (

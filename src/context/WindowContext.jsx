@@ -11,7 +11,8 @@ const WINDOW_CONFIGS = {
   gallery:    { title: 'Gallery',        defaultPos: { x: 100, y: 80  }, defaultSize: { width: 820, height: 560 } },
   music:      { title: 'Music',          defaultPos: { x: 260, y: 50  }, defaultSize: { width: 420, height: 560 } },
   contact:    { title: 'Contact',        defaultPos: { x: 180, y: 60  }, defaultSize: { width: 580, height: 520 } },
-  settings:   { title: 'Settings',       defaultPos: { x: 300, y: 80  }, defaultSize: { width: 440, height: 520 } },
+  settings:   { title: 'Settings',       defaultPos: { x: 300, y: 80  }, defaultSize: { width: 440, height: 640 } },
+  clippy:     { title: 'Ask Clippy',    defaultPos: { x: 220, y: 55  }, defaultSize: { width: 420, height: 560 } },
 }
 
 function buildInitialWindows() {
