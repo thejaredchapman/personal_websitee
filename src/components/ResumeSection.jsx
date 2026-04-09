@@ -3,8 +3,9 @@ import { useScrollAnimation, useStaggerAnimation } from '../hooks/useScrollAnima
 function ResumeSection() {
   const [sectionRef, isVisible] = useScrollAnimation({ threshold: 0.05 })
   const [expRef, visibleExp] = useStaggerAnimation(4, { baseDelay: 200 })
-  const [eduRef, visibleEdu] = useStaggerAnimation(3, { baseDelay: 150 })
-  const [skillsRef, visibleSkills] = useStaggerAnimation(24, { baseDelay: 40 })
+  const [eduRef, visibleEdu] = useStaggerAnimation(2, { baseDelay: 150 })
+  const [certRef, visibleCerts] = useStaggerAnimation(4, { baseDelay: 150 })
+  const [skillsRef, visibleSkills] = useStaggerAnimation(23, { baseDelay: 40 })
 
   const experience = [
     {
@@ -13,10 +14,12 @@ function ResumeSection() {
       company: 'AbbVie | Los Angeles, California',
       period: 'August 2024 - Now',
       bullets: [
-        'Created learning materials and educational content that explains AI concepts in accessible, layman\'s terms, empowering new users to feel comfortable adopting Enterprise AI products.',
-        'Onboarded new users onto generative AI platforms, providing hands-on guidance and setting up Claude Code environments to accelerate productivity.',
-        'Developed prompt engineering strategies and templates enabling users to transform and reshape their data with ease using LLM-powered tools.',
-        'Provided critical support to developers by explaining features, debugging applications interfacing with LLMs, and resolving support tickets related to unexpected REST API behavior.',
+        'Led org-wide AI enablement for AbbVie employees across functions — advising on prompting strategies, model selection for data ingestion, and how to transform data structures based on tool and use case requirements.',
+        'Built and led monthly technical sessions for ~300 engineers on Go/AI, AbbVie\'s enterprise AI platform — covering RAG architecture, tokenization, and REST API integration. Paired group sessions with 1:1 support to ensure engineers understood not just how to use the system but why it works.',
+        'Served as primary technical liaison between engineering and cross-functional partner teams, owning escalation and resolution workflows for LLM REST API integration failures — diagnosing unexpected behavior, reproducing failures in isolation, and coordinating fixes with engineering.',
+        'Authored canonical API documentation, troubleshooting guides, and setup resources adopted org-wide; reduced new-engineer onboarding friction through structured Claude Code environment configuration and step-by-step integration walkthroughs.',
+        'Consulted engineering teams on LLM model selection, architectural fit, and Responsible AI standards, translating business requirements into technical configurations and ensuring alignment with enterprise security and compliance constraints.',
+        'Designed and deployed LLM-powered developer tooling using Claude and other large language models, enabling engineers to query enterprise data via natural language and accelerating internal AI capability development.',
       ],
     },
     {
@@ -25,10 +28,10 @@ function ResumeSection() {
       company: 'Google | Chicago, Illinois',
       period: 'August 2023 - May 2024',
       bullets: [
-        'Refactored Searchmark API using agile changes with Java protocol buffers (gRPC) Microservices to improve user results communication, enhancing client onboarding efficiency.',
-        'Designed the code architecture, integrating OOP principles in Java to ensure easy testing and maintainability for critical performance tools.',
-        'Supported Google infrastructure performance testing tool by lowering CPU usage for distributed systems.',
-        'Deployed code over Google\'s internal and automated testing framework to enhance CPU usage.',
+        'Refactored the Searchmark API using Java gRPC and Protocol Buffers, improving client onboarding efficiency and reducing integration friction for new consumers.',
+        'Designed testable, maintainable code architecture for a critical internal performance measurement tool used across Google engineering teams.',
+        'Reduced CPU usage for distributed query execution across Google\'s internal performance testing infrastructure via automated deployment.',
+        'Maintained high test coverage through interface-driven unit tests, keeping the Searchmark codebase reliable for downstream partner teams.',
       ],
     },
     {
@@ -37,10 +40,10 @@ function ResumeSection() {
       company: 'Google | Chicago, Illinois',
       period: 'September 2022 - August 2023',
       bullets: [
-        'Wrote, expanded, refactored and tested BigQuery Python API as well as BQ Dataframes API, writing accommodating documentation.',
-        'Planned and authored a design document that outlined engineering solutions and architecture for a new feature for BQ Dataframes.',
-        'Executed plans by writing and testing datetime method APIs using Pandas, Ibis, and PyArrow Python libraries for public release, supporting team unit functions.',
-        'Contributed to Ibis open source to ensure cross-functionality between Ibis and Pandas libraries, a key tool for data handling.',
+        'Extended the BigQuery Python API for public release, writing and testing datetime method APIs using Pandas, Ibis, and PyArrow — directly enabling external developer adoption at scale.',
+        'Authored a full design document outlining engineering architecture and implementation plan for a new BigQuery DataFrames feature (PRD-equivalent).',
+        'Contributed to the Ibis open-source library for cross-compatibility with Pandas, supporting the broader ecosystem of developers building on BigQuery.',
+        'Built automated test suites and debugged edge cases to meet quality standards ahead of public API releases for external partners.',
       ],
     },
     {
@@ -48,39 +51,32 @@ function ResumeSection() {
       company: 'Guaranteed Rate | Chicago, Illinois',
       period: 'May 2018 - September 2021',
       bullets: [
-        'Created daily dashboards for the department using Microsoft Excel by compiling and cleaning data from various sources.',
-        'Monitored and processed appraisal orders, issues and escalations for various mortgage executives, underwriting teams, appraisers, and other clients.',
-        'Provided cross-functional service support while managing an appraisal desk solely for three simultaneous companies.',
-        'Led appraisal desk operations, coordinating workflows and resolving escalations to ensure timely completion of mortgage processes.',
+        'Managed appraisal order workflows, issue escalations, and cross-functional service support across three client companies simultaneously.',
+        'Built daily operational dashboards by compiling and cleaning multi-system data, streamlining department reporting.',
       ],
     },
   ]
 
   const education = [
     {
-      degree: 'Fundamentals to Become a Machine Learning Engineer',
-      school: 'LinkedIn Learning',
-      year: '2026',
-      focus: 'AI and machine learning principles, building ML applications, training neural networks, deep learning, and reinforcement learning.',
-    },
-    {
-      degree: 'Multiverse Bootcamp',
+      degree: 'Software Engineering Bootcamp',
       school: 'Multiverse',
       year: '2024',
-      focus: 'Learned the fundamentals of Software Development while contributing to Google\'s codebase. Software engineer and project manager for full stack projects utilizing Agile frameworks.',
+      focus: 'Full-stack software engineering and Agile project management; contributed directly to Google\'s production codebase.',
     },
     {
-      degree: 'Google Data Analytics Professional Certificate',
-      school: 'Coursera',
-      year: '2022',
-      focus: 'Learned the fundamentals of Data Analytics using R, Tableau.',
-    },
-    {
-      degree: 'Bachelors of Science',
+      degree: 'Bachelor of Science',
       school: 'Georgia State University',
       year: '2014',
       focus: '',
     },
+  ]
+
+  const certifications = [
+    { name: 'Claude Code in Action', org: 'Anthropic', year: '2026' },
+    { name: 'AI Fluency: Framework & Foundations', org: 'Anthropic', year: '2026' },
+    { name: 'Fundamentals to Become a Machine Learning Engineer', org: 'LinkedIn Learning', year: '2026' },
+    { name: 'Google Data Analytics Professional Certificate', org: 'Coursera', year: '2022' },
   ]
 
   const skillCategories = [
@@ -89,12 +85,24 @@ function ResumeSection() {
       skills: ['Python', 'Java', 'JavaScript', 'HTML', 'CSS'],
     },
     {
-      label: 'Technologies',
-      skills: ['API Design', 'React', 'Angular', 'Spring Boot', 'Github', 'Django', 'Testing', 'Documentation'],
+      label: 'Partner Support',
+      skills: ['Technical Troubleshooting', 'Community Programs', 'Scaled Enablement', 'Program Management'],
     },
     {
-      label: 'Other',
-      skills: ['PostgreSQL', 'GCP', 'Git / Version Control', 'Protocol Buffers', 'Improvisational Comedy Performer', 'SDLC'],
+      label: 'APIs & Infra',
+      skills: ['gRPC', 'Protocol Buffers', 'REST API Design', 'GCP'],
+    },
+    {
+      label: 'Data',
+      skills: ['BigQuery', 'PostgreSQL'],
+    },
+    {
+      label: 'AI / LLM',
+      skills: ['LLM Integration', 'Prompt Engineering', 'Claude Code', 'Generative AI', 'RAG'],
+    },
+    {
+      label: 'Tooling',
+      skills: ['Git', 'GitHub', 'Agile', 'Automated Testing', 'Technical Documentation'],
     },
   ]
 
@@ -162,6 +170,31 @@ function ResumeSection() {
                     <h4 className="text-lg mb-1" style={{ color: 'var(--text-primary)' }}>{edu.degree}</h4>
                     <p className="mb-1" style={{ color: 'var(--text-secondary)' }}>{edu.school}</p>
                     {edu.focus && <p className="text-sm font-medium" style={{ color: 'var(--accent-secondary)' }}>{edu.focus}</p>}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Certifications */}
+            <div className="mb-12">
+              <h3 className={`text-2xl mb-6 flex items-center gap-3 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`} style={{ color: 'var(--text-primary)' }}>
+                <span className="inline-flex w-7 h-7" style={{ color: 'var(--accent-500)' }}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+                    <circle cx="12" cy="8" r="6" />
+                    <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" />
+                  </svg>
+                </span>
+                Certifications
+              </h3>
+              <div ref={certRef} className="grid gap-4">
+                {certifications.map((cert, index) => (
+                  <div
+                    key={index}
+                    className={`card relative pl-20 max-[480px]:pl-6 transition-all duration-700 ${visibleCerts.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                  >
+                    <span className="absolute left-6 top-1/2 -translate-y-1/2 text-2xl font-extrabold max-[480px]:static max-[480px]:translate-y-0 max-[480px]:block max-[480px]:mb-2" style={{ color: 'var(--accent-500)' }}>{cert.year}</span>
+                    <h4 className="text-lg mb-1" style={{ color: 'var(--text-primary)' }}>{cert.name}</h4>
+                    <p className="mb-1" style={{ color: 'var(--text-secondary)' }}>{cert.org}</p>
                   </div>
                 ))}
               </div>

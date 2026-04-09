@@ -23,34 +23,41 @@ Email: thejaredchapman@gmail.com
 === CURRENT ROLE ===
 Developer Support Engineer — AbbVie, Los Angeles, CA (Aug 2024 - Present)
 Team: ILIAD & Go/AI Team | Supporting & Educating Users and Developers of various LLMs
-- Created learning materials and educational content that explains AI concepts in accessible, layman's terms
-- Onboarded new users onto generative AI platforms, setting up Claude Code environments
-- Developed prompt engineering strategies and templates for LLM-powered tools
-- Provided critical support to developers debugging applications interfacing with LLMs
+- Led org-wide AI enablement for AbbVie employees across functions — advising on prompting strategies, model selection for data ingestion, and how to transform data structures based on tool and use case requirements
+- Built and led monthly technical sessions for ~300 engineers on Go/AI, AbbVie's enterprise AI platform — covering RAG architecture, tokenization, and REST API integration; paired with 1:1 support
+- Served as primary technical liaison between engineering and cross-functional partner teams, owning escalation and resolution workflows for LLM REST API integration failures
+- Authored canonical API documentation, troubleshooting guides, and setup resources adopted org-wide; reduced onboarding friction through structured Claude Code environment configuration
+- Consulted engineering teams on LLM model selection, architectural fit, and Responsible AI standards
+- Designed and deployed LLM-powered developer tooling using Claude and other large language models
 
 === PAST EXPERIENCE ===
 Software Engineer — Google, Chicago, IL (Aug 2023 - May 2024)
 Team: Google Searchmark | Search performance tools for capacity & latency
-- Refactored Searchmark API with Java protocol buffers (gRPC) Microservices
-- Designed code architecture with OOP principles in Java
-- Supported infrastructure performance testing, lowering CPU usage for distributed systems
+- Refactored the Searchmark API using Java gRPC and Protocol Buffers, improving client onboarding efficiency and reducing integration friction for new consumers
+- Designed testable, maintainable code architecture for a critical internal performance measurement tool used across Google engineering teams
+- Reduced CPU usage for distributed query execution across Google's internal performance testing infrastructure via automated deployment
+- Maintained high test coverage through interface-driven unit tests, keeping the Searchmark codebase reliable for downstream partner teams
 
 Software Engineer — Google, Chicago, IL (Sep 2022 - Aug 2023)
 Team: Google BigQuery | BigQuery DataFrames
-- Wrote, expanded, and tested BigQuery Python API and BQ DataFrames API
-- Authored design documents for new BQ DataFrames features
-- Built and tested datetime method APIs using Pandas, Ibis, and PyArrow
-- Contributed to Ibis open source library
+- Extended the BigQuery Python API for public release, writing and testing datetime method APIs using Pandas, Ibis, and PyArrow — directly enabling external developer adoption at scale
+- Authored a full design document outlining engineering architecture and implementation plan for a new BigQuery DataFrames feature (PRD-equivalent)
+- Contributed to the Ibis open-source library for cross-compatibility with Pandas, supporting the broader ecosystem of developers building on BigQuery
+- Built automated test suites and debugged edge cases to meet quality standards ahead of public API releases for external partners
 
 Appraisal Desk Team Lead — Guaranteed Rate, Chicago, IL (May 2018 - Sep 2021)
-- Created daily dashboards using Microsoft Excel
-- Managed appraisal desk operations for three simultaneous companies
+- Managed appraisal order workflows, issue escalations, and cross-functional service support across three client companies simultaneously
+- Built daily operational dashboards by compiling and cleaning multi-system data, streamlining department reporting
 
 === EDUCATION ===
-1. LinkedIn Learning — Fundamentals to Become a Machine Learning Engineer (2026)
-2. Multiverse — Multiverse Bootcamp (2024)
-3. Coursera — Google Data Analytics Professional Certificate (2022)
-4. Georgia State University — Bachelors of Science (2014)
+1. Multiverse — Software Engineering Bootcamp (2024) — Full-stack software engineering and Agile project management; contributed directly to Google's production codebase
+2. Georgia State University — Bachelor of Science (2014)
+
+=== CERTIFICATIONS ===
+1. Claude Code in Action — Anthropic (2026)
+2. AI Fluency: Framework & Foundations — Anthropic (2026)
+3. Fundamentals to Become a Machine Learning Engineer — LinkedIn Learning (2026)
+4. Google Data Analytics Professional Certificate — Coursera (2022)
 
 === SKILLS ===
 Languages: Python, Java, JavaScript, HTML, CSS

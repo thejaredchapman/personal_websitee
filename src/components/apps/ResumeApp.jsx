@@ -5,10 +5,12 @@ const experience = [
     company: 'AbbVie — Los Angeles, CA',
     period: 'Aug 2024 — Now',
     bullets: [
-      'Created learning materials and educational content that explains AI concepts in accessible, layman\'s terms, empowering new users to adopt Enterprise AI products.',
-      'Onboarded new users onto generative AI platforms, providing hands-on guidance and setting up Claude Code environments to accelerate productivity.',
-      'Developed prompt engineering strategies and templates enabling users to transform and reshape their data with ease using LLM-powered tools.',
-      'Provided critical support to developers by explaining features, debugging applications interfacing with LLMs, and resolving support tickets related to unexpected REST API behavior.',
+      'Led org-wide AI enablement for AbbVie employees across functions — advising on prompting strategies, model selection for data ingestion, and how to transform data structures based on tool and use case requirements.',
+      'Built and led monthly technical sessions for ~300 engineers on Go/AI, AbbVie\'s enterprise AI platform — covering RAG architecture, tokenization, and REST API integration. Paired group sessions with 1:1 support to ensure engineers understood not just how to use the system but why it works.',
+      'Served as primary technical liaison between engineering and cross-functional partner teams, owning escalation and resolution workflows for LLM REST API integration failures — diagnosing unexpected behavior, reproducing failures in isolation, and coordinating fixes with engineering.',
+      'Authored canonical API documentation, troubleshooting guides, and setup resources adopted org-wide; reduced new-engineer onboarding friction through structured Claude Code environment configuration and step-by-step integration walkthroughs.',
+      'Consulted engineering teams on LLM model selection, architectural fit, and Responsible AI standards, translating business requirements into technical configurations and ensuring alignment with enterprise security and compliance constraints.',
+      'Designed and deployed LLM-powered developer tooling using Claude and other large language models, enabling engineers to query enterprise data via natural language and accelerating internal AI capability development.',
     ],
   },
   {
@@ -17,10 +19,10 @@ const experience = [
     company: 'Google — Chicago, IL',
     period: 'Aug 2023 — May 2024',
     bullets: [
-      'Refactored Searchmark API using agile changes with Java protocol buffers (gRPC) Microservices to improve user results communication.',
-      'Designed the code architecture, integrating OOP principles in Java to ensure easy testing and maintainability for critical performance tools.',
-      'Supported Google infrastructure performance testing tool by lowering CPU usage for distributed systems.',
-      'Deployed code over Google\'s internal and automated testing framework to enhance CPU usage.',
+      'Refactored the Searchmark API using Java gRPC and Protocol Buffers, improving client onboarding efficiency and reducing integration friction for new consumers.',
+      'Designed testable, maintainable code architecture for a critical internal performance measurement tool used across Google engineering teams.',
+      'Reduced CPU usage for distributed query execution across Google\'s internal performance testing infrastructure via automated deployment.',
+      'Maintained high test coverage through interface-driven unit tests, keeping the Searchmark codebase reliable for downstream partner teams.',
     ],
   },
   {
@@ -29,10 +31,10 @@ const experience = [
     company: 'Google — Chicago, IL',
     period: 'Sep 2022 — Aug 2023',
     bullets: [
-      'Wrote, expanded, refactored and tested BigQuery Python API as well as BQ Dataframes API, writing accommodating documentation.',
-      'Planned and authored a design document that outlined engineering solutions and architecture for a new feature for BQ Dataframes.',
-      'Executed plans by writing and testing datetime method APIs using Pandas, Ibis, and PyArrow Python libraries for public release.',
-      'Contributed to Ibis open source to ensure cross-functionality between Ibis and Pandas libraries, a key tool for data handling.',
+      'Extended the BigQuery Python API for public release, writing and testing datetime method APIs using Pandas, Ibis, and PyArrow — directly enabling external developer adoption at scale.',
+      'Authored a full design document outlining engineering architecture and implementation plan for a new BigQuery DataFrames feature (PRD-equivalent).',
+      'Contributed to the Ibis open-source library for cross-compatibility with Pandas, supporting the broader ecosystem of developers building on BigQuery.',
+      'Built automated test suites and debugged edge cases to meet quality standards ahead of public API releases for external partners.',
     ],
   },
   {
@@ -40,26 +42,31 @@ const experience = [
     company: 'Guaranteed Rate — Chicago, IL',
     period: 'May 2018 — Sep 2021',
     bullets: [
-      'Created daily dashboards for the department using Microsoft Excel by compiling and cleaning data from various sources.',
-      'Monitored and processed appraisal orders, issues and escalations for various mortgage executives, underwriting teams, appraisers, and other clients.',
-      'Provided cross-functional service support while managing an appraisal desk solely for three simultaneous companies.',
-      'Led appraisal desk operations, coordinating workflows and resolving escalations to ensure timely completion of mortgage processes.',
+      'Managed appraisal order workflows, issue escalations, and cross-functional service support across three client companies simultaneously.',
+      'Built daily operational dashboards by compiling and cleaning multi-system data, streamlining department reporting.',
     ],
   },
 ]
 
 const education = [
-  { school: 'LinkedIn Learning', degree: 'Fundamentals to Become a Machine Learning Engineer', year: '2026' },
-  { school: 'Multiverse', degree: 'Multiverse Bootcamp', year: '2024' },
-  { school: 'Coursera', degree: 'Google Data Analytics Professional Certificate', year: '2022' },
-  { school: 'Georgia State University', degree: 'Bachelors of Science', year: '2014' },
+  { school: 'Multiverse', degree: 'Software Engineering Bootcamp', year: '2024' },
+  { school: 'Georgia State University', degree: 'Bachelor of Science', year: '2014' },
+]
+
+const certifications = [
+  { org: 'Anthropic', name: 'Claude Code in Action', year: '2026' },
+  { org: 'Anthropic', name: 'AI Fluency: Framework & Foundations', year: '2026' },
+  { org: 'LinkedIn Learning', name: 'Fundamentals to Become a Machine Learning Engineer', year: '2026' },
+  { org: 'Coursera', name: 'Google Data Analytics Professional Certificate', year: '2022' },
 ]
 
 const skills = [
   'Python', 'Java', 'JavaScript', 'HTML', 'CSS',
-  'API Design', 'React', 'Angular', 'Spring Boot', 'Django',
-  'Testing', 'Documentation', 'Github',
-  'PostgreSQL', 'GCP', 'Git / Version Control', 'Protocol Buffers', 'SDLC',
+  'Technical Troubleshooting', 'Community Programs', 'Scaled Enablement', 'Program Management',
+  'gRPC', 'Protocol Buffers', 'REST API Design', 'GCP',
+  'BigQuery', 'PostgreSQL',
+  'LLM Integration', 'Prompt Engineering', 'Claude Code', 'RAG',
+  'Git', 'Agile', 'Automated Testing', 'Technical Documentation',
 ]
 
 function ResumeApp() {
@@ -121,6 +128,20 @@ function ResumeApp() {
               <p className="text-xs" style={{ color: 'var(--text-tertiary)' }}>{edu.degree}</p>
             </div>
             <span className="text-[11px] font-mono" style={{ color: 'var(--text-tertiary)' }}>{edu.year}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Certifications */}
+      <h3 className="text-sm font-bold uppercase tracking-wider mb-3" style={{ color: 'var(--accent-500)' }}>Certifications</h3>
+      <div className="flex flex-col gap-2 mb-6">
+        {certifications.map((cert) => (
+          <div key={cert.name} className="flex items-center justify-between py-2 px-3 rounded-lg" style={{ background: 'var(--bg-secondary)' }}>
+            <div>
+              <p className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{cert.name}</p>
+              <p className="text-xs" style={{ color: 'var(--text-tertiary)' }}>{cert.org}</p>
+            </div>
+            <span className="text-[11px] font-mono" style={{ color: 'var(--text-tertiary)' }}>{cert.year}</span>
           </div>
         ))}
       </div>
