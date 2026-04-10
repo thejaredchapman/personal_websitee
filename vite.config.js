@@ -40,4 +40,10 @@ function vercelApiProxy() {
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss(), vercelApiProxy()],
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: ['./src/__tests__/setup.js'],
+    css: false,
+  },
 })
