@@ -4,7 +4,7 @@ const BOOT_LINES = [
   { text: '', delay: 200 },
   { text: 'JaredOS v2.0', delay: 300, style: 'accent' },
   { text: `Copyright (c) ${new Date().getFullYear()} Jared Chapman. All rights reserved.`, delay: 200, style: 'dim' },
-  { text: 'Last updated: April 09, 2026', delay: 150, style: 'dim' },
+  { text: 'Last updated: April 28, 2026', delay: 150, style: 'dim' },
   { text: '', delay: 300 },
   { text: '[BOOT] Initializing system...', delay: 400 },
   { text: '[  OK  ] personality.py loaded', delay: 250, style: 'ok' },

@@ -21,7 +21,7 @@ function AboutApp() {
             <div className="flex items-center gap-2 mb-1 max-[768px]:justify-center">
               <h1 className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>Jared Chapman</h1>
             </div>
-            <p className="text-sm font-medium mb-2" style={{ color: 'var(--accent-500)' }}>Generative AI Specialist</p>
+            <p className="text-sm font-medium mb-2" style={{ color: 'var(--accent-500)' }}>Developer Enablement & AI</p>
             <div className="flex items-center gap-3 text-xs flex-wrap max-[768px]:justify-center" style={{ color: 'var(--text-tertiary)' }}>
               <span className="flex items-center gap-1">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3 h-3"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -50,9 +50,9 @@ function AboutApp() {
             <h3 className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>What I Do</h3>
           </div>
           <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            Generative AI specialist enabling developers to understand and build with AI
-            responsibly — all while keeping one foot in the community through education,
-            literacy, and the kind of connections that actually move things forward.
+            Customer-facing AI engineer focused on enterprise Claude Code adoption — running
+            workshops, building reference implementations, and turning developer enthusiasm
+            into org-wide agentic AI workflows.
           </p>
         </div>
 

@@ -66,6 +66,8 @@ const skills = [
   'gRPC', 'Protocol Buffers', 'REST API Design', 'GCP',
   'BigQuery', 'PostgreSQL',
   'LLM Integration', 'Prompt Engineering', 'Claude Code', 'RAG',
+  'Agentic Workflows', 'MCP Servers', 'Subagents', 'Agent Orchestration',
+  'Workshop Design', 'Technical Enablement',
   'Git', 'Agile', 'Automated Testing', 'Technical Documentation',
 ]
 

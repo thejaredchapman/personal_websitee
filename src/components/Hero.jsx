@@ -128,9 +128,9 @@ function Hero({ onPlayGame }) {
             className={`text-base max-w-[500px] mb-10 leading-7 max-[968px]:mx-auto max-[968px]:mb-8 transition-all duration-700 delay-[600ms] ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
             style={{ color: 'var(--text-tertiary)' }}
           >
-            Building intelligent systems with LLMs and GenAI at scale. From Google BigQuery
-            to enterprise AI solutions, I bridge the gap between complex technology
-            and real-world impact.
+            Building with Claude Code and agentic AI every day — from enterprise enablement
+            programs and developer workshops to MCP servers, subagents, and production demos
+            that show what's actually possible.
           </p>
 
           <div

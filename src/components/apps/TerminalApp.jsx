@@ -159,7 +159,12 @@ function processCommand(input) {
       { text: '  Linktree:  linktr.ee/thejaredchapman', type: 'link' },
     ],
     hire: () => [
-      { text: "  Let's connect! Email: thejaredchapman@gmail.com", type: 'accent' },
+      { text: '  Open to conversations about roles aligned with this background.', type: 'accent' },
+      { text: '  If you think there is a fit, I would genuinely love to hear from you.', type: 'info' },
+      { text: '  Email: thejaredchapman@gmail.com', type: 'link' },
+    ],
+    anthropic: () => [
+      { text: '  Hey Anthropic 👋🏿 — you already know.', type: 'accent' },
     ],
     whoami: () => [{ text: '  visitor@jaredos — Role: Appreciated Guest', type: 'accent' }],
     date: () => [{ text: `  ${new Date().toString()}`, type: 'info' }],
@@ -276,7 +281,7 @@ function TerminalApp() {
       } else { setHistIdx(-1); setInput('') }
     } else if (e.key === 'Tab') {
       e.preventDefault()
-      const cmds = ['help','about','skills','joke','projects','experience','social','ascii','hire','whoami','date','echo','sudo','clear','ls','cat','pwd','ping','coffee','matrix','vim']
+      const cmds = ['help','about','skills','joke','projects','experience','social','ascii','hire','whoami','date','echo','sudo','clear','ls','cat','pwd','ping','coffee','matrix','vim','anthropic']
       const match = cmds.filter((c) => c.startsWith(input.toLowerCase()))
       if (match.length === 1) setInput(match[0])
     }
