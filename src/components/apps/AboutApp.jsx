@@ -79,11 +79,13 @@ function AboutApp() {
           { emoji: '🍑', label: 'From', value: 'Atlanta' },
           { emoji: '🌴', label: 'Based In', value: 'Los Angeles' },
           { emoji: '🤖', label: 'Focus', value: 'Generative AI' },
-          { emoji: '🐶', label: 'Son', value: 'Dr. Pugsley Bikini' },
+          { emoji: '🐶', label: 'Son', value: 'Dr. Pugsley Bikini', href: 'https://www.instagram.com/drpugsleybikini' },
         ].map((stat) => (
           <div key={stat.label} className="flex-1 min-w-0 rounded-lg py-2.5 px-3 border text-center" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border-light)' }}>
             <div className="text-base mb-0.5">{stat.emoji}</div>
-            <div className="text-[11px] font-bold truncate" style={{ color: 'var(--text-primary)' }}>{stat.value}</div>
+            <div className="text-[11px] font-bold truncate" style={{ color: 'var(--text-primary)' }}>
+              {stat.href ? <a href={stat.href} target="_blank" rel="noreferrer" className="underline hover:opacity-80">{stat.value}</a> : stat.value}
+            </div>
             <div className="text-[9px] uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>{stat.label}</div>
           </div>
         ))}

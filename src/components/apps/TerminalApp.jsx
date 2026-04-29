@@ -85,7 +85,7 @@ function processCommand(input) {
       { text: '' },
       { text: '  Hey, I\'m Jared — GenAI specialist, professional', type: 'info' },
       { text: '  rabbit hole explorer, and proud dog dad to', type: 'info' },
-      { text: '  Dr. Pugsley Bikini.', type: 'info' },
+      { text: '  Dr. Pugsley Bikini.', type: 'info', href: 'https://www.instagram.com/drpugsleybikini' },
       { text: '' },
       { text: '  ── What I Do ──', type: 'accent' },
       { text: '  I work in GenAI enabling developers to understand' },
@@ -105,7 +105,7 @@ function processCommand(input) {
       { text: '  fell in love with fiancée Avery Wine, did improv,' },
       { text: '  and still visit for a great haircut. Now in LA.' },
       { text: '' },
-      { text: '  At home: Avery & Dr. Pugsley Bikini, who', type: 'link' },
+      { text: '  At home: Avery & Dr. Pugsley Bikini, who', type: 'link', href: 'https://www.instagram.com/drpugsleybikini' },
       { text: '  absolutely runs the household.', type: 'link' },
       { text: '' },
       { text: '  ── Music ──', type: 'accent' },
@@ -306,7 +306,9 @@ function TerminalApp() {
     <div className="h-full flex flex-col bg-[#0d0d1a]" onClick={() => inputRef.current?.focus()}>
       <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 font-mono text-sm leading-relaxed cursor-text [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-white/10">
         {history.map((line, i) => (
-          <div key={i} className={`whitespace-pre-wrap break-words ${lineColor(line.type)}`}>{line.text}</div>
+          <div key={i} className={`whitespace-pre-wrap break-words ${lineColor(line.type)}`}>
+            {line.href ? <a href={line.href} target="_blank" rel="noreferrer" className="hover:opacity-80">{line.text}</a> : line.text}
+          </div>
         ))}
         <form onSubmit={handleSubmit} className="flex items-center">
           <span className="text-[#89b4fa] shrink-0">visitor@jaredos ~ $&nbsp;</span>

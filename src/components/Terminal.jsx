@@ -100,7 +100,7 @@ function processCommand(input) {
         { text: '' },
         { text: '  Hey, I\'m Jared Chapman — Generative AI specialist,', type: 'info' },
         { text: '  professional rabbit hole explorer, and proud dog dad to', type: 'info' },
-        { text: '  Dr. Pugsley Bikini (yes, he\'s a dog, and yes, the title', type: 'info' },
+        { text: '  Dr. Pugsley Bikini (yes, he\'s a dog, and yes, the title', type: 'info', href: 'https://www.instagram.com/drpugsleybikini' },
         { text: '  is earned).', type: 'info' },
         { text: '' },
         { text: '  ── What I Do ──', type: 'accent' },
@@ -132,7 +132,7 @@ function processCommand(input) {
         { text: '  family, enjoying everything California has to offer.' },
         { text: '' },
         { text: '  At home, life is shared with Avery and our son,', type: 'link' },
-        { text: '  Dr. Pugsley Bikini, who absolutely runs the household.', type: 'link' },
+        { text: '  Dr. Pugsley Bikini, who absolutely runs the household.', type: 'link', href: 'https://www.instagram.com/drpugsleybikini' },
         { text: '' },
         { text: '  ── Music ──', type: 'accent' },
         { text: '  Stevie Wonder has always been home for me.', type: 'info' },
@@ -510,7 +510,7 @@ function Terminal() {
                                     : 'text-white/70'
                   }`}
                 >
-                  {line.text}
+                  {line.href ? <a href={line.href} target="_blank" rel="noreferrer" className="hover:opacity-80">{line.text}</a> : line.text}
                 </div>
               ))}
 
