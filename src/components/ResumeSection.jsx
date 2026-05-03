@@ -74,6 +74,7 @@ function ResumeSection() {
 
   const certifications = [
     { name: 'Claude Code in Action', org: 'Anthropic', year: '2026' },
+    { name: 'Model Context Protocol: Advanced Topics', org: 'Anthropic', year: '2026' },
     { name: 'AI Fluency: Framework & Foundations', org: 'Anthropic', year: '2026' },
     { name: 'Fundamentals to Become a Machine Learning Engineer', org: 'LinkedIn Learning', year: '2026' },
     { name: 'Google Data Analytics Professional Certificate', org: 'Coursera', year: '2022' },
