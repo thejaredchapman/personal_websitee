@@ -134,6 +134,61 @@ function reducer(state, action) {
         },
       }
     }
+    case 'CLOSE_ALL': {
+      const updatedWindows = {}
+      for (const [id, win] of Object.entries(state.windows)) {
+        updatedWindows[id] = { ...win, isOpen: false, isMaximized: false }
+      }
+      return { ...state, windows: updatedWindows, activeWindow: null }
+    }
+    case 'MINIMIZE_ALL': {
+      const updatedWindows = {}
+      for (const [id, win] of Object.entries(state.windows)) {
+        updatedWindows[id] = win.isOpen ? { ...win, isMinimized: true } : win
+      }
+      return { ...state, windows: updatedWindows, activeWindow: null }
+    }
+    case 'CASCADE_WINDOWS': {
+      const openIds = Object.keys(state.windows).filter(id => state.windows[id].isOpen && !state.windows[id].isMinimized)
+      const updatedWindows = { ...state.windows }
+      openIds.forEach((id, i) => {
+        updatedWindows[id] = { ...updatedWindows[id], position: { x: 60 + i * 30, y: 50 + i * 30 }, isMaximized: false }
+      })
+      return { ...state, windows: updatedWindows }
+    }
+    case 'STACK_WINDOWS': {
+      const { screenW, screenH } = action
+      const openIds = Object.keys(state.windows).filter(id => state.windows[id].isOpen && !state.windows[id].isMinimized)
+      const updatedWindows = { ...state.windows }
+      openIds.forEach((id, i) => {
+        const cfg = WINDOW_CONFIGS[id]
+        const w = cfg?.defaultSize?.width ?? 660
+        const h = cfg?.defaultSize?.height ?? 500
+        updatedWindows[id] = {
+          ...updatedWindows[id],
+          position: {
+            x: Math.max(0, Math.floor((screenW - w) / 2) + i * 24),
+            y: Math.max(28, Math.floor((screenH - 28 - 56 - h) / 2) + 28 + i * 24),
+          },
+          size: { width: w, height: h },
+          isMaximized: false,
+        }
+      })
+      return { ...state, windows: updatedWindows }
+    }
+    case 'CYCLE_WINDOW': {
+      const openIds = Object.keys(state.windows).filter(id => state.windows[id].isOpen && !state.windows[id].isMinimized)
+      if (openIds.length === 0) return state
+      const cur = openIds.indexOf(state.activeWindow)
+      const nextId = openIds[(cur + 1) % openIds.length]
+      const newZ = state.maxZ + 1
+      return {
+        ...state,
+        maxZ: newZ,
+        activeWindow: nextId,
+        windows: { ...state.windows, [nextId]: { ...state.windows[nextId], zIndex: newZ } },
+      }
+    }
     case 'ADD_NOTIFICATION': {
       const newId = state.notifId + 1
       return {
@@ -164,6 +219,15 @@ export function WindowProvider({ children }) {
   const toggleMaximize = useCallback((id) => dispatch({ type: 'TOGGLE_MAXIMIZE', id }), [])
   const moveWindow = useCallback((id, position) => dispatch({ type: 'MOVE', id, position }), [])
   const resizeWindow = useCallback((id, size) => dispatch({ type: 'RESIZE', id, size }), [])
+  const closeAllWindows = useCallback(() => dispatch({ type: 'CLOSE_ALL' }), [])
+  const minimizeAllWindows = useCallback(() => dispatch({ type: 'MINIMIZE_ALL' }), [])
+  const cascadeWindows = useCallback(() => dispatch({ type: 'CASCADE_WINDOWS' }), [])
+  const stackWindows = useCallback(() => dispatch({
+    type: 'STACK_WINDOWS',
+    screenW: window.innerWidth,
+    screenH: window.innerHeight,
+  }), [])
+  const cycleWindow = useCallback(() => dispatch({ type: 'CYCLE_WINDOW' }), [])
 
   const dockClick = useCallback((id) => {
     const win = state.windows[id]
@@ -204,6 +268,11 @@ export function WindowProvider({ children }) {
         toggleMaximize,
         moveWindow,
         resizeWindow,
+        closeAllWindows,
+        minimizeAllWindows,
+        cascadeWindows,
+        stackWindows,
+        cycleWindow,
         dockClick,
         notify,
         dismissNotification,
