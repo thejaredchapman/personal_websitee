@@ -58,6 +58,7 @@ const certifications = [
   { org: 'Anthropic', name: 'Introduction to Model Context Protocol', year: '2026' },
   { org: 'Anthropic', name: 'Model Context Protocol: Advanced Topics', year: '2026' },
   { org: 'Anthropic', name: 'Claude Code in Action', year: '2026' },
+  { org: 'Anthropic', name: 'Introduction to Agent Skills', year: '2026' },
   { org: 'Anthropic', name: 'AI Fluency: Framework & Foundations', year: '2026' },
   { org: 'LinkedIn Learning', name: 'Fundamentals to Become a Machine Learning Engineer', year: '2026' },
   { org: 'Coursera', name: 'Google Data Analytics Professional Certificate', year: '2022' },
