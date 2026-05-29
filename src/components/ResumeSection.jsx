@@ -4,55 +4,49 @@ function ResumeSection() {
   const [sectionRef, isVisible] = useScrollAnimation({ threshold: 0.05 })
   const [expRef, visibleExp] = useStaggerAnimation(4, { baseDelay: 200 })
   const [eduRef, visibleEdu] = useStaggerAnimation(2, { baseDelay: 150 })
-  const [certRef, visibleCerts] = useStaggerAnimation(4, { baseDelay: 150 })
-  const [skillsRef, visibleSkills] = useStaggerAnimation(23, { baseDelay: 40 })
+  const [certRef, visibleCerts] = useStaggerAnimation(8, { baseDelay: 150 })
+  const [skillsRef, visibleSkills] = useStaggerAnimation(38, { baseDelay: 40 })
 
   const experience = [
     {
-      title: 'Developer Support Engineer',
-      team: 'ILIAD & Go/AI Team | Supporting & Educating Users and Developers of various LLMs (Large Language Models)',
+      title: 'Developer Support, Generative AI Applications',
       company: 'AbbVie | Los Angeles, California',
-      period: 'August 2024 - Now',
+      period: 'August 2024 - Present',
       bullets: [
-        'Led org-wide AI enablement for AbbVie employees across functions — advising on prompting strategies, model selection for data ingestion, and how to transform data structures based on tool and use case requirements.',
-        'Built and led monthly technical sessions for ~300 engineers on Go/AI, AbbVie\'s enterprise AI platform — covering RAG architecture, tokenization, and REST API integration. Paired group sessions with 1:1 support to ensure engineers understood not just how to use the system but why it works.',
-        'Served as primary technical liaison between engineering and cross-functional partner teams, owning escalation and resolution workflows for LLM REST API integration failures — diagnosing unexpected behavior, reproducing failures in isolation, and coordinating fixes with engineering.',
-        'Authored canonical API documentation, troubleshooting guides, and setup resources adopted org-wide; reduced new-engineer onboarding friction through structured Claude Code environment configuration and step-by-step integration walkthroughs.',
-        'Consulted engineering teams on LLM model selection, architectural fit, and Responsible AI standards, translating business requirements into technical configurations and ensuring alignment with enterprise security and compliance constraints.',
-        'Designed and deployed LLM-powered developer tooling using Claude and other large language models, enabling engineers to query enterprise data via natural language and accelerating internal AI capability development.',
+        'Built ILIAD LiteLLM Model Explorer (full-stack, solo ownership) -- React 18 + Tailwind CSS + Vite frontend; FastAPI async proxy backend with server-side API key injection serving 160+ LLMs (OpenAI, Anthropic, Google, Meta, Mistral, DeepSeek); features include API Playground with real-time token usage tracking, A/B multi-model comparison, LLM-as-judge grading across 5 dimensions, and rate limiting; 111 tests across 10 suites covering components, interactions, and edge cases.',
+        'Developed Enterprise RAG pipeline enabling employees to query 8 internal developer repositories using natural language -- 2,800+ document chunks with overlapping chunking strategy, L2-normalized embeddings, cosine-similarity cache (0.95 threshold) for instant repeat-query responses; automatic enforcement of AbbVie data classification policy, GxP regulations, and SLC security policies; Discourse bot auto-replying to unanswered compliance threads with source-cited AI answers. Stack: Python, Flask, FAISS, GPT-4o, LiteLLM, SSE, Discourse API.',
+        'Served as primary technical resource for LLM integration and prompt engineering issues across the organization -- diagnosed API failures, debugged prompt outputs, reproduced bugs, coordinated fixes with engineering teams, and translated technical constraints into actionable guidance for developers and non-technical stakeholders.',
+        'Drove Claude Code adoption enterprise-wide through hands-on guidance, setup documentation, and practical usage examples; authored installation, troubleshooting, and usage guides distributed across the developer community; Claude Code became a preferred developer tool across AbbVie engineering.',
+        'Facilitated monthly technical sessions for ~300 engineers embedded across 7 internal developer communities (including AI Quest and the Data Science Committee); curated AI literacy content, synthesized findings, and delivered actionable takeaways for technical and non-technical audiences.',
+        'Authored org-wide technical documentation -- API integration guides, prompt engineering references, LLM troubleshooting playbooks, setup walkthroughs, and the "Should I?" decision framework adopted company-wide to guide appropriate AI use per corporate policy.',
+        'Collaborated with legal, security, and privacy teams to define data governance boundaries for LLM tool usage in a regulated pharmaceutical environment; consulted on Responsible AI standards, security configurations, and compliance requirements for enterprise AI deployments.',
       ],
     },
     {
-      title: 'Software Engineer',
-      team: 'Google Searchmark | Search performance tools for capacity & latency',
+      title: 'Software Engineer — Searchmark',
       company: 'Google | Chicago, Illinois',
       period: 'August 2023 - May 2024',
       bullets: [
-        'Refactored the Searchmark API using Java gRPC and Protocol Buffers, improving client onboarding efficiency and reducing integration friction for new consumers.',
-        'Designed testable, maintainable code architecture for a critical internal performance measurement tool used across Google engineering teams.',
-        'Reduced CPU usage for distributed query execution across Google\'s internal performance testing infrastructure via automated deployment.',
-        'Maintained high test coverage through interface-driven unit tests, keeping the Searchmark codebase reliable for downstream partner teams.',
+        'Refactored Searchmark\'s internal API using Java gRPC and Protocol Buffers, reducing integration friction for new engineering teams onboarding to the service.',
+        'Reduced CPU usage for distributed query execution across Google\'s internal performance testing infrastructure through automated deployment.',
       ],
     },
     {
-      title: 'Software Engineer',
-      team: 'Google BigQuery | BigQuery DataFrames',
+      title: 'Software Engineer — BigQuery DataFrames',
       company: 'Google | Chicago, Illinois',
       period: 'September 2022 - August 2023',
       bullets: [
-        'Extended the BigQuery Python API for public release, writing and testing datetime method APIs using Pandas, Ibis, and PyArrow — directly enabling external developer adoption at scale.',
-        'Authored a full design document outlining engineering architecture and implementation plan for a new BigQuery DataFrames feature (PRD-equivalent).',
-        'Contributed to the Ibis open-source library for cross-compatibility with Pandas, supporting the broader ecosystem of developers building on BigQuery.',
-        'Built automated test suites and debugged edge cases to meet quality standards ahead of public API releases for external partners.',
+        'Extended the BigQuery Python API for public release -- implemented and tested datetime method APIs using Pandas, Ibis, and PyArrow, directly enabling external developer adoption at scale.',
+        'Contributed microsecond datetime support to the Ibis open-source library -- implemented cross-compatibility with Pandas for SQL-via-Python operations; used in production by data engineers globally.',
+        'Authored the engineering architecture and implementation design document for a new BigQuery DataFrames feature end-to-end.',
       ],
     },
     {
-      title: 'Appraisal Desk Team Lead',
+      title: 'Team Lead, Appraisal Operations',
       company: 'Guaranteed Rate | Chicago, Illinois',
       period: 'May 2018 - September 2021',
       bullets: [
-        'Managed appraisal order workflows, issue escalations, and cross-functional service support across three client companies simultaneously.',
-        'Built daily operational dashboards by compiling and cleaning multi-system data, streamlining department reporting.',
+        'Managed appraisal workflows, escalations, and cross-functional service delivery across three simultaneous client accounts; built operational dashboards from multi-system data to streamline reporting.',
       ],
     },
   ]
@@ -61,11 +55,11 @@ function ResumeSection() {
     {
       degree: 'Software Engineering Bootcamp',
       school: 'Multiverse',
-      year: '2024',
-      focus: 'Full-stack software engineering and Agile project management; contributed directly to Google\'s production codebase.',
+      year: '2022 - 2024',
+      focus: 'Apprenticeship-based full-stack engineering program; deployed production code to Google\'s codebase during the program.',
     },
     {
-      degree: 'Bachelor of Science',
+      degree: 'B.S., Communications',
       school: 'Georgia State University',
       year: '2014',
       focus: '',
@@ -74,37 +68,43 @@ function ResumeSection() {
 
   const certifications = [
     { name: 'Claude Code in Action', org: 'Anthropic', year: '2026' },
-    { name: 'Model Context Protocol: Advanced Topics', org: 'Anthropic', year: '2026' },
-    { name: 'Introduction to Agent Skills', org: 'Anthropic', year: '2026' },
+    { name: 'Claude Code 101', org: 'Anthropic', year: '2026' },
+    { name: 'Claude 101', org: 'Anthropic', year: '2026' },
     { name: 'AI Fluency: Framework & Foundations', org: 'Anthropic', year: '2026' },
-    { name: 'Fundamentals to Become a Machine Learning Engineer', org: 'LinkedIn Learning', year: '2026' },
-    { name: 'Google Data Analytics Professional Certificate', org: 'Coursera', year: '2022' },
+    { name: 'Introduction to Agent Skills', org: 'Anthropic', year: '2026' },
+    { name: 'Introduction to Claude Cowork', org: 'Anthropic', year: '2026' },
+    { name: 'Introduction to Subagents', org: 'Anthropic', year: '2026' },
+    { name: 'Model Context Protocol: Advanced Topics', org: 'Anthropic', year: '2026' },
   ]
 
   const skillCategories = [
     {
-      label: 'Languages',
-      skills: ['Python', 'Java', 'JavaScript', 'HTML', 'CSS'],
-    },
-    {
-      label: 'Partner Support',
-      skills: ['Technical Troubleshooting', 'Community Programs', 'Scaled Enablement', 'Program Management'],
-    },
-    {
-      label: 'APIs & Infra',
-      skills: ['gRPC', 'Protocol Buffers', 'REST API Design', 'GCP'],
-    },
-    {
-      label: 'Data',
-      skills: ['BigQuery', 'PostgreSQL'],
-    },
-    {
       label: 'AI / LLM',
-      skills: ['LLM Integration', 'Prompt Engineering', 'Claude Code', 'Generative AI', 'RAG'],
+      skills: ['Large Language Models', 'Generative AI', 'RAG', 'Prompt Engineering', 'Claude Code', 'Anthropic API', 'LiteLLM', 'FAISS', 'MCP'],
+    },
+    {
+      label: 'Languages',
+      skills: ['Python', 'JavaScript', 'TypeScript', 'Java'],
+    },
+    {
+      label: 'Frontend',
+      skills: ['React 18', 'Tailwind CSS', 'Vite'],
+    },
+    {
+      label: 'Backend & APIs',
+      skills: ['FastAPI', 'Flask', 'REST API Design', 'gRPC', 'Protocol Buffers', 'GraphQL', 'SSE'],
+    },
+    {
+      label: 'Data & Cloud',
+      skills: ['GCP', 'BigQuery', 'PostgreSQL', 'PyArrow', 'Pandas'],
+    },
+    {
+      label: 'Developer Enablement',
+      skills: ['Developer Relations', 'Technical Documentation', 'Solutions Engineering', 'Technical Training', 'Community Building'],
     },
     {
       label: 'Tooling',
-      skills: ['Git', 'GitHub', 'Agile', 'Automated Testing', 'Technical Documentation'],
+      skills: ['Git', 'GitHub', 'Agile', 'Automated Testing', 'CI/CD'],
     },
   ]
 
@@ -202,7 +202,7 @@ function ResumeSection() {
               </div>
             </div>
 
-            {/* Open Source */}
+            {/* Projects */}
             <div className="mb-12">
               <h3 className={`text-2xl mb-6 flex items-center gap-3 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`} style={{ color: 'var(--text-primary)' }}>
                 <span className="inline-flex w-7 h-7" style={{ color: 'var(--accent-500)' }}>
@@ -210,15 +210,42 @@ function ResumeSection() {
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
                   </svg>
                 </span>
-                Open Source Contribution
+                Projects
               </h3>
-              <div className={`card transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                <h4 className="text-lg mb-1" style={{ color: 'var(--text-primary)' }}>Ibis</h4>
-                <p className="font-medium mb-2" style={{ color: 'var(--accent-secondary)' }}>June 2023</p>
-                <ul className="space-y-1.5 pl-4">
-                  <li className="leading-relaxed text-sm list-disc" style={{ color: 'var(--text-secondary)' }}>Open source Python library that enables users to make SQL with Python without knowing how to write SQL.</li>
-                  <li className="leading-relaxed text-sm list-disc" style={{ color: 'var(--text-secondary)' }}>Added microsecond method and tests for user precision.</li>
-                </ul>
+              <div className="flex flex-col gap-4">
+                {[
+                  {
+                    name: 'ILIAD LiteLLM Model Explorer',
+                    status: 'Production',
+                    description: 'Full-stack LLM API gateway built solo from scratch: FastAPI async backend serving 160+ models across 6 providers, A/B multi-model comparison, LLM-as-judge grading across 5 dimensions, real-time token tracking, and rate limiting. 111 automated tests across 10 suites. Enterprise-deployed at AbbVie.',
+                    tags: ['Python', 'FastAPI', 'React 18', 'Tailwind CSS', 'Vite', 'LiteLLM', 'FAISS', 'Claude Code'],
+                  },
+                  {
+                    name: 'Enterprise RAG Pipeline',
+                    status: 'Production',
+                    description: 'Natural language access layer over 8 enterprise data repositories -- 2,800+ document chunks, L2-normalized vector embeddings, cosine-similarity caching, automated compliance enforcement (GxP, data classification, security policy). Discourse bot for auto-cited AI replies. Built solo in Python.',
+                    tags: ['Python', 'Flask', 'FAISS', 'GPT-4o', 'LiteLLM', 'SSE', 'Discourse API'],
+                  },
+                  {
+                    name: 'BigQuery DataFrames Python API (Google)',
+                    status: 'Open Source',
+                    description: "Extended Google's BigQuery DataFrames public Python API with datetime method support. Contributed microsecond datetime cross-compatibility to the Ibis open-source library -- used in production by data engineers globally.",
+                    tags: ['Python', 'BigQuery', 'Pandas', 'Ibis', 'PyArrow'],
+                  },
+                ].map((proj, index) => (
+                  <div key={proj.name} className={`card transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: `${400 + index * 100}ms` }}>
+                    <div className="flex items-center gap-2 mb-2">
+                      <h4 className="text-lg" style={{ color: 'var(--text-primary)' }}>{proj.name}</h4>
+                      <span className="text-xs py-0.5 px-2 rounded-full font-medium" style={{ background: 'var(--accent-light)', color: 'var(--accent-dark)' }}>{proj.status}</span>
+                    </div>
+                    <p className="text-sm leading-relaxed mb-3" style={{ color: 'var(--text-secondary)' }}>{proj.description}</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {proj.tags.map((tag) => (
+                        <span key={tag} className="text-xs py-0.5 px-2 rounded font-mono" style={{ background: 'var(--bg-secondary)', color: 'var(--text-tertiary)', border: '1px solid var(--border-light)' }}>{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
