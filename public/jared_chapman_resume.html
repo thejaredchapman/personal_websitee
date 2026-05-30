@@ -31,7 +31,6 @@
     min-height: 100vh;
   }
 
-  /* Print / A4 shell */
   .page {
     max-width: 860px;
     margin: 40px auto;
@@ -41,7 +40,6 @@
     overflow: hidden;
   }
 
-  /* Decorative sidebar stripe */
   .page::before {
     content: '';
     position: absolute;
@@ -75,9 +73,7 @@
     color: var(--ink);
   }
 
-  .name span {
-    color: var(--orange);
-  }
+  .name span { color: var(--orange); }
 
   .tagline {
     font-family: 'DM Mono', monospace;
@@ -121,13 +117,11 @@
     align-items: start;
   }
 
-  /* Main column */
   .main {
     padding: 40px 40px 52px 62px;
     border-right: 1.5px solid var(--rule);
   }
 
-  /* Sidebar column */
   .side {
     padding: 40px 40px 52px 36px;
   }
@@ -137,9 +131,7 @@
     margin-bottom: 38px;
   }
 
-  .section:last-child {
-    margin-bottom: 0;
-  }
+  .section:last-child { margin-bottom: 0; }
 
   .section-label {
     font-family: 'DM Mono', monospace;
@@ -240,6 +232,68 @@
     padding-left: 14px;
   }
 
+  /* ─── PROJECTS ─── */
+  .project-item {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed var(--rule);
+  }
+
+  .project-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .project-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+
+  .project-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .project-status {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--orange);
+    background: var(--orange-pale);
+    border: 1px solid #F4C4A8;
+    border-radius: 3px;
+    padding: 2px 7px;
+  }
+
+  .project-desc {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin-bottom: 8px;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .project-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    color: var(--muted);
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 2px 7px;
+  }
+
   /* ─── SIDEBAR SECTIONS ─── */
   .skill-group {
     margin-bottom: 22px;
@@ -269,7 +323,6 @@
     padding: 3px 9px;
     border-radius: 3px;
     border: 1px solid var(--rule);
-    transition: all 0.15s;
   }
 
   .tag.highlight {
@@ -280,7 +333,7 @@
 
   /* ─── CERT ITEMS ─── */
   .cert-item {
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
 
   .cert-name {
@@ -315,28 +368,6 @@
     margin-top: 2px;
   }
 
-  /* ─── OPEN SOURCE ─── */
-  .oss-item {
-    background: var(--orange-pale);
-    border: 1px solid #F4C4A8;
-    border-radius: 6px;
-    padding: 14px;
-    margin-bottom: 12px;
-  }
-
-  .oss-name {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--orange);
-    margin-bottom: 4px;
-  }
-
-  .oss-desc {
-    font-size: 12px;
-    color: var(--ink-soft);
-    line-height: 1.5;
-  }
-
   /* ─── PRINT ─── */
   @media print {
     body { background: white; }
@@ -358,13 +389,14 @@
   <!-- ══ HEADER ══ -->
   <header>
     <div class="name">Jared <span>Chapman</span></div>
-    <div class="tagline">Technical Partner Support &nbsp;·&nbsp; AI/LLM Systems &nbsp;·&nbsp; Google Alumni</div>
+    <div class="tagline">AI/LLM Systems &nbsp;·&nbsp; Developer Enablement &nbsp;·&nbsp; Google Alumni</div>
     <div class="contact-row">
       <div class="contact-item"><span class="dot"></span>thejaredchapman@gmail.com</div>
       <div class="contact-item"><span class="dot"></span>(404) 886-2473</div>
       <div class="contact-item"><span class="dot"></span>linkedin.com/in/thejaredchapman</div>
       <div class="contact-item"><span class="dot"></span>github.com/thejaredchapman</div>
       <div class="contact-item"><span class="dot"></span>thejaredchapman.com</div>
+      <div class="contact-item"><span class="dot"></span>Los Angeles, CA</div>
     </div>
   </header>
 
@@ -376,7 +408,7 @@
       <!-- Summary -->
       <div class="section">
         <div class="section-label">Profile</div>
-        <p class="summary-text">Technical partner support specialist and Google alumnus with 3+ years owning developer support functions end-to-end — troubleshooting API integrations at scale, building community programs, and authoring documentation that eliminates repeat partner questions. At AbbVie, designed and ran the full developer support infrastructure for an enterprise AI platform: scaled enablement programs, 1:1 technical support, monthly developer community events, and API documentation adopted org-wide. At Google (BigQuery DataFrames, Searchmark), shipped production APIs and contributed to open-source — so when partners file technical issues, I can read and write the code behind them.</p>
+        <p class="summary-text">Google-trained software engineer specializing in AI/LLM systems, developer enablement, and technical solutions engineering. Built AbbVie's enterprise AI support infrastructure — production LLM tooling adopted org-wide, monthly technical sessions for 300+ engineers, and API documentation that eliminated support tickets. Translates complex systems to two audiences in the same afternoon: engineers debugging an API and executives asking why it matters. Skilled in Python, React, FastAPI, REST, gRPC, and deploying Generative AI applications in regulated enterprise environments.</p>
       </div>
 
       <!-- Experience -->
@@ -385,17 +417,18 @@
 
         <div class="job">
           <div class="job-header">
-            <div class="job-title">Developer Support Engineer — ILIAD &amp; Go/AI</div>
+            <div class="job-title">Developer Support, Generative AI Applications</div>
             <div class="job-date">Aug 2024 – Present</div>
           </div>
           <div class="job-company">AbbVie · Los Angeles, CA</div>
           <ul>
-            <li>Led org-wide AI enablement for AbbVie employees across functions — advising on prompting strategies, model selection for data ingestion, and how to transform data structures based on tool and use case requirements.</li>
-            <li>Built and led monthly technical sessions for ~300 engineers (front-end and back-end) on Go/AI, AbbVie's enterprise AI platform — covering RAG architecture, tokenization, and REST API integration. Paired group sessions with 1:1 support to ensure engineers understood not just how to use the system but why it works.</li>
-            <li>Served as primary technical liaison between engineering and cross-functional partner teams, owning escalation and resolution workflows for LLM REST API integration failures — diagnosing unexpected behavior, reproducing failures in isolation, and coordinating fixes with engineering.</li>
-            <li>Authored canonical API documentation, troubleshooting guides, and setup resources adopted org-wide; reduced new-engineer onboarding friction through structured Claude Code environment configuration and step-by-step integration walkthroughs.</li>
-            <li>Consulted engineering teams on LLM model selection, architectural fit, and Responsible AI standards, translating business requirements into technical configurations and ensuring alignment with enterprise security and compliance constraints.</li>
-            <li>Designed and deployed LLM-powered developer tooling using Claude and other large language models, enabling engineers to query enterprise data via natural language and accelerating internal AI capability development.</li>
+            <li>Built ILIAD LiteLLM Model Explorer (full-stack, solo ownership) — React 18 + Tailwind CSS + Vite frontend; FastAPI async proxy backend with server-side API key injection serving 160+ LLMs (OpenAI, Anthropic, Google, Meta, Mistral, DeepSeek); features include API Playground with real-time token usage tracking, A/B multi-model comparison, LLM-as-judge grading across 5 dimensions, and rate limiting; 111 tests across 10 suites covering components, interactions, and edge cases.</li>
+            <li>Developed Enterprise RAG pipeline enabling employees to query 8 internal developer repositories using natural language — 2,800+ document chunks with overlapping chunking strategy, L2-normalized embeddings, cosine-similarity cache (0.95 threshold) for instant repeat-query responses; automatic enforcement of AbbVie data classification policy, GxP regulations, and SLC security policies; Discourse bot auto-replying to unanswered compliance threads with source-cited AI answers. Stack: Python, Flask, FAISS, GPT-4o, LiteLLM, SSE, Discourse API.</li>
+            <li>Served as primary technical resource for LLM integration and prompt engineering issues across the organization — diagnosed API failures, debugged prompt outputs, reproduced bugs, coordinated fixes with engineering teams, and translated technical constraints into actionable guidance for developers and non-technical stakeholders.</li>
+            <li>Drove Claude Code adoption enterprise-wide through hands-on guidance, setup documentation, and practical usage examples; authored installation, troubleshooting, and usage guides distributed across the developer community; Claude Code became a preferred developer tool across AbbVie engineering.</li>
+            <li>Facilitated monthly technical sessions for ~300 engineers embedded across 7 internal developer communities (including AI Quest and the Data Science Committee); curated AI literacy content, synthesized findings, and delivered actionable takeaways for technical and non-technical audiences.</li>
+            <li>Authored org-wide technical documentation — API integration guides, prompt engineering references, LLM troubleshooting playbooks, setup walkthroughs, and the "Should I?" decision framework adopted company-wide to guide appropriate AI use per corporate policy.</li>
+            <li>Collaborated with legal, security, and privacy teams to define data governance boundaries for LLM tool usage in a regulated pharmaceutical environment; consulted on Responsible AI standards, security configurations, and compliance requirements for enterprise AI deployments.</li>
           </ul>
         </div>
 
@@ -406,10 +439,8 @@
           </div>
           <div class="job-company">Google · Chicago, IL</div>
           <ul>
-            <li>Refactored the Searchmark API using Java gRPC and Protocol Buffers, improving client onboarding efficiency and reducing integration friction for new consumers.</li>
-            <li>Designed testable, maintainable code architecture for a critical internal performance measurement tool used across Google engineering teams.</li>
-            <li>Reduced CPU usage for distributed query execution across Google's internal performance testing infrastructure via automated deployment.</li>
-            <li>Maintained high test coverage through interface-driven unit tests, keeping the Searchmark codebase reliable for downstream partner teams.</li>
+            <li>Refactored Searchmark's internal API using Java gRPC and Protocol Buffers, reducing integration friction for new engineering teams onboarding to the service.</li>
+            <li>Reduced CPU usage for distributed query execution across Google's internal performance testing infrastructure through automated deployment.</li>
           </ul>
         </div>
 
@@ -420,26 +451,80 @@
           </div>
           <div class="job-company">Google · Chicago, IL</div>
           <ul>
-            <li>Extended the BigQuery Python API for public release, writing and testing datetime method APIs using Pandas, Ibis, and PyArrow — directly enabling external developer adoption at scale.</li>
-            <li>Authored a full design document outlining engineering architecture and implementation plan for a new BigQuery DataFrames feature (PRD-equivalent).</li>
-            <li>Contributed to the Ibis open-source library for cross-compatibility with Pandas, supporting the broader ecosystem of developers building on BigQuery.</li>
-            <li>Built automated test suites and debugged edge cases to meet quality standards ahead of public API releases for external partners.</li>
+            <li>Extended the BigQuery Python API for public release — implemented and tested datetime method APIs using Pandas, Ibis, and PyArrow, directly enabling external developer adoption at scale.</li>
+            <li>Contributed microsecond datetime support to the Ibis open-source library — implemented cross-compatibility with Pandas for SQL-via-Python operations; used in production by data engineers globally.</li>
+            <li>Authored the engineering architecture and implementation design document for a new BigQuery DataFrames feature end-to-end.</li>
           </ul>
         </div>
 
         <div class="job">
           <div class="job-header">
-            <div class="job-title">Appraisal Desk Team Lead</div>
+            <div class="job-title">Team Lead, Appraisal Operations</div>
             <div class="job-date">May 2018 – Sep 2021</div>
           </div>
           <div class="job-company">Guaranteed Rate · Chicago, IL</div>
           <ul>
-            <li>Managed appraisal order workflows, issue escalations, and cross-functional service support across three client companies simultaneously.</li>
-            <li>Built daily operational dashboards by compiling and cleaning multi-system data, streamlining department reporting.</li>
+            <li>Managed appraisal workflows, escalations, and cross-functional service delivery across three simultaneous client accounts; built operational dashboards from multi-system data to streamline reporting.</li>
           </ul>
         </div>
 
       </div><!-- /experience -->
+
+      <!-- Projects -->
+      <div class="section">
+        <div class="section-label">Projects</div>
+
+        <div class="project-item">
+          <div class="project-header">
+            <div class="project-name">ILIAD LiteLLM Model Explorer</div>
+            <span class="project-status">Production</span>
+          </div>
+          <p class="project-desc">Full-stack LLM API gateway built solo from scratch: FastAPI async backend serving 160+ models across 6 providers, A/B multi-model comparison, LLM-as-judge grading across 5 dimensions, real-time token tracking, and rate limiting. 111 automated tests across 10 suites. Enterprise-deployed at AbbVie.</p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">FastAPI</span>
+            <span class="project-tag">React 18</span>
+            <span class="project-tag">Tailwind CSS</span>
+            <span class="project-tag">Vite</span>
+            <span class="project-tag">LiteLLM</span>
+            <span class="project-tag">FAISS</span>
+            <span class="project-tag">Claude Code</span>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-header">
+            <div class="project-name">Enterprise RAG Pipeline</div>
+            <span class="project-status">Production</span>
+          </div>
+          <p class="project-desc">Natural language access layer over 8 enterprise data repositories — 2,800+ document chunks, L2-normalized vector embeddings, cosine-similarity caching, automated compliance enforcement (GxP, data classification, security policy). Discourse bot for auto-cited AI replies. Built solo in Python.</p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Flask</span>
+            <span class="project-tag">FAISS</span>
+            <span class="project-tag">GPT-4o</span>
+            <span class="project-tag">LiteLLM</span>
+            <span class="project-tag">SSE</span>
+            <span class="project-tag">Discourse API</span>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-header">
+            <div class="project-name">BigQuery DataFrames Python API (Google)</div>
+            <span class="project-status">Open Source</span>
+          </div>
+          <p class="project-desc">Extended Google's BigQuery DataFrames public Python API with datetime method support. Contributed microsecond datetime cross-compatibility to the Ibis open-source library — used in production by data engineers globally.</p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">BigQuery</span>
+            <span class="project-tag">Pandas</span>
+            <span class="project-tag">Ibis</span>
+            <span class="project-tag">PyArrow</span>
+          </div>
+        </div>
+
+      </div><!-- /projects -->
 
     </div><!-- /main -->
 
@@ -451,75 +536,87 @@
         <div class="section-label">Skills</div>
 
         <div class="skill-group">
+          <div class="skill-group-label">AI / LLM</div>
+          <div class="skill-tags">
+            <span class="tag highlight">Claude Code</span>
+            <span class="tag highlight">Anthropic API</span>
+            <span class="tag highlight">LLM Integration</span>
+            <span class="tag">Large Language Models</span>
+            <span class="tag">Generative AI</span>
+            <span class="tag">RAG</span>
+            <span class="tag">Prompt Engineering</span>
+            <span class="tag">LiteLLM</span>
+            <span class="tag">FAISS</span>
+            <span class="tag">MCP</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
           <div class="skill-group-label">Languages</div>
           <div class="skill-tags">
             <span class="tag highlight">Python</span>
             <span class="tag highlight">Java</span>
             <span class="tag highlight">JavaScript</span>
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
+            <span class="tag">TypeScript</span>
           </div>
         </div>
 
         <div class="skill-group">
-          <div class="skill-group-label">Partner Support</div>
+          <div class="skill-group-label">Frontend</div>
           <div class="skill-tags">
-            <span class="tag highlight">Technical Troubleshooting</span>
-            <span class="tag">Community Programs</span>
-            <span class="tag">Scaled Enablement</span>
-            <span class="tag">Program Management</span>
+            <span class="tag">React 18</span>
+            <span class="tag">Tailwind CSS</span>
+            <span class="tag">Vite</span>
           </div>
         </div>
 
         <div class="skill-group">
-          <div class="skill-group-label">APIs &amp; Infra</div>
+          <div class="skill-group-label">Backend &amp; APIs</div>
           <div class="skill-tags">
-            <span class="tag highlight">GCP</span>
+            <span class="tag highlight">FastAPI</span>
+            <span class="tag">Flask</span>
+            <span class="tag">REST API Design</span>
             <span class="tag">gRPC</span>
             <span class="tag">Protocol Buffers</span>
-            <span class="tag">REST API Design</span>
+            <span class="tag">GraphQL</span>
+            <span class="tag">SSE</span>
           </div>
         </div>
 
         <div class="skill-group">
-          <div class="skill-group-label">Data</div>
+          <div class="skill-group-label">Data &amp; Cloud</div>
           <div class="skill-tags">
+            <span class="tag highlight">GCP</span>
             <span class="tag highlight">BigQuery</span>
             <span class="tag">PostgreSQL</span>
-            <span class="tag">Distributed Query Systems</span>
+            <span class="tag">PyArrow</span>
+            <span class="tag">Pandas</span>
           </div>
         </div>
 
         <div class="skill-group">
-          <div class="skill-group-label">AI / LLM</div>
+          <div class="skill-group-label">Developer Enablement</div>
           <div class="skill-tags">
-            <span class="tag highlight">LLM Integration</span>
-            <span class="tag highlight">Claude Code</span>
-            <span class="tag">Prompt Engineering</span>
-            <span class="tag">Generative AI Platforms</span>
-            <span class="tag">RAG</span>
+            <span class="tag">Developer Relations</span>
+            <span class="tag">Technical Documentation</span>
+            <span class="tag">Solutions Engineering</span>
+            <span class="tag">Technical Training</span>
+            <span class="tag">Community Building</span>
           </div>
         </div>
 
         <div class="skill-group">
           <div class="skill-group-label">Tooling</div>
           <div class="skill-tags">
-            <span class="tag">Git / GitHub</span>
+            <span class="tag">Git</span>
+            <span class="tag">GitHub</span>
             <span class="tag">Agile</span>
             <span class="tag">Automated Testing</span>
-            <span class="tag">Technical Documentation</span>
+            <span class="tag">CI/CD</span>
           </div>
         </div>
-      </div>
 
-      <!-- Open Source -->
-      <div class="section">
-        <div class="section-label">Open Source</div>
-        <div class="oss-item">
-          <div class="oss-name">Ibis — Python Data Framework</div>
-          <div class="oss-desc">Contributed microsecond datetime support and test coverage, enabling higher-precision SQL-via-Python time handling for the open-source data community.</div>
-        </div>
-      </div>
+      </div><!-- /skills -->
 
       <!-- Certifications -->
       <div class="section">
@@ -531,20 +628,41 @@
         </div>
 
         <div class="cert-item">
+          <div class="cert-name">Claude Code 101</div>
+          <div class="cert-sub">Anthropic · 2026</div>
+        </div>
+
+        <div class="cert-item">
+          <div class="cert-name">Claude 101</div>
+          <div class="cert-sub">Anthropic · 2026</div>
+        </div>
+
+        <div class="cert-item">
           <div class="cert-name">AI Fluency: Framework &amp; Foundations</div>
           <div class="cert-sub">Anthropic · 2026</div>
         </div>
 
         <div class="cert-item">
-          <div class="cert-name">Fundamentals to Become a Machine Learning Engineer</div>
-          <div class="cert-sub">LinkedIn Learning · 2026</div>
+          <div class="cert-name">Introduction to Agent Skills</div>
+          <div class="cert-sub">Anthropic · 2026</div>
         </div>
 
         <div class="cert-item">
-          <div class="cert-name">Google Data Analytics Professional Certificate</div>
-          <div class="cert-sub">Coursera · 2022</div>
+          <div class="cert-name">Introduction to Claude Cowork</div>
+          <div class="cert-sub">Anthropic · 2026</div>
         </div>
-      </div>
+
+        <div class="cert-item">
+          <div class="cert-name">Introduction to Subagents</div>
+          <div class="cert-sub">Anthropic · 2026</div>
+        </div>
+
+        <div class="cert-item">
+          <div class="cert-name">Model Context Protocol: Advanced Topics</div>
+          <div class="cert-sub">Anthropic · 2026</div>
+        </div>
+
+      </div><!-- /certifications -->
 
       <!-- Education -->
       <div class="section">
@@ -552,14 +670,15 @@
 
         <div class="edu-item">
           <div class="edu-degree">Software Engineering Bootcamp</div>
-          <div class="edu-school">Multiverse · 2024<br>Full-stack software engineering and Agile project management; contributed directly to Google's production codebase</div>
+          <div class="edu-school">Multiverse · 2022 – 2024<br>Apprenticeship-based full-stack engineering program; deployed production code to Google's codebase during the program.</div>
         </div>
 
         <div class="edu-item">
-          <div class="edu-degree">B.S. — Georgia State University</div>
-          <div class="edu-school">2014</div>
+          <div class="edu-degree">B.S., Communications</div>
+          <div class="edu-school">Georgia State University · 2014</div>
         </div>
-      </div>
+
+      </div><!-- /education -->
 
     </div><!-- /side -->
   </div><!-- /body -->
