@@ -63,6 +63,51 @@ const projects = [
   },
 ]
 
+const devImprovements = [
+  {
+    name: 'Claude Code Updates',
+    status: 'Open Source',
+    description: 'Curated changelog tracking Claude Code feature updates, improvements, and new capabilities over time.',
+    tags: ['Claude Code', 'AI', 'Changelog'],
+    url: 'https://github.com/thejaredchapman/claude-code-updates',
+  },
+  {
+    name: '4D Orchestrator MCP',
+    status: 'Open Source',
+    description: 'An MCP server enabling multi-agent orchestration using the 4D framework for complex AI workflow coordination.',
+    tags: ['MCP', 'AI', 'Orchestration'],
+    url: 'https://github.com/thejaredchapman/4d-orchestrator-mcp',
+  },
+  {
+    name: 'Claude Code Deep Dive',
+    status: 'Open Source',
+    description: 'A comprehensive presentation deck for a technical deep dive into Claude Code architecture, features, and best practices.',
+    tags: ['Claude Code', 'Deck', 'AI'],
+    url: 'https://github.com/thejaredchapman/claude-code-deep-dive-deck',
+  },
+  {
+    name: 'Claude Code Guide',
+    status: 'Open Source',
+    description: 'A practical guide for getting the most out of Claude Code, covering tips, workflows, and advanced usage patterns.',
+    tags: ['Claude Code', 'AI', 'Guide'],
+    url: 'https://github.com/thejaredchapman/claude-code-guide',
+  },
+  {
+    name: 'AI Explained: Deep Learn',
+    status: 'Open Source',
+    description: 'Deep learning concepts explained clearly, bridging the gap between AI theory and practical implementation.',
+    tags: ['AI', 'Deep Learning', 'Education'],
+    url: 'https://github.com/thejaredchapman/ai_explained_deep_learn',
+  },
+  {
+    name: 'Ask the Docs',
+    status: 'Open Source',
+    description: 'A documentation query tool that lets you ask natural language questions against any codebase or documentation set.',
+    tags: ['AI', 'RAG', 'Developer Tools'],
+    url: 'https://github.com/thejaredchapman/ask-the-docs',
+  },
+]
+
 const education = [
   { school: 'Multiverse', degree: 'Software Engineering Bootcamp', year: '2022 - 2024' },
   { school: 'Georgia State University', degree: 'B.S., Communications', year: '2014' },
@@ -141,7 +186,7 @@ function ResumeApp() {
 
       {/* Projects */}
       <h3 className="text-sm font-bold uppercase tracking-wider mb-3" style={{ color: 'var(--accent-500)' }}>Projects</h3>
-      <div className="flex flex-col gap-4 mb-6">
+      <div className="flex flex-col gap-4 mb-4">
         {projects.map((proj) => (
           <div key={proj.name} className="rounded-xl p-4 border" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border-light)' }}>
             <div className="flex items-center gap-2 mb-1">
@@ -155,6 +200,31 @@ function ResumeApp() {
               ))}
             </div>
           </div>
+        ))}
+      </div>
+
+      <p className="text-[10px] font-bold uppercase tracking-wider mb-2" style={{ color: 'var(--text-tertiary)' }}>Developer Improvements</p>
+      <div className="flex flex-col gap-3 mb-6">
+        {devImprovements.map((proj) => (
+          <a
+            key={proj.name}
+            href={proj.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group rounded-xl p-4 border no-underline transition-all duration-200 hover:border-[var(--accent-300)]"
+            style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border-light)', color: 'inherit' }}
+          >
+            <div className="flex items-center gap-2 mb-1">
+              <h4 className="font-semibold text-sm" style={{ color: 'var(--text-primary)' }}>{proj.name}</h4>
+              <span className="text-[10px] py-0.5 px-2 rounded-full font-medium" style={{ background: 'var(--accent-100)', color: 'var(--accent-700)' }}>{proj.status}</span>
+            </div>
+            <p className="text-xs leading-relaxed mb-2" style={{ color: 'var(--text-secondary)' }}>{proj.description}</p>
+            <div className="flex flex-wrap gap-1">
+              {proj.tags.map((tag) => (
+                <span key={tag} className="text-[10px] py-0.5 px-1.5 rounded font-mono" style={{ background: 'var(--bg-primary)', color: 'var(--text-tertiary)', border: '1px solid var(--border-light)' }}>{tag}</span>
+              ))}
+            </div>
+          </a>
         ))}
       </div>
 

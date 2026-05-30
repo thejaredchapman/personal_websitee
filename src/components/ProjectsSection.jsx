@@ -1,10 +1,100 @@
 import { useState } from 'react'
 import { useScrollAnimation, useStaggerAnimation } from '../hooks/useScrollAnimation'
 
+const devProjects = [
+  {
+    title: 'Claude Code Updates',
+    description: 'Curated changelog tracking Claude Code feature updates, improvements, and new capabilities over time.',
+    tags: ['Claude Code', 'AI', 'Changelog'],
+    url: 'https://github.com/thejaredchapman/claude-code-updates',
+    cta: 'View on GitHub',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    )
+  },
+  {
+    title: '4D Orchestrator MCP',
+    description: 'An MCP server enabling multi-agent orchestration using the 4D framework for complex AI workflow coordination.',
+    tags: ['MCP', 'AI', 'Orchestration'],
+    url: 'https://github.com/thejaredchapman/4d-orchestrator-mcp',
+    cta: 'View on GitHub',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <circle cx="12" cy="12" r="3" />
+        <circle cx="4" cy="6" r="2" />
+        <circle cx="20" cy="6" r="2" />
+        <circle cx="4" cy="18" r="2" />
+        <circle cx="20" cy="18" r="2" />
+        <path d="M6 6.5l4 4M14 13.5l4 4M6 17.5l4-4M14 10.5l4-4" strokeLinecap="round" />
+      </svg>
+    )
+  },
+  {
+    title: 'Claude Code Deep Dive',
+    description: 'A comprehensive presentation deck for a technical deep dive into Claude Code architecture, features, and best practices.',
+    tags: ['Claude Code', 'Deck', 'AI'],
+    url: 'https://github.com/thejaredchapman/claude-code-deep-dive-deck',
+    cta: 'View on GitHub',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <rect x="2" y="3" width="20" height="14" rx="2" />
+        <path d="M8 21h8M12 17v4" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M9 10l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    )
+  },
+  {
+    title: 'Claude Code Guide',
+    description: 'A practical guide for getting the most out of Claude Code, covering tips, workflows, and advanced usage patterns.',
+    tags: ['Claude Code', 'AI', 'Guide'],
+    url: 'https://github.com/thejaredchapman/claude-code-guide',
+    cta: 'View on GitHub',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <path d="M4 19.5A2.5 2.5 0 016.5 17H20" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M9 7h6M9 11h6M9 15h4" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    )
+  },
+  {
+    title: 'AI Explained: Deep Learn',
+    description: 'Deep learning concepts explained clearly, bridging the gap between AI theory and practical implementation.',
+    tags: ['AI', 'Deep Learning', 'Education'],
+    url: 'https://github.com/thejaredchapman/ai_explained_deep_learn',
+    cta: 'View on GitHub',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <path d="M12 2a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0 014-4z" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M4 14a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2z" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M7 22h10M8 18v4M16 18v4" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    )
+  },
+  {
+    title: 'Ask the Docs',
+    description: 'A documentation query tool that lets you ask natural language questions against any codebase or documentation set.',
+    tags: ['AI', 'RAG', 'Developer Tools'],
+    url: 'https://github.com/thejaredchapman/ask-the-docs',
+    cta: 'View on GitHub',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <path d="M9 12h6M9 16h4M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V8z" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M14 3v5h5" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="16" cy="17" r="2.5" />
+        <path d="M18 18.5l1.5 1.5" strokeLinecap="round" />
+      </svg>
+    )
+  },
+]
+
 function ProjectsSection() {
   const [hoveredIndex, setHoveredIndex] = useState(null)
   const [sectionRef, isVisible] = useScrollAnimation({ threshold: 0.05 })
   const [cardsRef, visibleCards] = useStaggerAnimation(12, { baseDelay: 100 })
+  const [devCardsRef, visibleDevCards] = useStaggerAnimation(6, { baseDelay: 100 })
 
   const projects = [
     {
@@ -207,6 +297,42 @@ function ProjectsSection() {
               </span>
             </a>
           ))}
+        </div>
+
+        <div className="mt-20">
+          <h3 className={`text-2xl font-bold mb-2 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ color: 'var(--text-primary)' }}>Developer Improvements</h3>
+          <p className={`mb-10 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ color: 'var(--text-secondary)' }}>
+            Tools, guides, and resources for developer workflows
+          </p>
+          <div ref={devCardsRef} className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-8 max-w-[1100px] mx-auto">
+            {devProjects.map((project, index) => (
+              <a
+                key={index}
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`card card-top-border relative overflow-visible no-underline flex flex-col group transition-all duration-700 ${visibleDevCards.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+                style={{ color: 'inherit' }}
+              >
+                <div className="w-12 h-12 mb-4 transition-all duration-300 group-hover:scale-120 group-hover:rotate-10" style={{ color: 'var(--accent-500)' }}>
+                  {project.icon}
+                </div>
+                <h3 className="text-2xl mb-3" style={{ color: 'var(--text-primary)' }}>{project.title}</h3>
+                <p className="mb-6 leading-7 flex-1" style={{ color: 'var(--text-secondary)' }}>{project.description}</p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.tags.map((tag, tagIndex) => (
+                    <span key={tagIndex} className="tag">{tag}</span>
+                  ))}
+                </div>
+                <span className="inline-flex items-center gap-2 font-semibold text-[0.95rem] transition-all duration-300 group-hover:gap-3" style={{ color: 'var(--accent-500)' }}>
+                  {project.cta}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true">
+                    <path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>

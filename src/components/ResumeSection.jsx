@@ -247,6 +247,38 @@ function ResumeSection() {
                   </div>
                 ))}
               </div>
+
+              <p className={`text-sm font-semibold uppercase tracking-widest mt-8 mb-4 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ color: 'var(--text-tertiary)', transitionDelay: '700ms' }}>Developer Improvements</p>
+              <div className="flex flex-col gap-4">
+                {[
+                  { name: 'Claude Code Updates', status: 'Open Source', description: 'Curated changelog tracking Claude Code feature updates, improvements, and new capabilities over time.', tags: ['Claude Code', 'AI', 'Changelog'], url: 'https://github.com/thejaredchapman/claude-code-updates' },
+                  { name: '4D Orchestrator MCP', status: 'Open Source', description: 'An MCP server enabling multi-agent orchestration using the 4D framework for complex AI workflow coordination.', tags: ['MCP', 'AI', 'Orchestration'], url: 'https://github.com/thejaredchapman/4d-orchestrator-mcp' },
+                  { name: 'Claude Code Deep Dive', status: 'Open Source', description: 'A comprehensive presentation deck for a technical deep dive into Claude Code architecture, features, and best practices.', tags: ['Claude Code', 'Deck', 'AI'], url: 'https://github.com/thejaredchapman/claude-code-deep-dive-deck' },
+                  { name: 'Claude Code Guide', status: 'Open Source', description: 'A practical guide for getting the most out of Claude Code, covering tips, workflows, and advanced usage patterns.', tags: ['Claude Code', 'AI', 'Guide'], url: 'https://github.com/thejaredchapman/claude-code-guide' },
+                  { name: 'AI Explained: Deep Learn', status: 'Open Source', description: 'Deep learning concepts explained clearly, bridging the gap between AI theory and practical implementation.', tags: ['AI', 'Deep Learning', 'Education'], url: 'https://github.com/thejaredchapman/ai_explained_deep_learn' },
+                  { name: 'Ask the Docs', status: 'Open Source', description: 'A documentation query tool that lets you ask natural language questions against any codebase or documentation set.', tags: ['AI', 'RAG', 'Developer Tools'], url: 'https://github.com/thejaredchapman/ask-the-docs' },
+                ].map((proj, index) => (
+                  <a
+                    key={proj.name}
+                    href={proj.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`card no-underline group transition-all duration-700 hover:border-[var(--accent-300)] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                    style={{ color: 'inherit', transitionDelay: `${700 + index * 80}ms` }}
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <h4 className="text-lg" style={{ color: 'var(--text-primary)' }}>{proj.name}</h4>
+                      <span className="text-xs py-0.5 px-2 rounded-full font-medium" style={{ background: 'var(--accent-light)', color: 'var(--accent-dark)' }}>{proj.status}</span>
+                    </div>
+                    <p className="text-sm leading-relaxed mb-3" style={{ color: 'var(--text-secondary)' }}>{proj.description}</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {proj.tags.map((tag) => (
+                        <span key={tag} className="text-xs py-0.5 px-2 rounded font-mono" style={{ background: 'var(--bg-secondary)', color: 'var(--text-tertiary)', border: '1px solid var(--border-light)' }}>{tag}</span>
+                      ))}
+                    </div>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
 
