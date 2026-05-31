@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useWindows } from '../../context/WindowContext'
 
 const devProjects = [
   { title: 'Claude Code Updates', desc: 'Curated changelog tracking Claude Code feature updates, improvements, and new capabilities over time.', tags: ['Claude Code', 'AI', 'Changelog'], url: 'https://github.com/thejaredchapman/claude-code-updates' },
@@ -24,13 +25,62 @@ const projects = [
   { title: 'PyTorch Interactive Guide', desc: 'Interactive educational tool for learning PyTorch and ML fundamentals.', tags: ['React', 'ML'], url: 'https://pytorch-interactive-guide.vercel.app/' },
 ]
 
+const workProjectsSummary = [
+  { name: 'ILIAD LiteLLM Model Explorer', company: 'AbbVie', status: 'Production', tags: ['FastAPI', 'React 18', 'LiteLLM'] },
+  { name: 'Enterprise RAG Pipeline', company: 'AbbVie', status: 'Production', tags: ['Python', 'FAISS', 'GPT-4o'] },
+  { name: 'BigQuery DataFrames Python API', company: 'Google', status: 'Open Source', tags: ['Python', 'BigQuery', 'Pandas'] },
+]
+
 function ProjectsApp() {
   const [hoveredTitle, setHoveredTitle] = useState(null)
+  const { openWindow } = useWindows()
 
   return (
     <div className="p-6 max-[768px]:p-4">
       <h2 className="text-xl font-bold mb-1" style={{ color: 'var(--text-primary)' }}>Projects</h2>
       <p className="text-sm mb-5" style={{ color: 'var(--text-tertiary)' }}>Things I've built and shipped</p>
+
+      {/* Work Projects */}
+      <div className="mb-6 rounded-xl border overflow-hidden" style={{ borderColor: 'var(--border-light)', background: 'var(--bg-secondary)' }}>
+        <div className="h-0.5 w-full" style={{ background: 'linear-gradient(90deg, var(--accent-500), var(--accent-300))' }} />
+        <div className="p-4">
+          <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
+            <div>
+              <h3 className="font-bold text-sm" style={{ color: 'var(--text-primary)' }}>Work Projects</h3>
+              <p className="text-xs mt-0.5" style={{ color: 'var(--text-tertiary)' }}>Production systems built at AbbVie & Google</p>
+            </div>
+            <button
+              onClick={() => openWindow('workprojects')}
+              className="flex items-center gap-1.5 py-1.5 px-3 rounded-lg text-xs font-medium border-none cursor-pointer transition-opacity hover:opacity-80"
+              style={{ background: 'var(--accent-500)', color: 'white' }}
+            >
+              View Case Studies
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3 h-3">
+                <path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+          </div>
+          <div className="flex flex-col gap-2">
+            {workProjectsSummary.map((proj) => (
+              <div key={proj.name} className="flex items-center justify-between gap-3 py-2 px-3 rounded-lg" style={{ background: 'var(--bg-primary)' }}>
+                <div className="min-w-0">
+                  <p className="text-xs font-semibold truncate" style={{ color: 'var(--text-primary)' }}>{proj.name}</p>
+                  <p className="text-[10px]" style={{ color: 'var(--text-tertiary)' }}>{proj.company}</p>
+                </div>
+                <div className="flex items-center gap-1.5 shrink-0">
+                  {proj.tags.map((t) => (
+                    <span key={t} className="text-[10px] py-0.5 px-1.5 rounded font-mono hidden sm:inline-block" style={{ background: 'var(--bg-secondary)', color: 'var(--text-tertiary)', border: '1px solid var(--border-light)' }}>{t}</span>
+                  ))}
+                  <span className="text-[10px] py-0.5 px-2 rounded-full font-semibold" style={{ background: 'var(--accent-100)', color: 'var(--accent-700)' }}>{proj.status}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Personal Projects */}
+      <p className="text-[10px] font-bold uppercase tracking-wider mb-3" style={{ color: 'var(--text-tertiary)' }}>Personal Projects</p>
 
       <div className="grid grid-cols-2 gap-3 max-[768px]:grid-cols-1">
         {projects.map((p) => (

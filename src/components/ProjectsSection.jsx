@@ -257,6 +257,71 @@ function ProjectsSection() {
           Things I've built and shipped
         </p>
 
+        {/* Work Projects */}
+        <div className={`mb-16 transition-all duration-700 delay-150 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>Work Projects</h3>
+          <p className="mb-8" style={{ color: 'var(--text-secondary)' }}>Production systems built professionally at AbbVie and Google</p>
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6 max-w-[1100px] mx-auto">
+            {[
+              {
+                name: 'ILIAD LiteLLM Model Explorer',
+                company: 'AbbVie',
+                period: 'Aug 2024 – Present',
+                status: 'Production',
+                description: 'Full-stack LLM API gateway serving 160+ models across 6 providers. Features A/B multi-model comparison, LLM-as-judge grading across 5 dimensions, real-time token tracking, and rate limiting. 111 automated tests. Enterprise-deployed org-wide.',
+                tags: ['Python', 'FastAPI', 'React 18', 'LiteLLM', 'FAISS', 'Claude Code'],
+              },
+              {
+                name: 'Enterprise RAG Pipeline',
+                company: 'AbbVie',
+                period: 'Aug 2024 – Present',
+                status: 'Production',
+                description: 'Natural language access over 8 internal repositories — 2,800+ document chunks, L2-normalized embeddings, cosine-similarity caching (0.95 threshold), and automated GxP/compliance enforcement. Discourse bot for auto-cited AI replies.',
+                tags: ['Python', 'Flask', 'FAISS', 'GPT-4o', 'LiteLLM', 'SSE'],
+              },
+              {
+                name: 'BigQuery DataFrames Python API',
+                company: 'Google',
+                period: 'Sep 2022 – Aug 2023',
+                status: 'Open Source',
+                description: "Extended Google's BigQuery DataFrames public Python API with datetime method support. Contributed microsecond datetime cross-compatibility to the Ibis open-source library — used in production by data engineers globally.",
+                tags: ['Python', 'BigQuery', 'Pandas', 'Ibis', 'PyArrow'],
+                url: 'https://github.com/googleapis/python-bigquery-dataframes',
+              },
+            ].map((proj, index) => (
+              <div
+                key={proj.name}
+                className={`card card-top-border flex flex-col transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+                style={{ transitionDelay: `${200 + index * 100}ms` }}
+              >
+                <div className="flex items-start justify-between gap-2 mb-1 flex-wrap">
+                  <h4 className="text-xl" style={{ color: 'var(--text-primary)' }}>{proj.name}</h4>
+                  <span className="text-xs py-0.5 px-2 rounded-full font-medium shrink-0" style={{ background: 'var(--accent-light)', color: 'var(--accent-dark)' }}>{proj.status}</span>
+                </div>
+                <p className="text-sm font-medium mb-3" style={{ color: 'var(--accent-500)' }}>{proj.company} · {proj.period}</p>
+                <p className="text-sm leading-relaxed mb-4 flex-1" style={{ color: 'var(--text-secondary)' }}>{proj.description}</p>
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {proj.tags.map((tag) => (
+                    <span key={tag} className="text-xs py-0.5 px-2 rounded font-mono" style={{ background: 'var(--bg-secondary)', color: 'var(--text-tertiary)', border: '1px solid var(--border-light)' }}>{tag}</span>
+                  ))}
+                </div>
+                {proj.url ? (
+                  <a href={proj.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 font-semibold text-[0.95rem] no-underline transition-all duration-300 hover:gap-3" style={{ color: 'var(--accent-500)' }}>
+                    View on GitHub
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                  </a>
+                ) : (
+                  <span className="text-sm font-medium" style={{ color: 'var(--text-tertiary)' }}>Internal / Enterprise</span>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Personal Projects */}
+        <h3 className={`text-2xl font-bold mb-2 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ color: 'var(--text-primary)' }}>Personal Projects</h3>
+        <p className={`mb-10 transition-all duration-700 delay-[350ms] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ color: 'var(--text-secondary)' }}>Side projects, tools, and apps I've built for fun or learning</p>
+
         <div ref={cardsRef} className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-8 max-w-[1100px] mx-auto">
           {projects.map((project, index) => (
             <a
