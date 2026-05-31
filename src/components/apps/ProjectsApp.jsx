@@ -1,16 +1,34 @@
 import { useState } from 'react'
-import { useWindows } from '../../context/WindowContext'
 
-const devProjects = [
-  { title: 'Claude Code Updates', desc: 'Curated changelog tracking Claude Code feature updates, improvements, and new capabilities over time.', tags: ['Claude Code', 'AI', 'Changelog'], url: 'https://github.com/thejaredchapman/claude-code-updates' },
-  { title: '4D Orchestrator MCP', desc: 'An MCP server enabling multi-agent orchestration using the 4D framework for complex AI workflow coordination.', tags: ['MCP', 'AI', 'Orchestration'], url: 'https://github.com/thejaredchapman/4d-orchestrator-mcp' },
-  { title: 'Claude Code Deep Dive', desc: 'A comprehensive presentation deck for a technical deep dive into Claude Code architecture, features, and best practices.', tags: ['Claude Code', 'Deck', 'AI'], url: 'https://github.com/thejaredchapman/claude-code-deep-dive-deck' },
-  { title: 'Claude Code Guide', desc: 'A practical guide for getting the most out of Claude Code, covering tips, workflows, and advanced usage patterns.', tags: ['Claude Code', 'AI', 'Guide'], url: 'https://github.com/thejaredchapman/claude-code-guide' },
-  { title: 'AI Explained: Deep Learn', desc: 'Deep learning concepts explained clearly, bridging the gap between AI theory and practical implementation.', tags: ['AI', 'Deep Learning', 'Education'], url: 'https://github.com/thejaredchapman/ai_explained_deep_learn' },
-  { title: 'Ask the Docs', desc: 'A documentation query tool that lets you ask natural language questions against any codebase or documentation set.', tags: ['AI', 'RAG', 'Developer Tools'], url: 'https://github.com/thejaredchapman/ask-the-docs' },
+const workProjects = [
+  {
+    name: 'ILIAD LiteLLM Model Explorer',
+    company: 'AbbVie',
+    period: 'Aug 2024 – Present',
+    status: 'Production',
+    desc: 'Full-stack LLM API gateway serving 160+ models across 6 providers. A/B multi-model comparison, LLM-as-judge grading across 5 quality dimensions, real-time token tracking, rate limiting, and 111 automated tests. Enterprise-deployed org-wide.',
+    tags: ['Python', 'FastAPI', 'React 18', 'LiteLLM', 'FAISS', 'Claude Code'],
+  },
+  {
+    name: 'Enterprise RAG Pipeline',
+    company: 'AbbVie',
+    period: 'Aug 2024 – Present',
+    status: 'Production',
+    desc: 'Natural language access over 8 internal repositories — 2,800+ document chunks, L2-normalized embeddings, cosine-similarity cache (0.95 threshold), and automated GxP/compliance enforcement. Discourse bot for auto-cited AI replies.',
+    tags: ['Python', 'Flask', 'FAISS', 'GPT-4o', 'LiteLLM', 'SSE'],
+  },
+  {
+    name: 'BigQuery DataFrames Python API',
+    company: 'Google',
+    period: 'Sep 2022 – Aug 2023',
+    status: 'Open Source',
+    desc: "Extended Google's BigQuery DataFrames public Python API with datetime method support. Contributed microsecond datetime cross-compatibility to the Ibis open-source library — used in production by data engineers globally.",
+    tags: ['Python', 'BigQuery', 'Pandas', 'Ibis', 'PyArrow'],
+    url: 'https://github.com/googleapis/python-bigquery-dataframes',
+  },
 ]
 
-const projects = [
+const personalProjects = [
   { title: 'AI Explorer', desc: 'Foundational vocabulary for understanding how modern AI is built, customized, and deployed.', tags: ['AI', 'Explanation', 'Concepts'], url: 'https://app-dun-phi.vercel.app/' },
   { title: 'LLM Frameworks', desc: 'Learn LLM orchestration frameworks like LangChain — chains, agents, and tools.', tags: ['React', 'AI', 'LLMs'], url: 'https://langchain-learning-app.vercel.app/' },
   { title: 'DJ Master Academy', desc: 'Training resource for mastering the Pioneer DDJ-FLX4 DJ controller.', tags: ['React', 'Music'], url: 'https://dj-master-academy.vercel.app/' },
@@ -25,15 +43,17 @@ const projects = [
   { title: 'PyTorch Interactive Guide', desc: 'Interactive educational tool for learning PyTorch and ML fundamentals.', tags: ['React', 'ML'], url: 'https://pytorch-interactive-guide.vercel.app/' },
 ]
 
-const workProjectsSummary = [
-  { name: 'ILIAD LiteLLM Model Explorer', company: 'AbbVie', status: 'Production', tags: ['FastAPI', 'React 18', 'LiteLLM'] },
-  { name: 'Enterprise RAG Pipeline', company: 'AbbVie', status: 'Production', tags: ['Python', 'FAISS', 'GPT-4o'] },
-  { name: 'BigQuery DataFrames Python API', company: 'Google', status: 'Open Source', tags: ['Python', 'BigQuery', 'Pandas'] },
+const devProjects = [
+  { title: 'Claude Code Updates', desc: 'Curated changelog tracking Claude Code feature updates, improvements, and new capabilities over time.', tags: ['Claude Code', 'AI', 'Changelog'], url: 'https://github.com/thejaredchapman/claude-code-updates' },
+  { title: '4D Orchestrator MCP', desc: 'An MCP server enabling multi-agent orchestration using the 4D framework for complex AI workflow coordination.', tags: ['MCP', 'AI', 'Orchestration'], url: 'https://github.com/thejaredchapman/4d-orchestrator-mcp' },
+  { title: 'Claude Code Deep Dive', desc: 'A comprehensive presentation deck for a technical deep dive into Claude Code architecture, features, and best practices.', tags: ['Claude Code', 'Deck', 'AI'], url: 'https://github.com/thejaredchapman/claude-code-deep-dive-deck' },
+  { title: 'Claude Code Guide', desc: 'A practical guide for getting the most out of Claude Code, covering tips, workflows, and advanced usage patterns.', tags: ['Claude Code', 'AI', 'Guide'], url: 'https://github.com/thejaredchapman/claude-code-guide' },
+  { title: 'AI Explained: Deep Learn', desc: 'Deep learning concepts explained clearly, bridging the gap between AI theory and practical implementation.', tags: ['AI', 'Deep Learning', 'Education'], url: 'https://github.com/thejaredchapman/ai_explained_deep_learn' },
+  { title: 'Ask the Docs', desc: 'A documentation query tool that lets you ask natural language questions against any codebase or documentation set.', tags: ['AI', 'RAG', 'Developer Tools'], url: 'https://github.com/thejaredchapman/ask-the-docs' },
 ]
 
 function ProjectsApp() {
   const [hoveredTitle, setHoveredTitle] = useState(null)
-  const { openWindow } = useWindows()
 
   return (
     <div className="p-6 max-[768px]:p-4">
@@ -41,49 +61,41 @@ function ProjectsApp() {
       <p className="text-sm mb-5" style={{ color: 'var(--text-tertiary)' }}>Things I've built and shipped</p>
 
       {/* Work Projects */}
-      <div className="mb-6 rounded-xl border overflow-hidden" style={{ borderColor: 'var(--border-light)', background: 'var(--bg-secondary)' }}>
-        <div className="h-0.5 w-full" style={{ background: 'linear-gradient(90deg, var(--accent-500), var(--accent-300))' }} />
-        <div className="p-4">
-          <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
-            <div>
-              <h3 className="font-bold text-sm" style={{ color: 'var(--text-primary)' }}>Work Projects</h3>
-              <p className="text-xs mt-0.5" style={{ color: 'var(--text-tertiary)' }}>Production systems built at AbbVie & Google</p>
-            </div>
-            <button
-              onClick={() => openWindow('workprojects')}
-              className="flex items-center gap-1.5 py-1.5 px-3 rounded-lg text-xs font-medium border-none cursor-pointer transition-opacity hover:opacity-80"
-              style={{ background: 'var(--accent-500)', color: 'white' }}
-            >
-              View Case Studies
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3 h-3">
-                <path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-          </div>
-          <div className="flex flex-col gap-2">
-            {workProjectsSummary.map((proj) => (
-              <div key={proj.name} className="flex items-center justify-between gap-3 py-2 px-3 rounded-lg" style={{ background: 'var(--bg-primary)' }}>
-                <div className="min-w-0">
-                  <p className="text-xs font-semibold truncate" style={{ color: 'var(--text-primary)' }}>{proj.name}</p>
-                  <p className="text-[10px]" style={{ color: 'var(--text-tertiary)' }}>{proj.company}</p>
-                </div>
-                <div className="flex items-center gap-1.5 shrink-0">
-                  {proj.tags.map((t) => (
-                    <span key={t} className="text-[10px] py-0.5 px-1.5 rounded font-mono hidden sm:inline-block" style={{ background: 'var(--bg-secondary)', color: 'var(--text-tertiary)', border: '1px solid var(--border-light)' }}>{t}</span>
-                  ))}
-                  <span className="text-[10px] py-0.5 px-2 rounded-full font-semibold" style={{ background: 'var(--accent-100)', color: 'var(--accent-700)' }}>{proj.status}</span>
-                </div>
+      <p className="text-[10px] font-bold uppercase tracking-wider mb-3" style={{ color: 'var(--text-tertiary)' }}>Work Projects</p>
+      <div className="flex flex-col gap-3 mb-7">
+        {workProjects.map((p) => (
+          <div
+            key={p.name}
+            className="rounded-xl p-4 border overflow-hidden relative"
+            style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border-light)' }}
+          >
+            <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: 'linear-gradient(90deg, var(--accent-500), var(--accent-300))' }} />
+            <div className="flex items-start justify-between gap-2 mb-1 flex-wrap">
+              <h3 className="font-semibold text-sm" style={{ color: 'var(--text-primary)' }}>{p.name}</h3>
+              <div className="flex items-center gap-1.5 shrink-0">
+                <span className="text-[10px] py-0.5 px-2 rounded-full font-medium" style={{ background: 'var(--accent-100)', color: 'var(--accent-700)' }}>{p.status}</span>
+                {p.url && (
+                  <a href={p.url} target="_blank" rel="noopener noreferrer" className="text-[10px] py-0.5 px-2 rounded-full font-medium no-underline transition-opacity hover:opacity-70" style={{ background: 'var(--bg-primary)', color: 'var(--text-tertiary)', border: '1px solid var(--border-light)' }}>
+                    GitHub ↗
+                  </a>
+                )}
               </div>
-            ))}
+            </div>
+            <p className="text-[10px] font-medium mb-2" style={{ color: 'var(--accent-500)' }}>{p.company} · {p.period}</p>
+            <p className="text-xs leading-relaxed mb-3" style={{ color: 'var(--text-secondary)' }}>{p.desc}</p>
+            <div className="flex gap-1 flex-wrap">
+              {p.tags.map((t) => (
+                <span key={t} className="text-[10px] py-0.5 px-1.5 rounded font-mono" style={{ background: 'var(--bg-primary)', color: 'var(--text-tertiary)', border: '1px solid var(--border-light)' }}>{t}</span>
+              ))}
+            </div>
           </div>
-        </div>
+        ))}
       </div>
 
       {/* Personal Projects */}
       <p className="text-[10px] font-bold uppercase tracking-wider mb-3" style={{ color: 'var(--text-tertiary)' }}>Personal Projects</p>
-
-      <div className="grid grid-cols-2 gap-3 max-[768px]:grid-cols-1">
-        {projects.map((p) => (
+      <div className="grid grid-cols-2 gap-3 mb-8 max-[768px]:grid-cols-1">
+        {personalProjects.map((p) => (
           <a
             key={p.title}
             href={p.url}
@@ -120,7 +132,8 @@ function ProjectsApp() {
         ))}
       </div>
 
-      <div className="mt-8 pt-6 border-t" style={{ borderColor: 'var(--border-light)' }}>
+      {/* Developer Improvements */}
+      <div className="pt-6 border-t" style={{ borderColor: 'var(--border-light)' }}>
         <h3 className="text-base font-semibold mb-0.5" style={{ color: 'var(--text-primary)' }}>Developer Improvements</h3>
         <p className="text-xs mb-4" style={{ color: 'var(--text-tertiary)' }}>Tools, guides, and resources for developer workflows</p>
         <div className="grid grid-cols-2 gap-3 max-[768px]:grid-cols-1">

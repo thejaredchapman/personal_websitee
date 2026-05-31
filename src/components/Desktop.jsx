@@ -8,7 +8,6 @@ import AboutApp from './apps/AboutApp'
 import TerminalApp from './apps/TerminalApp'
 import CodeComedyApp from './apps/CodeComedyApp'
 import ProjectsApp from './apps/ProjectsApp'
-import WorkProjectsApp from './apps/WorkProjectsApp'
 import ResumeApp from './apps/ResumeApp'
 import GalleryApp from './apps/GalleryApp'
 import MusicApp from './apps/MusicApp'
@@ -22,7 +21,6 @@ const APP_COMPONENTS = {
   terminal: TerminalApp,
   codecomedy: CodeComedyApp,
   projects: ProjectsApp,
-  workprojects: WorkProjectsApp,
   resume: ResumeApp,
   gallery: GalleryApp,
   music: MusicApp,
