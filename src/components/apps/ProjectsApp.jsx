@@ -41,6 +41,8 @@ const personalProjects = [
   { title: 'Break Into Tech', desc: 'Career transition platform for breaking into cybersecurity.', tags: ['Next.js', 'Security'], url: 'https://break-into-tech.vercel.app/' },
   { title: 'Camp Javery Wedding', desc: 'Summer camp-themed wedding celebration site.', tags: ['React', 'Event'], url: 'https://simple-summer-camp-wedding.vercel.app/' },
   { title: 'PyTorch Interactive Guide', desc: 'Interactive educational tool for learning PyTorch and ML fundamentals.', tags: ['React', 'ML'], url: 'https://pytorch-interactive-guide.vercel.app/' },
+  { title: 'Ensemble', desc: 'A collection of improvisational comedy games to play and practice improv with a group.', tags: ['React', 'Improv'], url: 'https://improv-studio.vercel.app/' },
+  { title: 'DSA General Prep', desc: 'A self-contained browser app for professional DS&A interview preparation — no build step required.', tags: ['JavaScript', 'Education'], url: 'https://dsa-general-prep.vercel.app/' },
 ]
 
 const devProjects = [
@@ -50,6 +52,12 @@ const devProjects = [
   { title: 'Claude Code Guide', desc: 'A practical guide for getting the most out of Claude Code, covering tips, workflows, and advanced usage patterns.', tags: ['Claude Code', 'AI', 'Guide'], url: 'https://github.com/thejaredchapman/claude-code-guide' },
   { title: 'AI Explained: Deep Learn', desc: 'Deep learning concepts explained clearly, bridging the gap between AI theory and practical implementation.', tags: ['AI', 'Deep Learning', 'Education'], url: 'https://github.com/thejaredchapman/ai_explained_deep_learn' },
   { title: 'Ask the Docs', desc: 'A documentation query tool that lets you ask natural language questions against any codebase or documentation set.', tags: ['AI', 'RAG', 'Developer Tools'], url: 'https://github.com/thejaredchapman/ask-the-docs' },
+]
+
+const mcpProjects = [
+  { title: 'Spotify Direct MCP', desc: 'An MCP server that lets agents control Spotify playback and search directly.', tags: ['MCP', 'Spotify', 'AI'], url: 'https://github.com/thejaredchapman/spotify-direct-mcp' },
+  { title: 'Movie X-Ray MCP', desc: 'An MCP server built to surface who an actor is on Netflix and browse their other Netflix titles while watching.', tags: ['MCP', 'Netflix', 'AI'], url: 'https://github.com/thejaredchapman/movie-xray-mcp' },
+  { title: 'Docs RAG', desc: 'A documentation-search RAG app — drop markdown/PDF files into ./docs/, build a local FAISS index, then ask natural-language questions with source citations across three interfaces.', tags: ['MCP', 'RAG', 'FAISS'], url: 'https://github.com/thejaredchapman/docs-rag' },
 ]
 
 function ProjectsApp() {
@@ -138,6 +146,37 @@ function ProjectsApp() {
         <p className="text-xs mb-4" style={{ color: 'var(--text-tertiary)' }}>Tools, guides, and resources for developer workflows</p>
         <div className="grid grid-cols-2 gap-3 max-[768px]:grid-cols-1">
           {devProjects.map((p) => (
+            <a
+              key={p.title}
+              href={p.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group rounded-xl p-4 border no-underline transition-all duration-200 hover:border-[var(--accent-300)] hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--shadow-accent)]"
+              style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border-light)', color: 'inherit' }}
+            >
+              <div className="flex items-start justify-between mb-2">
+                <h3 className="font-semibold text-sm" style={{ color: 'var(--text-primary)' }}>{p.title}</h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5 shrink-0 opacity-30 group-hover:opacity-80 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" style={{ color: 'var(--accent-500)' }}>
+                  <path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+              <p className="text-xs leading-relaxed mb-3" style={{ color: 'var(--text-tertiary)' }}>{p.desc}</p>
+              <div className="flex gap-1 flex-wrap">
+                {p.tags.map((t) => (
+                  <span key={t} className="text-[10px] py-0.5 px-2 rounded-full font-medium" style={{ background: 'var(--accent-100)', color: 'var(--accent-700)' }}>{t}</span>
+                ))}
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* MCP Servers */}
+      <div className="pt-6 mt-6 border-t" style={{ borderColor: 'var(--border-light)' }}>
+        <h3 className="text-base font-semibold mb-0.5" style={{ color: 'var(--text-primary)' }}>MCP Servers</h3>
+        <p className="text-xs mb-4" style={{ color: 'var(--text-tertiary)' }}>MCP servers I've built to extend what AI agents can do</p>
+        <div className="grid grid-cols-2 gap-3 max-[768px]:grid-cols-1">
+          {mcpProjects.map((p) => (
             <a
               key={p.title}
               href={p.url}

@@ -90,11 +90,59 @@ const devProjects = [
   },
 ]
 
+const mcpProjects = [
+  {
+    title: 'Spotify Direct MCP',
+    description: 'An MCP server that lets agents control Spotify playback and search directly.',
+    tags: ['MCP', 'Spotify', 'AI'],
+    url: 'https://github.com/thejaredchapman/spotify-direct-mcp',
+    cta: 'View on GitHub',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M7.5 9.5c3-1.5 6.5-1.5 9.5.5M8.5 12.5c2.3-1.1 5-1.1 7.5.3M9.5 15.3c1.5-.7 3.3-.7 4.8.2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    )
+  },
+  {
+    title: 'Movie X-Ray MCP',
+    description: 'An MCP server built to surface who an actor is on Netflix and browse their other Netflix titles while watching.',
+    tags: ['MCP', 'Netflix', 'AI'],
+    url: 'https://github.com/thejaredchapman/movie-xray-mcp',
+    cta: 'View on GitHub',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <rect x="2" y="4" width="20" height="16" rx="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M2 9h4M2 15h4M18 9h4M18 15h4" strokeLinecap="round" />
+        <path d="M7 12s2-3 5-3 5 3 5 3-2 3-5 3-5-3-5-3z" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="12" cy="12" r="1.2" fill="currentColor" />
+      </svg>
+    )
+  },
+  {
+    title: 'Docs RAG',
+    description: 'A documentation-search RAG app — drop markdown/PDF files into ./docs/, build a local FAISS index, then ask natural-language questions with source citations across three interfaces.',
+    tags: ['MCP', 'RAG', 'FAISS'],
+    url: 'https://github.com/thejaredchapman/docs-rag',
+    cta: 'View on GitHub',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V8z" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M14 3v5h5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M8 13h4M8 16h6" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="16.5" cy="16.5" r="2.2" />
+        <path d="M18.3 18.3l1.4 1.4" strokeLinecap="round" />
+      </svg>
+    )
+  },
+]
+
 function ProjectsSection() {
   const [hoveredIndex, setHoveredIndex] = useState(null)
   const [sectionRef, isVisible] = useScrollAnimation({ threshold: 0.05 })
-  const [cardsRef, visibleCards] = useStaggerAnimation(12, { baseDelay: 100 })
+  const [cardsRef, visibleCards] = useStaggerAnimation(14, { baseDelay: 100 })
   const [devCardsRef, visibleDevCards] = useStaggerAnimation(6, { baseDelay: 100 })
+  const [mcpCardsRef, visibleMcpCards] = useStaggerAnimation(3, { baseDelay: 100 })
 
   const projects = [
     {
@@ -246,6 +294,36 @@ function ProjectsSection() {
           <path d="M2 12l10 5 10-5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       )
+    },
+    {
+      title: 'Ensemble',
+      description: 'A collection of improvisational comedy games to play and practice improv with a group.',
+      tags: ['React', 'Improv', 'Games'],
+      url: 'https://improv-studio.vercel.app/',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+          <path d="M8 11c0 3 1.5 6 4 6s4-3 4-6" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M4 8c1-2 3-3 5-2M20 8c-1-2-3-3-5-2" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="9" cy="10" r="1" fill="currentColor" />
+          <circle cx="15" cy="10" r="1" fill="currentColor" />
+        </svg>
+      )
+    },
+    {
+      title: 'DSA General Prep',
+      description: 'A self-contained browser app for professional DS&A interview preparation — no build step required.',
+      tags: ['JavaScript', 'Education', 'Interviews'],
+      url: 'https://dsa-general-prep.vercel.app/',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+          <circle cx="12" cy="5" r="2" />
+          <circle cx="6" cy="12" r="2" />
+          <circle cx="18" cy="12" r="2" />
+          <circle cx="6" cy="19" r="2" />
+          <circle cx="18" cy="19" r="2" />
+          <path d="M12 7l-4.5 3.5M12 7l4.5 3.5M6 14v3M18 14v3" strokeLinecap="round" />
+        </svg>
+      )
     }
   ]
 
@@ -377,6 +455,42 @@ function ProjectsSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`card card-top-border relative overflow-visible no-underline flex flex-col group transition-all duration-700 ${visibleDevCards.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+                style={{ color: 'inherit' }}
+              >
+                <div className="w-12 h-12 mb-4 transition-all duration-300 group-hover:scale-120 group-hover:rotate-10" style={{ color: 'var(--accent-500)' }}>
+                  {project.icon}
+                </div>
+                <h3 className="text-2xl mb-3" style={{ color: 'var(--text-primary)' }}>{project.title}</h3>
+                <p className="mb-6 leading-7 flex-1" style={{ color: 'var(--text-secondary)' }}>{project.description}</p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.tags.map((tag, tagIndex) => (
+                    <span key={tagIndex} className="tag">{tag}</span>
+                  ))}
+                </div>
+                <span className="inline-flex items-center gap-2 font-semibold text-[0.95rem] transition-all duration-300 group-hover:gap-3" style={{ color: 'var(--accent-500)' }}>
+                  {project.cta}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true">
+                    <path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-20">
+          <h3 className={`text-2xl font-bold mb-2 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ color: 'var(--text-primary)' }}>MCP Servers</h3>
+          <p className={`mb-10 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ color: 'var(--text-secondary)' }}>
+            MCP servers I've built to extend what AI agents can do
+          </p>
+          <div ref={mcpCardsRef} className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-8 max-w-[1100px] mx-auto">
+            {mcpProjects.map((project, index) => (
+              <a
+                key={index}
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`card card-top-border relative overflow-visible no-underline flex flex-col group transition-all duration-700 ${visibleMcpCards.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
                 style={{ color: 'inherit' }}
               >
                 <div className="w-12 h-12 mb-4 transition-all duration-300 group-hover:scale-120 group-hover:rotate-10" style={{ color: 'var(--accent-500)' }}>
