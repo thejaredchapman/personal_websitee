@@ -286,7 +286,7 @@ function Window({ id, children }) {
         `}
         style={{
           ...style,
-          borderColor: isActive ? 'var(--accent-500)' : 'var(--win-border)',
+          borderColor: isActive ? 'color-mix(in srgb, var(--accent-500) 55%, var(--win-border))' : 'var(--win-border)',
           display: isMinimized ? 'none' : 'flex',
         }}
         onMouseDown={() => { if (!isActive) focusWindow(id) }}

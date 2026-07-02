@@ -70,6 +70,10 @@
   --win-border: rgba(0, 0, 0, 0.1);
   --dock-icon-color: rgba(0, 0, 0, 0.45);
 
+  --wallpaper-tint-1: color-mix(in srgb, var(--accent-200) 38%, transparent);
+  --wallpaper-tint-2: color-mix(in srgb, var(--accent-300) 24%, transparent);
+  --wallpaper-vignette: rgba(0, 0, 0, 0.08);
+
   --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 
   font-family: 'JetBrains Mono', monospace;
@@ -109,6 +113,10 @@
   --win-bg: rgba(24, 24, 27, 0.92);
   --win-border: rgba(255, 255, 255, 0.08);
   --dock-icon-color: rgba(255, 255, 255, 0.45);
+
+  --wallpaper-tint-1: color-mix(in srgb, var(--accent-900) 50%, transparent);
+  --wallpaper-tint-2: color-mix(in srgb, var(--accent-800) 28%, transparent);
+  --wallpaper-vignette: rgba(0, 0, 0, 0.25);
 }
 
 /* ============================================
@@ -148,7 +156,10 @@ img {
    OS WALLPAPER
    ============================================ */
 .os-wallpaper {
-  background: var(--bg-primary);
+  background:
+    radial-gradient(120% 100% at 12% 0%, var(--wallpaper-tint-1), transparent 62%),
+    radial-gradient(110% 90% at 100% 100%, var(--wallpaper-tint-2), transparent 58%),
+    var(--bg-primary);
   transition: background 0.5s ease;
 }
 

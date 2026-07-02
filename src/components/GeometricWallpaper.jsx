@@ -138,11 +138,39 @@ function GeometricWallpaper() {
 
       {/* Subtle grid overlay */}
       <div
-        className="absolute inset-0 opacity-[0.015]"
+        className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage: 'radial-gradient(var(--text-primary) 1px, transparent 1px)',
           backgroundSize: '32px 32px',
         }}
+      />
+
+      {/* Typographic watermark */}
+      <div className="absolute left-6 bottom-24 select-none max-[768px]:hidden">
+        <div
+          style={{
+            fontSize: 'clamp(72px, 11vw, 168px)',
+            fontWeight: 800,
+            letterSpacing: '-0.06em',
+            lineHeight: 0.9,
+            color: 'transparent',
+            WebkitTextStroke: '1.5px color-mix(in srgb, var(--text-primary) 16%, transparent)',
+          }}
+        >
+          JaredOS
+        </div>
+        <div
+          className="mt-3 ml-2 text-[11px] font-medium uppercase"
+          style={{ letterSpacing: '0.35em', color: 'color-mix(in srgb, var(--text-primary) 32%, transparent)' }}
+        >
+          v2.0 · Portfolio Operating System
+        </div>
+      </div>
+
+      {/* Edge vignette for depth */}
+      <div
+        className="absolute inset-0"
+        style={{ background: 'radial-gradient(120% 100% at 50% 40%, transparent 60%, var(--wallpaper-vignette) 100%)' }}
       />
     </div>
   )

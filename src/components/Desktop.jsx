@@ -15,6 +15,7 @@ import ContactApp from './apps/ContactApp'
 import SettingsApp from './apps/SettingsApp'
 import ClippyApp from './apps/ClippyApp'
 import GeometricWallpaper from './GeometricWallpaper'
+import DesktopIcons from './DesktopIcons'
 
 const APP_COMPONENTS = {
   about: AboutApp,
@@ -116,6 +117,7 @@ function Desktop() {
 
       {/* Windows area (below menubar, above dock) */}
       <div className="absolute inset-0 top-7 bottom-14">
+        <DesktopIcons />
         {Object.keys(windows).map((id) => {
           const Component = APP_COMPONENTS[id]
           if (!Component) return null

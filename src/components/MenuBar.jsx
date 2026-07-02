@@ -3,7 +3,7 @@ import { useWindows } from '../context/WindowContext'
 import { useTheme } from '../context/ThemeContext'
 
 function MenuBar() {
-  const { activeWindow, windows, cascadeWindows, stackWindows, cycleWindow, minimizeAllWindows, closeAllWindows } = useWindows()
+  const { activeWindow, windows, openWindow, cascadeWindows, stackWindows, cycleWindow, minimizeAllWindows, closeAllWindows } = useWindows()
   const { theme, toggleTheme } = useTheme()
   const [time, setTime] = useState(new Date())
 
@@ -34,8 +34,16 @@ function MenuBar() {
 
   return (
     <div className="fixed top-0 left-0 right-0 h-7 z-[950] flex items-center justify-between px-4 os-menubar select-none">
-      {/* Left: App name */}
-      <div className="flex items-center gap-4">
+      {/* Left: OS mark + app name */}
+      <div className="flex items-center gap-2.5">
+        <button
+          className="flex items-center justify-center w-4 h-4 rounded-[5px] border-none cursor-pointer p-0 text-[10px] font-extrabold transition-transform hover:scale-110"
+          style={{ background: 'linear-gradient(135deg, var(--accent-400), var(--accent-600))', color: 'white' }}
+          onClick={() => openWindow('about')}
+          aria-label="About JaredOS"
+        >
+          J
+        </button>
         <span className="text-[13px] font-bold" style={{ color: 'var(--text-primary)' }}>
           {activeTitle}
         </span>
