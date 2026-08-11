@@ -52,7 +52,6 @@ class TestApiChatSystemPrompt:
             "DJ Master Academy",
             "LoanLens",
             "Art Portfolio",
-            "DS&A Interview Prep",
             "Citizenship Pathways",
             "Chess Learning App",
             "The Daily Impact",

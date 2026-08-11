@@ -15,12 +15,7 @@ Things I've built and shipped
 - **Tags:** React, Art, Portfolio
 - **Description:** A curated gallery showcasing original artwork and creative projects, built with a focus on visual presentation and smooth browsing.
 
-### 3. DS&A Interview Prep
-- **URL:** https://dsa-interview-prep-seven.vercel.app/
-- **Tags:** React, Education, Interviews
-- **Description:** A study resource for data structures and algorithms interview preparation, covering key concepts and patterns commonly tested in technical interviews.
-
-### 4. Citizenship Pathways
+### 3. Citizenship Pathways
 - **URL:** https://citizenpathwayss.vercel.app/
 - **Tags:** React, Immigration, Guide
 - **Description:** An informational guide to help navigate the process of moving abroad, exploring residency requirements and citizenship options across different countries.

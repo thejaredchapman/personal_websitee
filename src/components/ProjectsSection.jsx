@@ -212,17 +212,6 @@ function ProjectsSection() {
       )
     },
     {
-      title: 'DS&A Interview Prep',
-      description: 'A study resource for data structures and algorithms interview preparation, covering key concepts and patterns commonly tested in technical interviews.',
-      tags: ['React', 'Education', 'Interviews'],
-      url: 'https://dsa-interview-prep-seven.vercel.app/',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-          <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
-    },
-    {
       title: 'Citizenship Pathways',
       description: 'An informational guide to help navigate the process of moving abroad, exploring residency requirements and citizenship options across different countries.',
       tags: ['React', 'Immigration', 'Guide'],

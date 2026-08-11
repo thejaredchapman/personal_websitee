@@ -34,7 +34,6 @@ const personalProjects = [
   { title: 'DJ Master Academy', desc: 'Training resource for mastering the Pioneer DDJ-FLX4 DJ controller.', tags: ['React', 'Music'], url: 'https://dj-master-academy.vercel.app/' },
   { title: 'LoanLens', desc: 'Amortization and affordability calculator for understanding loan financing.', tags: ['React', 'Finance'], url: 'https://amortization.vercel.app/' },
   { title: 'Art Portfolio', desc: 'Curated gallery showcasing original artwork and creative projects.', tags: ['React', 'Art'], url: 'https://art-portfolio-navy.vercel.app/' },
-  { title: 'DS&A Interview Prep', desc: 'Study resource for data structures and algorithms interview preparation.', tags: ['React', 'Education'], url: 'https://dsa-interview-prep-seven.vercel.app/' },
   { title: 'Citizenship Pathways', desc: 'Guide for navigating residency requirements and citizenship options abroad.', tags: ['React', 'Guide'], url: 'https://citizenpathwayss.vercel.app/' },
   { title: 'Chess Learning App', desc: 'Interactive chess platform for studying openings and practicing tactics.', tags: ['Angular', 'Chess'], url: 'https://chess-learning-app-teal.vercel.app/' },
   { title: 'The Daily Impact', desc: 'Personalized news app curating impact-driven journalism.', tags: ['React', 'News'], url: 'https://news-impact-app-omega.vercel.app/' },

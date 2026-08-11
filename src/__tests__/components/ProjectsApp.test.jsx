@@ -21,7 +21,6 @@ describe('ProjectsApp — main projects', () => {
     'DJ Master Academy',
     'LoanLens',
     'Art Portfolio',
-    'DS&A Interview Prep',
     'Citizenship Pathways',
     'Chess Learning App',
     'The Daily Impact',
@@ -37,11 +36,11 @@ describe('ProjectsApp — main projects', () => {
     })
   }
 
-  it('renders 12 main project links', () => {
+  it('renders 11 main project links', () => {
     render(<ProjectsApp />)
     const allLinks = screen.getAllByRole('link')
     const vercelLinks = allLinks.filter((a) => a.href.includes('vercel.app'))
-    expect(vercelLinks.length).toBe(12)
+    expect(vercelLinks.length).toBe(11)
   })
 
   it('main project links open in a new tab', () => {

@@ -67,19 +67,18 @@ Data: BigQuery, Pandas, PyArrow, Ibis, PostgreSQL
 Tools: GCP, Git, gRPC, REST APIs, Protocol Buffers, SDLC
 Other: Testing, Documentation, GitHub
 
-=== PROJECTS (12) ===
+=== PROJECTS (11) ===
 1. AI Explorer — Foundational vocabulary for understanding how modern AI is built, customized, and deployed. Tags: AI, Explanation, Concepts. URL: https://app-dun-phi.vercel.app/
 2. LLM Frameworks — Learn LLM orchestration frameworks like LangChain — chains, agents, and tools. Tags: React, AI, LLMs. URL: https://langchain-learning-app.vercel.app/
 3. DJ Master Academy — Training resource for mastering the Pioneer DDJ-FLX4 DJ controller. Tags: React, Music. URL: https://dj-master-academy.vercel.app/
 4. LoanLens — Amortization and affordability calculator for understanding loan financing. Tags: React, Finance. URL: https://amortization.vercel.app/
 5. Art Portfolio — Curated gallery showcasing original artwork and creative projects. Tags: React, Art. URL: https://art-portfolio-navy.vercel.app/
-6. DS&A Interview Prep — Study resource for data structures and algorithms interview preparation. Tags: React, Education. URL: https://dsa-interview-prep-seven.vercel.app/
-7. Citizenship Pathways — Guide for navigating residency requirements and citizenship options abroad. Tags: React, Guide. URL: https://citizenpathwayss.vercel.app/
-8. Chess Learning App — Interactive chess platform for studying openings and practicing tactics. Tags: Angular, Chess. URL: https://chess-learning-app-teal.vercel.app/
-9. The Daily Impact — Personalized news app curating impact-driven journalism. Tags: React, News. URL: https://news-impact-app-omega.vercel.app/
-10. Break Into Tech — Career transition platform for breaking into cybersecurity. Tags: Next.js, Security. URL: https://break-into-tech.vercel.app/
-11. Camp Javery Wedding — Summer camp-themed wedding celebration site. Tags: React, Event. URL: https://simple-summer-camp-wedding.vercel.app/
-12. PyTorch Interactive Guide — Interactive educational tool for learning PyTorch and ML fundamentals. Tags: React, ML. URL: https://pytorch-interactive-guide.vercel.app/
+6. Citizenship Pathways — Guide for navigating residency requirements and citizenship options abroad. Tags: React, Guide. URL: https://citizenpathwayss.vercel.app/
+7. Chess Learning App — Interactive chess platform for studying openings and practicing tactics. Tags: Angular, Chess. URL: https://chess-learning-app-teal.vercel.app/
+8. The Daily Impact — Personalized news app curating impact-driven journalism. Tags: React, News. URL: https://news-impact-app-omega.vercel.app/
+9. Break Into Tech — Career transition platform for breaking into cybersecurity. Tags: Next.js, Security. URL: https://break-into-tech.vercel.app/
+10. Camp Javery Wedding — Summer camp-themed wedding celebration site. Tags: React, Event. URL: https://simple-summer-camp-wedding.vercel.app/
+11. PyTorch Interactive Guide — Interactive educational tool for learning PyTorch and ML fundamentals. Tags: React, ML. URL: https://pytorch-interactive-guide.vercel.app/
 
 === WHAT I BUILD (Highlighted Work) ===
 1. LLM Developer Support — Supporting developers on LLM integration, A/B testing models (LLMs, Vertex AI)

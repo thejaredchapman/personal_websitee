@@ -29,7 +29,6 @@ describe('ProjectsSection — main projects', () => {
     'DJ Master Academy',
     'LoanLens',
     'Art Portfolio',
-    'DS&A Interview Prep',
     'Citizenship Pathways',
     'Chess Learning App',
     'The Daily Impact',
@@ -45,10 +44,10 @@ describe('ProjectsSection — main projects', () => {
     })
   }
 
-  it('renders 12 "Visit Project" CTAs', () => {
+  it('renders 11 "Visit Project" CTAs', () => {
     render(<ProjectsSection />)
     const ctaLinks = screen.getAllByText('Visit Project')
-    expect(ctaLinks.length).toBe(12)
+    expect(ctaLinks.length).toBe(11)
   })
 
   it('main project links open in a new tab', () => {
