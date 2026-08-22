@@ -75,6 +75,7 @@ function ResumeSection() {
     { name: 'Introduction to Claude Cowork', org: 'Anthropic', year: '2026' },
     { name: 'Introduction to Subagents', org: 'Anthropic', year: '2026' },
     { name: 'Model Context Protocol: Advanced Topics', org: 'Anthropic', year: '2026' },
+    { name: 'Building with the Claude API', org: 'Anthropic', year: '2026' },
   ]
 
   const skillCategories = [

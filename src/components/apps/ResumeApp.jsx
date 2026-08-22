@@ -122,6 +122,7 @@ const certifications = [
   { org: 'Anthropic', name: 'Introduction to Claude Cowork', year: '2026' },
   { org: 'Anthropic', name: 'Introduction to Subagents', year: '2026' },
   { org: 'Anthropic', name: 'Model Context Protocol: Advanced Topics', year: '2026' },
+  { org: 'Anthropic', name: 'Building with the Claude API', year: '2026' },
 ]
 
 const skills = [
