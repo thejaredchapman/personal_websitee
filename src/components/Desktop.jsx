@@ -14,6 +14,7 @@ import MusicApp from './apps/MusicApp'
 import ContactApp from './apps/ContactApp'
 import SettingsApp from './apps/SettingsApp'
 import ClippyApp from './apps/ClippyApp'
+import WritingApp from './apps/WritingApp'
 import GeometricWallpaper from './GeometricWallpaper'
 import DesktopIcons from './DesktopIcons'
 
@@ -28,6 +29,7 @@ const APP_COMPONENTS = {
   contact: ContactApp,
   settings: SettingsApp,
   clippy: ClippyApp,
+  writing: WritingApp,
 }
 
 function Notifications() {

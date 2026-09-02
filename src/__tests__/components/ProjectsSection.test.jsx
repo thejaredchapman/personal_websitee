@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, screen, within } from '@testing-library/react'
 import ProjectsSection from '../../components/ProjectsSection'
 
 beforeAll(() => {
@@ -24,6 +24,7 @@ describe('ProjectsSection — heading', () => {
 
 describe('ProjectsSection — main projects', () => {
   const titles = [
+    'Evalforge Lite',
     'AI Explorer',
     'LLM Frameworks',
     'DJ Master Academy',
@@ -44,20 +45,28 @@ describe('ProjectsSection — main projects', () => {
     })
   }
 
-  it('renders 11 "Visit Project" CTAs', () => {
+  it('renders 14 "Visit Project" CTAs', () => {
     render(<ProjectsSection />)
     const ctaLinks = screen.getAllByText('Visit Project')
-    expect(ctaLinks.length).toBe(11)
+    expect(ctaLinks.length).toBe(14)
   })
 
   it('main project links open in a new tab', () => {
     render(<ProjectsSection />)
     const allLinks = screen.getAllByRole('link')
-    const vercelLinks = allLinks.filter((a) => a.href.includes('vercel.app'))
-    for (const link of vercelLinks) {
+    const vercelAndRenderLinks = allLinks.filter((a) => a.href.includes('vercel.app') || a.href.includes('onrender.com'))
+    for (const link of vercelAndRenderLinks) {
       expect(link).toHaveAttribute('target', '_blank')
       expect(link).toHaveAttribute('rel', 'noopener noreferrer')
     }
+  })
+
+  it('renders the Evalforge Lite card with the correct URL and tags', () => {
+    render(<ProjectsSection />)
+    const heading = screen.getByRole('heading', { name: 'Evalforge Lite' })
+    const link = heading.closest('a')
+    expect(link).toHaveAttribute('href', 'https://evalforge-lite.onrender.com/')
+    expect(screen.getByText('OpenRouter')).toBeInTheDocument()
   })
 })
 
@@ -95,17 +104,17 @@ describe('ProjectsSection — Developer Improvements section', () => {
     })
   }
 
-  it('renders 6 "View on GitHub" CTAs', () => {
+  it('renders 10 "View on GitHub" CTAs', () => {
     render(<ProjectsSection />)
     const ctaLinks = screen.getAllByText('View on GitHub')
-    expect(ctaLinks.length).toBe(6)
+    expect(ctaLinks.length).toBe(10)
   })
 
   it('all dev project links open in a new tab with noopener noreferrer', () => {
     render(<ProjectsSection />)
     const allLinks = screen.getAllByRole('link')
     const githubLinks = allLinks.filter((a) => a.href.includes('github.com/thejaredchapman'))
-    expect(githubLinks.length).toBe(6)
+    expect(githubLinks.length).toBe(9)
     for (const link of githubLinks) {
       expect(link).toHaveAttribute('target', '_blank')
       expect(link).toHaveAttribute('rel', 'noopener noreferrer')
@@ -119,7 +128,9 @@ describe('ProjectsSection — Developer Improvements section', () => {
 
   it('renders the RAG tag for Ask the Docs', () => {
     render(<ProjectsSection />)
-    expect(screen.getByText('RAG')).toBeInTheDocument()
+    const heading = screen.getByRole('heading', { name: 'Ask the Docs' })
+    const card = heading.closest('a')
+    expect(within(card).getByText('RAG')).toBeInTheDocument()
   })
 
   it('renders the Developer Tools tag for Ask the Docs', () => {
