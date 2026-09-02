@@ -29,6 +29,7 @@ const workProjects = [
 ]
 
 const personalProjects = [
+  { title: 'Evalforge Lite', desc: 'Compares text LLMs across providers via OpenRouter, with automated grading, colorful score charts, and PDF/CSV reports.', tags: ['Python', 'Evaluation', 'LLM', 'OpenRouter'], url: 'https://evalforge-lite.onrender.com/' },
   { title: 'AI Explorer', desc: 'Foundational vocabulary for understanding how modern AI is built, customized, and deployed.', tags: ['AI', 'Explanation', 'Concepts'], url: 'https://app-dun-phi.vercel.app/' },
   { title: 'LLM Frameworks', desc: 'Learn LLM orchestration frameworks like LangChain — chains, agents, and tools.', tags: ['React', 'AI', 'LLMs'], url: 'https://langchain-learning-app.vercel.app/' },
   { title: 'DJ Master Academy', desc: 'Training resource for mastering the Pioneer DDJ-FLX4 DJ controller.', tags: ['React', 'Music'], url: 'https://dj-master-academy.vercel.app/' },

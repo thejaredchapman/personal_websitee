@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, screen, within } from '@testing-library/react'
 import ProjectsApp from '../../components/apps/ProjectsApp'
 
 describe('ProjectsApp — heading', () => {
@@ -16,6 +16,7 @@ describe('ProjectsApp — heading', () => {
 
 describe('ProjectsApp — main projects', () => {
   const titles = [
+    'Evalforge Lite',
     'AI Explorer',
     'LLM Frameworks',
     'DJ Master Academy',
@@ -36,21 +37,27 @@ describe('ProjectsApp — main projects', () => {
     })
   }
 
-  it('renders 11 main project links', () => {
+  it('renders 14 main project links', () => {
     render(<ProjectsApp />)
     const allLinks = screen.getAllByRole('link')
-    const vercelLinks = allLinks.filter((a) => a.href.includes('vercel.app'))
-    expect(vercelLinks.length).toBe(11)
+    const vercelAndRenderLinks = allLinks.filter((a) => a.href.includes('vercel.app') || a.href.includes('onrender.com'))
+    expect(vercelAndRenderLinks.length).toBe(14)
   })
 
   it('main project links open in a new tab', () => {
     render(<ProjectsApp />)
     const allLinks = screen.getAllByRole('link')
-    const vercelLinks = allLinks.filter((a) => a.href.includes('vercel.app'))
-    for (const link of vercelLinks) {
+    const vercelAndRenderLinks = allLinks.filter((a) => a.href.includes('vercel.app') || a.href.includes('onrender.com'))
+    for (const link of vercelAndRenderLinks) {
       expect(link).toHaveAttribute('target', '_blank')
       expect(link).toHaveAttribute('rel', 'noopener noreferrer')
     }
+  })
+
+  it('Evalforge Lite links to the correct URL', () => {
+    render(<ProjectsApp />)
+    const link = screen.getByText('Evalforge Lite').closest('a')
+    expect(link).toHaveAttribute('href', 'https://evalforge-lite.onrender.com/')
   })
 })
 
@@ -91,7 +98,7 @@ describe('ProjectsApp — Developer Improvements section', () => {
     render(<ProjectsApp />)
     const allLinks = screen.getAllByRole('link')
     const githubLinks = allLinks.filter((a) => a.href.includes('github.com/thejaredchapman'))
-    expect(githubLinks.length).toBe(6)
+    expect(githubLinks.length).toBe(9)
     for (const link of githubLinks) {
       expect(link).toHaveAttribute('target', '_blank')
       expect(link).toHaveAttribute('rel', 'noopener noreferrer')
@@ -111,7 +118,9 @@ describe('ProjectsApp — Developer Improvements section', () => {
 
   it('renders tags for Ask the Docs', () => {
     render(<ProjectsApp />)
-    expect(screen.getByText('RAG')).toBeInTheDocument()
-    expect(screen.getByText('Developer Tools')).toBeInTheDocument()
+    const heading = screen.getByText('Ask the Docs')
+    const card = heading.closest('a')
+    expect(within(card).getByText('RAG')).toBeInTheDocument()
+    expect(within(card).getByText('Developer Tools')).toBeInTheDocument()
   })
 })
