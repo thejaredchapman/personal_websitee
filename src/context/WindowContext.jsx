@@ -13,6 +13,7 @@ const WINDOW_CONFIGS = {
   contact:    { title: 'Contact',        defaultPos: { x: 180, y: 60  }, defaultSize: { width: 580, height: 520 } },
   settings:   { title: 'Settings',       defaultPos: { x: 300, y: 80  }, defaultSize: { width: 440, height: 640 } },
   clippy:     { title: 'Ask Clippy',    defaultPos: { x: 220, y: 55  }, defaultSize: { width: 420, height: 560 } },
+  writing:    { title: 'Writing',       defaultPos: { x: 240, y: 40  }, defaultSize: { width: 880, height: 640 } },
 }
 
 function buildInitialWindows() {
