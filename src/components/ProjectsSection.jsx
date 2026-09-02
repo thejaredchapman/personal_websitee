@@ -146,6 +146,18 @@ function ProjectsSection() {
 
   const projects = [
     {
+      title: 'Evalforge Lite',
+      description: 'Compares text LLMs across providers via OpenRouter, with automated grading, colorful score charts, and PDF/CSV reports.',
+      tags: ['Python', 'Evaluation', 'LLM', 'OpenRouter'],
+      url: 'https://evalforge-lite.onrender.com/',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+          <path d="M3 3v18h18" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M7 14l3-4 3 3 5-7" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )
+    },
+    {
       title: 'AI Explorer',
       description: 'The core AI concepts outlined on the AI Explorer site provide a foundational vocabulary for understanding how modern artificial intelligence is built, customized, and deployed.',
       tags: ['AI', 'Explanation', 'What is AI?', 'Concepts', 'Tools'],
