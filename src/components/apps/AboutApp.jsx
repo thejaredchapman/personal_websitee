@@ -21,7 +21,7 @@ function AboutApp() {
             <div className="flex items-center gap-2 mb-1 max-[768px]:justify-center">
               <h1 className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>Jared Chapman</h1>
             </div>
-            <p className="text-sm font-medium mb-2" style={{ color: 'var(--accent-500)' }}>Developer Enablement & AI</p>
+            <p className="text-sm font-medium mb-2" style={{ color: 'var(--accent-500)' }}>AI Enablement Engineer</p>
             <div className="flex items-center gap-3 text-xs flex-wrap max-[768px]:justify-center" style={{ color: 'var(--text-tertiary)' }}>
               <span className="flex items-center gap-1">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3 h-3"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -50,13 +50,28 @@ function AboutApp() {
             <h3 className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>What I Do</h3>
           </div>
           <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            Customer-facing AI engineer focused on enterprise Claude Code adoption — running
-            workshops, building reference implementations, and turning developer enthusiasm
-            into org-wide agentic AI workflows.
+            AI enablement at AbbVie, helping engineers understand what's actually possible to
+            build with AI inside a GxP-regulated environment — bridging the gap between what
+            the tools can technically do and what's permitted in a highly regulated space.
           </p>
         </div>
 
         <div className="rounded-xl p-4 border" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border-light)' }}>
+          <div className="flex items-center gap-2 mb-2">
+            <span className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ background: 'var(--accent-100)' }}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5" style={{ color: 'var(--accent-600)' }}><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg>
+            </span>
+            <h3 className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>The Journey</h3>
+          </div>
+          <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+            Self-taught software engineer who started during the pandemic, teaching himself
+            Python and landing a spot in Google's software engineering apprenticeship program —
+            a non-traditional path from mortgage-industry admin work to building latency and
+            reliability tooling for Google Search and BigQuery.
+          </p>
+        </div>
+
+        <div className="rounded-xl p-4 border col-span-2 max-[768px]:col-span-1" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border-light)' }}>
           <div className="flex items-center gap-2 mb-2">
             <span className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ background: 'var(--accent-100)' }}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5" style={{ color: 'var(--accent-600)' }}><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
@@ -64,11 +79,14 @@ function AboutApp() {
             <h3 className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>The Vibe</h3>
           </div>
           <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            Extreme extrovert who goes deep on everything that catches his curiosity. Originally
-            from Atlanta with a deep love for Chicago, now soaking up everything California has
-            to offer alongside his fianc&eacute;e Avery Wine and their son, Dr. Pugsley Bikini.
-            If you're even slightly interested in talking — reach out, because that's genuinely
-            his favorite thing to do.
+            A decade of improv training at Chicago's Second City and iO Theater shapes how he
+            communicates technical ideas across business and technical audiences — B.S. in Film
+            &amp; Video from Georgia State, eight Anthropic certifications, and an extreme extrovert
+            who goes deep on everything that catches his curiosity. Originally from Atlanta with
+            a deep love for Chicago, now soaking up everything California has to offer alongside
+            his fianc&eacute;e Avery Wine and their son, Dr. Pugsley Bikini. If you're even
+            slightly interested in talking — reach out, because that's genuinely his favorite
+            thing to do.
           </p>
         </div>
       </div>
