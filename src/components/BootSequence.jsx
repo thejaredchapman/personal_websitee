@@ -4,7 +4,7 @@ const BOOT_LINES = [
   { text: '', delay: 200 },
   { text: 'JaredOS v2.0', delay: 300, style: 'accent' },
   { text: `Copyright (c) ${new Date().getFullYear()} Jared Chapman. All rights reserved.`, delay: 200, style: 'dim' },
-  { text: 'Last updated: July 2, 2026', delay: 150, style: 'dim' },
+  { text: 'Last updated: September 26, 2026', delay: 150, style: 'dim' },
   { text: '', delay: 300 },
   { text: '[BOOT] Initializing system...', delay: 400 },
   { text: '[  OK  ] personality.py loaded', delay: 250, style: 'ok' },
@@ -16,6 +16,7 @@ const BOOT_LINES = [
   { text: '[  OK  ] resume.pdf mounted at /career', delay: 150, style: 'ok' },
   { text: '[  OK  ] projects/ mounted (10 repositories)', delay: 150, style: 'ok' },
   { text: '[  OK  ] gallery/ mounted (20 photos)', delay: 120, style: 'ok' },
+  { text: '[ NEW  ] "Stay the Engineer" published → open Writing to read', delay: 400, style: 'new' },
   { text: '', delay: 200 },
   { text: 'All systems nominal. Loading desktop...', delay: 500, style: 'accent' },
 ]
@@ -88,6 +89,7 @@ function BootSequence({ onComplete }) {
                 line.style === 'dim' ? 'text-white/30' :
                 line.style === 'ok' ? 'text-[#a6e3a1]' :
                 line.style === 'warn' ? 'text-[#f9e2af]' :
+                line.style === 'new' ? 'text-[#89b4fa] font-bold' :
                 'text-white/70'
               }`}
             >

@@ -1,3 +1,4 @@
+import stayTheEngineerContent from './publications/stay-the-engineer.md?raw'
 import vibeCodingContent from './publications/from-vibe-coding-to-agentic-engineering.md?raw'
 import agentOrchestrationContent from './handouts/01-agent-orchestration.md?raw'
 import agentEvalContent from './handouts/02-agent-evaluation-and-instrumentation.md?raw'
@@ -6,6 +7,14 @@ import ragEvalContent from './handouts/04-rag-evaluation.md?raw'
 import toolEvalContent from './handouts/05-tool-evaluation.md?raw'
 
 export const publications = [
+  {
+    id: 'stay-the-engineer',
+    title: 'Stay the Engineer: Using AI to Get Better, Not Get Replaced',
+    description: 'Five habits, twenty tools, and one honest rule: if you can\'t explain the change, you don\'t own it.',
+    tags: ['AI Tools', 'Developer Habits', 'Responsible AI'],
+    content: stayTheEngineerContent,
+    embedVideos: true,
+  },
   {
     id: 'vibe-coding-to-agentic-engineering',
     title: 'From Vibe Coding to Agentic Engineering',
