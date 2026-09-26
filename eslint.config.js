@@ -26,4 +26,14 @@ export default defineConfig([
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
     },
   },
+  {
+    // Node-side code: Vercel functions and the Vite config
+    files: ['api/**/*.js', 'vite.config.js'],
+    languageOptions: { globals: globals.node },
+  },
+  {
+    // Vitest runs with `globals: true` (vi, describe, ...) in Node
+    files: ['src/__tests__/**/*.{js,jsx}'],
+    languageOptions: { globals: { ...globals.browser, ...globals.node, ...globals.vitest } },
+  },
 ])
