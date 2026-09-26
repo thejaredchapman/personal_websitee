@@ -56,3 +56,5 @@ export const handouts = [
     content: toolEvalContent,
   },
 ]
+
+export const allArticles = [...publications, ...handouts]

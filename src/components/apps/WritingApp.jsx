@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { publications, handouts } from '../../content/writing'
+import { publications, handouts, allArticles } from '../../content/writing'
 import YouTubeEmbed from '../YouTubeEmbed'
 import { getYouTubeId } from '../../utils/youtube'
+import { getLinkedArticleId, setLinkedArticleId } from '../../utils/articleLink'
 
 const markdownComponents = {
   h1: ({ children }) => <h1 className="text-xl font-bold mt-6 mb-3 first:mt-0" style={{ color: 'var(--text-primary)' }}>{children}</h1>,
@@ -74,9 +75,14 @@ function ArticleCard({ item, onOpen }) {
 }
 
 function WritingApp() {
-  const [selectedId, setSelectedId] = useState(null)
-  const all = [...publications, ...handouts]
-  const selected = all.find((item) => item.id === selectedId)
+  const [selectedId, setSelectedId] = useState(() => getLinkedArticleId())
+  const selected = allArticles.find((item) => item.id === selectedId)
+
+  // Keep ?read= in sync with the open article; clear it when the window closes.
+  useEffect(() => {
+    setLinkedArticleId(selectedId)
+    return () => setLinkedArticleId(null)
+  }, [selectedId])
 
   if (selected) {
     return (

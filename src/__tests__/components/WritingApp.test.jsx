@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, afterEach } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import WritingApp from '../../components/apps/WritingApp'
@@ -33,5 +33,40 @@ describe('WritingApp — other articles', () => {
     render(<WritingApp />)
     await userEvent.click(screen.getByText('From Vibe Coding to Agentic Engineering'))
     expect(screen.queryByRole('button', { name: /^Play video:/ })).toBeNull()
+  })
+})
+
+describe('WritingApp — direct links', () => {
+  afterEach(() => {
+    window.history.replaceState(null, '', '/')
+  })
+
+  it('opens straight to the linked article', () => {
+    window.history.replaceState(null, '', '/?read=stay-the-engineer')
+    render(<WritingApp />)
+    expect(screen.getByText('Back to Writing')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1, name: STAY_TITLE })).toBeInTheDocument()
+  })
+
+  it('shows the list for an unknown article id', () => {
+    window.history.replaceState(null, '', '/?read=nope')
+    render(<WritingApp />)
+    expect(screen.getByText('Articles and developer guides')).toBeInTheDocument()
+  })
+
+  it('puts the article link in the address bar when opened, and clears it on back', async () => {
+    window.history.replaceState(null, '', '/')
+    render(<WritingApp />)
+    await userEvent.click(screen.getByText(STAY_TITLE))
+    expect(window.location.search).toBe('?read=stay-the-engineer')
+    await userEvent.click(screen.getByText('Back to Writing'))
+    expect(window.location.search).toBe('')
+  })
+
+  it('clears the link when the window closes', () => {
+    window.history.replaceState(null, '', '/?read=stay-the-engineer')
+    const { unmount } = render(<WritingApp />)
+    unmount()
+    expect(window.location.search).toBe('')
   })
 })

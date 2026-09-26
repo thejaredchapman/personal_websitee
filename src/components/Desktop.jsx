@@ -15,6 +15,7 @@ import ContactApp from './apps/ContactApp'
 import SettingsApp from './apps/SettingsApp'
 import ClippyApp from './apps/ClippyApp'
 import WritingApp from './apps/WritingApp'
+import { getLinkedArticleId } from '../utils/articleLink'
 import GeometricWallpaper from './GeometricWallpaper'
 import DesktopIcons from './DesktopIcons'
 
@@ -72,6 +73,8 @@ function Desktop() {
   useEffect(() => {
     const timer = setTimeout(() => {
       openWindow('about')
+      // Direct article links (?read=<id>) open Writing on top of About
+      if (getLinkedArticleId()) openWindow('writing')
       notify('Welcome to JaredOS! Click the dock icons below to explore.')
     }, 300)
     return () => clearTimeout(timer)

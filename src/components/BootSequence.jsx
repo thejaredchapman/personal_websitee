@@ -33,7 +33,6 @@ function BootSequence({ onComplete }) {
       return
     }
 
-    let lineIndex = 0
     let totalDelay = 0
 
     const timers = []
@@ -42,7 +41,6 @@ function BootSequence({ onComplete }) {
       totalDelay += line.delay
       const timer = setTimeout(() => {
         setVisibleLines((prev) => [...prev, line])
-        lineIndex++
       }, totalDelay)
       timers.push(timer)
     })
