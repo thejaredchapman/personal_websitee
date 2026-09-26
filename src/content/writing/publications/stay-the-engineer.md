@@ -567,3 +567,5 @@ It gave you more room to be one.
 *Disclaimer: The opinions in this article are my own. I wrote it using my own personal Claude account and my own property. They do not represent the beliefs or views of my employer, any organization I'm affiliated with, or anyone else — only mine.*
 
 *If this was useful, follow me for more on building with AI without losing the craft. And tell me in the comments: which habit is hardest for you to keep?*
+
+*Also published on Medium: [Stay the Engineer: Using AI to Get Better, Not Get Replaced](https://medium.com/@thejaredchapman/stay-the-engineer-using-ai-to-get-better-not-get-replaced-f19d3799f19d)*
