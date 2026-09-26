@@ -2,6 +2,8 @@ import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { publications, handouts } from '../../content/writing'
+import YouTubeEmbed from '../YouTubeEmbed'
+import { getYouTubeId } from '../../utils/youtube'
 
 const markdownComponents = {
   h1: ({ children }) => <h1 className="text-xl font-bold mt-6 mb-3 first:mt-0" style={{ color: 'var(--text-primary)' }}>{children}</h1>,
@@ -21,6 +23,29 @@ const markdownComponents = {
   td: ({ children }) => <td className="py-1.5 px-2 border-b align-top" style={{ color: 'var(--text-secondary)', borderColor: 'var(--border-light)' }}>{children}</td>,
   hr: () => <hr className="my-5" style={{ borderColor: 'var(--border-light)' }} />,
   strong: ({ children }) => <strong style={{ color: 'var(--text-primary)' }}>{children}</strong>,
+}
+
+function textOf(children) {
+  if (typeof children === 'string' || typeof children === 'number') return String(children)
+  if (Array.isArray(children)) return children.map(textOf).join('')
+  return textOf(children?.props?.children ?? '')
+}
+
+// For articles with `embedVideos: true`: YouTube links keep their text link
+// and get a click-to-load player right below it.
+const videoMarkdownComponents = {
+  ...markdownComponents,
+  a: ({ href, children }) => {
+    const link = markdownComponents.a({ href, children })
+    const id = getYouTubeId(href)
+    if (!id) return link
+    return (
+      <>
+        {link}
+        <YouTubeEmbed id={id} title={textOf(children)} />
+      </>
+    )
+  },
 }
 
 function ArticleCard({ item, onOpen }) {
@@ -64,7 +89,7 @@ function WritingApp() {
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5"><path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round" /></svg>
           Back to Writing
         </button>
-        <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+        <ReactMarkdown remarkPlugins={[remarkGfm]} components={selected.embedVideos ? videoMarkdownComponents : markdownComponents}>
           {selected.content}
         </ReactMarkdown>
       </div>
