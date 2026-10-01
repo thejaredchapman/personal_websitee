@@ -17,7 +17,7 @@ describe('ProjectsApp — heading', () => {
 describe('ProjectsApp — main projects', () => {
   const titles = [
     'Evalforge Lite',
-    'Claude Tag Course',
+    "Tag, You're It",
     'AI Explorer',
     'LLM Frameworks',
     'DJ Master Academy',
@@ -41,7 +41,7 @@ describe('ProjectsApp — main projects', () => {
   it('renders 15 main project links', () => {
     render(<ProjectsApp />)
     const allLinks = screen.getAllByRole('link')
-    const vercelAndRenderLinks = allLinks.filter((a) => a.href.includes('vercel.app') || a.href.includes('onrender.com'))
+    const vercelAndRenderLinks = allLinks.filter((a) => a.href.includes('vercel.app') || a.href.includes('onrender.com') || a.href.endsWith('/tag-youre-it-course.html'))
     expect(vercelAndRenderLinks.length).toBe(15)
   })
 

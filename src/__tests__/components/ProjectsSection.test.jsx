@@ -25,7 +25,7 @@ describe('ProjectsSection — heading', () => {
 describe('ProjectsSection — main projects', () => {
   const titles = [
     'Evalforge Lite',
-    'Claude Tag Course',
+    "Tag, You're It",
     'AI Explorer',
     'LLM Frameworks',
     'DJ Master Academy',

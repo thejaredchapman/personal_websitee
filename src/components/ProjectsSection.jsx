@@ -158,10 +158,10 @@ function ProjectsSection() {
       )
     },
     {
-      title: 'Claude Tag Course',
-      description: "A free, plain-words course on Claude Tag, the way to bring Claude into your team's Slack. In about 15 minutes you'll learn how to ask Claude for help, choose where to ask, steer it mid-task, teach it your team's rules, and check its work before anything goes out. It includes copy-and-paste prompts for nine teams and a short quiz. No tech background needed.",
+      title: "Tag, You're It",
+      description: "A friendly, playground-style course on Claude Tag, the way to bring Claude into your team's Slack. Short levels cover where to ask, steering Claude, checking its work, and setup, with a \"why\" for every idea, a quiz, star rewards, and copy-ready prompts. No tech words needed.",
       tags: ['Claude Tag', 'Slack', 'Course', 'Education'],
-      url: 'https://claude-tag-course.vercel.app/',
+      url: '/tag-youre-it-course.html',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
           <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" strokeLinecap="round" strokeLinejoin="round" />

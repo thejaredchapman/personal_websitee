@@ -1,0 +1,518 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Tag, You're It Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: a playground map. Sticky progress bar on top, then "levels" as big rounded zones on a path. */
+:root{
+  --bg:#f2f7ff; --surface:#ffffff; --ink:#1d2747; --muted:#56628a; --line:#d7e2f7;
+  --coral:#ff6b4a; --coral-soft:#ffe6df; --sun:#ffc93c; --sun-soft:#fff3cc;
+  --grass:#2fae7c; --grass-soft:#d9f4e8; --sky:#3f8cf0; --sky-soft:#dcebff;
+  --grape:#7d5cf0; --grape-soft:#e9e3ff; --bad:#d6334a; --bad-soft:#ffe1e6;
+  --display:'Fredoka','Trebuchet MS',system-ui,sans-serif; --body:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#10162b; --surface:#1a2240; --ink:#eef2ff; --muted:#a5b0d6; --line:#2d3868;
+  --coral:#ff7d5f; --coral-soft:#4a2a2a; --sun:#ffd35c; --sun-soft:#4a4020; --grass:#46c994; --grass-soft:#173d31;
+  --sky:#6aa8ff; --sky-soft:#1d3358; --grape:#a08bff; --grape-soft:#31275e; --bad:#ff6b82; --bad-soft:#4a2230; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10162b; --surface:#1a2240; --ink:#eef2ff; --muted:#a5b0d6; --line:#2d3868;
+  --coral:#ff7d5f; --coral-soft:#4a2a2a; --sun:#ffd35c; --sun-soft:#4a4020; --grass:#46c994; --grass-soft:#173d31;
+  --sky:#6aa8ff; --sky-soft:#1d3358; --grape:#a08bff; --grape-soft:#31275e; --bad:#ff6b82; --bad-soft:#4a2230; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding-inline:16px;padding-block:0 60px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.7rem,4.5vw,2.3rem)} h3{font-size:1.2rem}
+p{margin:.5em 0}
+button{font-family:inherit;font-size:inherit;color:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--sky);outline-offset:2px}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);padding-block:10px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;border-bottom:2px dashed var(--line);margin-inline:-16px;padding-inline:16px}
+.bar .logo{font-family:var(--display);font-weight:700;color:var(--coral);white-space:nowrap}
+.track{flex:1;min-width:120px;height:14px;background:var(--line);border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--sun),var(--coral));border-radius:99px;transition:width .5s}
+.stars{font-family:var(--display);font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+.nav{display:flex;gap:6px;flex-wrap:wrap;padding-block:10px}
+.nav a{font-family:var(--display);text-decoration:none;color:var(--ink);background:var(--surface);border:2px solid var(--line);border-radius:99px;padding:2px 12px;font-size:.92rem}
+.nav a:hover{border-color:var(--coral)}
+.hero{text-align:center;padding-block:36px 10px}
+.hero h1{font-size:clamp(2.4rem,9vw,4.4rem)}
+.hero h1 span{color:var(--coral)}
+.hero .sub{max-width:34rem;margin:14px auto;color:var(--muted);font-size:1.15rem}
+.kids{display:flex;justify-content:center;flex-wrap:wrap;gap:2px;margin-block:10px}
+.kids svg{width:84px;height:auto;animation:bob 1.6s ease-in-out infinite}
+.kids svg:nth-child(2n){animation-delay:.3s}.kids svg:nth-child(3n){animation-delay:.6s}
+@keyframes bob{50%{transform:translateY(-8px)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.btn{background:var(--coral);color:#fff;border:0;border-radius:99px;padding:10px 22px;font-family:var(--display);font-weight:600;box-shadow:0 4px 0 rgba(0,0,0,.18)}
+.btn:active{transform:translateY(2px);box-shadow:0 2px 0 rgba(0,0,0,.18)}
+.btn.alt{background:var(--sky)} .btn.small{padding:5px 14px;font-size:.9rem}
+.level{margin-top:44px;background:var(--surface);border:3px solid var(--line);border-radius:28px;padding:22px 20px 26px}
+.level>header{display:flex;gap:12px;align-items:center;margin-bottom:10px}
+.badge{flex:none;width:46px;height:46px;border-radius:50%;background:var(--sun);color:#3a2a00;font-family:var(--display);font-weight:700;font-size:1.3rem;display:grid;place-items:center;border:3px solid var(--ink)}
+.lede{color:var(--muted)}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-top:14px}
+.card{background:var(--bg);border:2px solid var(--line);border-radius:20px;padding:14px 16px;min-width:0}
+.card h3{margin-bottom:4px}
+.tint-sky{background:var(--sky-soft)}.tint-grass{background:var(--grass-soft)}.tint-sun{background:var(--sun-soft)}.tint-coral{background:var(--coral-soft)}.tint-grape{background:var(--grape-soft)}
+.why{display:flex;gap:8px;margin-top:8px;padding:8px 10px;border-radius:14px;background:var(--grass-soft);font-size:.93rem}
+.why b{color:var(--grass);font-family:var(--display);white-space:nowrap}
+.twist{display:flex;gap:8px;margin-top:6px;padding:8px 10px;border-radius:14px;background:var(--grape-soft);font-size:.93rem}
+.twist b{color:var(--grape);font-family:var(--display);white-space:nowrap}
+.say{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86rem;background:var(--ink);color:var(--bg);border-radius:14px;padding:10px 12px;margin-top:8px;overflow-wrap:anywhere;position:relative}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.tab{background:var(--bg);border:2px solid var(--line);border-radius:99px;padding:4px 14px;font-family:var(--display)}
+.tab[aria-selected=true]{background:var(--coral);border-color:var(--coral);color:#fff}
+.opts{display:grid;gap:8px;margin-top:10px}
+.opt{text-align:left;background:var(--bg);border:2px solid var(--line);border-radius:16px;padding:10px 14px}
+.opt:hover:not(:disabled){border-color:var(--sky)}
+.opt.right{background:var(--grass-soft);border-color:var(--grass)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.fb{margin-top:10px;padding:10px 14px;border-radius:16px;background:var(--sun-soft)}
+.stage{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:12px}
+.stage svg{width:130px;flex:none}
+.steps{display:grid;gap:12px;margin-top:12px;counter-reset:s}
+.step{display:flex;gap:12px;align-items:flex-start}
+.step .n{flex:none;width:34px;height:34px;border-radius:50%;background:var(--sky);color:#fff;display:grid;place-items:center;font-family:var(--display);font-weight:700}
+.step div{min-width:0}
+.claim{display:block;width:100%;text-align:left;background:var(--bg);border:2px solid var(--line);border-radius:14px;padding:9px 12px;margin-top:8px}
+.claim small{color:var(--muted);display:block}
+.big{border:3px solid var(--coral);background:var(--coral-soft);border-radius:24px;padding:16px 18px;margin-top:14px}
+.big h3{color:var(--coral)}
+input[type=range]{width:100%;accent-color:var(--coral)}
+.check{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border-radius:14px;cursor:pointer}
+.check:hover{background:var(--bg)}
+.check input{width:22px;height:22px;accent-color:var(--grass);margin-top:3px;flex:none}
+.check.done span{text-decoration:line-through;color:var(--muted)}
+.copybox{margin-top:12px}
+.copybox pre{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--ink);color:var(--bg);border-radius:16px;padding:14px;font-size:.88rem;line-height:1.5;margin:8px 0;font-family:ui-monospace,Menlo,Consolas,monospace}
+.pop{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 18px;border-radius:99px;font-family:var(--display);z-index:20}
+footer{margin-top:40px;color:var(--muted);font-size:.9rem}
+footer a{color:var(--sky)}
+details{background:var(--bg);border:2px solid var(--line);border-radius:16px;padding:8px 14px;margin-top:8px}
+summary{cursor:pointer;font-family:var(--display);font-weight:500}
+</style>
+
+<div class="wrap">
+<div class="bar">
+  <span class="logo">@Claude Tag</span>
+  <div class="track" role="progressbar" aria-label="Course progress" aria-valuemin="0" aria-valuemax="100" id="pbar"><div class="fill" id="fill"></div></div>
+  <span class="stars" id="stars">0 stars</span>
+</div>
+<nav class="nav" aria-label="Levels">
+  <a href="#l0">0 Playground</a><a href="#l1">1 Where</a><a href="#l2">2 Four moves</a><a href="#l3">3 Teams</a><a href="#l4">4 Creativity</a><a href="#l5">5 Check it</a><a href="#l6">6 Quiz</a><a href="#l7">7 Setup</a><a href="#l8">Prompts</a>
+</nav>
+
+<section class="hero">
+  <div class="kids" id="heroKids" aria-hidden="true"></div>
+  <h1>Tag, <span>you're it!</span></h1>
+  <p class="sub">A friendly course on Claude Tag: the way to bring Claude into your team's Slack chats. No tech words needed. Every idea comes with a <b>why</b>.</p>
+  <button class="btn" id="startBtn">Let's play</button>
+</section>
+
+<!-- LEVEL 0 -->
+<section class="level" id="l0">
+  <header><div class="badge">0</div><h2>The playground</h2></header>
+  <p class="lede">Picture a playground. Your Slack is the playground. Your team is the kids. Claude Tag is a new friend who joins the game.</p>
+  <div class="grid">
+    <div class="card tint-sky"><h3>It joins your chat</h3><p>Type <b>@Claude</b> in a Slack message. Claude reads the thread and the channel around it, so you don't have to explain everything again.</p>
+      <div class="why"><b>Why?</b><span>Less copy and paste. Claude starts already knowing the story.</span></div></div>
+    <div class="card tint-grass"><h3>Everyone can play</h3><p>A whole team can talk to Claude in one thread. Anyone can add a hint or fix direction.</p>
+      <div class="why"><b>Why?</b><span>Work stays in one place where everybody can see it and help.</span></div></div>
+    <div class="card tint-sun"><h3>It keeps going</h3><p>Claude can work on longer jobs and on a schedule, like "every Friday at 4", even when you're away.</p>
+      <div class="why"><b>Why?</b><span>Boring repeat jobs get done without anyone remembering to ask.</span></div></div>
+    <div class="card tint-grape"><h3>It remembers</h3><p>Tell Claude a rule once and it keeps it in that channel's "notes".</p>
+      <div class="why"><b>Why?</b><span>No more "as I said last week..." every time.</span></div></div>
+  </div>
+  <div class="big">
+    <h3>The big rule of the game</h3>
+    <p><b>Claude is a fast, creative helper. It is not a judge of what is true.</b> Like any AI, it can say wrong things in a very sure voice. That is called a <i>hallucination</i>. You bring the ideas and the checking. Claude brings the speed. You will practice this in Level 5.</p>
+  </div>
+  <p class="lede" style="margin-top:14px">Good to know: Claude Tag launched in beta in June 2026 for Team and Enterprise plans. Features can change, so check your admin's settings.</p>
+</section>
+
+<!-- LEVEL 1 -->
+<section class="level" id="l1">
+  <header><div class="badge">1</div><h2>Pick your playing field</h2></header>
+  <p class="lede">Where you tag Claude changes what it can see and who can see the answer. Tap a field.</p>
+  <div class="tabs" role="tablist" id="fieldTabs"></div>
+  <div class="card" id="fieldCard" style="margin-top:12px"></div>
+  <h3 style="margin-top:22px">Mini game: which field?</h3>
+  <p id="fieldQ"></p>
+  <div class="opts" id="fieldOpts"></div>
+  <div class="fb" id="fieldFb" hidden></div>
+</section>
+
+<!-- LEVEL 2 -->
+<section class="level" id="l2">
+  <header><div class="badge">2</div><h2>The four moves of tag</h2></header>
+  <p class="lede">Giving Claude a job works like a game of tag. Four moves. Tap each one.</p>
+  <div class="steps" id="moves"></div>
+  <div class="card tint-sun" style="margin-top:16px">
+    <h3>Steer without re-tagging</h3>
+    <p>If Claude starts running the wrong way, just reply in the same thread. Claude reads new replies while it works. No new @Claude needed.</p>
+    <div class="why"><b>Why?</b><span>Fixing early costs one sentence. Fixing late costs the whole job.</span></div>
+  </div>
+</section>
+
+<!-- LEVEL 3 -->
+<section class="level" id="l3">
+  <header><div class="badge">3</div><h2>Games for every team</h2></header>
+  <p class="lede">Pick your team. Each idea has something to type, the reason it helps, and a creative twist to make it your own. Tap a prompt to copy it.</p>
+  <div class="tabs" role="tablist" id="teamTabs"></div>
+  <div id="teamBody"></div>
+</section>
+
+<!-- LEVEL 4 -->
+<section class="level" id="l4">
+  <header><div class="badge">4</div><h2>Be creative: 12 sparks</h2></header>
+  <p class="lede">Claude does the work faster. <b>You</b> decide what is worth doing. Creativity is your part: the odd question, the new angle, the "what if". Tap a spark card to flip it.</p>
+  <div class="grid" id="sparks"></div>
+  <div class="card tint-coral" style="margin-top:16px">
+    <h3>Your turn: spark maker</h3>
+    <p>Pick a team and a pain. We'll mix a prompt starter for you.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <select id="mixTeam" aria-label="Team"></select>
+      <select id="mixPain" aria-label="Pain"></select>
+      <button class="btn small" id="mixBtn">Mix it</button>
+    </div>
+    <div class="say" id="mixOut">Press "Mix it".</div>
+  </div>
+</section>
+
+<!-- LEVEL 5 -->
+<section class="level" id="l5">
+  <header><div class="badge">5</div><h2>Check it! (the most important level)</h2></header>
+  <p class="lede">AI models sometimes make things up. They can invent a number, a quote, a link, or a rule, and sound totally sure. The fix is simple: <b>people check.</b> Claude drafts. You verify.</p>
+
+  <div class="big">
+    <h3>The Tag-Back Rule</h3>
+    <p>Whenever Claude hands you work, you tag <i>yourself</i> back in. Five checks, from quick to careful:</p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div><b>Ask for proof.</b> "Link the source for every number." <i>Why: a claim with no source is a guess.</i></div></div>
+      <div class="step"><div class="n">2</div><div><b>Click the proof.</b> Open the link. Does it really say that? <i>Why: a link can exist and still not support the claim.</i></div></div>
+      <div class="step"><div class="n">3</div><div><b>Spot-check.</b> Re-do two or three numbers by hand. <i>Why: if two are right, you trust the rest more. If one is wrong, look at all of it.</i></div></div>
+      <div class="step"><div class="n">4</div><div><b>Ask twice.</b> Run the same question again. Different answers mean something is shaky. <i>Why: real facts stay put, made-up ones wobble.</i></div></div>
+      <div class="step"><div class="n">5</div><div><b>A person signs off.</b> For money, law, health, safety, or customers. <i>Why: someone real must own the outcome.</i></div></div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:22px">How much checking? Slide to see.</h3>
+  <label for="stake" class="lede">How bad is it if this is wrong?</label>
+  <input type="range" id="stake" min="0" max="3" step="1" value="1" aria-describedby="stakeOut">
+  <div class="fb" id="stakeOut"></div>
+
+  <h3 style="margin-top:22px">Mini game: spot the fib</h3>
+  <p class="lede">Claude wrote a summary. One line has nothing to back it up. Tap the line you would check first.</p>
+  <div id="fibBox"></div>
+  <div class="fb" id="fibFb" hidden></div>
+  <div style="margin-top:10px"><button class="btn alt small" id="fibNext" hidden>Next round</button></div>
+
+  <details><summary>A trick: ask Claude to catch itself</summary>
+    <p>Try: <i>"Now go through your answer. For each claim, find the exact quote in the source. If you can't, say you can't and remove the claim."</i> This makes a weak claim visible. It still does not replace your own check. Anthropic's own guidance on reducing hallucinations suggests citations and comparing repeated answers.</p></details>
+  <details><summary>Put the source in the brief</summary>
+    <p>When you ask for work, link the raw data, ticket, or contract. Then you and Claude are both looking at the same facts. That is why the four moves in Level 2 ask for a "verification method" in the brief.</p></details>
+</section>
+
+<!-- LEVEL 6 -->
+<section class="level" id="l6">
+  <header><div class="badge">6</div><h2>Quiz time</h2></header>
+  <p class="lede">Six quick questions. Each right answer earns a star.</p>
+  <div id="quiz"></div>
+</section>
+
+<!-- LEVEL 7 -->
+<section class="level" id="l7">
+  <header><div class="badge">7</div><h2>Set up your playground</h2></header>
+  <p class="lede">Tick these off for your own workspace. Your ticks are saved in this browser.</p>
+  <div id="checks"></div>
+</section>
+
+<!-- PROMPTS -->
+<section class="level" id="l8">
+  <header><div class="badge">★</div><h2>Bonus: the Slack prompt</h2></header>
+
+  <h3>The "@Claude, tag you're it" prompt for Slack</h3>
+  <p class="lede">Play the real game. You tag Claude, Claude runs, and when it needs you it tags you back.</p>
+  <div class="copybox"><pre id="p1"></pre><button class="btn small" data-copy="p1">Copy Slack prompt</button></div>
+  <div class="why"><b>Why?</b><span>It has a goal, sources, a way to check, and a clear "tag me back" rule. Those are the four moves in one message.</span></div>
+</section>
+
+<footer>
+  <p>Built from your guide plus Anthropic's public Claude Tag pages. Features such as channel notes, routines, and the eyes reaction come from your guide and may differ by plan and admin settings, so confirm them in your workspace.</p>
+  <p>Sources: <a href="https://www.anthropic.com/news/introducing-claude-tag">Anthropic announcement</a> · <a href="https://claude.com/docs/claude-tag/overview">Claude Tag docs</a> · <a href="https://support.claude.com/en/articles/15594475-what-is-claude-tag">Help center</a> · <a href="https://docs.anthropic.com/en/docs/test-and-evaluate/strengthen-guardrails/reduce-hallucinations">Reduce hallucinations</a></p>
+</footer>
+</div>
+<div class="pop" id="pop" hidden></div>
+
+<script>
+const $=s=>document.querySelector(s);
+const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
+
+/* ---------- kids (inline SVG) ---------- */
+function kid(o){
+  const {skin,hair,shirt,pants='#3a4a7a',style='short',chair=false,hijab=false,glasses=false,small=false}=o;
+  const s=small?.86:1;
+  let h='';
+  if(hijab) h=`<path d="M22 30 Q22 8 40 8 Q58 8 58 30 L58 46 Q40 52 22 46Z" fill="${hair}"/><ellipse cx="40" cy="30" rx="12" ry="14" fill="${skin}"/>`;
+  else{
+    h=`<ellipse cx="40" cy="28" rx="14" ry="15" fill="${skin}"/>`;
+    if(style==='short')h+=`<path d="M25 26 Q26 11 40 11 Q54 11 55 26 Q46 17 25 26Z" fill="${hair}"/>`;
+    if(style==='puff')h+=`<circle cx="28" cy="15" r="9" fill="${hair}"/><circle cx="52" cy="15" r="9" fill="${hair}"/><path d="M26 24 Q40 8 54 24 Q40 16 26 24Z" fill="${hair}"/>`;
+    if(style==='long')h+=`<path d="M24 28 Q24 9 40 9 Q56 9 56 28 L58 50 L52 50 L52 26 Q40 16 28 26 L28 50 L22 50Z" fill="${hair}"/>`;
+    if(style==='curly')h+=`<circle cx="30" cy="14" r="7"fill="${hair}"/><circle cx="40" cy="10" r="8" fill="${hair}"/><circle cx="50" cy="14" r="7" fill="${hair}"/><circle cx="26" cy="22" r="5" fill="${hair}"/><circle cx="54" cy="22" r="5" fill="${hair}"/>`;
+    if(style==='bald')h+='';
+  }
+  const face=`<circle cx="35" cy="29" r="1.8" fill="#222"/><circle cx="45" cy="29" r="1.8" fill="#222"/><path d="M35 35 Q40 40 45 35" stroke="#222" stroke-width="1.8" fill="none" stroke-linecap="round"/>`+(glasses?`<circle cx="35" cy="29" r="4.5" fill="none" stroke="#222" stroke-width="1.3"/><circle cx="45" cy="29" r="4.5" fill="none" stroke="#222" stroke-width="1.3"/><path d="M39.5 29h1" stroke="#222"/>`:'');
+  const body=chair
+   ?`<rect x="30" y="44" width="20" height="22" rx="8" fill="${shirt}"/><path d="M30 50 L18 58" stroke="${skin}" stroke-width="5" stroke-linecap="round"/><path d="M50 50 L62 44" stroke="${skin}" stroke-width="5" stroke-linecap="round"/><rect x="30" y="64" width="26" height="6" rx="3" fill="${pants}"/><circle cx="36" cy="76" r="11" fill="none" stroke="#4a5270" stroke-width="3"/><circle cx="36" cy="76" r="2" fill="#4a5270"/><path d="M50 66 L56 74" stroke="#4a5270" stroke-width="3"/><circle cx="58" cy="78" r="5" fill="none" stroke="#4a5270" stroke-width="3"/>`
+   :`<rect x="29" y="44" width="22" height="24" rx="9" fill="${shirt}"/><path d="M29 50 L18 40" stroke="${skin}" stroke-width="5" stroke-linecap="round"/><path d="M51 50 L63 58" stroke="${skin}" stroke-width="5" stroke-linecap="round"/><path d="M34 66 L30 86" stroke="${pants}" stroke-width="7" stroke-linecap="round"/><path d="M46 66 L54 82" stroke="${pants}" stroke-width="7" stroke-linecap="round"/><circle cx="29" cy="88" r="4" fill="#fff" stroke="#333" stroke-width="1.5"/><circle cx="55" cy="84" r="4" fill="#fff" stroke="#333" stroke-width="1.5"/>`;
+  return `<svg viewBox="0 0 80 96" role="img" aria-hidden="true" style="transform-origin:center"><g transform="scale(${s}) translate(${small?6:0},${small?12:0})">${body}${h}${face}</g></svg>`;
+}
+const cast=[
+ {skin:'#f3c9a5',hair:'#6b3f1f',shirt:'#ff6b4a',style:'short'},
+ {skin:'#8d5a3b',hair:'#1a1210',shirt:'#3f8cf0',style:'puff'},
+ {skin:'#e0ac82',hair:'#2a2a2a',shirt:'#2fae7c',style:'long',glasses:true},
+ {skin:'#5b3a29',hair:'#0e0a08',shirt:'#ffc93c',style:'curly'},
+ {skin:'#d9a07a',hair:'#7d5cf0',shirt:'#ff8fb1',style:'short',hijab:true},
+ {skin:'#b97a52',hair:'#1c1c1c',shirt:'#7d5cf0',style:'bald',chair:true},
+ {skin:'#ffe0c4',hair:'#e0a13a',shirt:'#3f8cf0',style:'short',small:true}
+];
+$('#heroKids').innerHTML=cast.map(kid).join('');
+
+/* ---------- progress ---------- */
+const S={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const earned=new Set(S.get('tagStars',[]));
+const TOTAL=18;
+function award(id){ if(earned.has(id))return; earned.add(id); S.set('tagStars',[...earned]); paint(); pop('Star earned!'); }
+function paint(){ const n=earned.size; $('#stars').textContent=n+' star'+(n===1?'':'s'); const p=Math.min(100,Math.round(n/TOTAL*100)); $('#fill').style.width=p+'%'; $('#pbar').setAttribute('aria-valuenow',p); }
+function pop(t){const p=$('#pop');p.textContent=t;p.hidden=false;clearTimeout(pop.t);pop.t=setTimeout(()=>p.hidden=true,1600)}
+async function copy(text,el){
+  try{await navigator.clipboard.writeText(text);pop('Copied!')}
+  catch(e){const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);pop('Selected. Press copy.')}
+}
+$('#startBtn').onclick=()=>$('#l0').scrollIntoView({behavior:'smooth'});
+
+/* ---------- level 1 ---------- */
+const fields=[
+ {id:'dm',name:'Direct message',skin:cast[0],tint:'tint-sky',who:'Just you',sees:'Your own connected accounts (calendar, inbox, personal drive). Runs as you.',mem:'Stays in your DM. Never shared with channels.',best:'Private morning briefs, your drafts, your to-dos.',why:'Personal stuff should stay personal.'},
+ {id:'pub',name:'Public channel',skin:cast[1],tint:'tint-grass',who:'Whole team',sees:'Shared team tools (CRM, GitHub, data). Runs as the shared "Claude".',mem:'Saves channel notes. Some rules can become workspace-wide notes.',best:'Team projects, triage, shared routines. Recommended for most team work.',why:'Everyone sees the work, so anyone can help steer or catch mistakes.'},
+ {id:'priv',name:'Private channel',skin:cast[3],tint:'tint-grape',who:'Only its members',sees:'Team tools for members only. It can also search public channels.',mem:'Channel notes stay inside that private channel.',best:'HR, legal, finance, drafts not ready to share.',why:'Sensitive work gets a closed door.'}
+];
+const fTabs=$('#fieldTabs');
+fields.forEach((f,i)=>{const b=el('button','tab',f.name);b.role='tab';b.setAttribute('aria-selected',i==1);b.onclick=()=>showField(i);fTabs.append(b)});
+function showField(i){
+  [...fTabs.children].forEach((b,j)=>b.setAttribute('aria-selected',j==i));
+  const f=fields[i],c=$('#fieldCard');c.className='card '+f.tint;
+  c.innerHTML=`<div class="stage">${kid({...f.skin,small:false})}<div style="flex:1;min-width:200px"><h3>${f.name}</h3><p><b>Who is there:</b> ${f.who}</p><p><b>What Claude can use:</b> ${f.sees}</p><p><b>Memory:</b> ${f.mem}</p><p><b>Best for:</b> ${f.best}</p><div class="why"><b>Why?</b><span>${f.why}</span></div></div></div>`;
+}
+showField(1);
+const fq={q:'Your four support leads want Claude to draft this week\'s customer feedback summary, edit it privately, and present it on Friday. The feedback lives in public #support. Their private chat is #support-leads. Where do they ask?',
+ o:['In #support, so everyone sees it','In #support-leads, where Claude can also search #support','In a DM with Claude, then forward it'],a:1,
+ e:'Claude can look at public channels from inside a private one, but not the other way around. Drafting in #support-leads keeps the work private until the leads are ready.'};
+$('#fieldQ').textContent=fq.q;
+mcq($('#fieldOpts'),$('#fieldFb'),fq,'f1');
+function mcq(box,fb,q,id){
+  box.innerHTML='';
+  q.o.forEach((t,i)=>{const b=el('button','opt',t);b.onclick=()=>{
+    [...box.children].forEach(x=>x.disabled=true);
+    const ok=i===q.a;b.classList.add(ok?'right':'wrong');
+    if(!ok)box.children[q.a].classList.add('right');
+    fb.hidden=false;fb.innerHTML=(ok?'<b>Yes!</b> ':'<b>Not quite.</b> ')+q.e;
+    if(ok)award(id);
+  };box.append(b)});
+}
+
+/* ---------- level 2 ---------- */
+const moves=[
+ ['Pick the work and the tools','Ask: "@Claude what can you access from here?"','Claude tells you which tools it can reach in this channel.','You can\'t be surprised later by a missing tool.'],
+ ['Write the brief','Give four things: the goal, where the info is, how to check it, and any rules.','"Summarize these 10 tickets. Source: the ticket links. Every claim must link a ticket. Keep it under 6 lines."','A clear brief is the difference between a useful draft and a confident guess.'],
+ ['Let Claude run','Watch its checklist. Reply in the thread to steer.','No new @Claude needed while it works.','Early nudges are cheap.'],
+ ['Review and anchor','Check the work against the sources. Then save lasting rules.','"@Claude remember for this channel: always show metrics in a table."','Checked work is trustworthy work, and saved rules mean you teach Claude once.']
+];
+const mv=$('#moves');
+moves.forEach((m,i)=>{
+  const d=el('div','card');
+  d.innerHTML=`<div class="step"><div class="n">${i+1}</div><div><h3>${m[0]}</h3><p>${m[1]}</p><div class="say">${m[2]}</div><div class="why"><b>Why?</b><span>${m[3]}</span></div></div></div>`;
+  mv.append(d);
+});
+
+/* ---------- level 3 ---------- */
+const teams=[
+ {n:'Everyone',items:[
+  ['Morning brief (in your DM)','@Claude every weekday at 8:00 AM, send me a brief here: check #proj-launch and #client-updates, list what waits on me by urgency, and draft replies I owe.','You start the day with a plan, not a pile.','Add "and tell me the one thing I can safely ignore today." Then check that it was safe.'],
+  ['Meeting action items','@Claude read the transcript above, list every action item with owner and deadline, and post it as a checklist here.','Decisions stop vanishing after the call.','Ask it to also list "things nobody owned" so gaps show up. Verify names and dates against the transcript.'],
+  ['Find what we decided','@Claude search #announcements, #product-roadmap and #design-review for decisions about the mobile redesign this month. Summarize on one page and link each message.','Saves hours of scrolling.','Ask for "decisions that contradict each other." Click every link.']]},
+ {n:'Managers',items:[
+  ['Request triage','@Claude remember for this channel: you triage incoming requests. Check each against our CRM, tag the engineer on rotation, and update the tracker.','Nothing sits waiting for someone to notice it.','Add a "weird request" category Claude tags back to you instead of guessing.'],
+  ['Friday blocker digest','@Claude every Friday at 4:00 PM compare our tracker with this channel over the last 5 days. List overdue tasks, blockers, and next week\'s milestones.','You see trouble before Monday.','Ask for a "what went better than planned" line to celebrate wins.'],
+  ['Timeline clash finder','@Claude compare release dates in #engineering-sync with the schedule in #launch-campaigns and flag overlaps.','Teams that don\'t talk often collide. This makes the collision visible early.','Ask it to propose two fixes per clash. You choose.']]},
+ {n:'Engineers',items:[
+  ['Release notes','@Claude scan merged pull requests from the last 7 days and draft release notes grouped as Features, Fixes, Breaking changes.','Release notes are useful but easy to skip.','Write a second version for customers in plain words. Compare it with the real changes.'],
+  ['Error trace lookup','@Claude remember for this channel: when a message has an error trace ID, look it up in monitoring, link the logs, and tag the code owner.','Fewer "who owns this?" detours.','Have it add "three things it could be" and mark each as a guess. Confirm in the logs.'],
+  ['Decision record','@Claude read this thread on Postgres vs DynamoDB, list the pros and cons people raised, and draft a decision record for approval.','Future teammates learn why, not just what.','Ask Claude to argue against the winner. Good ideas survive it.']]},
+ {n:'Sales',items:[
+  ['Pre-call prep','@Claude pull what #account-acme decided this month, my recent emails with their VP, and CRM notes. List the top 3 risks for today\'s renewal call.','You walk in prepared.','Ask for one smart question to ask them. Check every fact before you say it out loud.'],
+  ['Stale deal alert','@Claude every Monday at 8:30 AM find enterprise deals with no activity in 14 days and suggest re-engagement steps.','Deals rarely die loudly. They go quiet.','Suggest a friendly, non-pushy check-in in your own voice. Edit before sending.'],
+  ['RFP first draft','@Claude draft answers to the 5 security questions in the attached RFP using our docs. Mark any answer you could not find a source for.','Gets you from blank page to draft fast.','Have it flag "we don\'t actually do this" gaps. A security person must review every answer.']]},
+ {n:'Support',items:[
+  ['Help desk answers','Turn on proactive replies in #help-desk and pin your docs.','People get answers sooner, and experts handle new problems instead of repeats.','Pin a "when to escalate" page so Claude knows when to ask a person.'],
+  ['Escalation watch','@Claude watch this channel. If a P1 has no team reply in 15 minutes, tag the on-call manager and post the incident runbook link.','Urgent things never wait unnoticed.','Test it with a pretend P1 first.'],
+  ['Feedback themes','@Claude read this week\'s customer feedback in #support and group it into 5 themes with 2 example quotes each.','Patterns beat one-off stories.','Ask for "what customers did NOT complain about." Verify quotes are real.']]},
+ {n:'Marketing',items:[
+  ['Launch calendar check','@Claude compare #launch-campaigns with #engineering-sync and warn us if a campaign mentions a feature that has not shipped.','Avoids promising what isn\'t ready.','Ask for three headline ideas per feature. You pick the best.'],
+  ['Competitor watch','@Claude search the web and our sales channels for pricing changes from competitor X and summarize 3 talking points with links.','You stay informed without doom-scrolling.','Ask it to note what competitors said about themselves versus what others say. Click the links.'],
+  ['Repurpose a post','@Claude turn this blog post into a LinkedIn post, a short email, and a 30 second script. Keep our voice guide in the pinned message.','One good idea reaches more people.','Write one version yourself first and ask Claude to critique it.']]},
+ {n:'IT and Ops',items:[
+  ['Access request triage','@Claude when a request lands in #it-requests, check the department in the HR directory, pull the approval rules, and draft the ticket.','Faster approvals, fewer mistakes.','A human approves the ticket. Claude never decides access on its own.'],
+  ['Morning status','@Claude every weekday at 7:00 AM check our monitoring tools and post uptime, active alerts, and upcoming maintenance.','The team starts with the same picture.','Ask it to say "data unavailable" when it can\'t reach a tool, never to guess.'],
+  ['Memory tidy-up','@Claude what do you remember about this workspace? List all workspace notes so we can remove outdated ones.','Old rules cause new confusion.','Schedule it monthly. Deleting the Slack message does not delete the memory. You must tell Claude to forget it.']]},
+ {n:'Leaders',items:[
+  ['Friday company pulse','@Claude every Friday at 5:00 PM scan #proj-atlas, #sales-q4, #infra-migration. Summarize what shipped, what is blocked, and any timeline conflicts.','One view across teams.','Ask for "what nobody is talking about but should be." Check it with the teams.'],
+  ['Own the launch','@Claude you own keeping the launch unblocked: watch the tracker, chase what\'s missing, and bring me scope or timeline decisions.','Claude does the chasing, you keep the big calls.','Write down which decisions are yours so Claude knows when to tag you back.'],
+  ['Board prep outline','@Claude pull metrics from finance, shipping updates from #engineering-sync, and sales from the CRM. Draft an 8 slide outline.','Gets you past the blank page.','Every number must link to its source. Finance checks the figures before it goes anywhere.']]},
+ {n:'People and Legal',items:[
+  ['Policy questions','@Claude search public channels and explain our current policy on core hours and expense limits, and link where you found it.','New hires get quick answers.','Point Claude to the real policy doc. Anything unclear goes to a person.'],
+  ['Retro themes (no names)','@Claude summarize themes, wins, and friction from public retro channels this month without naming individuals.','Leaders hear patterns, not gossip.','Do sensitive work in a private channel.'],
+  ['Contract first pass','In a private channel: @Claude compare the redlines in the attached contract to our standard terms and list differences.','Speeds up reading long documents.','Claude is not your lawyer. Legal reviews every flagged and unflagged clause.']]}
+];
+const tt=$('#teamTabs'),tb=$('#teamBody');
+teams.forEach((t,i)=>{const b=el('button','tab',t.n);b.role='tab';b.setAttribute('aria-selected',i==0);b.onclick=()=>showTeam(i);tt.append(b)});
+const pick=[cast[0],cast[1],cast[2],cast[3],cast[4],cast[5],cast[6],cast[0],cast[2]];
+function showTeam(i){
+  [...tt.children].forEach((b,j)=>b.setAttribute('aria-selected',j==i));
+  tb.innerHTML='';
+  const g=el('div','grid');
+  teams[i].items.forEach(it=>{
+    const c=el('div','card');
+    c.innerHTML=`<h3>${it[0]}</h3>`;
+    const s=el('button','say');s.style.cssText='width:100%;text-align:left;border:0;cursor:pointer';s.textContent=it[1];s.title='Tap to copy';
+    s.onclick=()=>copy(it[1],s);
+    c.append(s);
+    c.insertAdjacentHTML('beforeend',`<div class="why"><b>Why?</b><span>${it[2]}</span></div><div class="twist"><b>Twist</b><span>${it[3]}</span></div>`);
+    g.append(c);
+  });
+  tb.append(g);
+}
+showTeam(0);
+tt.addEventListener('click',()=>{ award('teams'); });
+
+/* ---------- level 4 sparks ---------- */
+const sparks=[
+ ['The Devil\'s Advocate','Ask Claude to argue the opposite of your plan.','Weak spots show up before customers find them.'],
+ ['Explain it to a 10 year old','Have Claude re-explain a hard doc in simple words.','If it can\'t be said simply, it may not be understood.'],
+ ['The Pre-Mortem','"Imagine this launch failed. List 5 reasons."','It\'s easier to fix problems before they happen.'],
+ ['Two-voice draft','Ask for a formal and a friendly version.','You learn what tone fits by seeing both.'],
+ ['The Time Machine','"Summarize this channel as if I\'d been on vacation 3 weeks."','Great for returning teammates and new joiners.'],
+ ['Naming party','Ask for 20 names for a project, then pick with the team.','Volume first, taste second. Taste is yours.'],
+ ['Game it up','Turn onboarding into a scavenger hunt through channels.','People remember what felt like play.'],
+ ['Spot the gap','"What question have we not asked yet?"','New ideas often hide in what is missing.'],
+ ['Customer hat','Ask Claude to read your announcement as an annoyed customer.','You catch confusing words early.'],
+ ['Tiny experiments','"Suggest 3 cheap tests we can run this week."','Small tests beat big debates.'],
+ ['Cross-team translator','Ask Claude to rewrite an engineering update for sales.','Teams stop speaking different languages.'],
+ ['The Victory Lap','Every Friday, list wins that nobody mentioned.','Recognition keeps a team going.']
+];
+const sp=$('#sparks');
+sparks.forEach((s,i)=>{
+  const b=el('button','card '+['tint-sky','tint-grass','tint-sun','tint-grape','tint-coral'][i%5]);
+  b.style.textAlign='left';
+  const front=`<h3>${s[0]}</h3><p>${s[1]}</p><small>Tap to see why</small>`;
+  const back=`<h3>Why it works</h3><p>${s[2]}</p><small>Tap to go back</small>`;
+  b.innerHTML=front;let f=true;
+  b.onclick=()=>{f=!f;b.innerHTML=f?front:back;if(!f)award('spark'+i%3)};
+  sp.append(b);
+});
+const pains=['a messy thread I missed','a long document nobody reads','a weekly report that takes hours','a question people ask again and again','a launch with too many moving parts'];
+teams.forEach((t,i)=>{const o=el('option',null,t.n);o.value=i;$('#mixTeam').append(o)});
+pains.forEach((p,i)=>{const o=el('option',null,p);o.value=i;$('#mixPain').append(o)});
+$('#mixBtn').onclick=()=>{
+  const t=teams[$('#mixTeam').value].n,p=pains[$('#mixPain').value];
+  $('#mixOut').textContent=`@Claude I'm on the ${t} team and we struggle with ${p}. Suggest 3 creative ways you could help, and for each say what source you'd use and how I can check your work. Ask me one question before you start.`;
+  award('mix');
+};
+
+/* ---------- level 5 ---------- */
+const stakes=[
+ ['Low: a joke, a brainstorm, a first-draft title','Skim it. Claude\'s ideas are just fuel.'],
+ ['Medium: an internal summary or a meeting recap','Ask for sources, click two or three, and spot-check numbers.'],
+ ['High: a customer message, a budget number, a policy','All five checks. Click every source. A second person reads it.'],
+ ['Critical: legal, health, safety, security, money moving','Claude helps you prepare. A qualified person decides and signs. Never act on Claude\'s word alone.']];
+const st=$('#stake');
+function stk(){const s=stakes[st.value];$('#stakeOut').innerHTML=`<b>${s[0]}</b><br>${s[1]}`}
+st.oninput=()=>{stk();award('stake')};stk();
+const fibs=[
+ {claims:[['Renewals rose 12% this quarter.','Source: Finance dashboard, Q3 tab (link)'],['Two tickets mention login problems.','Source: tickets #481 and #502 (links)'],['Most customers love the new design.','Source: none given'],['The launch moved to the 20th.','Source: #launch thread, Tuesday (link)']],bad:2,why:'"Most customers love it" has no source and uses a vague word. It might be true, but it could also be made up. Ask which customers, and link them.'},
+ {claims:[['Our refund window is 45 days.','Source: Policy doc, section 4 (link)'],['Acme\'s contact is Dana Reyes, VP of Ops.','Source: CRM record (link)'],['Legal has approved the new terms.','Source: none given'],['The demo is on Thursday at 2pm.','Source: calendar invite (link)']],bad:2,why:'"Legal has approved" is a big claim with nothing behind it. Ask Legal directly before repeating it.'},
+ {claims:[['Uptime last week: 99.94%.','Source: monitoring report (link)'],['The outage started at 3:02 am.','Source: alert log (link)'],['A competitor "always" undercuts us by 20%.','Source: none given'],['Build #2231 failed on the payments test.','Source: CI log (link)']],bad:2,why:'Words like "always" plus a neat number with no source are classic signs of a made-up fact. Even the sourced lines still need a click to confirm the link says what Claude claims.'}
+];
+let fr=0;
+function fibShow(){
+  const f=fibs[fr],b=$('#fibBox');b.innerHTML='';$('#fibFb').hidden=true;$('#fibNext').hidden=true;
+  f.claims.forEach((c,i)=>{const x=el('button','claim',`${c[0]}<small>${c[1]}</small>`);x.onclick=()=>{
+    [...b.children].forEach(y=>y.disabled=true);
+    const ok=i===f.bad;x.classList.add(ok?'right':'wrong');b.children[f.bad].classList.add('right');
+    $('#fibFb').hidden=false;$('#fibFb').innerHTML=(ok?'<b>Sharp eyes!</b> ':'<b>Close.</b> ')+f.why+'<br><i>Reminder: lines with sources still deserve a click.</i>';
+    if(ok)award('fib'+fr);
+    if(fr<fibs.length-1)$('#fibNext').hidden=false;
+  };b.append(x)});
+}
+$('#fibNext').onclick=()=>{fr++;fibShow()};fibShow();
+
+/* ---------- level 6 quiz ---------- */
+const quiz=[
+ {q:'You want a weekday morning brief of the channels you follow, for your eyes only. Where do you set it up?',o:['A public channel','A DM with Claude','#general'],a:1,e:'A DM uses your personal connections and keeps the answer private.'},
+ {q:'You tag Claude and nothing happens. No reaction, no reply. Most likely?',o:['Claude is thinking very hard','Claude isn\'t in that channel or isn\'t turned on for it','Your message was too polite'],a:1,e:'Claude usually reacts right away. No reaction means it was not invited (try /invite @Claude) or an admin has it off there.'},
+ {q:'Which belongs in channel instructions, not memory?',o:['"Dana is out next week, Sam covers renewals."','"This channel prepares customer calls; scheduling questions go to #sales-ops."','"Legal paused the Initech contract until the 20th."'],a:1,e:'Instructions are lasting rules. The other two are temporary facts, which belong in memory.'},
+ {q:'You said something wrong and Claude saved it. You delete your Slack message. What happens to the saved note?',o:['It disappears too','It stays until someone tells Claude to correct or forget it','It turns into a workspace note'],a:1,e:'Memory is separate from the message. Say "@Claude forget the entry about..." to fix it.'},
+ {q:'Claude is going the wrong way mid-task. What do you do?',o:['Delete the thread','Reply in the thread with no new tag','Start over in a new channel'],a:1,e:'Claude reads replies in the thread while it works. A quick reply is the cheapest steer.'},
+ {q:'Claude gives you a polished summary with confident numbers. What is the best next move?',o:['Send it, it sounds sure','Check the sources and spot-check numbers, then decide who signs off','Ask Claude if it is sure, then send it'],a:1,e:'Confidence is not proof. Claude can be wrong in a very sure voice. Check sources, and bring in a person for high-stakes work.'}
+];
+const qz=$('#quiz');
+quiz.forEach((q,i)=>{
+  const c=el('div','card');c.style.marginTop='12px';
+  c.innerHTML=`<h3>${i+1}. ${q.q}</h3>`;
+  const box=el('div','opts'),fb=el('div','fb');fb.hidden=true;
+  c.append(box,fb);qz.append(c);mcq(box,fb,q,'q'+i);
+});
+
+/* ---------- level 7 checklist ---------- */
+const cl=['One job per channel. Each channel has a single clear purpose.','Connect the tools you need (CRM, GitHub, Drive), and only those.','Everyone runs "@Claude what can you access from here?" once.','Save team words and rules: "@Claude remember for this channel: ..."','Put lasting guidelines in the channel instructions, not memory.','Decide where proactive (untagged) replies are on or off.','Set up one recurring routine, like a Friday digest.','Keep HR, legal, and money work in private channels.','Write your team\'s check rule: who verifies what, before anything goes out.'];
+const ck=$('#checks'),saved=S.get('tagChecks',{});
+cl.forEach((t,i)=>{
+  const l=el('label','check');const c=el('input');c.type='checkbox';c.id='ck'+i;c.checked=!!saved[i];
+  const sp2=el('span',null,t);l.append(c,sp2);l.classList.toggle('done',c.checked);
+  c.onchange=()=>{saved[i]=c.checked;S.set('tagChecks',saved);l.classList.toggle('done',c.checked);if(Object.values(saved).filter(Boolean).length>=5)award('setup5')};
+  ck.append(l);
+});
+
+/* ---------- prompts ---------- */
+const P1=`@Claude TAG, YOU'RE IT! Here is the ball.
+
+THE GAME (the goal):
+[Describe the job in one or two sentences. Example: Turn this week's customer feedback into a one-page summary for Friday's review.]
+
+THE PLAYGROUND (where to look):
+- Read this thread and the files attached above.
+- You may search: #support, #product-roadmap.
+- Use connected tools: [CRM / GitHub / Drive / none].
+
+THE RULES:
+- Keep it under [length]. Use a table for numbers.
+- Every number and every quote needs a link to its source.
+- If you can't find a source, write "NOT FOUND" instead of guessing.
+- Do not make up names, dates, links, or quotes.
+
+TAG ME BACK when:
+- you need a decision about scope, budget, or timing,
+- two sources disagree,
+- anything is legal, financial, or about a customer's private information.
+
+BEFORE YOU HAND BACK: re-read your draft. List any claim you are less than sure about under "Please double-check". I will verify before anything is shared.
+
+Post short progress updates in this thread. I'll reply here to steer, so no new tag is needed. Ready, set, go!`;
+$('#p1').textContent=P1;
+document.querySelectorAll('[data-copy]').forEach(b=>b.onclick=()=>{const p=document.getElementById(b.dataset.copy);copy(p.textContent,p);award('copy')});
+paint();
+</script>
+
+</body></html>
