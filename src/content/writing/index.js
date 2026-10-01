@@ -1,5 +1,6 @@
 import stayTheEngineerContent from './publications/stay-the-engineer.md?raw'
 import meetUsersContent from './publications/meet-users-where-they-are.md?raw'
+import evalforgeGuideContent from './publications/evalforge-lite-guide.md?raw'
 import vibeCodingContent from './publications/from-vibe-coding-to-agentic-engineering.md?raw'
 import agentOrchestrationContent from './handouts/01-agent-orchestration.md?raw'
 import agentEvalContent from './handouts/02-agent-evaluation-and-instrumentation.md?raw'
@@ -8,6 +9,13 @@ import ragEvalContent from './handouts/04-rag-evaluation.md?raw'
 import toolEvalContent from './handouts/05-tool-evaluation.md?raw'
 
 export const publications = [
+  {
+    id: 'evalforge-lite-guide',
+    title: 'EvalForge Lite: How to Compare AI Models on Your Own Prompts',
+    description: 'A plain-English guide to testing AI models on your own prompts: grading, speed and cost, a policy gate, and an MCP server for Claude.',
+    tags: ['Model Evaluation', 'MCP', 'Multi-cloud'],
+    content: evalforgeGuideContent,
+  },
   {
     id: 'does-ai-know-im-not-white',
     title: "Does AI Know I'm Not White?",
