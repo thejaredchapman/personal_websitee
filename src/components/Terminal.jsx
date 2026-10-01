@@ -52,7 +52,8 @@ const ASCII_ART = [
 
 const SKILLS_DATA = {
   languages: ['Python', 'Java', 'JavaScript', 'HTML', 'CSS'],
-  ai: ['LLMs', 'Claude Code', 'MCP', 'Anthropic API', 'Prompt Engineering'],
+  ai: ['LLMs', 'Claude Code', 'MCP', 'Tool Use', 'Anthropic API', 'Prompt Engineering'],
+  enablement: ['Demos', 'Hands-on Labs', 'Office Hours', 'Training', 'Docs'],
   frameworks: ['React', 'Angular', 'Spring Boot', 'Django'],
   data: ['BigQuery', 'Pandas', 'PyArrow', 'Ibis', 'PostgreSQL'],
   tools: ['GCP', 'Git', 'gRPC', 'REST APIs'],
@@ -154,6 +155,7 @@ function processCommand(input) {
         { text: `  Frameworks:  ${SKILLS_DATA.frameworks.join(' | ')}`, type: 'info' },
         { text: `  Data:        ${SKILLS_DATA.data.join(' | ')}`, type: 'info' },
         { text: `  Tools:       ${SKILLS_DATA.tools.join(' | ')}`, type: 'info' },
+        { text: `  Enablement:  ${SKILLS_DATA.enablement.join(' | ')}`, type: 'info' },
         { text: '' },
         { text: '└────────────────────────────────────────┘', type: 'accent' },
       ]
@@ -197,7 +199,7 @@ function processCommand(input) {
         { text: '  Work Experience:', type: 'info' },
         { text: '' },
         { text: '  [2024 - Now]  AbbVie - Developer Support Engineer (GenAI)', type: 'accent' },
-        { text: '                Supporting LLM integration, driving AI adoption' },
+        { text: '                Claude Code enablement, office hours, live demos, learning platforms' },
         { text: '' },
         { text: '  [2022 - 2024] Google - Software Engineer', type: 'accent' },
         { text: '                Searchmark tools, BigQuery DataFrames' },
@@ -250,6 +252,30 @@ function processCommand(input) {
 
     case 'ascii':
       return ASCII_ART
+
+    case 'anthropic':
+      return [
+        { text: '  Hey Anthropic 👋🏿 — you already know. Short version:', type: 'accent' },
+        { text: '' },
+        { text: '  ── What I bring to the Claude Platform ──', type: 'accent' },
+        { text: '  • Engineer who teaches: demos, hands-on labs, curriculum', type: 'info' },
+        { text: '  • Claude Code as core infrastructure. First practitioner at', type: 'info' },
+        { text: '    AbbVie: office hours, 1:1 installs, training, guardrails', type: 'info' },
+        { text: '  • Live demos in 5 global regions; coached sales teams on', type: 'info' },
+        { text: '    what was available', type: 'info' },
+        { text: '  • Tool use + MCP: 4D Orchestrator, FastMCP servers,', type: 'info' },
+        { text: '    EvalForge Lite (MCP server, 9 tools)', type: 'info' },
+        { text: '  • Claude via Bedrock, Vertex AI, and Foundry, compared', type: 'info' },
+        { text: '    side by side in EvalForge Lite', type: 'info' },
+        { text: '  • Self-service learning: a 3,500-user learning platform;', type: 'info' },
+        { text: '    related support requests down 30%', type: 'info' },
+        { text: '  • 12 Anthropic certifications', type: 'info' },
+        { text: '' },
+        { text: '  ── What drives me ──', type: 'accent' },
+        { text: '  I love helping developers learn and grow.', type: 'joke' },
+        { text: '' },
+        { text: '  Try: projects | experience | certs | hire', type: 'dim' },
+      ]
 
     case 'whoami':
       return [

@@ -147,7 +147,7 @@ function ProjectsSection() {
   const projects = [
     {
       title: 'Evalforge Lite',
-      description: 'Compare AI models on your own prompts, in the cloud you already use. Run up to 4 models side by side, including the same model on OpenRouter, Bedrock, Vertex AI, or Foundry, with scores for quality, speed, and cost, policy screening, PDF/CSV reports, and an MCP server for agents.',
+      description: "Open-source tool for choosing an AI model with evidence instead of guesswork. Write a prompt and grading rubric, pick up to 4 models, and compare them side by side, including the same model on OpenRouter, Amazon Bedrock, Google Vertex AI, and Microsoft Foundry. Scores every response with an LLM judge and six criteria, compares latency, tokens per second, and cost with a \"what matters most\" selector, screens prompts against your company policy, exports PDF and CSV reports, and ships as an MCP server (9 tools, installable with uvx evalforge-lite) and a Claude Code plugin.",
       tags: ['Python', 'Evaluation', 'LLM', 'OpenRouter', 'Bedrock', 'Vertex AI', 'Foundry', 'MCP'],
       url: 'https://evalforge-lite.onrender.com/',
       icon: (

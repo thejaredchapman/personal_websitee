@@ -21,7 +21,7 @@ function AboutApp() {
             <div className="flex items-center gap-2 mb-1 max-[768px]:justify-center">
               <h1 className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>Jared Chapman</h1>
             </div>
-            <p className="text-sm font-medium mb-2" style={{ color: 'var(--accent-500)' }}>AI Enablement Engineer</p>
+            <p className="text-sm font-medium mb-2" style={{ color: 'var(--accent-500)' }}>Developer Education &amp; AI Enablement Engineer</p>
             <div className="flex items-center gap-3 text-xs flex-wrap max-[768px]:justify-center" style={{ color: 'var(--text-tertiary)' }}>
               <span className="flex items-center gap-1">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3 h-3"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -50,11 +50,7 @@ function AboutApp() {
             <h3 className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>What I Do</h3>
           </div>
           <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            I'm an engineer who teaches. I help teams get real value from AI — building
-            LLM tools and agent workflows, then turning them into hands-on training, clear
-            documentation, and working demos. Whether it's a first prompt or a production
-            rollout, I bridge what the tools can technically do and what actually works for
-            the people using them, in any environment, regulated or not.
+            I'm an engineer who teaches. I build demos, hands-on labs, and curriculum that help teams get real value from AI: LLM tools and agent workflows, turned into hands-on training, clear documentation, and working demos. I run office hours, coach sales and technical teams, and build self-service resources so people can learn without me in the room. Whether it's a first prompt or a production rollout, I bridge what the tools can technically do and what actually works for the people using them, in any environment, regulated or not.
           </p>
         </div>
 
@@ -119,7 +115,7 @@ function AboutApp() {
         </div>
         <div className="grid grid-cols-2 gap-3 max-[768px]:grid-cols-1">
           {[
-            { title: 'EvalForge Lite', desc: 'Compare AI models on your own prompts across OpenRouter, Bedrock, Vertex AI, and Foundry, with an MCP server for agents', tags: ['Python', 'MCP', 'Multi-cloud'], icon: '⚖️' },
+            { title: 'EvalForge Lite', desc: "Open-source tool for picking an AI model with evidence, not guesswork. Compare up to 4 models side by side across OpenRouter, Bedrock, Vertex AI, and Foundry, with an MCP server and Claude Code plugin for agents", tags: ['Python', 'MCP', 'Multi-cloud'], icon: '⚖️' },
             { title: 'LLM Developer Support', desc: 'Supporting developers on LLM integration, A/B testing models', tags: ['LLMs', 'Vertex AI'], icon: '🧠' },
             { title: 'BigQuery DataFrames', desc: 'Python and DataFrames APIs using Pandas, Ibis, PyArrow', tags: ['Python', 'Pandas'], icon: '📊' },
             { title: 'Ibis Open Source', desc: 'Added microsecond precision method to the Ibis library', tags: ['Open Source', 'SQL'], icon: '🔓' },

@@ -122,7 +122,7 @@ describe('ResumeApp — Developer Improvements section', () => {
   it('renders Open Source badge for all dev improvement projects', () => {
     render(<ResumeApp />)
     const badges = screen.getAllByText('Open Source')
-    expect(badges.length).toBe(7) // 1 BigQuery + 6 dev improvements
+    expect(badges.length).toBe(8) // EvalForge Lite + 1 BigQuery + 6 dev improvements
   })
 
   it('renders the Changelog tag', () => {

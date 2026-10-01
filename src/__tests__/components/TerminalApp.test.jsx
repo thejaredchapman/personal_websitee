@@ -149,6 +149,15 @@ describe('TerminalApp — command submission', () => {
     expect(joined).toContain('thejaredchapman@gmail.com')
   })
 
+  it('anthropic command lists capabilities and the developer-growth line', async () => {
+    const { container } = render(<TerminalApp />)
+    await submitCommand(container, 'anthropic')
+    const joined = getOutput(container).join('\n')
+    expect(joined).toContain('Claude Platform')
+    expect(joined).toContain('Bedrock, Vertex AI, and Foundry')
+    expect(joined).toContain('I love helping developers learn and grow')
+  })
+
   it('whoami command responds', async () => {
     const { container } = render(<TerminalApp />)
     await submitCommand(container, 'whoami')

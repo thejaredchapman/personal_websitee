@@ -69,7 +69,7 @@ Other: Testing, Documentation, GitHub
 
 === PROJECTS (13) ===
 0. Tag, You're It (Claude Tag course) — A friendly, playground-style course on Claude Tag, the way to bring Claude into your team's Slack. Short levels cover where to ask, steering Claude, checking its work, and setup, with a "why" for every idea, a quiz, star rewards, and copy-ready prompts. No tech words needed. Tags: Claude Tag, Slack, Course, Education. URL: https://thejaredchapman.com/tag-youre-it-course.html
-0. EvalForge Lite (in active development; repo https://github.com/thejaredchapman/evalforge-lite, demo https://evalforge-lite.onrender.com/) — Compare AI models on your own prompts, in the cloud you already use. Run up to 4 models side by side, including the same model on OpenRouter, Bedrock, Vertex AI, or Foundry, with scores for quality, speed, and cost, policy screening, PDF/CSV reports, and an MCP server for agents. Built with Python/Flask, thin REST clients (no vendor SDKs), AWS SigV4 auth, SSRF protection and secret scrubbing, ~460 mocked tests, GitHub Actions CI. Tags: Python, Flask, Bedrock, Vertex AI, Foundry, MCP.
+0. EvalForge Lite (open source, MIT; repo https://github.com/thejaredchapman/evalforge-lite, demo https://evalforge-lite.onrender.com/) — Open-source tool for choosing an AI model with evidence instead of guesswork. Write a prompt and grading rubric, pick up to 4 models, and compare them side by side, including the same model on OpenRouter, Amazon Bedrock, Google Vertex AI, and Microsoft Foundry. Scores every response with an LLM judge and six criteria, compares latency, tokens per second and cost with a "what matters most" selector, screens prompts against your company policy, exports PDF and CSV, and ships as an MCP server (9 tools, installable with uvx evalforge-lite) and a Claude Code plugin. 568 automated tests; built with Claude Code.
 1. AI Explorer — Foundational vocabulary for understanding how modern AI is built, customized, and deployed. Tags: AI, Explanation, Concepts. URL: https://app-dun-phi.vercel.app/
 2. LLM Frameworks — Learn LLM orchestration frameworks like LangChain — chains, agents, and tools. Tags: React, AI, LLMs. URL: https://langchain-learning-app.vercel.app/
 3. DJ Master Academy — Training resource for mastering the Pioneer DDJ-FLX4 DJ controller. Tags: React, Music. URL: https://dj-master-academy.vercel.app/
@@ -83,7 +83,7 @@ Other: Testing, Documentation, GitHub
 11. PyTorch Interactive Guide — Interactive educational tool for learning PyTorch and ML fundamentals. Tags: React, ML. URL: https://pytorch-interactive-guide.vercel.app/
 
 === WHAT I BUILD (Highlighted Work) ===
-1. EvalForge Lite — Compare AI models on your own prompts across OpenRouter, Bedrock, Vertex AI, and Foundry, with an MCP server for agents (Python, MCP, Multi-cloud)
+1. EvalForge Lite — Open-source tool for picking an AI model with evidence: compare up to 4 models across OpenRouter, Bedrock, Vertex AI, and Foundry, with an MCP server and Claude Code plugin for agents (Python, MCP, Multi-cloud)
 2. LLM Developer Support — Supporting developers on LLM integration, A/B testing models (LLMs, Vertex AI)
 3. BigQuery DataFrames — Python and DataFrames APIs using Pandas, Ibis, PyArrow (Python, Pandas)
 4. Ibis Open Source — Added microsecond precision method to the Ibis library (Open Source, SQL)
