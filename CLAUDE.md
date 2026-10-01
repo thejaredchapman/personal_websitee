@@ -25,7 +25,7 @@ The site is a **macOS desktop simulator** — not a traditional scrolling websit
 
 ### Context Providers (`src/context/`)
 
-- **ThemeContext** — Light/dark toggle, persisted to `localStorage` key `theme-preference`. Defaults to light.
+- **ThemeContext** — Light/dark toggle. Follows the system `prefers-color-scheme` (live) until the visitor toggles; only that explicit choice is persisted to `localStorage` key `theme-preference`.
 - **ColorContext** — Accent color selection (8 presets + rainbow + custom hex picker). Generates full 50–900 shade palettes at runtime and sets CSS custom properties on `:root`. Persisted to `localStorage` key `accent-color`. Defaults to orange.
 - **WindowContext** — Manages all 9 window states (open/minimized/maximized/position/size/zIndex) via `useReducer`. Default positions/sizes defined in `WINDOW_CONFIGS`. Window positions do **not** persist across page loads.
 

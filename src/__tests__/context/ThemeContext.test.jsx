@@ -129,6 +129,46 @@ describe('ThemeContext — DOM side effects', () => {
   })
 })
 
+describe('ThemeContext — follows the system setting', () => {
+  it('does not save a preference until the visitor toggles', () => {
+    mockMatchMedia(true)
+    renderWithProvider(() => {})
+    expect(localStorage.getItem('theme-preference')).toBeNull()
+  })
+
+  it('updates live when the system setting changes', () => {
+    let listener
+    window.matchMedia = vi.fn().mockImplementation((query) => ({
+      matches: false,
+      media: query,
+      addEventListener: (_, fn) => { listener = fn },
+      removeEventListener: vi.fn(),
+    }))
+    let ctx
+    renderWithProvider((c) => { ctx = c })
+    expect(ctx.theme).toBe('light')
+    act(() => listener({ matches: true }))
+    expect(ctx.theme).toBe('dark')
+    expect(document.documentElement.getAttribute('data-theme')).toBe('dark')
+  })
+
+  it('keeps a manual choice when the system setting changes', () => {
+    let listener
+    window.matchMedia = vi.fn().mockImplementation((query) => ({
+      matches: false,
+      media: query,
+      addEventListener: (_, fn) => { listener = fn },
+      removeEventListener: vi.fn(),
+    }))
+    let ctx
+    renderWithProvider((c) => { ctx = c })
+    act(() => ctx.toggleTheme())
+    expect(ctx.theme).toBe('dark')
+    act(() => listener({ matches: false }))
+    expect(ctx.theme).toBe('dark')
+  })
+})
+
 describe('ThemeContext — useTheme throws outside provider', () => {
   it('throws if used outside ThemeProvider', () => {
     const spy = vi.spyOn(console, 'error').mockImplementation(() => {})

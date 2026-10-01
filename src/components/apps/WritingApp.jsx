@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { publications, handouts, allArticles } from '../../content/writing'
 import YouTubeEmbed from '../YouTubeEmbed'
 import { getYouTubeId } from '../../utils/youtube'
+import { useTheme } from '../../context/ThemeContext'
 import { getLinkedArticleId, setLinkedArticleId } from '../../utils/articleLink'
 
 const markdownComponents = {
@@ -53,18 +54,28 @@ const videoMarkdownComponents = {
 // They render in a same-origin frame so their own styles, figures and scripts
 // stay untouched; we only sync the site theme and open outbound links in a new tab.
 function HtmlArticle({ src, title }) {
-  const handleLoad = (e) => {
+  const { theme } = useTheme()
+  const frameRef = useRef(null)
+
+  // Mirror the site theme (which follows the system setting) into the page.
+  const syncTheme = () => {
     try {
-      const doc = e.currentTarget.contentDocument
-      if (!doc) return
-      const theme = document.documentElement.getAttribute('data-theme')
-      if (theme) doc.documentElement.setAttribute('data-theme', theme)
-      doc.querySelectorAll('a[href^="http"]').forEach((a) => {
+      frameRef.current?.contentDocument?.documentElement.setAttribute('data-theme', theme)
+    } catch {
+      // cross-origin or unavailable: the page falls back to the system setting itself
+    }
+  }
+  useEffect(syncTheme, [theme])
+
+  const handleLoad = (e) => {
+    syncTheme()
+    try {
+      e.currentTarget.contentDocument?.querySelectorAll('a[href^="http"]').forEach((a) => {
         a.target = '_blank'
         a.rel = 'noopener noreferrer'
       })
     } catch {
-      // cross-origin or unavailable: leave the page as published
+      // leave links as published
     }
   }
   return (
@@ -73,6 +84,7 @@ function HtmlArticle({ src, title }) {
         Open full page
       </a>
       <iframe
+        ref={frameRef}
         src={src}
         title={title}
         onLoad={handleLoad}
