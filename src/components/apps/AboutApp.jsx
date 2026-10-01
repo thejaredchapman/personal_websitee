@@ -117,6 +117,7 @@ function AboutApp() {
         </div>
         <div className="grid grid-cols-2 gap-3 max-[768px]:grid-cols-1">
           {[
+            { title: 'EvalForge Lite', desc: 'Compare AI models on your own prompts across OpenRouter, Bedrock, Vertex AI, and Foundry, with an MCP server for agents', tags: ['Python', 'MCP', 'Multi-cloud'], icon: '⚖️' },
             { title: 'LLM Developer Support', desc: 'Supporting developers on LLM integration, A/B testing models', tags: ['LLMs', 'Vertex AI'], icon: '🧠' },
             { title: 'BigQuery DataFrames', desc: 'Python and DataFrames APIs using Pandas, Ibis, PyArrow', tags: ['Python', 'Pandas'], icon: '📊' },
             { title: 'Ibis Open Source', desc: 'Added microsecond precision method to the Ibis library', tags: ['Open Source', 'SQL'], icon: '🔓' },

@@ -85,10 +85,11 @@ Other: Testing, Documentation, GitHub
 11. PyTorch Interactive Guide — Interactive educational tool for learning PyTorch and ML fundamentals. Tags: React, ML. URL: https://pytorch-interactive-guide.vercel.app/
 
 === WHAT I BUILD (Highlighted Work) ===
-1. LLM Developer Support — Supporting developers on LLM integration, A/B testing models (LLMs, Vertex AI)
-2. BigQuery DataFrames — Python and DataFrames APIs using Pandas, Ibis, PyArrow (Python, Pandas)
-3. Ibis Open Source — Added microsecond precision method to the Ibis library (Open Source, SQL)
-4. Searchmark Tools — OOP architecture in Java for Google Search performance tools (Java, gRPC)
+1. EvalForge Lite — Compare AI models on your own prompts across OpenRouter, Bedrock, Vertex AI, and Foundry, with an MCP server for agents (Python, MCP, Multi-cloud)
+2. LLM Developer Support — Supporting developers on LLM integration, A/B testing models (LLMs, Vertex AI)
+3. BigQuery DataFrames — Python and DataFrames APIs using Pandas, Ibis, PyArrow (Python, Pandas)
+4. Ibis Open Source — Added microsecond precision method to the Ibis library (Open Source, SQL)
+5. Searchmark Tools — OOP architecture in Java for Google Search performance tools (Java, gRPC)
 
 === CONTACT & SOCIAL ===
 Email: thejaredchapman@gmail.com
