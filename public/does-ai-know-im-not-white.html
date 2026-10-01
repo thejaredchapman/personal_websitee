@@ -1,0 +1,881 @@
+<title>Does AI Know I'm Not White?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: one reading column, wider breakouts for figures, prompt cards and the comparison grid.
+     A ten-step skin-tone ramp works as the section divider. */
+  :root {
+    --bg: #F4F6F9;
+    --surface: #FFFFFF;
+    --surface-2: #EBEFF5;
+    --ink: #141B27;
+    --ink-soft: #4B5668;
+    --rule: #D6DCE6;
+    --accent: #0B6E6E;
+    --accent-soft: #D7EEEC;
+    --mark: #A9540B;
+    --mark-soft: #F9E6D3;
+    --code-bg: #101826;
+    --code-ink: #E4ECF7;
+    --code-mute: #8E9BB0;
+    --font-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0E131B;
+      --surface: #161D28;
+      --surface-2: #1E2736;
+      --ink: #E8EDF4;
+      --ink-soft: #A4AFC0;
+      --rule: #2B3547;
+      --accent: #55C7C1;
+      --accent-soft: #143A3B;
+      --mark: #F0A15C;
+      --mark-soft: #3A2616;
+      --code-bg: #0A0F16;
+      --code-ink: #E4ECF7;
+      --code-mute: #8090A8;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0E131B;
+    --surface: #161D28;
+    --surface-2: #1E2736;
+    --ink: #E8EDF4;
+    --ink-soft: #A4AFC0;
+    --rule: #2B3547;
+    --accent: #55C7C1;
+    --accent-soft: #143A3B;
+    --mark: #F0A15C;
+    --mark-soft: #3A2616;
+    --code-bg: #0A0F16;
+    --code-ink: #E4ECF7;
+    --code-mute: #8090A8;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.68;
+    padding-inline: 1rem;
+    padding-block: 2.5rem 5rem;
+  }
+  .wrap { max-width: 42rem; margin-inline: auto; }
+  .wide { max-width: 62rem; margin-inline: auto; }
+
+  h1, h2, h3, h4 { font-family: var(--font-display); text-wrap: balance; line-height: 1.12; letter-spacing: -0.015em; }
+  h1 { font-size: clamp(2.3rem, 7vw, 4rem); font-weight: 800; margin: 0 0 1rem; }
+  h2 { font-size: clamp(1.6rem, 4vw, 2.15rem); font-weight: 700; margin: 0 0 1rem; }
+  h3 { font-size: 1.2rem; font-weight: 700; margin: 2rem 0 0.5rem; }
+  h4 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); margin: 1.6rem 0 0.5rem; }
+  p { margin: 0 0 1.1rem; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  strong { font-weight: 600; }
+  ul, ol { padding-left: 1.3rem; margin: 0 0 1.2rem; }
+  li { margin-bottom: 0.45rem; }
+
+  .kicker { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 1rem; }
+  .dek { font-size: 1.3rem; line-height: 1.5; color: var(--ink-soft); margin-bottom: 1.2rem; }
+  .byline { font-family: var(--font-mono); font-size: 0.82rem; color: var(--ink-soft); margin-bottom: 2rem; }
+
+  .ramp { height: 10px; margin-block: 3.2rem; border-radius: 2px;
+    background: linear-gradient(90deg, #F6E9DC 0 10%, #EBD2B8 10% 20%, #DDB791 20% 30%, #C99A6E 30% 40%, #B07F55 40% 50%, #94643F 50% 60%, #774D31 60% 70%, #5C3A26 70% 80%, #42291B 80% 90%, #2B1A12 90% 100%); }
+
+  /* Hero: the mirror test */
+  .mirror-test { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1.25rem; margin-block: 2rem 0.5rem; }
+  .panel { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem; min-width: 0; }
+  .panel svg { width: 100%; max-width: 17rem; height: auto; margin-inline: auto; display: block; }
+  .panel-label { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-soft); }
+  .panel-label b { color: var(--mark); font-weight: 500; }
+  .bubble { font-family: var(--font-display); font-size: 1rem; background: var(--surface-2); border-radius: 14px 14px 14px 3px; padding: 0.7rem 0.9rem; margin: 0; }
+  .bubble.reply { border-radius: 14px 14px 3px 14px; background: var(--mark-soft); }
+  figcaption, .caption { font-size: 0.9rem; line-height: 1.5; color: var(--ink-soft); }
+  figure { margin: 0; }
+
+  .note { border-left: 4px solid var(--accent); background: var(--accent-soft); padding: 0.9rem 1.1rem; margin: 1.6rem 0; border-radius: 0 6px 6px 0; }
+  .note p:last-child { margin-bottom: 0; }
+  .note.warn { border-left-color: var(--mark); background: var(--mark-soft); }
+  .note-title { font-family: var(--font-display); font-weight: 700; margin: 0 0 0.3rem; }
+
+  blockquote { margin: 1.6rem 0; padding: 0 0 0 1.2rem; border-left: 3px solid var(--rule); font-style: italic; }
+  blockquote cite { display: block; font-style: normal; font-size: 0.88rem; color: var(--ink-soft); margin-top: 0.4rem; }
+
+  /* Bar: the one real number in the token section */
+  .bar { display: flex; height: 2.6rem; border-radius: 4px; overflow: hidden; margin: 0.6rem 0 0.4rem; border: 1px solid var(--rule); }
+  .bar span { display: flex; align-items: center; padding-inline: 0.7rem; font-family: var(--font-mono); font-size: 0.78rem; white-space: nowrap; }
+  .bar .light { width: 96%; background: #EBD2B8; color: #2B1A12; }
+  .bar .rest { flex: 1; background: #5C3A26; color: #F6E9DC; padding-inline: 0; justify-content: center; }
+
+  pre { background: var(--code-bg); color: var(--code-ink); border-radius: 6px; padding: 1rem 1.1rem; overflow-x: auto; font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.6; margin: 0 0 1.4rem; }
+  pre code { font-family: inherit; }
+  .c { color: var(--code-mute); }
+  .out-label { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 0.3rem; }
+
+  /* Timeline: dated, so the order carries information */
+  .timeline { list-style: none; padding: 0; margin: 1.5rem 0; border-left: 2px solid var(--rule); }
+  .timeline li { position: relative; padding: 0 0 1.1rem 1.4rem; margin: 0; }
+  .timeline li::before { content: ""; position: absolute; left: -7px; top: 0.5rem; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); }
+  .timeline .when { font-family: var(--font-mono); font-size: 0.78rem; color: var(--mark); display: block; }
+
+  /* Prompt cards */
+  .prompt { position: relative; background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 0.85rem 4.6rem 0.85rem 1rem; margin: 0 0 0.8rem; font-family: var(--font-mono); font-size: 0.84rem; line-height: 1.55; }
+  .prompt p { margin: 0; }
+  .copy { position: absolute; top: 0.55rem; right: 0.55rem; font-family: var(--font-mono); font-size: 0.72rem; background: var(--surface-2); color: var(--ink); border: 1px solid var(--rule); border-radius: 4px; padding: 0.25rem 0.55rem; cursor: pointer; }
+  .copy:hover { border-color: var(--accent); }
+
+  .example { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 1.1rem 1.2rem 0.6rem; margin: 0 0 1.4rem; }
+  .example h3 { margin-top: 0; }
+  .tag { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.25rem; display: block; }
+
+  /* Seven-prompt comparison */
+  .sevens { display: grid; gap: 1.1rem; }
+  .seven { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 1rem 1.1rem; display: grid; gap: 0.7rem; grid-template-columns: 1fr; min-width: 0; }
+  .seven .base { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; margin: 0; }
+  .seven .base small { font-family: var(--font-mono); font-weight: 400; font-size: 0.72rem; color: var(--ink-soft); margin-right: 0.5rem; letter-spacing: 0.06em; }
+  .versions { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 0.8rem; }
+  .version { background: var(--surface-2); border-radius: 4px; padding: 0.75rem 0.85rem; font-size: 0.93rem; line-height: 1.55; min-width: 0; }
+  .version .tag { color: var(--mark); }
+  .version.div .tag { color: var(--accent); }
+
+  .table-scroll { overflow-x: auto; margin: 1.2rem 0 1.6rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 34rem; font-size: 0.95rem; line-height: 1.5; }
+  th, td { text-align: left; vertical-align: top; padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--rule); }
+  th { font-family: var(--font-display); font-size: 0.92rem; background: var(--surface-2); }
+  tr:last-child td { border-bottom: 0; }
+  td:first-child { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-soft); width: 8.5rem; }
+
+  .sources li { margin-bottom: 1.1rem; }
+  .sources .who { display: block; font-size: 0.93rem; color: var(--ink-soft); line-height: 1.5; margin-top: 0.2rem; }
+  .sources .used { display: block; font-size: 0.85rem; font-family: var(--font-mono); color: var(--accent); margin-top: 0.15rem; }
+  .sources h3 { margin-top: 2.2rem; }
+
+  nav.toc { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 0.9rem 1.2rem; margin-bottom: 1rem; }
+  nav.toc p { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 0.4rem; }
+  nav.toc ol { margin: 0; columns: 2 14rem; column-gap: 2rem; font-size: 0.95rem; }
+  nav.toc li { margin-bottom: 0.25rem; }
+
+  /* Evidence labels: documented findings versus my own reasoning */
+  .pill { display: inline-block; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.08rem 0.45rem; border-radius: 3px; margin-right: 0.45rem; vertical-align: 0.1em; background: var(--accent-soft); color: var(--accent); }
+  .pill.reasoned { background: var(--mark-soft); color: var(--mark); }
+  .crt-table td:first-child { font-family: var(--font-display); font-weight: 700; font-size: 0.92rem; color: var(--ink); width: 9.5rem; }
+
+  @media (prefers-reduced-motion: no-preference) { .copy { transition: border-color 0.15s; } }
+</style>
+
+<div class="wrap">
+  <p class="kicker">Essay · AI, representation, and defaults</p>
+  <h1>Does AI Know I'm Not White?</h1>
+  <p class="dek">A five-minute test you can run yourself, the probability math behind why it fails, and the prompts that make it listen.</p>
+  <p class="byline">By Jared · September 30, 2026</p>
+</div>
+
+<div class="wide">
+  <figure>
+    <div class="mirror-test" role="group" aria-label="Illustration of a mirror selfie next to an AI-generated image that shows a different person">
+      <div class="panel">
+        <span class="panel-label">What I see in the mirror</span>
+        <svg viewBox="0 0 240 290" role="img" aria-labelledby="mt1">
+          <title id="mt1">Illustration: a Black man with short dark hair taking a selfie in an arched mirror</title>
+          <path d="M14 280 V110 C14 50 60 10 120 10 C180 10 226 50 226 110 V280 Z" fill="var(--surface-2)" stroke="var(--rule)" stroke-width="4"/>
+          <path d="M34 270 V112 C34 62 72 28 120 28" fill="none" stroke="var(--surface)" stroke-width="6" stroke-linecap="round" opacity="0.8"/>
+          <clipPath id="clipA"><path d="M22 280 V110 C22 56 64 18 120 18 C176 18 218 56 218 110 V280 Z"/></clipPath>
+          <g clip-path="url(#clipA)">
+            <path d="M30 290 C30 226 72 204 120 204 C168 204 210 226 210 290 Z" fill="#3B5B7A"/>
+            <rect x="104" y="158" width="32" height="52" rx="12" fill="#6B4330"/>
+            <ellipse cx="72" cy="126" rx="7" ry="13" fill="#6B4330"/>
+            <ellipse cx="168" cy="126" rx="7" ry="13" fill="#6B4330"/>
+            <ellipse cx="120" cy="120" rx="49" ry="58" fill="#7A4D36"/>
+            <path d="M71 114 C68 64 98 52 120 52 C144 52 172 64 169 114 C162 90 142 80 120 80 C98 80 78 90 71 114 Z" fill="#1C1512"/>
+            <circle cx="104" cy="122" r="4" fill="#1A1210"/><circle cx="136" cy="122" r="4" fill="#1A1210"/>
+            <path d="M96 110 Q104 105 112 109 M128 109 Q136 105 144 110" stroke="#1C1512" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M117 128 Q113 142 120 144 Q127 142 123 128" fill="none" stroke="#5A3726" stroke-width="3" stroke-linecap="round"/>
+            <path d="M104 152 Q120 164 136 152" fill="none" stroke="#2B1712" stroke-width="3.5" stroke-linecap="round"/>
+            <rect x="150" y="176" width="36" height="60" rx="7" fill="#20262F"/>
+            <circle cx="162" cy="186" r="3" fill="#6E7A8C"/>
+            <circle cx="152" cy="232" r="11" fill="#7A4D36"/>
+          </g>
+        </svg>
+        <p class="caption">Short dark hair, deep brown skin. This is who asked.</p>
+      </div>
+      <div class="panel">
+        <span class="panel-label">What came back <b>(illustration)</b></span>
+        <p class="bubble">Generate a photo of me working at my desk.</p>
+        <svg viewBox="0 0 240 290" role="img" aria-labelledby="mt2">
+          <title id="mt2">Illustration: a generated image of a white man with blond hair and blue eyes</title>
+          <rect x="14" y="10" width="212" height="270" rx="6" fill="var(--surface-2)" stroke="var(--rule)" stroke-width="4"/>
+          <path d="M14 200 H226 V280 H14 Z" fill="#B9A88A" opacity="0.55"/>
+          <g>
+            <path d="M30 280 C30 226 72 204 120 204 C168 204 210 226 210 280 Z" fill="#8E9BB0"/>
+            <rect x="104" y="158" width="32" height="52" rx="12" fill="#EBC3A5"/>
+            <ellipse cx="72" cy="126" rx="7" ry="13" fill="#F1CDB2"/>
+            <ellipse cx="168" cy="126" rx="7" ry="13" fill="#F1CDB2"/>
+            <ellipse cx="120" cy="120" rx="49" ry="58" fill="#F5D7C0"/>
+            <path d="M68 120 C58 62 98 38 130 46 C162 52 180 82 170 120 C166 94 146 76 118 76 C96 78 76 92 68 120 Z" fill="#E6C46B"/>
+            <path d="M118 46 C130 30 160 34 166 54 C150 48 134 50 118 46 Z" fill="#EDCF80"/>
+            <circle cx="104" cy="122" r="4.5" fill="#3E7FC1"/><circle cx="136" cy="122" r="4.5" fill="#3E7FC1"/>
+            <path d="M96 111 Q104 107 112 110 M128 110 Q136 107 144 111" stroke="#C9A657" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M117 128 Q113 141 120 143 Q127 141 123 128" fill="none" stroke="#D9A98C" stroke-width="3" stroke-linecap="round"/>
+            <path d="M104 152 Q120 163 136 152" fill="none" stroke="#B9645A" stroke-width="3.5" stroke-linecap="round"/>
+          </g>
+          <rect x="22" y="18" width="74" height="18" rx="3" fill="var(--ink)"/>
+          <text x="59" y="31" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--bg)">GENERATED</text>
+        </svg>
+        <p class="caption">Blond hair, light skin, blue eyes. Nobody asked for any of that.</p>
+      </div>
+    </div>
+    <figcaption class="wrap" style="margin-top:0.9rem">Both images are flat illustrations I drew to show a failure pattern. They are not screenshots from a specific product. The pattern is documented in the research below, and results differ by tool and version.</figcaption>
+  </figure>
+</div>
+
+<div class="wrap">
+  <div class="ramp" role="presentation"></div>
+
+  <p>The request is one sentence long: <em>Generate a photo of me working at my desk.</em> The person sending it is Black. They might have attached a mirror selfie, or they might have typed a description and expected the tool to do the rest. What comes back is a blond white man with blue eyes.</p>
+  <p>Nobody on the other end decided to erase anyone. No line of code says "make the user white." The output still happened, and it keeps happening in measurable ways. This article walks through why: how the prediction actually works, what hegemony has to do with it, why removing the filter does not make a model neutral, what critical race theory adds, where the harm lands, what would help, and what you can type to get a result that looks like the person who asked.</p>
+
+  <nav class="toc" aria-label="Contents">
+    <p>In this article</p>
+    <ol>
+      <li><a href="#tokens">What the model is predicting</a></li>
+      <li><a href="#hegemony">Why hegemony matters</a></li>
+      <li><a href="#tech-racism">Racism without intent</a></li>
+      <li><a href="#unfiltered">Why removing the filter is not neutral</a></li>
+      <li><a href="#harm">What it does to people and race relations</a></li>
+      <li><a href="#left-out">What happens when cultures are left out</a></li>
+      <li><a href="#crt">Critical race theory, applied</a></li>
+      <li><a href="#disney">Does the story change?</a></li>
+      <li><a href="#honor">Making AI honor the source</a></li>
+      <li><a href="#followups">Follow-up prompts for any provider</a></li>
+      <li><a href="#mirror">Going back to the mirror</a></li>
+      <li><a href="#solutions">What would actually help</a></li>
+      <li><a href="#seven">Seven prompts, two goals</a></li>
+      <li><a href="#sources">Sources and who wrote them</a></li>
+    </ol>
+  </nav>
+
+  <div class="ramp" role="presentation"></div>
+
+  <h2 id="tokens">What the model is predicting</h2>
+  <p>A language model works on <strong>tokens</strong>, which are chunks of text, often a word or part of a word. Given everything so far, the model assigns a probability to every possible next token, then picks one. It does this over and over. That is the whole loop.</p>
+  <p>The probabilities come from patterns in the text and images the model was trained on. The model has no opinion about who a CEO is. It has counts, and the counts lean one way.</p>
+  <p>Image tools work differently under the hood, and the details vary from system to system. In most of them your words are turned into tokens and then into numbers, and those numbers steer the picture. The principle carries across: everything you did not say gets filled in with whatever is most common alongside the words you did say.</p>
+
+  <h3>The default is measurable</h3>
+  <p>In a February 2026 study, Roberto Balestri generated 3,200 images from neutral prompts using two commercial image generators. More than 96% of the outputs showed lighter skin tones. The two models disagreed on gender, with one leaning female and the other male, but agreed on skin tone. Balestri's conclusion is that neutral prompts act as probes rather than neutral instructions.</p>
+  <div aria-label="Bar chart: over 96 percent of outputs showed lighter skin tones">
+    <div class="bar"><span class="light">Over 96% lighter skin tones</span><span class="rest" title="Under 4% darker"></span></div>
+    <p class="caption">Share of 3,200 images from neutral prompts, Gemini Flash 2.5 Image and GPT Image 1.5 combined, as reported by Balestri (2026). The dark sliver is everything else, under 4%.</p>
+  </div>
+
+  <h3>A toy you can run</h3>
+  <p>Here is a small Python program that shows the mechanism. The numbers are <strong>invented</strong> for teaching. They are not measured from any model. The idea is to see what happens when one option dominates the counts.</p>
+  <pre><code><span class="c"># toy_tokens.py — a tiny "next word" picker</span>
+import random
+
+random.seed(7)  <span class="c"># makes the random picks repeatable, so you get the same output as me</span>
+
+<span class="c"># INVENTED counts, made up to teach the idea. NOT measured from any real model.
+# Imagine how often each description followed "a photo of a CEO" in training data.</span>
+seen_in_training = {
+    "white man": 82,
+    "white woman": 9,
+    "Black man": 4,
+    "Asian man": 3,
+    "Latina woman": 1,
+    "everyone else": 1,
+}
+
+words = list(seen_in_training.keys())
+counts = list(seen_in_training.values())
+
+<span class="c"># 1) Greedy: always take the single most likely option.</span>
+greedy_pick = max(seen_in_training, key=seen_in_training.get)
+print("Greedy pick every time:", greedy_pick)
+
+<span class="c"># 2) Sampling: roll weighted dice 1,000 times, like a model with some randomness.</span>
+rolls = random.choices(words, weights=counts, k=1000)
+for word in words:
+    print(f"{word:14} {rolls.count(word):4} out of 1000")
+
+<span class="c"># 3) Add ONE word to the prompt. The counts change, because the model is now
+#    asking what usually follows "a photo of a Black CEO".</span>
+after_adding_black = {"Black man": 55, "Black woman": 40, "everyone else": 5}
+new_words = list(after_adding_black.keys())
+new_counts = list(after_adding_black.values())
+rolls2 = random.choices(new_words, weights=new_counts, k=1000)
+print()
+print('With "Black" added to the prompt:')
+for word in new_words:
+    print(f"{word:14} {rolls2.count(word):4} out of 1000")</code></pre>
+  <p class="out-label">Output from running it</p>
+  <pre><code>Greedy pick every time: white man
+white man       816 out of 1000
+white woman      87 out of 1000
+Black man        41 out of 1000
+Asian man        38 out of 1000
+Latina woman     10 out of 1000
+everyone else     8 out of 1000
+
+With "Black" added to the prompt:
+Black man       535 out of 1000
+Black woman     422 out of 1000
+everyone else    43 out of 1000</code></pre>
+
+  <p>Three things to take from the toy.</p>
+  <ol>
+    <li><strong>Silence is a choice the model makes for you.</strong> If you leave out a detail, the most common option fills the gap. With greedy picking it wins every time. With sampling it wins about eight times in ten.</li>
+    <li><strong>Every word you add moves the odds.</strong> Naming the person you want changes what the model is asking itself. That is why specific prompts work, and why the later sections are mostly about saying more.</li>
+    <li><strong>"Most likely" means "most common in the data."</strong> It does not mean most true, most fair, or most like you.</li>
+  </ol>
+  <p>One more finding matters here. Bloomberg's 2023 analysis found Stable Diffusion did more than reflect its data. It produced racial and gender skews that were more extreme than the real-world occupational statistics they compared against. A model that only mirrored the world would be bad enough. These often exaggerate it.</p>
+
+  <div class="ramp" role="presentation"></div>
+
+  <h2 id="hegemony">Why hegemony matters</h2>
+  <p><strong>Hegemony</strong> is a term from the Italian thinker Antonio Gramsci. The point was that a dominant group does not stay on top by force alone. It stays on top because its way of seeing the world gets accepted as plain common sense, including by the people it leaves out. The dominant view stops looking like a view. It looks like reality.</p>
+  <p>Linguists have a related idea. The default member of a category goes <em>unmarked</em>. You say "a doctor." You say "a Black doctor." The unmarked version is assumed to be the normal one, and everyone else needs a modifier.</p>
+  <p>Now look at what a training set is. It is everything that was written, photographed, captioned, uploaded, and then kept after filtering. That is a record of who had the access, time, language, and platform to be on the internet, and of what the filters decided to keep. A model trained on it inherits that record as if it were the world.</p>
+
+  <h3>How the record skews</h3>
+  <ul>
+    <li><strong>Who writes the web.</strong> Emily Bender, Timnit Gebru and colleagues argued in "On the Dangers of Stochastic Parrots" (2021) that large internet-scraped datasets overrepresent hegemonic viewpoints. They point out that much internet content comes from younger people in wealthier countries, and that content moderation has been shown to disproportionately silence marginalized people, especially Black women.</li>
+    <li><strong>What filters remove.</strong> The same paper notes that word lists meant to screen out pornography and hate also tend to exclude LGBTQ spaces where people describe their lives in positive terms. The result is fewer positive portrayals of marginalized identities in the data.</li>
+    <li><strong>Which language.</strong> Common Crawl, a large web archive used in training, is roughly 43% to 45% English by recent measures. W3Techs reports English on 49.5% of websites whose language it can identify as of September 2026, though that survey covers the most visited sites and runs higher than the web overall. Languages such as Tagalog, Punjabi, Kurdish, Lao and Amharic each make up a tiny fraction of Common Crawl.</li>
+    <li><strong>What the data pairs with identity words.</strong> Abeba Birhane and colleagues audited LAION-400M, an image and caption dataset used to train image models. They found misogynistic, pornographic and racist content that the dataset's own automated filter missed. Their string-match search showed explicit content attached to identity words at rates like 34.1% for "Desi" and 28.21% for "Latina."</li>
+  </ul>
+  <p>Put those together and the default is not a bug in one product. It is the predictable output of a pipeline in which one group's material is abundant, cleaned of its complexity, and tied to neutral words, while other groups' material is sparse, filtered, or attached to the wrong context. The model learns that "person" looks a certain way, and that other people need a label.</p>
+
+  <div class="ramp" role="presentation"></div>
+
+  <h2 id="tech-racism">Racism without intent</h2>
+  <p>Ruha Benjamin calls this pattern the <strong>New Jim Code</strong>: the reproduction of older forms of discrimination through technology that is seen as objective or progressive. Safiya Noble reached a compatible conclusion from a different direction, studying search engines. The argument in <em>Algorithms of Oppression</em> is that bias is not a glitch in an otherwise neutral system. It is built into how commercial information systems rank and present the world.</p>
+  <p>The important part is that intent is not required. A team can ship a model with good intentions, reasonable benchmarks, and a fairness review, and still ship a tool that turns a dark-skinned user into a stranger. Intent describes the builders. Impact describes the person looking at the screen.</p>
+
+  <h3>The record so far</h3>
+  <ul class="timeline">
+    <li><span class="when">2015</span>Google Photos labels photos of a Black software developer and a friend as "gorillas." Jacky Alciné posts it publicly. Google apologizes and, as reported, blocks the "gorilla" label rather than fixing the classifier. Reporting in 2023 said the label was still blocked.</li>
+    <li><span class="when">2016</span>Microsoft launches the chatbot Tay on Twitter. Users teach it racist, sexist and antisemitic language, and Microsoft silences it after about 16 hours. The bot was not coded to be racist. It learned from the people talking to it.</li>
+    <li><span class="when">2018</span>The <em>Gender Shades</em> study tests commercial gender classifiers from three companies. Error rates for lighter-skinned men are at most 0.8%. For darker-skinned women they reach 34.7%. One company's face-recognition system was trained on data that was over 77% male and over 83% white.</li>
+    <li><span class="when">2018 and 2019</span>Noble publishes <em>Algorithms of Oppression</em>, and Benjamin publishes <em>Race After Technology</em>. Both give the field a vocabulary for this.</li>
+    <li><span class="when">Oct 2021</span>The LAION-400M audit finds problematic content that automated filtering missed.</li>
+    <li><span class="when">2022</span>OpenAI describes a system-level technique in DALL·E 2 to show more diverse people when a prompt does not specify race or gender. Users suspected the method was silently adding identity words to prompts. OpenAI's public post did not confirm that mechanism. Separately, Lensa's "Magic Avatars" go viral, and Black users report lightened skin and Western features.</li>
+    <li><span class="when">Nov 2022 to Mar 2023</span>Bianchi and colleagues show that ordinary prompts, including simple traits, occupations and objects, produce stereotypes at scale. Luccioni and colleagues analyze over 96,000 images and find DALL·E 2 and two versions of Stable Diffusion over-represent whiteness and masculinity, with DALL·E 2 showing the least diversity.</li>
+    <li><span class="when">June 2023</span>Bloomberg's analysis of more than 5,000 Stable Diffusion images finds lighter-skinned men dominating "CEO," "lawyer," "judge" and "politician," and darker-skinned subjects more common for "fast-food worker" and for crime-related prompts.</li>
+    <li><span class="when">Feb 2024</span>Google pauses Gemini's image generation of people after it produced racially diverse Nazi-era German soldiers and a multiethnic set of U.S. Founding Fathers. Google's Prabhakar Raghavan wrote that its tuning "failed to account for cases that should clearly not show a range."</li>
+    <li><span class="when">Mar 2024</span>Mi Zhou and colleagues compare Midjourney, Stable Diffusion and DALL·E 2 on occupations and find all three biased against women and African Americans, including in facial expression and appearance.</li>
+    <li><span class="when">Mar to Aug 2024</span>Hofmann and colleagues show that language models hold covert, negative stereotypes about speakers of African American English, and that standard safety training hides them instead of removing them. Their paper appears in <em>Nature</em> in August.</li>
+    <li><span class="when">Feb 2026</span>Balestri finds over 96% lighter skin tones across 3,200 neutral-prompt images from two current models.</li>
+  </ul>
+
+  <h3>Two ways to fail</h3>
+  <p>The timeline shows two opposite failures, and both come from the same place. The first is <strong>under-representation</strong>: when you say nothing, the system defaults to the dominant group. The second is <strong>clumsy correction</strong>: Gemini's diversity tuning overrode context, and Google said the model also "became way more cautious than we intended," refusing harmless prompts.</p>
+  <p>Both treat identity as a dial the system controls, instead of a fact the user or the source supplies. Patching from the outside fails in both directions. The "gorilla" workaround is the clearest small example, since it hid a symptom and left the cause alone. The fix that holds is for the tool to follow what is actually specified: by you, or by the source material.</p>
+
+  <div class="ramp" role="presentation"></div>
+
+  <h2 id="unfiltered">Why removing the filter is not neutral</h2>
+  <p>Everything so far describes models that are trying to behave and still default to whiteness. A common response is to say the fix is fewer rules: take the guardrails off and let the model say what the data says. That does not produce a neutral model. It produces the same defaults with fewer checks.</p>
+  <p>Microsoft's Tay chatbot, silenced in 2016 after about sixteen hours, is the clearest small case. Nobody coded it to be racist. It learned from the people talking to it, and the people who talked to it were not a representative sample of anyone.</p>
+  <h3>"Unfiltered" is a set of values</h3>
+  <p>"Unfiltered" and "politically incorrect" are sometimes pitched as the absence of a point of view. That is a stated goal, and it is a value judgment.</p>
+  <p>This is my argument, and it follows from the hegemony section. A model with no guardrails does not become neutral. It hands its defaults to whoever is loudest in the training data and in the replies. If slurs and stereotypes are abundant in that material, and the people they target are a small share of the authors, the unfiltered output is the majority's worst habits at machine speed. Removing the filter changes who sets the defaults. It does not remove the defaults.</p>
+
+  <h3>Why the N-word is a hard case</h3>
+  <p>The N-word carries centuries of violence as a slur. Some Black people also use a variant of it among themselves, in a context, with a history, and with a standing that a language model cannot have. A model has no community, pays no social cost, and cannot tell whether it is being spoken to or about. That is my reasoning, not a measurement.</p>
+  <p>The research shows how badly machines handle this context in the other direction too. Maarten Sap and colleagues found in 2019 that tweets written in African American English were flagged as abusive at higher rates, and that one widely used classifier falsely labeled 46.3% of AAE tweets as offensive, against 9.0% for white-aligned tweets. They traced part of this to strong associations between AAE markers, including the N-word, and toxicity labels.</p>
+  <p>So there are two failures with the same root, which is missing context. A crude filter silences Black speakers who are simply talking. A permissive model speaks the slur freely to anyone. Fixing one by loosening the other does not help anyone.</p>
+
+  <div class="ramp" role="presentation"></div>
+
+  <h2 id="harm">What it does to people and race relations</h2>
+  <p>I am labeling each point below so you can tell a documented finding from my reasoning.</p>
+  <ul>
+    <li><span class="pill">Documented</span><strong>Decisions about real people.</strong> Hofmann, Kalluri, Jurafsky and King asked language models to make hypothetical decisions about people based only on how they wrote. The models were more likely to assign speakers of African American English less prestigious jobs, to recommend conviction, and to recommend the death penalty. Their covert stereotypes about AAE speakers were, in the paper's words, more negative than any human stereotypes about African Americans ever experimentally recorded.</li>
+    <li><span class="pill">Documented</span><strong>Safety training can hide the problem.</strong> The same paper found that human-feedback training did not remove the dialect prejudice. It widened the gap between covert and overt stereotypes by teaching models to "superficially conceal the racism that they maintain on a deeper level." A model can stop saying slurs and still judge people by how they talk.</li>
+    <li><span class="pill">Documented</span><strong>Scale.</strong> Bianchi and colleagues warn that millions of images a day means mass dissemination of stereotypes. One biased human reaches a room. A widely used tool reaches everyone who uses it.</li>
+    <li><span class="pill">Documented</span><strong>Harm to the people targeted.</strong> Lensa users described being turned into strangers.</li>
+    <li><span class="pill reasoned">My reasoning</span><strong>Normalization.</strong> When a tool used by millions says a slur in a public reply, it lowers the cost of saying it for everyone else. "The AI said it" becomes a way to launder hate.</li>
+    <li><span class="pill reasoned">My reasoning</span><strong>Borrowed objectivity.</strong> Benjamin's point about the New Jim Code is that these systems are seen as objective. A biased judgment that comes from a machine can feel more credible than one that comes from a person, which makes it harder to challenge.</li>
+    <li><span class="pill reasoned">My reasoning</span><strong>Injected narratives.</strong> The May 2025 "white genocide" episode shows that one person with access can make a widely used assistant repeat a political claim to people who never asked. Race relations suffer when a trusted voice can be quietly turned into an advocate.</li>
+    <li><span class="pill reasoned">My reasoning</span><strong>Withdrawal.</strong> If a tool keeps failing or insulting you, you stop using it, and the next version is trained by everyone except you. The gap widens.</li>
+  </ul>
+
+  <div class="ramp" role="presentation"></div>
+
+  <h2 id="left-out">What happens when cultures are left out</h2>
+  <p>Media scholars have a name for this. George Gerbner introduced <strong>symbolic annihilation</strong> in the early 1970s and developed it with Larry Gross in 1976. The idea, in Gerbner's words, is that "representation in the fictional world signifies social existence; absence means symbolic annihilation." Gaye Tuchman extended it in 1978 to three forms: omission, trivialization, and condemnation.</p>
+  <p>Those three map closely onto what the research above documents.</p>
+  <ul>
+    <li><strong>Omission.</strong> The default white output when you describe no one, and the lack of dark-skinned subjects in high-status jobs.</li>
+    <li><strong>Trivialization.</strong> Lensa avatars that reduced users to a narrow beauty template. An MIT Technology Review writer, Melissa Heikkilä, reported that the app recognized her Asian heritage and produced anime-styled and sexualized results.</li>
+    <li><strong>Condemnation.</strong> Bloomberg's finding that darker-skinned subjects were more common for prompts tied to crime.</li>
+  </ul>
+
+  <h3>What it can lead to</h3>
+  <p>Some of what follows is documented. Some is a reasonable worry that is not yet measured. I am marking which is which.</p>
+  <ul>
+    <li><strong>You start editing yourself to fit the tool.</strong> Documented in user reports: people on Lensa described getting results that did not look like them and feeling like strangers in their own avatars. Expect more of this as image tools move into profile photos, resumes, and marketing.</li>
+    <li><strong>Products built on the tool inherit the skew.</strong> This follows from how the tools are built into other apps. A hiring brochure, a stock-photo replacement, or a school poster generated with a default prompt carries the default with it. Reasoned, not measured.</li>
+    <li><strong>Culture gets flattened into decoration.</strong> Zhou's study found subtle bias in how people were depicted, not only who appeared. A quilt, a braid pattern, a holiday table, or a headwrap rendered generically loses what made it specific. Reasoned from the findings.</li>
+    <li><strong>The loop feeds itself.</strong> Generated images are now posted to the same web that future models learn from. If today's defaults are in those images, they can become tomorrow's training data. This is a reasonable concern, and I am not citing a measurement for it.</li>
+    <li><strong>Children learn who counts as the default.</strong> The Little Mermaid casting is the clearest recent example of the flip side. Coverage of the film highlighted widely shared reactions from young Black girls who saw a mermaid who looked like them. What a child sees as the normal version of "princess" or "scientist" shapes what they expect to be allowed to be.</li>
+  </ul>
+
+  <div class="ramp" role="presentation"></div>
+
+  <h2 id="crt">Critical race theory, applied</h2>
+  <p>Critical race theory, usually shortened to CRT, is a body of scholarship that began in American legal studies. Richard Delgado and Jean Stefancic, who wrote its standard introduction, describe it as a collection of activists and scholars "engaged in studying and transforming the relationship among race, racism, and power." It is also politically contested in the United States. I am using it here as an analytic lens, and you can judge each point on the evidence attached to it rather than on the label.</p>
+  <p>Six ideas from that tradition explain a lot about the examples in this article.</p>
+</div>
+<div class="wide">
+  <div class="table-scroll" role="region" aria-label="Critical race theory ideas applied to AI" tabindex="0">
+    <table class="crt-table">
+      <thead><tr><th>Idea</th><th>What it says</th><th>What it looks like in AI</th></tr></thead>
+      <tbody>
+        <tr><td>Racism is ordinary</td><td>Delgado and Stefancic's starting point is that racism is a normal feature of everyday life, not a rare aberration.</td><td>Bias shows up in plain prompts, not only edge cases. Bianchi found stereotypes from ordinary prompts about traits and occupations, and Balestri found the default in "neutral" ones.</td></tr>
+        <tr><td>Race is socially constructed</td><td>Race is a category societies create and assign meaning to, not a fixed biological attribute.</td><td>Hanna, Denton, Smart and Smith-Loud argue that algorithmic fairness work often treats race as a fixed attribute, which hides the social and structural processes behind the unfairness. Measuring "skin tone" in pixels is not the same as understanding race.</td></tr>
+        <tr><td>Interest convergence</td><td>Derrick Bell argued in 1980 that Black rights advance when they also serve the interests of the dominant group. Bell read <em>Brown v. Board of Education</em> in part through Cold War image concerns.</td><td>My reading: fixes tend to arrive when they serve a company's interests. After Gender Shades, the targeted vendors reduced error gaps. Google paused Gemini's people images after a public backlash. Google Photos removed a label instead of fixing the classifier, which was the cheapest way to end the headline.</td></tr>
+        <tr><td>Whiteness as property</td><td>Cheryl Harris argued in 1993 that white identity functions like a form of property, a status that carries legal and social benefits and the power to exclude.</td><td>My analogy, not Harris's claim about AI: being the default has value. The tool works on the first try, the top-paying jobs look like you, and your face needs no extra description. Being marked as "other" costs you extra words, extra attempts, and extra checking.</td></tr>
+        <tr><td>Intersectionality</td><td>Kimberlé Crenshaw's 1989 essay argued that the discrimination Black women face is not simply racism plus sexism. It is a distinct experience at the intersection.</td><td>Gender Shades is the textbook case. Error rates for lighter-skinned men were at most 0.8%, and for the darkest-skinned women they reached 46.5% and 46.8% on two systems. Bloomberg likewise found skewed output for women with darker skin.</td></tr>
+        <tr><td>Counter-storytelling</td><td>CRT treats the accounts of people outside the majority as evidence, not as anecdote to be discounted.</td><td>Jacky Alciné's 2015 post about the "gorilla" label, the Lensa users describing skin lightening, and the mirror test at the top of this article are counter-stories. Each exposed something the benchmarks missed.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="wrap">
+  <p>The value of the lens is that it moves the question. "Is this output biased?" becomes "Who benefits from the default, who pays for it, and who was asked?" That is a better question to put to a product team.</p>
+
+  <div class="ramp" role="presentation"></div>
+
+  <h2 id="disney">Does the story change?</h2>
+  <p>I know many people are angry about different versions of Disney characters. The question I want to ask is narrower than "is it good or bad." It is: <strong>does the story change?</strong> The answer depends on what the source actually says.</p>
+
+  <h3>The Little Mermaid, as a case study</h3>
+  <p>Disney announced Halle Bailey as Ariel in July 2019, and the backlash organized under the hashtag #NotMyAriel. Critics argued that Ariel should stay white with red hair for fidelity to the 1989 animated film and to Hans Christian Andersen's Danish original, published in 1837.</p>
+  <p>Check the source. Andersen's text does not specify the mermaid's race or skin color. And the 1989 film had already rewritten the story more than any casting could.</p>
+  <ul>
+    <li>In Andersen's tale the Sea Witch cuts out the mermaid's tongue, and every step on her new legs feels like walking on knives.</li>
+    <li>What she wants is an immortal soul. Mermaids live about 300 years and then dissolve into sea foam. Humans have souls that live on.</li>
+    <li>On the prince's wedding night her sisters offer a dagger: kill the prince and she can return to the sea. She cannot. She becomes a "daughter of the air," and can earn a soul through good deeds.</li>
+    <li>Disney's 1989 version gives her the prince and a happy ending.</li>
+  </ul>
+  <p>So the plot, the stakes, and the ending were all changed decades before anyone was cast. The skin color of the actress changes none of the load-bearing parts: the trade of a voice for a chance at a different life, the longing, the choice. The story is intact.</p>
+
+  <h3>The fair counterpoint</h3>
+  <p>That does not mean identity never matters to a story. Some stories are anchored to a specific culture, place, or historical record, and there the detail is load-bearing. <em>Mulan</em> comes from a Chinese ballad. <em>Moana</em> is set in Polynesian tradition. The Tuskegee Airmen were Black American pilots, and the history of why they mattered is inseparable from that fact. Swapping the people in those stories erases part of the meaning.</p>
+  <p>That gives a consistent rule, and it is the same one we want from AI: <strong>honor what the source states, and stay flexible where the source is silent.</strong> Three questions sort most cases.</p>
+  <ol>
+    <li>Does the source state it? If yes, keep it.</li>
+    <li>Does the plot or meaning depend on it? If yes, keep it, even if the source never states it outright.</li>
+    <li>Did the user state it? If yes, that is the instruction. Do not override it, in either direction.</li>
+  </ol>
+  <p>Gemini failed question one, since history did state who was in the room. The blond man in the opening failed question three, since the user stated who they are. Both are the same error, a default overriding a fact.</p>
+
+  <div class="ramp" role="presentation"></div>
+
+  <h2 id="honor">Making AI honor the source</h2>
+  <p>The fix is to put the facts on the page yourself. Each example below changes the situation, and each prompt is written to work with any provider. Click Copy to use one.</p>
+
+  <div class="example">
+    <span class="tag">Source is silent</span>
+    <h3>A character like Ariel</h3>
+    <div class="prompt"><p>Illustrate Ariel from Andersen's "The Little Mermaid." The source does not specify her race, so show her as a young Black woman with long locs and deep brown skin. Keep what the story does specify: a mermaid's tail, the sea setting, and a sense of longing. Do not add a prince or a happy ending.</p><button class="copy" type="button">Copy</button></div>
+    <p>It works because it says what the source fixes and what you are choosing, and it names the parts not to add.</p>
+  </div>
+
+  <div class="example">
+    <span class="tag">Source is specific</span>
+    <h3>A character like Mulan</h3>
+    <div class="prompt"><p>Illustrate Hua Mulan from the Chinese "Ballad of Mulan." She is Chinese and the story is set in a Chinese historical setting. Keep her ethnicity, clothing, and setting consistent with that. Do not change her ethnicity or place the scene in a generic fantasy location.</p><button class="copy" type="button">Copy</button></div>
+    <p>It works because the locked details are named as locked. The last sentence blocks a "neutral" fallback.</p>
+  </div>
+
+  <div class="example">
+    <span class="tag">History is specific</span>
+    <h3>The Tuskegee Airmen</h3>
+    <div class="prompt"><p>Create a documentary-style image of Tuskegee Airmen in the 1940s. They were Black American pilots of the United States Army Air Forces. Show period-accurate flight jackets and aircraft. Do not add modern clothing or change who they were.</p><button class="copy" type="button">Copy</button></div>
+    <p>It works because history is treated as fact, which protects you from the Gemini failure in the other direction.</p>
+  </div>
+
+  <div class="example">
+    <span class="tag">Retelling</span>
+    <h3>Same story, new setting</h3>
+    <div class="prompt"><p>Retell "Cinderella" in modern Lagos, Nigeria. Keep the story beats: a mistreated daughter, a missed chance at a celebration, help from an unexpected source, a lost shoe, and a recognition at the end. Change only the setting, clothing, food, and names to fit Lagos. Do not change the plot.</p><button class="copy" type="button">Copy</button></div>
+    <p>It works because it separates the beats from the surface, so you can change culture without losing structure.</p>
+  </div>
+
+  <div class="example">
+    <span class="tag">Yourself</span>
+    <h3>A photo that looks like you</h3>
+    <div class="prompt"><p>Use the attached photo as the only reference for my face. Keep my skin tone, hair texture, and facial features exactly. Do not lighten my skin, smooth my features, or change my eye color. Place me at a desk in a bright office.</p><button class="copy" type="button">Copy</button></div>
+    <p>It works because the reference is the authority and the prohibited edits are listed. If your tool does not accept images, describe your features in plain words instead.</p>
+  </div>
+
+  <div class="example">
+    <span class="tag">Culture, no people</span>
+    <h3>A Diwali table</h3>
+    <div class="prompt"><p>Photograph a Diwali celebration table: brass diyas lit, rangoli in the foreground, sweets such as gulab jamun and barfi on a steel thali, marigold garlands. Keep the details specific to Diwali. Do not substitute generic holiday decor.</p><button class="copy" type="button">Copy</button></div>
+    <p>It works because named objects outweigh the category. The model fills gaps with whatever is most common, so naming the specifics removes the gaps.</p>
+  </div>
+
+  <div class="ramp" role="presentation"></div>
+
+  <h2 id="followups">Follow-up prompts for any provider</h2>
+  <p>These are written without any product names, so they work in a chat assistant, an image generator, or an editing tool. If a tool cannot edit part of an image, paste the full description into a fresh prompt instead of asking it to "fix" the last one.</p>
+
+  <h3>When the person does not look like you</h3>
+  <div class="prompt"><p>The person in this image does not match me. I am [describe: age, skin tone in plain words like "deep brown with warm undertones", hair texture, facial features]. Regenerate with those features. Keep the pose, setting, and lighting exactly the same.</p><button class="copy" type="button">Copy</button></div>
+  <div class="prompt"><p>Keep everything in this image except the skin tone and hair. Skin tone should be [describe]. Hair should be [describe: for example tight coils, locs, braids, close-cropped].</p><button class="copy" type="button">Copy</button></div>
+  <div class="prompt"><p>Do not lighten my skin, straighten my hair, change my eye color, or apply any beauty filter. Match the reference exactly.</p><button class="copy" type="button">Copy</button></div>
+
+  <h3>When you need to see what it is assuming</h3>
+  <div class="prompt"><p>Before generating anything, list how you plan to depict the person: age, skin tone, hair, eye color, and facial features. Wait for my correction before you generate.</p><button class="copy" type="button">Copy</button></div>
+  <div class="prompt"><p>Describe the last image in plain words: skin tone, hair, eye color, and features. Then list every way it differs from my description.</p><button class="copy" type="button">Copy</button></div>
+
+  <h3>When attempts keep drifting</h3>
+  <div class="prompt"><p>Ignore all previous attempts. Start over from this description only: [full description]. Do not reuse anything from earlier images.</p><button class="copy" type="button">Copy</button></div>
+  <div class="prompt"><p>Repeat my full description in your own words so I can confirm you have it right. Then generate.</p><button class="copy" type="button">Copy</button></div>
+
+  <h3>When you want a group</h3>
+  <div class="prompt"><p>Describe each person in the group separately: age, gender, skin tone, hair, and clothing. Show me the list first. Then generate exactly those people, each clearly visible.</p><button class="copy" type="button">Copy</button></div>
+  <div class="prompt"><p>Replace person 3 with [description]. Keep every other person, the pose, and the background unchanged.</p><button class="copy" type="button">Copy</button></div>
+  <div class="prompt"><p>Make each person look like an individual. Avoid a lineup where everyone stands in a row with one of each type. Mix ages, builds, and positions in the frame.</p><button class="copy" type="button">Copy</button></div>
+
+  <h3>When the source matters</h3>
+  <div class="prompt"><p>Before drawing this character, quote what the source text says about their appearance. Change only what the source does not state. Tell me which details you added yourself.</p><button class="copy" type="button">Copy</button></div>
+  <div class="prompt"><p>Keep these story beats exactly: [list]. You may change only the setting, clothing, and names as I specify: [list]. Do not alter the plot.</p><button class="copy" type="button">Copy</button></div>
+
+  <div class="ramp" role="presentation"></div>
+
+  <h2 id="mirror">Going back to the mirror</h2>
+  <p>Sometimes after prompting and prompting, trying to get the right image, I have to go look in the mirror.</p>
+  <p>It is a strange thing to need. You know what you look like. You also know what you typed. After enough rounds of "no, darker," "no, not that hair," "no, that is not my face," the feedback loop starts to work on you. The tool keeps returning a slightly different person, and because the pictures are polished, some part of you starts to wonder which version is right.</p>
+  <p>The mirror settles it. You are not the one who is off. Looking does not cost you anything, and it resets the standard. The reference is you, not the most likely output.</p>
+  <p>If that happens to you, treat it as information about the tool, and as a signal to change strategy. Stop correcting the last image. Write the description fresh, use the audit prompts above, and compare against the mirror, not against the previous attempt. The tool is averaging over everyone. You are one specific person.</p>
+
+  <div class="ramp" role="presentation"></div>
+
+  <h2 id="solutions">What would actually help</h2>
+  <p>The problems above have different owners, so the solutions do too. I have tied each one to something that exists.</p>
+
+  <h3>For the companies building the models</h3>
+  <ul>
+    <li><strong>Document the data and the model.</strong> Timnit Gebru and colleagues proposed Datasheets for Datasets, and Margaret Mitchell and colleagues proposed Model Cards. Model Cards recommend reporting performance broken down by cultural, demographic or phenotypic group, including intersections of groups, which is exactly the view Gender Shades needed.</li>
+    <li><strong>Invite outside audits.</strong> Gender Shades was an outside audit, and after it, the targeted vendors reduced their error gaps. Independent auditors can include researchers, journalists, civil society and affected communities.</li>
+    <li><strong>Test for covert bias, not only overt slurs.</strong> Hofmann's result means a model that never says a slur can still judge people by their dialect. A test suite that only checks for bad words will miss it.</li>
+    <li><strong>Red-team before and after launch.</strong> NIST's Generative AI Profile of its AI Risk Management Framework, published in July 2024, recommends red teaming before and after deployment.</li>
+    <li><strong>Do not fix by deleting.</strong> Removing the "gorilla" label hid the failure. Fix the classifier and keep the label.</li>
+    <li><strong>Put the user's stated facts first.</strong> A rule written for a population should not override what a person says about themselves.</li>
+  </ul>
+
+  <h3>For communities and the data itself</h3>
+  <ul>
+    <li><strong>Design justice.</strong> Sasha Costanza-Chock's <em>Design Justice</em> argues that design should be led by marginalized communities and should challenge structural inequality instead of reproducing it, with the people affected as co-equal partners.</li>
+    <li><strong>Data sovereignty.</strong> Te Hiku Media, a Māori media organization in New Zealand, built a te reo Māori speech-recognition system reported at 92% accuracy, and licenses its data under a Kaitiakitanga (guardianship) license so that it can be used only for the benefit of the Māori people.</li>
+    <li><strong>Community-built datasets.</strong> Masakhane, a grassroots collective whose name roughly means "we build together" in isiZulu, co-creates datasets and models for African languages with the people who speak them.</li>
+  </ul>
+
+  <h3>For policy</h3>
+  <ul>
+    <li><strong>Risk frameworks and law.</strong> The NIST AI Risk Management Framework organizes the work into Govern, Map, Measure and Manage. The EU AI Act, enacted in 2024, sets tiers of risk and prohibits certain practices outright.</li>
+  </ul>
+
+  <h3>For the rest of us</h3>
+  <ul>
+    <li>State who you are and what you need in the prompt, and use the follow-ups in this article when the result drifts.</li>
+    <li>Compare the output to the real reference, which is you, not the last attempt.</li>
+    <li>Report failures. The AI Incident Database collects documented cases, and reports from users like Jacky Alciné are what started fixes before.</li>
+    <li>Tell your own version. Counter-stories are evidence, and they reach people who read benchmarks and never see the mirror.</li>
+  </ul>
+
+  <div class="ramp" role="presentation"></div>
+</div>
+
+<div class="wide">
+  <div class="wrap">
+    <h2 id="seven">Seven prompts, two goals</h2>
+    <p>Below are seven ordinary prompts, the kind anyone types, followed by two rewrites of each. The first rewrite aims for <strong>a specific race</strong>, for when you are depicting one person or a known identity. The second aims for <strong>diversity within a photo</strong>, for when you need a group.</p>
+    <p>These are prompt patterns based on how the research above says the systems behave. I have not measured the exact results of each one, and outcomes vary by model. Test them on your tool.</p>
+  </div>
+
+  <div class="sevens">
+    <div class="seven">
+      <p class="base"><small>PLAIN 1</small>A portrait of a doctor.</p>
+      <div class="versions">
+        <div class="version"><span class="tag">Specific race</span>A portrait of a Black woman in her 50s who is a doctor. Deep brown skin, short natural hair with gray at the temples, white coat, warm clinic lighting.</div>
+        <div class="version div"><span class="tag">Diversity in one photo</span>A team of five doctors in a hospital corridor: a Black woman in her 50s, a South Asian man in his 30s, a white woman in her 40s, a Latino man in his 60s, and an East Asian woman in her 20s. Each face is clearly visible and equally in focus.</div>
+      </div>
+    </div>
+    <div class="seven">
+      <p class="base"><small>PLAIN 2</small>A software engineer at a desk.</p>
+      <div class="versions">
+        <div class="version"><span class="tag">Specific race</span>A Latino software engineer in his late 20s with medium-brown skin and dark curly hair, working at a standing desk with two monitors.</div>
+        <div class="version div"><span class="tag">Diversity in one photo</span>Four engineers reviewing code together at a shared desk: a Black man in his 40s, an Indian woman in her 30s, a white man in his 20s, and a Middle Eastern woman in her 50s. All four are looking at the screen.</div>
+      </div>
+    </div>
+    <div class="seven">
+      <p class="base"><small>PLAIN 3</small>A family eating dinner.</p>
+      <div class="versions">
+        <div class="version"><span class="tag">Specific race</span>A Nigerian-American family of four at a dining table sharing jollof rice and fried plantain. Parents in their 40s, two children aged 8 and 11, warm evening light.</div>
+        <div class="version div"><span class="tag">Diversity in one photo</span>A multiracial three-generation family at dinner: a Black father, a Korean mother, their two children who show features of both parents, and the mother's grandmother. A range of ages is visible around one table.</div>
+      </div>
+    </div>
+    <div class="seven">
+      <p class="base"><small>PLAIN 4</small>A CEO giving a speech.</p>
+      <div class="versions">
+        <div class="version"><span class="tag">Specific race</span>A Native American woman in her 40s, CEO of a company, with a long black braid and a navy blazer, speaking on a conference stage.</div>
+        <div class="version div"><span class="tag">Diversity in one photo</span>A conference stage with a CEO at the podium, a Black woman in her 50s, and a leadership team of five seated behind her: two men and three women who differ in age, skin tone, and background. Describe each by position.</div>
+      </div>
+    </div>
+    <div class="seven">
+      <p class="base"><small>PLAIN 5</small>Friends laughing at a café.</p>
+      <div class="versions">
+        <div class="version"><span class="tag">Specific race</span>Two Middle Eastern women in their 30s laughing over coffee at a café. One wears a hijab, both have olive to light-brown skin.</div>
+        <div class="version div"><span class="tag">Diversity in one photo</span>Four friends at a café table: a Black man with a fade haircut, a white woman with red hair, an East Asian man with glasses, and a Latina woman with long curly hair. They are mid-laugh and looking at each other.</div>
+      </div>
+    </div>
+    <div class="seven">
+      <p class="base"><small>PLAIN 6</small>A teacher in a classroom.</p>
+      <div class="versions">
+        <div class="version"><span class="tag">Specific race</span>An Asian American man in his 30s teaching a middle-school science class, standing at a whiteboard in a button-up shirt.</div>
+        <div class="version div"><span class="tag">Diversity in one photo</span>A classroom of about twenty students with a range of skin tones and hair textures, including one student who uses a wheelchair. The teacher is a white woman in her 50s. Most students are raising their hands.</div>
+      </div>
+    </div>
+    <div class="seven">
+      <p class="base"><small>PLAIN 7</small>A graduation photo.</p>
+      <div class="versions">
+        <div class="version"><span class="tag">Specific race</span>A Pacific Islander graduate in a cap and gown wearing a traditional flower lei, smiling outside a university building.</div>
+        <div class="version div"><span class="tag">Diversity in one photo</span>Five graduates in matching caps and gowns posing together after commencement: a Black woman, a Filipino man, a white man, a Native American woman, and a Mexican American woman. Everyone is holding a diploma.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <h3>How the two goals compare</h3>
+  </div>
+  <div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0">
+    <table>
+      <thead><tr><th></th><th>Get a specific race</th><th>Get diversity within a photo</th></tr></thead>
+      <tbody>
+        <tr><td>Use it when</td><td>You are depicting one person, a known identity, or a culturally specific story.</td><td>You are showing a team, a class, a crowd, or a community.</td></tr>
+        <tr><td>What to write</td><td>Age, skin tone in plain words, hair texture, facial features, and cultural context such as clothing or food.</td><td>A headcount, then one description per person, with where each one is in the frame.</td></tr>
+        <tr><td>What to avoid</td><td>A single label alone, such as "Black man." A label leaves the rest of the face to the default.</td><td>The word "diverse" by itself. It asks the model to guess, and in practice often yields a token lineup.</td></tr>
+        <tr><td>Typical failure</td><td>Features drift toward the default on later attempts, for example lighter skin or straighter hair.</td><td>Everyone looks alike apart from skin tone, or one person is repeated with small changes.</td></tr>
+        <tr><td>Fix</td><td>Re-state the full description each turn. Add a "do not change" line. Attach a reference if the tool allows.</td><td>Edit one person at a time. Ask for individuality in age, build, and position.</td></tr>
+        <tr><td>Best check</td><td>Compare against a real reference, or against the mirror.</td><td>Count the people and read off each description to confirm it matches your list.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="wrap">
+    <h3>A small helper that builds these prompts</h3>
+    <p>If you write many of these, a short Python function keeps them consistent. It turns a scene and a list of people into one clear prompt, and it always lists each person separately.</p>
+    <pre><code><span class="c"># prompt_builder.py — assemble a clear image prompt from parts</span>
+
+def build_prompt(scene, people=None, keep_fixed=None, style="natural photo, soft daylight"):
+    <span class="c">"""
+    scene:      what is happening, e.g. "Four engineers reviewing code at a shared desk"
+    people:     a list of descriptions, one per person (skin tone, hair, age, clothing)
+    keep_fixed: things the tool must not change, e.g. ["skin tone", "hair texture"]
+    style:      how the image should look
+    """</span>
+    parts = [scene]
+
+    if people:
+        <span class="c"># Number each person so nobody gets merged into a generic face.</span>
+        described = "; ".join(f"person {i + 1}: {p}" for i, p in enumerate(people))
+        parts.append(described)
+
+    if keep_fixed:
+        parts.append("Do not change: " + ", ".join(keep_fixed))
+
+    parts.append(style)
+    return ". ".join(parts) + "."
+
+
+print(build_prompt(
+    "Three friends laughing at a café",
+    people=[
+        "Black woman in her 30s, deep brown skin, locs",
+        "South Asian man in his 40s, medium-brown skin, short beard",
+        "white woman in her 20s, freckles, red hair",
+    ],
+    keep_fixed=["skin tones", "hair textures"],
+))</code></pre>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="ramp" role="presentation"></div>
+
+  <h2 id="sources">Sources and who wrote them</h2>
+  <p>Every claim above comes from one of these. Links open the original. Where a synopsis of the author is given, it reflects what the source pages themselves state.</p>
+
+  <div class="note warn">
+    <p class="note-title">Limits of the research</p>
+    <p>Some author descriptions are brief because I only included what the source pages state. Bloomberg's own page blocked my automated reader, so I relied on its headline findings as reported in coverage and summaries, and I did not re-verify every figure against Bloomberg's page. OpenAI never confirmed how its DALL·E 2 diversity technique worked, so I describe it as suspected. The seven prompt pairs in this article are my own patterns and have not been tested at scale.</p>
+  </div>
+
+  <div class="sources">
+    <h3>Studies and papers</h3>
+    <ul>
+      <li><a href="https://proceedings.mlr.press/v81/buolamwini18a.html">Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification</a> (2018), Joy Buolamwini and Timnit Gebru.
+        <span class="who"><strong>Who they are:</strong> Buolamwini founded the Algorithmic Justice League and did this work as an MIT researcher. Gebru holds a Stanford PhD, co-led Google's Ethical AI team, and founded the Distributed AI Research Institute (DAIR) in 2021.</span>
+        <span class="used">Used for: error rates and training-data composition</span></li>
+      <li><a href="https://news.mit.edu/2018/study-finds-gender-skin-type-bias-artificial-intelligence-systems-0212">Study finds gender and skin-type bias in commercial artificial-intelligence systems</a>, MIT News, Feb 2018.
+        <span class="who"><strong>Who wrote it:</strong> Larry Hardesty of the MIT News Office.</span>
+        <span class="used">Used for: the 0.8% and 34.7% figures, and the 77% male / 83% white training data</span></li>
+      <li><a href="https://arxiv.org/abs/2303.11408">Stable Bias: Analyzing Societal Representations in Diffusion Models</a> (2023), Alexandra Sasha Luccioni, Christopher Akiki, Margaret Mitchell, Yacine Jernite.
+        <span class="who"><strong>Who they are:</strong> A team of four AI researchers who compared DALL·E 2 and two versions of Stable Diffusion across more than 96,000 generated images.</span>
+        <span class="used">Used for: over-representation of whiteness and masculinity</span></li>
+      <li><a href="https://arxiv.org/abs/2211.03759">Easily Accessible Text-to-Image Generation Amplifies Demographic Stereotypes at Large Scale</a> (FAccT 2023), Federico Bianchi, Pratyusha Kalluri, Esin Durmus, Faisal Ladhak, Myra Cheng, Debora Nozza, Tatsunori Hashimoto, Dan Jurafsky, James Zou, Aylin Caliskan.
+        <span class="who"><strong>Who they are:</strong> A ten-author academic team, published at the ACM Conference on Fairness, Accountability, and Transparency.</span>
+        <span class="used">Used for: ordinary prompts producing stereotypes</span></li>
+      <li><a href="https://arxiv.org/abs/2403.02726">Bias in Generative AI</a> (2024), Mi Zhou and colleagues.
+        <span class="who"><strong>Who they are:</strong> Researchers who compared Midjourney, Stable Diffusion and DALL·E 2 on occupation images.</span>
+        <span class="used">Used for: bias against women and African Americans across three generators</span></li>
+      <li><a href="https://arxiv.org/abs/2602.12133">Neutral Prompts, Non-Neutral People: Quantifying Gender and Skin-Tone Bias in Gemini Flash 2.5 Image and GPT Image 1.5</a> (2026), Roberto Balestri.
+        <span class="who"><strong>Who they are:</strong> The sole author of this arXiv study, which analyzed 3,200 images using several skin-tone scales.</span>
+        <span class="used">Used for: the over-96% lighter-skin figure</span></li>
+      <li><a href="https://s10251.pcdn.co/pdf/2021-bender-parrots.pdf">On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?</a> (2021), Emily M. Bender, Timnit Gebru, Angelina McMillan-Major, Shmargaret Shmitchell.
+        <span class="who"><strong>Who they are:</strong> Bender is a linguist and professor at the University of Washington who directs its Computational Linguistics Laboratory. Gebru is described above.</span>
+        <span class="used">Used for: hegemonic viewpoints in training data, and what filters remove</span></li>
+      <li><a href="https://arxiv.org/abs/2110.01963">Multimodal datasets: misogyny, pornography, and malignant stereotypes</a> (2021), Abeba Birhane, Vinay Uday Prabhu, Emmanuel Kahembwe.
+        <span class="who"><strong>Who they are:</strong> Birhane is at University College Dublin, Prabhu is an independent researcher, and Kahembwe is at the University of Edinburgh.</span>
+        <span class="used">Used for: the LAION-400M audit</span></li>
+    </ul>
+
+    <h3>Books and theory</h3>
+    <ul>
+      <li><a href="https://blogs.lse.ac.uk/lsereviewofbooks/2019/06/07/book-review-algorithms-of-oppression-how-search-engines-reinforce-racism-by-safiya-umoja-noble/"><em>Algorithms of Oppression: How Search Engines Reinforce Racism</em></a> (NYU Press, 2018), Safiya Umoja Noble. Linked: LSE Review of Books.
+        <span class="who"><strong>Who they are:</strong> A professor at UCLA across gender studies, African American studies and information studies, and a 2021 MacArthur Fellow.</span>
+        <span class="used">Used for: bias as structural, not a glitch</span></li>
+      <li><a href="https://en.wikipedia.org/wiki/Race_After_Technology"><em>Race After Technology: Abolitionist Tools for the New Jim Code</em></a> (Polity, 2019), Ruha Benjamin.
+        <span class="who"><strong>Who they are:</strong> A professor of African American Studies at Princeton, founding director of the Ida B. Wells Just Data Lab, and a 2024 MacArthur Fellow.</span>
+        <span class="used">Used for: the "New Jim Code"</span></li>
+      <li><a href="https://scholarblogs.emory.edu/postcolonialstudies/2014/06/20/hegemony-in-gramsci/">Hegemony in Gramsci</a> (Emory postcolonial studies blog), and <a href="https://sites.evergreen.edu/politicalshakespeares/wp-content/uploads/sites/226/2015/12/lears-cultural-hegemony.pdf">The Concept of Cultural Hegemony: Problems and Possibilities</a> (T. J. Jackson Lears).
+        <span class="who"><strong>Who:</strong> Antonio Gramsci was an Italian Marxist theorist who developed the concept of cultural hegemony in the prison writings. Lears is an American historian whose essay is a standard reading on it.</span>
+        <span class="used">Used for: hegemony as consent and "common sense"</span></li>
+      <li><a href="https://en.wikipedia.org/wiki/Symbolic_annihilation">Symbolic annihilation</a>, overview of the concept by George Gerbner and Larry Gross (1976) and Gaye Tuchman (1978).
+        <span class="who"><strong>Who they are:</strong> Gerbner was a media scholar who founded the "cultural indicators" research project. Gross was a collaborator. Tuchman is a sociologist who extended the concept to omission, trivialization and condemnation.</span>
+        <span class="used">Used for: the framework of erasure</span></li>
+    </ul>
+
+    <h3>Journalism and company statements</h3>
+    <ul>
+      <li><a href="https://www.bloomberg.com/graphics/2023-generative-ai-bias/">Humans Are Biased. Generative AI Is Even Worse</a>, Bloomberg (2023), Leonardo Nicoletti and Dina Bass.
+        <span class="who"><strong>Who they are:</strong> Bloomberg journalists who generated thousands of images across 14 job titles plus crime-related prompts and compared them against U.S. Bureau of Labor Statistics data.</span>
+        <span class="used">Used for: the occupation and crime findings</span></li>
+      <li><a href="https://blog.google/products/gemini/gemini-image-generation-issue/">Gemini image generation got it wrong. We'll do better.</a>, Google (Feb 23, 2024), Prabhakar Raghavan; and <a href="https://www.cnbc.com/2024/02/22/google-pauses-gemini-ai-image-generator-after-inaccuracies.html">CNBC's report</a> on the pause.
+        <span class="who"><strong>Who they are:</strong> Raghavan was a Google senior vice president when the post was published.</span>
+        <span class="used">Used for: the quotes about tuning and caution</span></li>
+      <li><a href="https://incidentdatabase.ai/cite/16/">Incident 16: Images of Black People Labeled as Gorillas</a>, AI Incident Database, and <a href="https://www.theregister.com/2023/05/29/ai_in_brief/">The Register</a> (2023).
+        <span class="who"><strong>Who:</strong> The incident database collects documented AI failures. The 2015 report came from software developer Jacky Alciné, who posted the mislabeled photo on Twitter.</span>
+        <span class="used">Used for: the 2015 Google Photos failure and the blocked label</span></li>
+      <li><a href="https://petapixel.com/2022/12/08/users-complain-that-lensa-ai-selfie-generator-is-sexualizing-their-photos/">PetaPixel on Lensa complaints</a> and <a href="https://www.cnwmedia.com/article/when-ai-makes-you-a-stranger-black-users-say-tech-tools-are-whitening-their-images">"When AI Makes You a Stranger"</a>, CNW Media.
+        <span class="who"><strong>Who:</strong> Trade and community outlets that collected user reports. Melissa Heikkilä's account of her own avatars ran in MIT Technology Review.</span>
+        <span class="used">Used for: skin lightening and sexualization reports</span></li>
+      <li><a href="https://openai.com/index/reducing-bias-and-improving-safety-in-dall-e-2/">Reducing bias and improving safety in DALL·E 2</a>, OpenAI (2022).
+        <span class="who"><strong>Who:</strong> OpenAI's own post. It describes a system-level diversity technique and does not explain the mechanism.</span>
+        <span class="used">Used for: the 2022 diversity technique</span></li>
+    </ul>
+
+    <h3>Chatbots and the Tay case</h3>
+    <ul>
+      <li><a href="https://money.cnn.com/2016/03/24/technology/tay-racist-microsoft/index.html">After racist tweets, Microsoft muzzles teen chat bot Tay</a>, CNN Business (2016), and <a href="https://incidentdatabase.ai/cite/6/">Incident 6</a>, AI Incident Database.
+        <span class="who"><strong>Who:</strong> CNN Business reporting on Microsoft's 2016 chatbot, and the AI Incident Database entry for the same event.</span>
+        <span class="used">Used for: Tay, silenced after about 16 hours</span></li>
+    </ul>
+
+
+    <h3>Dialect, covert bias, and critical race theory</h3>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2403.00742">AI generates covertly racist decisions about people based on their dialect</a>, <em>Nature</em> (2024), Valentin Hofmann, Pratyusha Ria Kalluri, Dan Jurafsky, Sharese King. Also in <a href="https://www.nature.com/articles/s41586-024-07856-5"><em>Nature</em></a>.
+        <span class="who"><strong>Who they are:</strong> Researchers from the Allen Institute for AI, Stanford University and the University of Chicago.</span>
+        <span class="used">Used for: dialect prejudice and the limits of human-feedback training</span></li>
+      <li><a href="https://maartensap.com/pdfs/sap2019risk.pdf">The Risk of Racial Bias in Hate Speech Detection</a> (ACL 2019), Maarten Sap, Dallas Card, Saadia Gabriel, Yejin Choi, Noah A. Smith.
+        <span class="who"><strong>Who they are:</strong> A research team from the University of Washington's Allen School, Carnegie Mellon University, and the Allen Institute for AI, as listed on the paper.</span>
+        <span class="used">Used for: classifiers flagging African American English as abusive</span></li>
+      <li><a href="https://scholarship.law.ua.edu/fac_books/9/"><em>Critical Race Theory: An Introduction</em></a> (NYU Press, 2001; later editions), Richard Delgado and Jean Stefancic.
+        <span class="who"><strong>Who they are:</strong> Legal scholars. Delgado is a founding figure of the movement, and the book is the standard primer.</span>
+        <span class="used">Used for: the definition of CRT and its basic ideas</span></li>
+      <li><a href="https://harvardlawreview.org/print/no-volume/brown-v-board-of-education-and-the-interest-convergence-dilemma/">Brown v. Board of Education and the Interest-Convergence Dilemma</a>, <em>Harvard Law Review</em> (1980), Derrick Bell.
+        <span class="who"><strong>Who Bell was:</strong> A legal scholar and founding figure of critical race theory.</span>
+        <span class="used">Used for: interest convergence</span></li>
+      <li><a href="https://chicagounbound.uchicago.edu/uclf/vol1989/iss1/8/">Demarginalizing the Intersection of Race and Sex</a>, <em>University of Chicago Legal Forum</em> (1989), Kimberlé Crenshaw.
+        <span class="who"><strong>Who they are:</strong> A legal scholar who introduced the term "intersectionality" in this essay.</span>
+        <span class="used">Used for: intersectionality</span></li>
+      <li><a href="https://harvardlawreview.org/print/no-volume/whiteness-as-property/">Whiteness as Property</a>, <em>Harvard Law Review</em> (1993), Cheryl I. Harris.
+        <span class="who"><strong>Who they are:</strong> A legal scholar. The article is widely described as a foundational document of modern critical race theory.</span>
+        <span class="used">Used for: whiteness as property</span></li>
+      <li><a href="https://arxiv.org/abs/1912.03593">Towards a Critical Race Methodology in Algorithmic Fairness</a> (FAT* 2020), Alex Hanna, Emily Denton, Andrew Smart, Jamila Smith-Loud.
+        <span class="who"><strong>Who they are:</strong> A team of four researchers who draw on critical race theory to argue that fairness research should treat race as multidimensional and social, not as a fixed attribute.</span>
+        <span class="used">Used for: race as a social construction in fairness work</span></li>
+    </ul>
+
+    <h3>Solutions</h3>
+    <ul>
+      <li><a href="https://arxiv.org/abs/1810.03993">Model Cards for Model Reporting</a> (2019), Margaret Mitchell and colleagues, and <a href="https://arxiv.org/abs/1803.09010">Datasheets for Datasets</a>, Timnit Gebru and colleagues.
+        <span class="who"><strong>Who they are:</strong> Researchers who proposed short, standard documentation for models and for datasets, including performance by demographic group.</span>
+        <span class="used">Used for: documentation as a solution</span></li>
+      <li><a href="https://direct.mit.edu/books/oa-monograph/4605/Design-JusticeCommunity-Led-Practices-to-Build-the"><em>Design Justice: Community-Led Practices to Build the Worlds We Need</em></a> (MIT Press, 2020), Sasha Costanza-Chock.
+        <span class="who"><strong>Who they are:</strong> A scholar and designer whose book frames design as led by marginalized communities, drawing on participatory action research and codesign.</span>
+        <span class="used">Used for: design justice</span></li>
+      <li><a href="https://spectrum.ieee.org/indigenous-ai-voice-models-maori">Māori Data Sovereignty Inspires New AI Voice Models</a>, IEEE Spectrum, and <a href="https://huggingface.co/masakhane">Masakhane</a>.
+        <span class="who"><strong>Who:</strong> IEEE Spectrum is a technology magazine, reporting on Te Hiku Media, a Māori media organization. Masakhane is a grassroots collective for African-language NLP.</span>
+        <span class="used">Used for: data sovereignty and community-built datasets</span></li>
+      <li><a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a> (including the July 2024 Generative AI Profile, AI 600-1) and the <a href="https://artificialintelligenceact.eu/">EU AI Act</a>.
+        <span class="who"><strong>Who:</strong> NIST is the U.S. National Institute of Standards and Technology. The EU AI Act is the European Union's 2024 regulation on AI.</span>
+        <span class="used">Used for: red teaming guidance and regulation</span></li>
+    </ul>
+
+    <h3>Language share and the Disney question</h3>
+    <ul>
+      <li><a href="https://w3techs.com/technologies/overview/content_language">W3Techs: content languages of websites</a> and <a href="https://commoncrawl.org/blog/expanding-the-language-and-cultural-coverage-of-common-crawl">Common Crawl on language coverage</a>.
+        <span class="who"><strong>Who:</strong> W3Techs runs web-technology surveys. Common Crawl is a nonprofit that publishes a large open web archive used in training.</span>
+        <span class="used">Used for: English share of the web</span></li>
+      <li><a href="https://www.cnn.com/2022/09/17/entertainment/little-mermaid-racist-backlash-halle-bailey-disney-cec/">Analysis: Why racist 'The Little Mermaid' arguments don't hold up</a>, CNN (2022).
+        <span class="who"><strong>Who:</strong> A CNN entertainment analysis of the casting debate.</span>
+        <span class="used">Used for: the casting backlash and what Andersen's text does and does not say</span></li>
+      <li><a href="https://screenrant.com/the-little-mermaid-fairy-tale-hans-christian-andersen-story/">The Original Little Mermaid: What Happens In Hans Christian Andersen's Fairy Tale</a>, Screen Rant.
+        <span class="who"><strong>Who:</strong> Hans Christian Andersen was a Danish author who first published the tale in 1837. Screen Rant is an entertainment outlet summarizing it.</span>
+        <span class="used">Used for: the original ending versus Disney's</span></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  // Copy buttons: one handler for every prompt card. Falls back to selecting the text.
+  document.addEventListener("click", function (event) {
+    var button = event.target.closest(".copy");
+    if (!button) return;
+    var text = button.parentElement.querySelector("p").innerText;
+    var done = function () {
+      button.textContent = "Copied";
+      setTimeout(function () { button.textContent = "Copy"; }, 1400);
+    };
+    var fallback = function () {
+      var range = document.createRange();
+      range.selectNodeContents(button.parentElement.querySelector("p"));
+      var selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      button.textContent = "Selected";
+      setTimeout(function () { button.textContent = "Copy"; }, 1400);
+    };
+    try {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } catch (error) {
+      fallback();
+    }
+  });
+</script>

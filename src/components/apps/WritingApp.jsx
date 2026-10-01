@@ -49,6 +49,41 @@ const videoMarkdownComponents = {
   },
 }
 
+// Full-fidelity articles (`htmlSrc`) are standalone HTML pages hosted in /public.
+// They render in a same-origin frame so their own styles, figures and scripts
+// stay untouched; we only sync the site theme and open outbound links in a new tab.
+function HtmlArticle({ src, title }) {
+  const handleLoad = (e) => {
+    try {
+      const doc = e.currentTarget.contentDocument
+      if (!doc) return
+      const theme = document.documentElement.getAttribute('data-theme')
+      if (theme) doc.documentElement.setAttribute('data-theme', theme)
+      doc.querySelectorAll('a[href^="http"]').forEach((a) => {
+        a.target = '_blank'
+        a.rel = 'noopener noreferrer'
+      })
+    } catch {
+      // cross-origin or unavailable: leave the page as published
+    }
+  }
+  return (
+    <>
+      <a href={src} target="_blank" rel="noopener noreferrer" className="inline-block text-xs underline mb-3" style={{ color: 'var(--accent-500)' }}>
+        Open full page
+      </a>
+      <iframe
+        src={src}
+        title={title}
+        onLoad={handleLoad}
+        allow="clipboard-write"
+        className="w-full rounded-lg border"
+        style={{ height: 'calc(100vh - 240px)', minHeight: 480, borderColor: 'var(--border-light)', background: 'var(--bg-primary)' }}
+      />
+    </>
+  )
+}
+
 function ArticleCard({ item, onOpen }) {
   return (
     <button
@@ -95,9 +130,13 @@ function WritingApp() {
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5"><path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round" /></svg>
           Back to Writing
         </button>
-        <ReactMarkdown remarkPlugins={[remarkGfm]} components={selected.embedVideos ? videoMarkdownComponents : markdownComponents}>
-          {selected.content}
-        </ReactMarkdown>
+        {selected.htmlSrc ? (
+          <HtmlArticle src={selected.htmlSrc} title={selected.title} />
+        ) : (
+          <ReactMarkdown remarkPlugins={[remarkGfm]} components={selected.embedVideos ? videoMarkdownComponents : markdownComponents}>
+            {selected.content}
+          </ReactMarkdown>
+        )}
       </div>
     )
   }

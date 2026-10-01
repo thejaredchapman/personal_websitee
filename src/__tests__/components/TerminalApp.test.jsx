@@ -90,6 +90,30 @@ describe('TerminalApp — command submission', () => {
     expect(joined).toContain('React')
   })
 
+  it('writing command lists articles with direct links', async () => {
+    const { container } = render(<TerminalApp />)
+    await submitCommand(container, 'writing')
+    const joined = getOutput(container).join('\n')
+    expect(joined).toContain("Does AI Know I'm Not White?")
+    expect(joined).toContain('?read=meet-users-where-they-are')
+  })
+
+  it('certs command lists all 12 Anthropic certifications', async () => {
+    const { container } = render(<TerminalApp />)
+    await submitCommand(container, 'certs')
+    const joined = getOutput(container).join('\n')
+    expect(joined).toContain('Claude with Amazon Bedrock')
+    expect(joined.match(/^\s*- /gm).length).toBe(12)
+  })
+
+  it('projects command includes EvalForge Lite and Tag, You\'re It', async () => {
+    const { container } = render(<TerminalApp />)
+    await submitCommand(container, 'projects')
+    const joined = getOutput(container).join('\n')
+    expect(joined).toContain('EvalForge Lite')
+    expect(joined).toContain("Tag, You're It")
+  })
+
   it('projects command lists projects', async () => {
     const { container } = render(<TerminalApp />)
     await submitCommand(container, 'projects')

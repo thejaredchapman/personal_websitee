@@ -66,6 +66,8 @@ function processCommand(input) {
       { text: '  joke        Get a random joke', type: 'cmd' },
       { text: '  projects    List projects', type: 'cmd' },
       { text: '  experience  Work experience', type: 'cmd' },
+      { text: '  writing     Articles & guides', type: 'cmd' },
+      { text: '  certs       Anthropic certifications', type: 'cmd' },
       { text: '  social      Social links', type: 'cmd' },
       { text: '  hire        Get in touch', type: 'cmd' },
       { text: '  whoami      Who are you?', type: 'cmd' },
@@ -88,9 +90,10 @@ function processCommand(input) {
       { text: '  Dr. Pugsley Bikini.', type: 'info', href: 'https://www.instagram.com/drpugsleybikini' },
       { text: '' },
       { text: '  ── What I Do ──', type: 'accent' },
-      { text: '  I work in GenAI enabling developers to understand' },
-      { text: '  AI products, drive adoption of tools like Claude' },
-      { text: '  Code, and help teams use AI responsibly.' },
+      { text: '  I\'m an engineer who teaches. I build LLM tools and' },
+      { text: '  agent workflows, then turn them into hands-on training,' },
+      { text: '  clear docs, and working demos that help teams get real' },
+      { text: '  value from AI.' },
       { text: '' },
       { text: '  Outside work, I build interactive tools that help', type: 'cmd' },
       { text: '  everyday people engage with AI on their own terms.', type: 'cmd' },
@@ -118,7 +121,7 @@ function processCommand(input) {
     ],
     skills: () => [
       { text: '  Languages:  Python | Java | JavaScript | HTML | CSS', type: 'info' },
-      { text: '  AI/ML:      LLMs | Vertex AI | Prompt Engineering', type: 'info' },
+      { text: '  AI/ML:      LLMs | Claude Code | MCP | Anthropic API | Prompt Engineering', type: 'info' },
       { text: '  Frameworks: React | Angular | Spring Boot | Django', type: 'info' },
       { text: '  Data:       BigQuery | Pandas | PyArrow | Ibis | PostgreSQL', type: 'info' },
       { text: '  Tools:      GCP | Git | gRPC | REST APIs', type: 'info' },
@@ -130,25 +133,54 @@ function processCommand(input) {
       { text: '  Run "joke" again for another one', type: 'dim' },
     ],
     projects: () => [
-      { text: '  [1] LoanLens            Amortization calculator', type: 'accent' },
+      { text: '  [1] EvalForge Lite      Multi-cloud model comparison', type: 'accent' },
+      { text: '      evalforge-lite.onrender.com', type: 'link' },
+      { text: '  [2] Tag, You\'re It      Claude Tag course', type: 'accent' },
+      { text: '      thejaredchapman.com/tag-youre-it-course.html', type: 'link' },
+      { text: '  [3] LoanLens            Amortization calculator', type: 'accent' },
       { text: '      amortization.vercel.app', type: 'link' },
-      { text: '  [2] Art Portfolio        Gallery showcase', type: 'accent' },
+      { text: '  [4] Art Portfolio       Gallery showcase', type: 'accent' },
       { text: '      art-portfolio-navy.vercel.app', type: 'link' },
-      { text: '  [3] DJ Master Academy   DDJ-FLX4 trainer', type: 'accent' },
+      { text: '  [5] DJ Master Academy   DDJ-FLX4 trainer', type: 'accent' },
       { text: '      dj-master-academy.vercel.app', type: 'link' },
-      { text: '  [4] Chess Learning App   Chess platform', type: 'accent' },
+      { text: '  [6] Chess Learning App  Chess platform', type: 'accent' },
       { text: '      chess-learning-app-teal.vercel.app', type: 'link' },
-      { text: '  [5] AI Explorer          AI experimentation', type: 'accent' },
+      { text: '  [7] AI Explorer         AI experimentation', type: 'accent' },
       { text: '      app-dun-phi.vercel.app', type: 'link' },
-      { text: '  [6] Break Into Tech      Cybersecurity guide', type: 'accent' },
+      { text: '  [8] Break Into Tech     Cybersecurity guide', type: 'accent' },
       { text: '      break-into-tech.vercel.app', type: 'link' },
-      { text: '  [7] LLM Frameworks       LangChain learning', type: 'accent' },
+      { text: '  [9] LLM Frameworks      LangChain learning', type: 'accent' },
       { text: '      langchain-learning-app.vercel.app', type: 'link' },
     ],
     experience: () => [
       { text: '  [2024-Now]  AbbVie — Developer Support Engineer (GenAI)', type: 'accent' },
       { text: '  [2022-2024] Google — Software Engineer', type: 'accent' },
       { text: '  [2018-2021] Guaranteed Rate — Appraisal Team Lead', type: 'accent' },
+    ],
+    writing: () => [
+      { text: '  [1] Does AI Know I\'m Not White?', type: 'accent' },
+      { text: '      thejaredchapman.com/?read=does-ai-know-im-not-white', type: 'link' },
+      { text: '  [2] Meet Users Where They Are', type: 'accent' },
+      { text: '      thejaredchapman.com/?read=meet-users-where-they-are', type: 'link' },
+      { text: '  [3] Stay the Engineer', type: 'accent' },
+      { text: '      thejaredchapman.com/?read=stay-the-engineer', type: 'link' },
+      { text: '  [4] From Vibe Coding to Agentic Engineering', type: 'accent' },
+      { text: '      thejaredchapman.com/?read=vibe-coding-to-agentic-engineering', type: 'link' },
+    ],
+    certs: () => [
+      { text: '  Anthropic certifications (12):', type: 'info' },
+      { text: '  - Claude Code in Action', type: 'accent' },
+      { text: '  - Claude Code 101', type: 'accent' },
+      { text: '  - Claude 101', type: 'accent' },
+      { text: '  - AI Fluency: Framework & Foundations', type: 'accent' },
+      { text: '  - Introduction to Agent Skills', type: 'accent' },
+      { text: '  - Introduction to Claude Cowork', type: 'accent' },
+      { text: '  - Introduction to Subagents', type: 'accent' },
+      { text: '  - Model Context Protocol: Advanced Topics', type: 'accent' },
+      { text: '  - Building with the Claude API', type: 'accent' },
+      { text: '  - Claude with Amazon Bedrock', type: 'accent' },
+      { text: '  - AI capabilities and limitations', type: 'accent' },
+      { text: '  - Introduction to Claude Tag', type: 'accent' },
     ],
     social: () => [
       { text: '  GitHub:    github.com/thejaredchapman', type: 'link' },
@@ -168,7 +200,7 @@ function processCommand(input) {
     date: () => [{ text: `  ${new Date().toString()}`, type: 'info' }],
     echo: () => [{ text: `  ${args.slice(1).join(' ') || ''}` }],
     ls: () => [
-      { text: '  about.txt  projects/  resume.pdf  jokes/  skills.json', type: 'info' },
+      { text: '  about.txt  projects/  writing/  certs/  resume.pdf  jokes/  skills.json', type: 'info' },
       { text: '  secret_plans.txt  definitely_not_bugs/', type: 'dim' },
     ],
     cat: () => {
@@ -279,7 +311,7 @@ function TerminalApp() {
       } else { setHistIdx(-1); setInput('') }
     } else if (e.key === 'Tab') {
       e.preventDefault()
-      const cmds = ['help','about','skills','joke','projects','experience','social','ascii','hire','whoami','date','echo','sudo','clear','ls','cat','pwd','ping','coffee','matrix','vim','anthropic']
+      const cmds = ['help','about','skills','joke','projects','experience','writing','certs','social','ascii','hire','whoami','date','echo','sudo','clear','ls','cat','pwd','ping','coffee','matrix','vim','anthropic']
       const match = cmds.filter((c) => c.startsWith(input.toLowerCase()))
       if (match.length === 1) setInput(match[0])
     }

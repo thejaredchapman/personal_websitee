@@ -52,7 +52,7 @@ const ASCII_ART = [
 
 const SKILLS_DATA = {
   languages: ['Python', 'Java', 'JavaScript', 'HTML', 'CSS'],
-  ai: ['LLMs', 'Vertex AI', 'Prompt Engineering'],
+  ai: ['LLMs', 'Claude Code', 'MCP', 'Anthropic API', 'Prompt Engineering'],
   frameworks: ['React', 'Angular', 'Spring Boot', 'Django'],
   data: ['BigQuery', 'Pandas', 'PyArrow', 'Ibis', 'PostgreSQL'],
   tools: ['GCP', 'Git', 'gRPC', 'REST APIs'],
@@ -78,6 +78,8 @@ function processCommand(input) {
         { text: '  joke          Get a programmer/comedy joke', type: 'help-cmd' },
         { text: '  projects      List featured projects', type: 'help-cmd' },
         { text: '  experience    View work experience', type: 'help-cmd' },
+        { text: '  writing       Articles and guides', type: 'help-cmd' },
+        { text: '  certs         Anthropic certifications', type: 'help-cmd' },
         { text: '  social        Social media links', type: 'help-cmd' },
         { text: '  ascii         Display ASCII art', type: 'help-cmd' },
         { text: '  whoami        Who are you?', type: 'help-cmd' },
@@ -104,13 +106,11 @@ function processCommand(input) {
         { text: '  is earned).', type: 'info' },
         { text: '' },
         { text: '  ── What I Do ──', type: 'accent' },
-        { text: '  By day, I work in Generative AI enabling developers' },
-        { text: '  companywide to understand AI products, stay ahead of' },
-        { text: '  what\'s coming, and connect the right people to build' },
-        { text: '  things that actually matter. I work hands-on with tools' },
-        { text: '  like Claude Code, drive adoption of AI services, and' },
-        { text: '  help teams move from "I\'ve heard of AI" to "I know how' },
-        { text: '  to use it responsibly."' },
+        { text: '  I\'m an engineer who teaches. I build LLM tools and agent' },
+        { text: '  workflows with Claude and other models, then turn them' },
+        { text: '  into hands-on training, clear documentation, and working' },
+        { text: '  demos that help teams get real value from AI — from a' },
+        { text: '  first prompt to a production rollout, in any environment.' },
         { text: '' },
         { text: '  Outside of work, I\'m just as passionate about AI', type: 'help-cmd' },
         { text: '  literacy, safety, and security — building interactive', type: 'help-cmd' },
@@ -170,22 +170,26 @@ function processCommand(input) {
       return [
         { text: '  Featured Projects:', type: 'info' },
         { text: '' },
-        { text: '  [1] LoanLens            - Amortization calculator', type: 'accent' },
+        { text: '  [1] EvalForge Lite      - Multi-cloud model comparison', type: 'accent' },
+        { text: '      evalforge-lite.onrender.com', type: 'link' },
+        { text: '  [2] Tag, You\'re It      - Claude Tag course', type: 'accent' },
+        { text: '      thejaredchapman.com/tag-youre-it-course.html', type: 'link' },
+        { text: '  [3] LoanLens            - Amortization calculator', type: 'accent' },
         { text: '      amortization.vercel.app', type: 'link' },
-        { text: '  [2] Art Portfolio        - Gallery & creative showcase', type: 'accent' },
+        { text: '  [4] Art Portfolio       - Gallery showcase', type: 'accent' },
         { text: '      art-portfolio-navy.vercel.app', type: 'link' },
-        { text: '  [3] DJ Master Academy   - DDJ-FLX4 training resource', type: 'accent' },
+        { text: '  [5] DJ Master Academy   - DDJ-FLX4 trainer', type: 'accent' },
         { text: '      dj-master-academy.vercel.app', type: 'link' },
-        { text: '  [4] Chess Learning App   - Interactive chess platform', type: 'accent' },
+        { text: '  [6] Chess Learning App  - Chess platform', type: 'accent' },
         { text: '      chess-learning-app-teal.vercel.app', type: 'link' },
-        { text: '  [5] AI Explorer          - AI experimentation tool', type: 'accent' },
+        { text: '  [7] AI Explorer         - AI experimentation', type: 'accent' },
         { text: '      app-dun-phi.vercel.app', type: 'link' },
-        { text: '  [6] Break Into Tech      - Cybersecurity career guide', type: 'accent' },
+        { text: '  [8] Break Into Tech     - Cybersecurity guide', type: 'accent' },
         { text: '      break-into-tech.vercel.app', type: 'link' },
-        { text: '  [7] LLM Frameworks       - LangChain learning resource', type: 'accent' },
+        { text: '  [9] LLM Frameworks      - LangChain learning', type: 'accent' },
         { text: '      langchain-learning-app.vercel.app', type: 'link' },
         { text: '' },
-        { text: '  Scroll down to the Projects section for live demos!', type: 'dim' },
+        { text: '  Open the Projects window for live demos!', type: 'dim' },
       ]
 
     case 'experience':
@@ -200,6 +204,38 @@ function processCommand(input) {
         { text: '' },
         { text: '  [2018 - 2021] Guaranteed Rate - Appraisal Desk Team Lead', type: 'accent' },
         { text: '                Automated dashboards, managed appraisal orders' },
+      ]
+
+    case 'writing':
+      return [
+        { text: '  Writing:', type: 'info' },
+        { text: '' },
+        { text: '  [1] Does AI Know I\'m Not White?', type: 'accent' },
+        { text: '      thejaredchapman.com/?read=does-ai-know-im-not-white', type: 'link' },
+        { text: '  [2] Meet Users Where They Are', type: 'accent' },
+        { text: '      thejaredchapman.com/?read=meet-users-where-they-are', type: 'link' },
+        { text: '  [3] Stay the Engineer', type: 'accent' },
+        { text: '      thejaredchapman.com/?read=stay-the-engineer', type: 'link' },
+        { text: '  [4] From Vibe Coding to Agentic Engineering', type: 'accent' },
+        { text: '      thejaredchapman.com/?read=vibe-coding-to-agentic-engineering', type: 'link' },
+      ]
+
+    case 'certs':
+      return [
+        { text: '  Anthropic certifications (12):', type: 'info' },
+        { text: '' },
+        { text: '  - Claude Code in Action', type: 'accent' },
+        { text: '  - Claude Code 101', type: 'accent' },
+        { text: '  - Claude 101', type: 'accent' },
+        { text: '  - AI Fluency: Framework & Foundations', type: 'accent' },
+        { text: '  - Introduction to Agent Skills', type: 'accent' },
+        { text: '  - Introduction to Claude Cowork', type: 'accent' },
+        { text: '  - Introduction to Subagents', type: 'accent' },
+        { text: '  - Model Context Protocol: Advanced Topics', type: 'accent' },
+        { text: '  - Building with the Claude API', type: 'accent' },
+        { text: '  - Claude with Amazon Bedrock', type: 'accent' },
+        { text: '  - AI capabilities and limitations', type: 'accent' },
+        { text: '  - Introduction to Claude Tag', type: 'accent' },
       ]
 
     case 'social':
@@ -247,7 +283,7 @@ function processCommand(input) {
 
     case 'ls':
       return [
-        { text: '  about.txt  projects/  resume.pdf  jokes/  skills.json', type: 'info' },
+        { text: '  about.txt  projects/  writing/  resume.pdf  jokes/  skills.json', type: 'info' },
         { text: '  secret_plans.txt  definitely_not_bugs/', type: 'dim' },
       ]
 
@@ -418,7 +454,7 @@ function Terminal() {
       }
     } else if (e.key === 'Tab') {
       e.preventDefault()
-      const commands = ['help', 'about', 'skills', 'joke', 'projects', 'experience', 'social', 'ascii', 'whoami', 'date', 'echo', 'sudo', 'clear', 'exit', 'ls', 'cat', 'pwd', 'ping', 'coffee', 'matrix', 'hire', 'vim']
+      const commands = ['help', 'about', 'skills', 'joke', 'projects', 'experience', 'writing', 'certs', 'social', 'ascii', 'whoami', 'date', 'echo', 'sudo', 'clear', 'exit', 'ls', 'cat', 'pwd', 'ping', 'coffee', 'matrix', 'hire', 'vim']
       const match = commands.filter((c) => c.startsWith(input.toLowerCase()))
       if (match.length === 1) setInput(match[0])
     }

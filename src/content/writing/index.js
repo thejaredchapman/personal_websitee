@@ -9,6 +9,13 @@ import toolEvalContent from './handouts/05-tool-evaluation.md?raw'
 
 export const publications = [
   {
+    id: 'does-ai-know-im-not-white',
+    title: "Does AI Know I'm Not White?",
+    description: 'A five-minute test you can run yourself, the probability math behind why image AI defaults to whiteness, and the prompts that make it listen.',
+    tags: ['AI Bias', 'Representation', 'Prompt Engineering'],
+    htmlSrc: '/does-ai-know-im-not-white.html',
+  },
+  {
     id: 'meet-users-where-they-are',
     title: 'Meet Users Where They Are',
     description: 'Twenty-one prompts that let an AI product adapt to language, ability, device, and context instead of assuming every user is the same.',

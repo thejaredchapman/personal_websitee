@@ -70,3 +70,19 @@ describe('WritingApp — direct links', () => {
     expect(window.location.search).toBe('')
   })
 })
+
+describe('WritingApp — full-fidelity HTML article', () => {
+  const TITLE = "Does AI Know I'm Not White?"
+
+  it('lists the article under Publications', () => {
+    render(<WritingApp />)
+    expect(screen.getByText(TITLE)).toBeInTheDocument()
+  })
+
+  it('shows the original page in a frame with an open-full-page link', async () => {
+    render(<WritingApp />)
+    await userEvent.click(screen.getByText(TITLE))
+    expect(screen.getByTitle(TITLE)).toHaveAttribute('src', '/does-ai-know-im-not-white.html')
+    expect(screen.getByRole('link', { name: 'Open full page' })).toHaveAttribute('href', '/does-ai-know-im-not-white.html')
+  })
+})
