@@ -147,8 +147,8 @@ function ProjectsSection() {
   const projects = [
     {
       title: 'Evalforge Lite',
-      description: 'Compares text LLMs across providers via OpenRouter, with automated grading, colorful score charts, and PDF/CSV reports.',
-      tags: ['Python', 'Evaluation', 'LLM', 'OpenRouter'],
+      description: 'Compare AI models on your own prompts, in the cloud you already use. Run up to 4 models side by side, including the same model on OpenRouter, Bedrock, Vertex AI, or Foundry, with scores for quality, speed, and cost, policy screening, PDF/CSV reports, and an MCP server for agents.',
+      tags: ['Python', 'Evaluation', 'LLM', 'OpenRouter', 'Bedrock', 'Vertex AI', 'Foundry', 'MCP'],
       url: 'https://evalforge-lite.onrender.com/',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">

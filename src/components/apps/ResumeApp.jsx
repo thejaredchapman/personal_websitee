@@ -4,12 +4,12 @@ const experience = [
     company: 'AbbVie — Los Angeles, CA',
     period: 'Aug 2024 — Present',
     bullets: [
+      'Drove Claude Code adoption enterprise-wide through hands-on coaching, working examples, and setup documentation; authored installation, troubleshooting, and usage guides for the developer community; Claude Code became a preferred developer tool across AbbVie engineering.',
+      'Led hands-on monthly technical sessions for ~300 engineers embedded across 7 internal developer communities (including AI Quest and the Data Science Committee); curated AI literacy content, synthesized findings, and delivered actionable takeaways for technical and non-technical audiences.',
+      'Authored org-wide technical documentation -- API integration guides, prompt engineering references, LLM troubleshooting playbooks, setup walkthroughs, and the "Should I?" decision framework adopted company-wide to guide appropriate AI use per corporate policy.',
       'Built ILIAD LiteLLM Model Explorer (full-stack, solo ownership) -- React 18 + Tailwind CSS + Vite frontend; FastAPI async proxy backend with server-side API key injection serving 160+ LLMs (OpenAI, Anthropic, Google, Meta, Mistral, DeepSeek); features include API Playground with real-time token usage tracking, A/B multi-model comparison, LLM-as-judge grading across 5 dimensions, and rate limiting; 111 tests across 10 suites covering components, interactions, and edge cases.',
       'Developed Enterprise RAG pipeline enabling employees to query 8 internal developer repositories using natural language -- 2,800+ document chunks with overlapping chunking strategy, L2-normalized embeddings, cosine-similarity cache (0.95 threshold) for instant repeat-query responses; automatic enforcement of AbbVie data classification policy, GxP regulations, and SLC security policies; Discourse bot auto-replying to unanswered compliance threads with source-cited AI answers. Stack: Python, Flask, FAISS, GPT-4o, LiteLLM, SSE, Discourse API.',
       'Served as primary technical resource for LLM integration and prompt engineering issues across the organization -- diagnosed API failures, debugged prompt outputs, reproduced bugs, coordinated fixes with engineering teams, and translated technical constraints into actionable guidance for developers and non-technical stakeholders.',
-      'Drove Claude Code adoption enterprise-wide through hands-on guidance, setup documentation, and practical usage examples; authored installation, troubleshooting, and usage guides distributed across the developer community; Claude Code became a preferred developer tool across AbbVie engineering.',
-      'Facilitated monthly technical sessions for ~300 engineers embedded across 7 internal developer communities (including AI Quest and the Data Science Committee); curated AI literacy content, synthesized findings, and delivered actionable takeaways for technical and non-technical audiences.',
-      'Authored org-wide technical documentation -- API integration guides, prompt engineering references, LLM troubleshooting playbooks, setup walkthroughs, and the "Should I?" decision framework adopted company-wide to guide appropriate AI use per corporate policy.',
       'Collaborated with legal, security, and privacy teams to define data governance boundaries for LLM tool usage in a regulated pharmaceutical environment; consulted on Responsible AI standards, security configurations, and compliance requirements for enterprise AI deployments.',
     ],
   },
@@ -43,6 +43,12 @@ const experience = [
 ]
 
 const projects = [
+  {
+    name: 'EvalForge Lite',
+    status: 'In Development',
+    description: 'Model-comparison platform: write your own prompts and grading rules, run up to 4 models side by side (including the same model on OpenRouter, Amazon Bedrock, Google Vertex AI, and Microsoft Foundry), and score quality, latency, tokens/sec, and cost with a "what matters most" selector. Adds policy screening, PDF/CSV reports, and an MCP server so agents can run comparisons. Thin REST clients with no vendor SDKs, hand-rolled AWS SigV4 signing, SSRF and secret-scrubbing protections, and ~460 mocked tests with CI.',
+    tags: ['Python', 'Flask', 'Amazon Bedrock', 'Vertex AI', 'Foundry', 'MCP', 'Chart.js'],
+  },
   {
     name: 'ILIAD LiteLLM Model Explorer',
     status: 'Production',
@@ -123,6 +129,9 @@ const certifications = [
   { org: 'Anthropic', name: 'Introduction to Subagents', year: '2026' },
   { org: 'Anthropic', name: 'Model Context Protocol: Advanced Topics', year: '2026' },
   { org: 'Anthropic', name: 'Building with the Claude API', year: '2026' },
+  { org: 'Anthropic', name: 'Claude with Amazon Bedrock', year: '2026' },
+  { org: 'Anthropic', name: 'AI capabilities and limitations', year: '2026' },
+  { org: 'Anthropic', name: 'Introduction to Claude Tag', year: '2026' },
 ]
 
 const skills = [

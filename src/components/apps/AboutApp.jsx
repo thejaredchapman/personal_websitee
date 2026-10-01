@@ -81,7 +81,7 @@ function AboutApp() {
           <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
             A decade of improv training at Chicago's Second City and iO Theater shapes how he
             communicates technical ideas across business and technical audiences — B.S. in Film
-            &amp; Video from Georgia State, eight Anthropic certifications, and an extreme extrovert
+            &amp; Video from Georgia State, twelve Anthropic certifications, and an extreme extrovert
             who goes deep on everything that catches his curiosity. Originally from Atlanta with
             a deep love for Chicago, now soaking up everything California has to offer alongside
             his fianc&eacute;e Avery Wine and their son, Dr. Pugsley Bikini. If you're even

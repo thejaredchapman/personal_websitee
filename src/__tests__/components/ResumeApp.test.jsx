@@ -170,9 +170,9 @@ describe('ResumeApp — certifications', () => {
     expect(screen.getByText('Model Context Protocol: Advanced Topics')).toBeInTheDocument()
   })
 
-  it('renders 9 certifications total', () => {
+  it('renders 12 certifications total', () => {
     render(<ResumeApp />)
     const anthropicLabels = screen.getAllByText('Anthropic')
-    expect(anthropicLabels.length).toBe(9)
+    expect(anthropicLabels.length).toBe(12)
   })
 })

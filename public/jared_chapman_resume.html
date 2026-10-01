@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jared Chapman — Resume</title>
+<title>Jared Chapman — Developer Education &amp; AI Engineering</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -389,7 +389,7 @@
   <!-- ══ HEADER ══ -->
   <header>
     <div class="name">Jared <span>Chapman</span></div>
-    <div class="tagline">AI/LLM Systems &nbsp;·&nbsp; Developer Enablement &nbsp;·&nbsp; Google Alumni</div>
+    <div class="tagline">Developer Education &nbsp;·&nbsp; AI Engineering &nbsp;·&nbsp; Google Alumni</div>
     <div class="contact-row">
       <div class="contact-item"><span class="dot"></span>thejaredchapman@gmail.com</div>
       <div class="contact-item"><span class="dot"></span>(404) 886-2473</div>
@@ -408,7 +408,7 @@
       <!-- Summary -->
       <div class="section">
         <div class="section-label">Profile</div>
-        <p class="summary-text">Google-trained software engineer specializing in AI/LLM systems, developer enablement, and technical solutions engineering. Built AbbVie's enterprise AI support infrastructure — production LLM tooling adopted org-wide, monthly technical sessions for 300+ engineers, and API documentation that eliminated support tickets. Translates complex systems to two audiences in the same afternoon: engineers debugging an API and executives asking why it matters. Skilled in Python, React, FastAPI, REST, gRPC, and deploying Generative AI applications in regulated enterprise environments.</p>
+        <p class="summary-text">Software engineer who teaches. Google-trained, building production LLM tooling and Claude Code workflows at AbbVie, then turning them into hands-on sessions, guides, and working demos that developers actually adopt. Leads monthly technical sessions for 300+ engineers, partners with security, legal, and platform teams, and translates new AI capabilities for technical and non-technical audiences alike. Hands-on with the Claude API, MCP, agent workflows, and multi-cloud model evaluation across Bedrock, Vertex AI, and Foundry; Anthropic-certified across 12 courses, with open-source guides, decks, and an MCP server to show for it.</p>
       </div>
 
       <!-- Experience -->
@@ -422,12 +422,12 @@
           </div>
           <div class="job-company">AbbVie · Los Angeles, CA</div>
           <ul>
+            <li>Drove Claude Code adoption enterprise-wide through hands-on coaching, working examples, and setup documentation; authored installation, troubleshooting, and usage guides for the developer community; Claude Code became a preferred developer tool across AbbVie engineering.</li>
+            <li>Led hands-on monthly technical sessions for ~300 engineers embedded across 7 internal developer communities (including AI Quest and the Data Science Committee); curated AI literacy content, synthesized findings, and delivered actionable takeaways for technical and non-technical audiences.</li>
+            <li>Authored org-wide technical documentation — API integration guides, prompt engineering references, LLM troubleshooting playbooks, setup walkthroughs, and the "Should I?" decision framework adopted company-wide to guide appropriate AI use per corporate policy.</li>
             <li>Built ILIAD LiteLLM Model Explorer (full-stack, solo ownership) — React 18 + Tailwind CSS + Vite frontend; FastAPI async proxy backend with server-side API key injection serving 160+ LLMs (OpenAI, Anthropic, Google, Meta, Mistral, DeepSeek); features include API Playground with real-time token usage tracking, A/B multi-model comparison, LLM-as-judge grading across 5 dimensions, and rate limiting; 111 tests across 10 suites covering components, interactions, and edge cases.</li>
             <li>Developed Enterprise RAG pipeline enabling employees to query 8 internal developer repositories using natural language — 2,800+ document chunks with overlapping chunking strategy, L2-normalized embeddings, cosine-similarity cache (0.95 threshold) for instant repeat-query responses; automatic enforcement of AbbVie data classification policy, GxP regulations, and SLC security policies; Discourse bot auto-replying to unanswered compliance threads with source-cited AI answers. Stack: Python, Flask, FAISS, GPT-4o, LiteLLM, SSE, Discourse API.</li>
             <li>Served as primary technical resource for LLM integration and prompt engineering issues across the organization — diagnosed API failures, debugged prompt outputs, reproduced bugs, coordinated fixes with engineering teams, and translated technical constraints into actionable guidance for developers and non-technical stakeholders.</li>
-            <li>Drove Claude Code adoption enterprise-wide through hands-on guidance, setup documentation, and practical usage examples; authored installation, troubleshooting, and usage guides distributed across the developer community; Claude Code became a preferred developer tool across AbbVie engineering.</li>
-            <li>Facilitated monthly technical sessions for ~300 engineers embedded across 7 internal developer communities (including AI Quest and the Data Science Committee); curated AI literacy content, synthesized findings, and delivered actionable takeaways for technical and non-technical audiences.</li>
-            <li>Authored org-wide technical documentation — API integration guides, prompt engineering references, LLM troubleshooting playbooks, setup walkthroughs, and the "Should I?" decision framework adopted company-wide to guide appropriate AI use per corporate policy.</li>
             <li>Collaborated with legal, security, and privacy teams to define data governance boundaries for LLM tool usage in a regulated pharmaceutical environment; consulted on Responsible AI standards, security configurations, and compliance requirements for enterprise AI deployments.</li>
           </ul>
         </div>
@@ -476,6 +476,23 @@
 
         <div class="project-item">
           <div class="project-header">
+            <div class="project-name"><a href="https://github.com/thejaredchapman/evalforge-lite" style="color:var(--ink); text-decoration:none;">EvalForge Lite</a></div>
+            <span class="project-status">In Development</span>
+          </div>
+          <p class="project-desc">Model-comparison platform: write your own prompts and grading rules, run up to 4 models side by side (including the same model on OpenRouter, Amazon Bedrock, Google Vertex AI, and Microsoft Foundry), and score quality, latency, tokens/sec, and cost with a &quot;what matters most&quot; selector. Adds policy screening, PDF/CSV reports, and an MCP server so agents can run comparisons. Thin REST clients with no vendor SDKs, hand-rolled AWS SigV4 signing, SSRF and secret-scrubbing protections, and ~460 mocked tests with CI.</p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Flask</span>
+            <span class="project-tag">Amazon Bedrock</span>
+            <span class="project-tag">Vertex AI</span>
+            <span class="project-tag">Foundry</span>
+            <span class="project-tag">MCP</span>
+            <span class="project-tag">Chart.js</span>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-header">
             <div class="project-name">ILIAD LiteLLM Model Explorer</div>
             <span class="project-status">Production</span>
           </div>
@@ -506,21 +523,6 @@
             <span class="project-tag">LiteLLM</span>
             <span class="project-tag">SSE</span>
             <span class="project-tag">Discourse API</span>
-          </div>
-        </div>
-
-        <div class="project-item">
-          <div class="project-header">
-            <div class="project-name">BigQuery DataFrames Python API (Google)</div>
-            <span class="project-status">Open Source</span>
-          </div>
-          <p class="project-desc">Extended Google's BigQuery DataFrames public Python API with datetime method support. Contributed microsecond datetime cross-compatibility to the Ibis open-source library — used in production by data engineers globally.</p>
-          <div class="project-tags">
-            <span class="project-tag">Python</span>
-            <span class="project-tag">BigQuery</span>
-            <span class="project-tag">Pandas</span>
-            <span class="project-tag">Ibis</span>
-            <span class="project-tag">PyArrow</span>
           </div>
         </div>
 
@@ -606,6 +608,21 @@
           </div>
         </div>
 
+        <div class="project-item">
+          <div class="project-header">
+            <div class="project-name">BigQuery DataFrames Python API (Google)</div>
+            <span class="project-status">Open Source</span>
+          </div>
+          <p class="project-desc">Extended Google's BigQuery DataFrames public Python API with datetime method support. Contributed microsecond datetime cross-compatibility to the Ibis open-source library — used in production by data engineers globally.</p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">BigQuery</span>
+            <span class="project-tag">Pandas</span>
+            <span class="project-tag">Ibis</span>
+            <span class="project-tag">PyArrow</span>
+          </div>
+        </div>
+
       </div><!-- /projects -->
 
     </div><!-- /main -->
@@ -627,9 +644,10 @@
             <span class="tag">Generative AI</span>
             <span class="tag">RAG</span>
             <span class="tag">Prompt Engineering</span>
+            <span class="tag">Agent SDK</span>
             <span class="tag">LiteLLM</span>
             <span class="tag">FAISS</span>
-            <span class="tag">MCP</span>
+            <span class="tag highlight">MCP</span>
           </div>
         </div>
 
@@ -679,10 +697,10 @@
         <div class="skill-group">
           <div class="skill-group-label">Developer Enablement</div>
           <div class="skill-tags">
-            <span class="tag">Developer Relations</span>
+            <span class="tag highlight">Developer Relations</span>
             <span class="tag">Technical Documentation</span>
             <span class="tag">Solutions Engineering</span>
-            <span class="tag">Technical Training</span>
+            <span class="tag highlight">Technical Training</span>
             <span class="tag">Community Building</span>
           </div>
         </div>
@@ -746,6 +764,21 @@
 
         <div class="cert-item">
           <div class="cert-name">Building with the Claude API</div>
+          <div class="cert-sub">Anthropic · 2026</div>
+        </div>
+
+        <div class="cert-item">
+          <div class="cert-name">Claude with Amazon Bedrock</div>
+          <div class="cert-sub">Anthropic · 2026</div>
+        </div>
+
+        <div class="cert-item">
+          <div class="cert-name">AI capabilities and limitations</div>
+          <div class="cert-sub">Anthropic · 2026</div>
+        </div>
+
+        <div class="cert-item">
+          <div class="cert-name">Introduction to Claude Tag</div>
           <div class="cert-sub">Anthropic · 2026</div>
         </div>
 

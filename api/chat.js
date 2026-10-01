@@ -58,6 +58,9 @@ Appraisal Desk Team Lead — Guaranteed Rate, Chicago, IL (May 2018 - Sep 2021)
 2. AI Fluency: Framework & Foundations — Anthropic (2026)
 3. Fundamentals to Become a Machine Learning Engineer — LinkedIn Learning (2026)
 4. Google Data Analytics Professional Certificate — Coursera (2022)
+5. Claude with Amazon Bedrock — Anthropic (2026)
+6. AI capabilities and limitations — Anthropic (2026)
+7. Introduction to Claude Tag — Anthropic (2026)
 
 === SKILLS ===
 Languages: Python, Java, JavaScript, HTML, CSS
@@ -67,7 +70,8 @@ Data: BigQuery, Pandas, PyArrow, Ibis, PostgreSQL
 Tools: GCP, Git, gRPC, REST APIs, Protocol Buffers, SDLC
 Other: Testing, Documentation, GitHub
 
-=== PROJECTS (11) ===
+=== PROJECTS (12) ===
+0. EvalForge Lite (in active development; repo https://github.com/thejaredchapman/evalforge-lite, demo https://evalforge-lite.onrender.com/) — Compare AI models on your own prompts, in the cloud you already use. Run up to 4 models side by side, including the same model on OpenRouter, Bedrock, Vertex AI, or Foundry, with scores for quality, speed, and cost, policy screening, PDF/CSV reports, and an MCP server for agents. Built with Python/Flask, thin REST clients (no vendor SDKs), AWS SigV4 auth, SSRF protection and secret scrubbing, ~460 mocked tests, GitHub Actions CI. Tags: Python, Flask, Bedrock, Vertex AI, Foundry, MCP.
 1. AI Explorer — Foundational vocabulary for understanding how modern AI is built, customized, and deployed. Tags: AI, Explanation, Concepts. URL: https://app-dun-phi.vercel.app/
 2. LLM Frameworks — Learn LLM orchestration frameworks like LangChain — chains, agents, and tools. Tags: React, AI, LLMs. URL: https://langchain-learning-app.vercel.app/
 3. DJ Master Academy — Training resource for mastering the Pioneer DDJ-FLX4 DJ controller. Tags: React, Music. URL: https://dj-master-academy.vercel.app/
