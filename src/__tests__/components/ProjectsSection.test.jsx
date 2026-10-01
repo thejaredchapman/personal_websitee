@@ -25,6 +25,7 @@ describe('ProjectsSection — heading', () => {
 describe('ProjectsSection — main projects', () => {
   const titles = [
     'Evalforge Lite',
+    'Claude Tag Course',
     'AI Explorer',
     'LLM Frameworks',
     'DJ Master Academy',
@@ -45,10 +46,10 @@ describe('ProjectsSection — main projects', () => {
     })
   }
 
-  it('renders 14 "Visit Project" CTAs', () => {
+  it('renders 15 "Visit Project" CTAs', () => {
     render(<ProjectsSection />)
     const ctaLinks = screen.getAllByText('Visit Project')
-    expect(ctaLinks.length).toBe(14)
+    expect(ctaLinks.length).toBe(15)
   })
 
   it('main project links open in a new tab', () => {

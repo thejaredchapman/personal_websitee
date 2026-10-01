@@ -50,9 +50,11 @@ function AboutApp() {
             <h3 className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>What I Do</h3>
           </div>
           <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            AI enablement at AbbVie, helping engineers understand what's actually possible to
-            build with AI inside a GxP-regulated environment — bridging the gap between what
-            the tools can technically do and what's permitted in a highly regulated space.
+            I'm an engineer who teaches. I help teams get real value from AI — building
+            LLM tools and agent workflows, then turning them into hands-on training, clear
+            documentation, and working demos. Whether it's a first prompt or a production
+            rollout, I bridge what the tools can technically do and what actually works for
+            the people using them, in any environment, regulated or not.
           </p>
         </div>
 

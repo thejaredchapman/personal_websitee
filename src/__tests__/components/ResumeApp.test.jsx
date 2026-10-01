@@ -152,10 +152,11 @@ describe('ResumeApp — experience', () => {
     expect(screen.getByText('Developer Support, Generative AI Applications')).toBeInTheDocument()
   })
 
-  it('renders Google roles', () => {
+  it('renders a single combined Google role', () => {
     render(<ResumeApp />)
-    expect(screen.getByText('Software Engineer — Searchmark')).toBeInTheDocument()
-    expect(screen.getByText('Software Engineer — BigQuery DataFrames')).toBeInTheDocument()
+    expect(screen.getByText('Software Engineer')).toBeInTheDocument()
+    expect(screen.getByText('Google — Chicago, IL')).toBeInTheDocument()
+    expect(screen.getByText('Sep 2022 — May 2024')).toBeInTheDocument()
   })
 })
 

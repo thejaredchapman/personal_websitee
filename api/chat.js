@@ -31,15 +31,12 @@ Team: ILIAD & Go/AI Team | Supporting & Educating Users and Developers of variou
 - Designed and deployed LLM-powered developer tooling using Claude and other large language models
 
 === PAST EXPERIENCE ===
-Software Engineer — Google, Chicago, IL (Aug 2023 - May 2024)
-Team: Google Searchmark | Search performance tools for capacity & latency
+Software Engineer — Google, Chicago, IL (Sep 2022 - May 2024)
+Teams: Google Searchmark (search performance tools for capacity & latency) and Google BigQuery (BigQuery DataFrames)
 - Refactored the Searchmark API using Java gRPC and Protocol Buffers, improving client onboarding efficiency and reducing integration friction for new consumers
 - Designed testable, maintainable code architecture for a critical internal performance measurement tool used across Google engineering teams
 - Reduced CPU usage for distributed query execution across Google's internal performance testing infrastructure via automated deployment
 - Maintained high test coverage through interface-driven unit tests, keeping the Searchmark codebase reliable for downstream partner teams
-
-Software Engineer — Google, Chicago, IL (Sep 2022 - Aug 2023)
-Team: Google BigQuery | BigQuery DataFrames
 - Extended the BigQuery Python API for public release, writing and testing datetime method APIs using Pandas, Ibis, and PyArrow — directly enabling external developer adoption at scale
 - Authored a full design document outlining engineering architecture and implementation plan for a new BigQuery DataFrames feature (PRD-equivalent)
 - Contributed to the Ibis open-source library for cross-compatibility with Pandas, supporting the broader ecosystem of developers building on BigQuery
@@ -70,7 +67,8 @@ Data: BigQuery, Pandas, PyArrow, Ibis, PostgreSQL
 Tools: GCP, Git, gRPC, REST APIs, Protocol Buffers, SDLC
 Other: Testing, Documentation, GitHub
 
-=== PROJECTS (12) ===
+=== PROJECTS (13) ===
+0. Claude Tag Course — A free, plain-words course on Claude Tag, the way to bring Claude into your team's Slack. In about 15 minutes you'll learn how to ask Claude for help, choose where to ask, steer it mid-task, teach it your team's rules, and check its work before anything goes out. It includes copy-and-paste prompts for nine teams and a short quiz. No tech background needed. Tags: Claude Tag, Slack, Course, Education. URL: https://claude-tag-course.vercel.app/
 0. EvalForge Lite (in active development; repo https://github.com/thejaredchapman/evalforge-lite, demo https://evalforge-lite.onrender.com/) — Compare AI models on your own prompts, in the cloud you already use. Run up to 4 models side by side, including the same model on OpenRouter, Bedrock, Vertex AI, or Foundry, with scores for quality, speed, and cost, policy screening, PDF/CSV reports, and an MCP server for agents. Built with Python/Flask, thin REST clients (no vendor SDKs), AWS SigV4 auth, SSRF protection and secret scrubbing, ~460 mocked tests, GitHub Actions CI. Tags: Python, Flask, Bedrock, Vertex AI, Foundry, MCP.
 1. AI Explorer — Foundational vocabulary for understanding how modern AI is built, customized, and deployed. Tags: AI, Explanation, Concepts. URL: https://app-dun-phi.vercel.app/
 2. LLM Frameworks — Learn LLM orchestration frameworks like LangChain — chains, agents, and tools. Tags: React, AI, LLMs. URL: https://langchain-learning-app.vercel.app/

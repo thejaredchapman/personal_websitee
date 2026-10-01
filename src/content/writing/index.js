@@ -1,4 +1,5 @@
 import stayTheEngineerContent from './publications/stay-the-engineer.md?raw'
+import meetUsersContent from './publications/meet-users-where-they-are.md?raw'
 import vibeCodingContent from './publications/from-vibe-coding-to-agentic-engineering.md?raw'
 import agentOrchestrationContent from './handouts/01-agent-orchestration.md?raw'
 import agentEvalContent from './handouts/02-agent-evaluation-and-instrumentation.md?raw'
@@ -7,6 +8,13 @@ import ragEvalContent from './handouts/04-rag-evaluation.md?raw'
 import toolEvalContent from './handouts/05-tool-evaluation.md?raw'
 
 export const publications = [
+  {
+    id: 'meet-users-where-they-are',
+    title: 'Meet Users Where They Are',
+    description: 'Twenty-one prompts that let an AI product adapt to language, ability, device, and context instead of assuming every user is the same.',
+    tags: ['Accessibility', 'Prompt Engineering', 'Localization'],
+    content: meetUsersContent,
+  },
   {
     id: 'stay-the-engineer',
     title: 'Stay the Engineer: Using AI to Get Better, Not Get Replaced',

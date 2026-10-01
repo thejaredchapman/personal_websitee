@@ -136,14 +136,10 @@ describe('ResumeSection — experience', () => {
     expect(screen.getByText('Developer Support, Generative AI Applications')).toBeInTheDocument()
   })
 
-  it('renders Google Searchmark role', () => {
+  it('renders a single combined Google role', () => {
     render(<ResumeSection />)
-    expect(screen.getByText('Software Engineer — Searchmark')).toBeInTheDocument()
-  })
-
-  it('renders Google BigQuery role', () => {
-    render(<ResumeSection />)
-    expect(screen.getByText('Software Engineer — BigQuery DataFrames')).toBeInTheDocument()
+    expect(screen.getByText('Software Engineer')).toBeInTheDocument()
+    expect(screen.getByText('September 2022 - May 2024')).toBeInTheDocument()
   })
 
   it('renders Guaranteed Rate role', () => {

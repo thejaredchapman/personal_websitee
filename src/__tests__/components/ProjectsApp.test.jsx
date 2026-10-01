@@ -17,6 +17,7 @@ describe('ProjectsApp — heading', () => {
 describe('ProjectsApp — main projects', () => {
   const titles = [
     'Evalforge Lite',
+    'Claude Tag Course',
     'AI Explorer',
     'LLM Frameworks',
     'DJ Master Academy',
@@ -37,11 +38,11 @@ describe('ProjectsApp — main projects', () => {
     })
   }
 
-  it('renders 14 main project links', () => {
+  it('renders 15 main project links', () => {
     render(<ProjectsApp />)
     const allLinks = screen.getAllByRole('link')
     const vercelAndRenderLinks = allLinks.filter((a) => a.href.includes('vercel.app') || a.href.includes('onrender.com'))
-    expect(vercelAndRenderLinks.length).toBe(14)
+    expect(vercelAndRenderLinks.length).toBe(15)
   })
 
   it('main project links open in a new tab', () => {

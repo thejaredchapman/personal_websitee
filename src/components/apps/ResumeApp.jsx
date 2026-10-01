@@ -14,19 +14,12 @@ const experience = [
     ],
   },
   {
-    role: 'Software Engineer — Searchmark',
+    role: 'Software Engineer',
     company: 'Google — Chicago, IL',
-    period: 'Aug 2023 — May 2024',
+    period: 'Sep 2022 — May 2024',
     bullets: [
       'Refactored Searchmark\'s internal API using Java gRPC and Protocol Buffers, reducing integration friction for new engineering teams onboarding to the service.',
       'Reduced CPU usage for distributed query execution across Google\'s internal performance testing infrastructure through automated deployment.',
-    ],
-  },
-  {
-    role: 'Software Engineer — BigQuery DataFrames',
-    company: 'Google — Chicago, IL',
-    period: 'Sep 2022 — Aug 2023',
-    bullets: [
       'Extended the BigQuery Python API for public release -- implemented and tested datetime method APIs using Pandas, Ibis, and PyArrow, directly enabling external developer adoption at scale.',
       'Contributed microsecond datetime support to the Ibis open-source library -- implemented cross-compatibility with Pandas for SQL-via-Python operations; used in production by data engineers globally.',
       'Authored the engineering architecture and implementation design document for a new BigQuery DataFrames feature end-to-end.',

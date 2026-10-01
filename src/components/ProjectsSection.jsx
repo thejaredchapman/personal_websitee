@@ -140,7 +140,7 @@ const mcpProjects = [
 function ProjectsSection() {
   const [hoveredIndex, setHoveredIndex] = useState(null)
   const [sectionRef, isVisible] = useScrollAnimation({ threshold: 0.05 })
-  const [cardsRef, visibleCards] = useStaggerAnimation(14, { baseDelay: 100 })
+  const [cardsRef, visibleCards] = useStaggerAnimation(15, { baseDelay: 100 })
   const [devCardsRef, visibleDevCards] = useStaggerAnimation(6, { baseDelay: 100 })
   const [mcpCardsRef, visibleMcpCards] = useStaggerAnimation(3, { baseDelay: 100 })
 
@@ -154,6 +154,18 @@ function ProjectsSection() {
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
           <path d="M3 3v18h18" strokeLinecap="round" strokeLinejoin="round" />
           <path d="M7 14l3-4 3 3 5-7" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )
+    },
+    {
+      title: 'Claude Tag Course',
+      description: "A free, plain-words course on Claude Tag, the way to bring Claude into your team's Slack. In about 15 minutes you'll learn how to ask Claude for help, choose where to ask, steer it mid-task, teach it your team's rules, and check its work before anything goes out. It includes copy-and-paste prompts for nine teams and a short quiz. No tech background needed.",
+      tags: ['Claude Tag', 'Slack', 'Course', 'Education'],
+      url: 'https://claude-tag-course.vercel.app/',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+          <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M8 9h8M8 13h5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       )
     },
