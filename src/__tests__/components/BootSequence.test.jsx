@@ -16,11 +16,13 @@ describe('BootSequence — splash screen', () => {
     render(<BootSequence onComplete={() => {}} />)
     act(() => vi.advanceTimersByTime(6000))
     expect(screen.getByText(/NEW.*"Stay the Engineer" published/)).toBeInTheDocument()
+    expect(screen.getByText(/NEW.*EvalForge Lite/)).toBeInTheDocument()
+    expect(screen.getByText(/NEW.*12 total/)).toBeInTheDocument()
   })
 
   it('shows the current last-updated date', () => {
     render(<BootSequence onComplete={() => {}} />)
     act(() => vi.advanceTimersByTime(1000))
-    expect(screen.getByText('Last updated: September 26, 2026')).toBeInTheDocument()
+    expect(screen.getByText('Last updated: October 1, 2026')).toBeInTheDocument()
   })
 })
