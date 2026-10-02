@@ -498,3 +498,10 @@ img {
 .os-window-content::-webkit-scrollbar-thumb:hover {
   background: rgba(128, 128, 128, 0.35);
 }
+
+/* Mobile shell: app slide-up */
+@keyframes mobileAppIn {
+  from { transform: translateY(24px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.mobile-app-in { animation: mobileAppIn 0.25s ease; }

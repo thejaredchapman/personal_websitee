@@ -4,17 +4,21 @@ import Desktop from './components/Desktop'
 import MenuBar from './components/MenuBar'
 import Dock from './components/Dock'
 import ClippyBubble from './components/ClippyBubble'
+import MobileShell from './components/MobileShell'
+import useIsMobile from './hooks/useIsMobile'
 
 const AsteroidsGame = lazy(() => import('./components/AsteroidsGame'))
 
 function App() {
   const [booted, setBooted] = useState(false)
   const [showGame, setShowGame] = useState(false)
+  const isMobile = useIsMobile()
 
   return (
     <>
       {!booted && <BootSequence onComplete={() => setBooted(true)} />}
-      {booted && (
+      {booted && isMobile && <MobileShell onOpenGame={() => setShowGame(true)} />}
+      {booted && !isMobile && (
         <>
           <MenuBar />
           <Desktop />

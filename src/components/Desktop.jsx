@@ -3,35 +3,11 @@ import { useWindows } from '../context/WindowContext'
 import { useColor } from '../context/ColorContext'
 import { characterThemes } from '../data/characterThemes'
 import Window from './Window'
+import { APP_COMPONENTS } from './appRegistry'
 
-import AboutApp from './apps/AboutApp'
-import TerminalApp from './apps/TerminalApp'
-import CodeComedyApp from './apps/CodeComedyApp'
-import ProjectsApp from './apps/ProjectsApp'
-import ResumeApp from './apps/ResumeApp'
-import GalleryApp from './apps/GalleryApp'
-import MusicApp from './apps/MusicApp'
-import ContactApp from './apps/ContactApp'
-import SettingsApp from './apps/SettingsApp'
-import ClippyApp from './apps/ClippyApp'
-import WritingApp from './apps/WritingApp'
 import { getLinkedArticleId } from '../utils/articleLink'
 import GeometricWallpaper from './GeometricWallpaper'
 import DesktopIcons from './DesktopIcons'
-
-const APP_COMPONENTS = {
-  about: AboutApp,
-  terminal: TerminalApp,
-  codecomedy: CodeComedyApp,
-  projects: ProjectsApp,
-  resume: ResumeApp,
-  gallery: GalleryApp,
-  music: MusicApp,
-  contact: ContactApp,
-  settings: SettingsApp,
-  clippy: ClippyApp,
-  writing: WritingApp,
-}
 
 function Notifications() {
   const { notifications, dismissNotification } = useWindows()
