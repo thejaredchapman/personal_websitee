@@ -26,7 +26,7 @@ export const APP_COMPONENTS = {
 
 
 export const DOCK_APPS = [
-  { id: 'about', label: 'About Me', icon: (
+  { id: 'about', label: 'About Jared', icon: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0114 0"/></svg>
   )},
   { id: 'codecomedy', label: 'Code & Comedy', icon: (

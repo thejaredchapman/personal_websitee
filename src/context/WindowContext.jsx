@@ -3,7 +3,7 @@ import { createContext, useContext, useReducer, useCallback, useRef } from 'reac
 const WindowContext = createContext(undefined)
 
 const WINDOW_CONFIGS = {
-  about:      { title: 'About Me',      defaultPos: { x: 80,  y: 50  }, defaultSize: { width: 660, height: 520 } },
+  about:      { title: 'About Jared',      defaultPos: { x: 80,  y: 50  }, defaultSize: { width: 660, height: 520 } },
   terminal:   { title: 'Terminal',       defaultPos: { x: 160, y: 70  }, defaultSize: { width: 760, height: 460 } },
   codecomedy: { title: 'Code & Comedy',  defaultPos: { x: 120, y: 55  }, defaultSize: { width: 820, height: 560 } },
   projects:   { title: 'Projects',       defaultPos: { x: 200, y: 45  }, defaultSize: { width: 860, height: 600 } },

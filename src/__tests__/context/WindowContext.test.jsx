@@ -36,7 +36,7 @@ describe('WindowContext — initial state', () => {
   it('each window has correct title from WINDOW_CONFIGS', () => {
     let ctx
     renderWithProvider((c) => { ctx = c })
-    expect(ctx.windows.about.title).toBe('About Me')
+    expect(ctx.windows.about.title).toBe('About Jared')
     expect(ctx.windows.terminal.title).toBe('Terminal')
     expect(ctx.windows.contact.title).toBe('Contact')
     expect(ctx.windows.clippy.title).toBe('Ask Clippy')
