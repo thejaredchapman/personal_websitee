@@ -68,10 +68,10 @@ describe('ResumeSection — Developer Improvements section', () => {
   })
 
   const devProjects = [
-    { title: 'Claude Code Updates', url: 'https://github.com/thejaredchapman/claude-code-updates' },
+    { title: 'Claude Code Usage Guard', url: 'https://github.com/thejaredchapman/claude-code-usage-guard' },
     { title: '4D Orchestrator MCP', url: 'https://github.com/thejaredchapman/4d-orchestrator-mcp' },
     { title: 'Claude Code Deep Dive', url: 'https://github.com/thejaredchapman/claude-code-deep-dive-deck' },
-    { title: 'Claude Code Guide', url: 'https://github.com/thejaredchapman/claude-code-guide' },
+    { title: 'AI Coding Assistant Guide', url: 'https://ai-coding-assistants-guide.vercel.app/' },
     { title: 'AI Explained: Deep Learn', url: 'https://github.com/thejaredchapman/ai_explained_deep_learn' },
     { title: 'Ask the Docs', url: 'https://github.com/thejaredchapman/ask-the-docs' },
   ]
@@ -96,11 +96,11 @@ describe('ResumeSection — Developer Improvements section', () => {
     })
   }
 
-  it('renders 6 dev improvement links to GitHub', () => {
+  it('renders 5 dev improvement links to GitHub', () => {
     render(<ResumeSection />)
     const allLinks = screen.getAllByRole('link')
     const githubLinks = allLinks.filter((a) => a.href.includes('github.com/thejaredchapman'))
-    expect(githubLinks.length).toBe(6)
+    expect(githubLinks.length).toBe(5)
   })
 
   it('renders Open Source badges for dev improvement projects', () => {
@@ -109,9 +109,9 @@ describe('ResumeSection — Developer Improvements section', () => {
     expect(badges.length).toBeGreaterThanOrEqual(6)
   })
 
-  it('renders the Changelog tag', () => {
+  it('renders the Cost Tracking tag', () => {
     render(<ResumeSection />)
-    expect(screen.getByText('Changelog')).toBeInTheDocument()
+    expect(screen.getByText('Cost Tracking')).toBeInTheDocument()
   })
 
   it('renders the Orchestration tag', () => {

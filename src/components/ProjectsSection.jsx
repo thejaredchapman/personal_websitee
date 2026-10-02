@@ -3,10 +3,10 @@ import { useScrollAnimation, useStaggerAnimation } from '../hooks/useScrollAnima
 
 const devProjects = [
   {
-    title: 'Claude Code Updates',
-    description: 'Curated changelog tracking Claude Code feature updates, improvements, and new capabilities over time.',
-    tags: ['Claude Code', 'AI', 'Changelog'],
-    url: 'https://github.com/thejaredchapman/claude-code-updates',
+    title: 'Claude Code Usage Guard',
+    description: 'A drop-in Claude Code Stop hook that logs per-turn cost, tracks rolling 12-hour and daily spend across all open sessions, and alerts on cost, token, and context-window thresholds. One-command install.',
+    tags: ['Claude Code', 'Hooks', 'Cost Tracking'],
+    url: 'https://github.com/thejaredchapman/claude-code-usage-guard',
     cta: 'View on GitHub',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
@@ -46,11 +46,11 @@ const devProjects = [
     )
   },
   {
-    title: 'Claude Code Guide',
-    description: 'A practical guide for getting the most out of Claude Code, covering tips, workflows, and advanced usage patterns.',
-    tags: ['Claude Code', 'AI', 'Guide'],
-    url: 'https://github.com/thejaredchapman/claude-code-guide',
-    cta: 'View on GitHub',
+    title: 'AI Coding Assistant Guide',
+    description: 'An interactive guide to choosing and getting the most out of AI coding assistants, covering tools, workflows, and practical usage patterns.',
+    tags: ['AI', 'Coding Assistants', 'Guide'],
+    url: 'https://ai-coding-assistants-guide.vercel.app/',
+    cta: 'View Guide',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
         <path d="M4 19.5A2.5 2.5 0 016.5 17H20" strokeLinecap="round" strokeLinejoin="round" />
@@ -173,7 +173,7 @@ function ProjectsSection() {
       title: 'AI Explorer',
       description: 'The core AI concepts outlined on the AI Explorer site provide a foundational vocabulary for understanding how modern artificial intelligence is built, customized, and deployed.',
       tags: ['AI', 'Explanation', 'What is AI?', 'Concepts', 'Tools'],
-      url: 'https://app-dun-phi.vercel.app/',
+      url: 'https://ai-explorer-theta.vercel.app/',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
           <path d="M12 2a4 4 0 014 4c0 1.1-.45 2.1-1.17 2.83L12 12l-2.83-3.17A4 4 0 0112 2z" strokeLinecap="round" strokeLinejoin="round" />

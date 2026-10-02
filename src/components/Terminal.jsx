@@ -189,7 +189,7 @@ function processCommand(input) {
         { text: '  [6] Chess Learning App  - Chess platform', type: 'accent' },
         { text: '      chess-learning-app-teal.vercel.app', type: 'link' },
         { text: '  [7] AI Explorer         - AI experimentation', type: 'accent' },
-        { text: '      app-dun-phi.vercel.app', type: 'link' },
+        { text: '      ai-explorer-theta.vercel.app', type: 'link' },
         { text: '  [8] Break Into Tech     - Cybersecurity guide', type: 'accent' },
         { text: '      break-into-tech.vercel.app', type: 'link' },
         { text: '  [9] LLM Frameworks      - LangChain learning', type: 'accent' },

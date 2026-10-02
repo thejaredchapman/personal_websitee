@@ -66,11 +66,11 @@ const projects = [
 
 const devImprovements = [
   {
-    name: 'Claude Code Updates',
+    name: 'Claude Code Usage Guard',
     status: 'Open Source',
-    description: 'Curated changelog tracking Claude Code feature updates, improvements, and new capabilities over time.',
-    tags: ['Claude Code', 'AI', 'Changelog'],
-    url: 'https://github.com/thejaredchapman/claude-code-updates',
+    description: 'A drop-in Claude Code Stop hook that logs per-turn cost, tracks rolling 12-hour and daily spend across all open sessions, and alerts on cost, token, and context-window thresholds. One-command install.',
+    tags: ['Claude Code', 'Hooks', 'Cost Tracking'],
+    url: 'https://github.com/thejaredchapman/claude-code-usage-guard',
   },
   {
     name: '4D Orchestrator MCP',
@@ -87,11 +87,11 @@ const devImprovements = [
     url: 'https://github.com/thejaredchapman/claude-code-deep-dive-deck',
   },
   {
-    name: 'Claude Code Guide',
+    name: 'AI Coding Assistant Guide',
     status: 'Open Source',
-    description: 'A practical guide for getting the most out of Claude Code, covering tips, workflows, and advanced usage patterns.',
-    tags: ['Claude Code', 'AI', 'Guide'],
-    url: 'https://github.com/thejaredchapman/claude-code-guide',
+    description: 'An interactive guide to choosing and getting the most out of AI coding assistants, covering tools, workflows, and practical usage patterns.',
+    tags: ['AI', 'Coding Assistants', 'Guide'],
+    url: 'https://ai-coding-assistants-guide.vercel.app/',
   },
   {
     name: 'AI Explained: Deep Learn',
