@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import { LINK_COMMAND_NAMES, getLinkCommandOutput, openLink } from '../utils/terminalLinks'
 
 const JOKES = [
   'Why do programmers prefer dark mode? Because light attracts bugs.',
@@ -82,6 +83,9 @@ function processCommand(input) {
         { text: '  writing       Articles and guides', type: 'help-cmd' },
         { text: '  certs         Anthropic certifications', type: 'help-cmd' },
         { text: '  social        Social media links', type: 'help-cmd' },
+        { text: '  github        Open GitHub (also linkedin, instagram, spotify)', type: 'help-cmd' },
+        { text: '  meeting       Schedule a meeting with Jared', type: 'help-cmd' },
+        { text: '  contact       Send Jared an email (or: email)', type: 'help-cmd' },
         { text: '  ascii         Display ASCII art', type: 'help-cmd' },
         { text: '  whoami        Who are you?', type: 'help-cmd' },
         { text: '  date          Current date', type: 'help-cmd' },
@@ -388,11 +392,14 @@ function processCommand(input) {
     case '':
       return []
 
-    default:
+    default: {
+      const linkOutput = getLinkCommandOutput(base)
+      if (linkOutput) return linkOutput
       return [
         { text: `  Command not found: ${base}`, type: 'error' },
         { text: '  Type "help" for available commands.', type: 'dim' },
       ]
+    }
   }
 }
 
@@ -439,6 +446,7 @@ function Terminal() {
     ]
 
     const output = processCommand(trimmed)
+    output.forEach((o) => { if (o.open) openLink(o.open) })
 
     // Handle system commands
     if (output.some((o) => o.text === '__CLEAR__')) {
@@ -480,7 +488,7 @@ function Terminal() {
       }
     } else if (e.key === 'Tab') {
       e.preventDefault()
-      const commands = ['help', 'about', 'skills', 'joke', 'projects', 'experience', 'writing', 'certs', 'social', 'ascii', 'whoami', 'date', 'echo', 'sudo', 'clear', 'exit', 'ls', 'cat', 'pwd', 'ping', 'coffee', 'matrix', 'hire', 'vim']
+      const commands = ['help', 'about', 'skills', 'joke', 'projects', 'experience', 'writing', 'certs', 'social', 'ascii', 'whoami', 'date', 'echo', 'sudo', 'clear', 'exit', 'ls', 'cat', 'pwd', 'ping', 'coffee', 'matrix', 'hire', 'vim', ...LINK_COMMAND_NAMES]
       const match = commands.filter((c) => c.startsWith(input.toLowerCase()))
       if (match.length === 1) setInput(match[0])
     }

@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
+import { LINK_COMMAND_NAMES, getLinkCommandOutput, openLink } from '../../utils/terminalLinks'
 
 const JOKES = [
   'Why do programmers prefer dark mode? Because light attracts bugs.',
@@ -70,6 +71,9 @@ function processCommand(input) {
       { text: '  certs       Anthropic certifications', type: 'cmd' },
       { text: '  social      Social links', type: 'cmd' },
       { text: '  hire        Get in touch', type: 'cmd' },
+      { text: '  github      Open GitHub (also linkedin, instagram, spotify)', type: 'cmd' },
+      { text: '  meeting     Schedule a meeting with Jared', type: 'cmd' },
+      { text: '  contact     Send Jared an email (or: email)', type: 'cmd' },
       { text: '  whoami      Who are you?', type: 'cmd' },
       { text: '  ls          List files', type: 'cmd' },
       { text: '  date        Current date', type: 'cmd' },
@@ -268,6 +272,8 @@ function processCommand(input) {
   if (!base) return []
   const handler = commands[base]
   if (handler) return handler()
+  const linkOutput = getLinkCommandOutput(base)
+  if (linkOutput) return linkOutput
   return [
     { text: `  Command not found: ${base}`, type: 'error' },
     { text: '  Type "help" for available commands.', type: 'dim' },
@@ -300,6 +306,7 @@ function TerminalApp() {
     const trimmed = input.trim()
     const newHistory = [...history, { text: `visitor@jaredos ~ $ ${trimmed}`, type: 'prompt' }]
     const output = processCommand(trimmed)
+    output.forEach((o) => { if (o.open) openLink(o.open) })
 
     if (output.some((o) => o.text === '__CLEAR__')) {
       setHistory([])
@@ -332,7 +339,7 @@ function TerminalApp() {
       } else { setHistIdx(-1); setInput('') }
     } else if (e.key === 'Tab') {
       e.preventDefault()
-      const cmds = ['help','about','skills','joke','projects','experience','writing','certs','social','ascii','hire','whoami','date','echo','sudo','clear','ls','cat','pwd','ping','coffee','matrix','vim','anthropic']
+      const cmds = ['help','about','skills','joke','projects','experience','writing','certs','social','ascii','hire','whoami','date','echo','sudo','clear','ls','cat','pwd','ping','coffee','matrix','vim','anthropic',...LINK_COMMAND_NAMES]
       const match = cmds.filter((c) => c.startsWith(input.toLowerCase()))
       if (match.length === 1) setInput(match[0])
     }

@@ -408,3 +408,43 @@ describe('TerminalApp — date command', () => {
     expect(joined).toContain(new Date().getFullYear().toString())
   })
 })
+
+describe('TerminalApp — link keywords', () => {
+  function submit(container, cmd) {
+    fireEvent.change(container.querySelector('input[type="text"]'), { target: { value: cmd } })
+    fireEvent.submit(container.querySelector('form'))
+  }
+
+  it.each([
+    ['github', 'https://github.com/thejaredchapman'],
+    ['linkedin', 'https://www.linkedin.com/in/thejaredchapman'],
+    ['instagram', 'https://instagram.com/thejaredchapman'],
+    ['spotify', 'https://open.spotify.com/user/thejaredchapman'],
+  ])('%s opens a new tab', (cmd, url) => {
+    const open = vi.spyOn(window, 'open').mockImplementation(() => null)
+    const { container } = render(<TerminalApp />)
+    submit(container, cmd)
+    expect(open).toHaveBeenCalledWith(url, '_blank', 'noopener,noreferrer')
+    expect(getOutput(container).join('\n')).toContain('Opening')
+    open.mockRestore()
+  })
+
+  it('meeting opens a calendar invite with Jared as guest', () => {
+    const open = vi.spyOn(window, 'open').mockImplementation(() => null)
+    const { container } = render(<TerminalApp />)
+    submit(container, 'meeting')
+    const url = open.mock.calls[0][0]
+    expect(url).toContain('calendar.google.com')
+    expect(url).toContain(encodeURIComponent('thejaredchapman@gmail.com'))
+    open.mockRestore()
+  })
+
+  it.each(['contact', 'email'])('%s drafts an email', (cmd) => {
+    const open = vi.spyOn(window, 'open').mockImplementation(() => null)
+    const { container } = render(<TerminalApp />)
+    submit(container, cmd)
+    expect(getOutput(container).join('\n')).toContain('thejaredchapman@gmail.com')
+    expect(open).not.toHaveBeenCalled()
+    open.mockRestore()
+  })
+})
