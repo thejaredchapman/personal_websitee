@@ -9,7 +9,6 @@ import ContactApp from './apps/ContactApp'
 import SettingsApp from './apps/SettingsApp'
 import ClippyApp from './apps/ClippyApp'
 import WritingApp from './apps/WritingApp'
-import GuideApp from './apps/GuideApp'
 
 export const APP_COMPONENTS = {
   about: AboutApp,
@@ -23,16 +22,12 @@ export const APP_COMPONENTS = {
   settings: SettingsApp,
   clippy: ClippyApp,
   writing: WritingApp,
-  guide: GuideApp,
 }
 
 
 export const DOCK_APPS = [
   { id: 'about', label: 'About Jared', icon: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0114 0"/></svg>
-  )},
-  { id: 'guide', label: 'AI Guide', icon: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="9"/><polygon points="15.5 8.5 13.5 13.5 8.5 15.5 10.5 10.5 15.5 8.5"/></svg>
   )},
   { id: 'codecomedy', label: 'Code & Comedy', icon: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
