@@ -140,7 +140,7 @@ const mcpProjects = [
 function ProjectsSection() {
   const [hoveredIndex, setHoveredIndex] = useState(null)
   const [sectionRef, isVisible] = useScrollAnimation({ threshold: 0.05 })
-  const [cardsRef, visibleCards] = useStaggerAnimation(15, { baseDelay: 100 })
+  const [cardsRef, visibleCards] = useStaggerAnimation(16, { baseDelay: 100 })
   const [devCardsRef, visibleDevCards] = useStaggerAnimation(6, { baseDelay: 100 })
   const [mcpCardsRef, visibleMcpCards] = useStaggerAnimation(3, { baseDelay: 100 })
 
@@ -335,6 +335,19 @@ function ProjectsSection() {
           <circle cx="6" cy="19" r="2" />
           <circle cx="18" cy="19" r="2" />
           <path d="M12 7l-4.5 3.5M12 7l4.5 3.5M6 14v3M18 14v3" strokeLinecap="round" />
+        </svg>
+      )
+    },
+    {
+      title: '2026 Midterms Tracker',
+      description: "Still being built, but here's what I've built so far. A tracker for the 2026 midterm elections that follows 62 of the most competitive Senate, governor, and House races in a searchable candidate matrix. It pairs each candidate with news and posts, race ratings, Trump endorsements, and how they voted on the OBBB, plus a summary of key developments and a countdown to Nov 3.",
+      tags: ['In Progress', 'React', 'Data', 'Politics'],
+      url: 'https://midterms-2026-dashboard.vercel.app/',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+          <path d="M3 21h18" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M5 21V10l7-6 7 6v11" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M9 21v-6h6v6" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       )
     }

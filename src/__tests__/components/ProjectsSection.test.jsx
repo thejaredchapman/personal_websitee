@@ -46,10 +46,10 @@ describe('ProjectsSection — main projects', () => {
     })
   }
 
-  it('renders 15 "Visit Project" CTAs', () => {
+  it('renders 16 "Visit Project" CTAs', () => {
     render(<ProjectsSection />)
     const ctaLinks = screen.getAllByText('Visit Project')
-    expect(ctaLinks.length).toBe(15)
+    expect(ctaLinks.length).toBe(16)
   })
 
   it('main project links open in a new tab', () => {

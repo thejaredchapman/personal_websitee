@@ -38,11 +38,11 @@ describe('ProjectsApp — main projects', () => {
     })
   }
 
-  it('renders 15 main project links', () => {
+  it('renders 16 main project links', () => {
     render(<ProjectsApp />)
     const allLinks = screen.getAllByRole('link')
     const vercelAndRenderLinks = allLinks.filter((a) => a.href.includes('vercel.app') || a.href.includes('onrender.com') || a.href.endsWith('/tag-youre-it-course.html'))
-    expect(vercelAndRenderLinks.length).toBe(15)
+    expect(vercelAndRenderLinks.length).toBe(16)
   })
 
   it('main project links open in a new tab', () => {

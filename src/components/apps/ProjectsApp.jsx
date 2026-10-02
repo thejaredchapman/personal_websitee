@@ -44,6 +44,7 @@ const personalProjects = [
   { title: 'PyTorch Interactive Guide', desc: 'Interactive educational tool for learning PyTorch and ML fundamentals.', tags: ['React', 'ML'], url: 'https://pytorch-interactive-guide.vercel.app/' },
   { title: 'Ensemble', desc: 'A collection of improvisational comedy games to play and practice improv with a group.', tags: ['React', 'Improv'], url: 'https://improv-studio.vercel.app/' },
   { title: 'DSA General Prep', desc: 'A self-contained browser app for professional DS&A interview preparation — no build step required.', tags: ['JavaScript', 'Education'], url: 'https://dsa-general-prep.vercel.app/' },
+  { title: '2026 Midterms Tracker', desc: "Still being built, but here's what I've built so far. A tracker for the 2026 midterm elections that follows 62 of the most competitive Senate, governor, and House races in a searchable candidate matrix. It pairs each candidate with news and posts, race ratings, Trump endorsements, and how they voted on the OBBB, plus a summary of key developments and a countdown to Nov 3.", tags: ['In Progress', 'React', 'Data', 'Politics'], url: 'https://midterms-2026-dashboard.vercel.app/' },
 ]
 
 const devProjects = [
