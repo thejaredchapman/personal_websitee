@@ -27,11 +27,11 @@ The site is a **macOS desktop simulator** — not a traditional scrolling websit
 
 - **ThemeContext** — Light/dark toggle. Follows the system `prefers-color-scheme` (live) until the visitor toggles; only that explicit choice is persisted to `localStorage` key `theme-preference`.
 - **ColorContext** — Accent color selection (8 presets + rainbow + custom hex picker). Generates full 50–900 shade palettes at runtime and sets CSS custom properties on `:root`. Persisted to `localStorage` key `accent-color`. Defaults to orange.
-- **WindowContext** — Manages all 9 window states (open/minimized/maximized/position/size/zIndex) via `useReducer`. Default positions/sizes defined in `WINDOW_CONFIGS`. Window positions do **not** persist across page loads.
+- **WindowContext** — Manages all window states (open/minimized/maximized/position/size/zIndex) via `useReducer`. Default positions/sizes defined in `WINDOW_CONFIGS`. Window positions do **not** persist across page loads.
 
 ### Window System
 
-Each "page" is a window component in `src/components/apps/` (AboutApp, ProjectsApp, ResumeApp, TerminalApp, ContactApp, SettingsApp, GalleryApp, MusicApp, CodeComedyApp). The `Window` component provides drag/resize/minimize/maximize chrome. `Desktop` renders all windows; `Dock` triggers opening them.
+Each "page" is a window component in `src/components/apps/` (AboutApp, GuideApp, ProjectsApp, ResumeApp, TerminalApp, ContactApp, SettingsApp, GalleryApp, MusicApp, CodeComedyApp, WritingApp, ClippyApp). The app list and component map live in `components/appRegistry.jsx`, shared by `Dock`, `Desktop` and the mobile shell. The `Window` component provides drag/resize/minimize/maximize chrome. `Desktop` renders all windows; `Dock` triggers opening them.
 
 ### Dual Component Pattern (Important)
 
@@ -47,7 +47,7 @@ Content is duplicated between "Section" components (legacy scrolling page) and "
 
 ### Theming
 
-Dynamic accent colors use CSS custom properties (`--accent-50` through `--accent-900`) set by `ColorContext`. Semantic variables (`--bg-primary`, `--text-primary`, `--bg-secondary`, `--glass-bg`, `--win-bg`, etc.) switch between light/dark via `[data-theme="dark"]` in `src/index.css`. Tailwind's `@theme` directive sets the mono font to JetBrains Mono.
+Dynamic accent colors use CSS custom properties (`--accent-50` through `--accent-900`) set by `ColorContext`. Semantic variables (`--bg-primary`, `--text-primary`, `--bg-secondary`, `--glass-bg`, `--win-bg`, etc.) switch between light/dark via `[data-theme="dark"]` in `src/index.css`. Tailwind's `@theme` directive sets the font to Courier Prime (Courier New fallback) and sharpens the corner radii. The look is a developer manual: ruled-grid wallpaper, flat chrome, light/dark from the system setting.
 
 ### Custom Hooks (`src/hooks/`)
 
@@ -58,6 +58,10 @@ Dynamic accent colors use CSS custom properties (`--accent-50` through `--accent
 
 `content/` directory has markdown files documenting site content and configuration decisions. These are **reference docs only, not dynamically loaded** — all project data, resume content, and terminal commands are hardcoded in components.
 
-### Static Assets
+#### Mobile and the AI guide
+
+Under 768px (`useIsMobile`), `App.jsx` renders `MobileShell` (home-screen grid, full-screen apps, bottom bar) instead of MenuBar/Desktop/Dock. After boot, `SplashGuide` shows once per session (`sessionStorage` key `jaredos-guide-seen`; skipped for `?read=` links). Its content, `guide/GuideContent.jsx`, is also the `guide` window app. Model and permission-mode facts live in `src/data/guideData.js` with an as-of date; re-check them against Anthropic's docs when they change.
+
+## Static Assets
 
 `public/` holds `jared_chapman_resume.html`, `resume.pdf`, `selfie.jpg`, `favicon.png`, and `photos/` for the gallery.

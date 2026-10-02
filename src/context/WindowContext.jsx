@@ -14,6 +14,7 @@ const WINDOW_CONFIGS = {
   settings:   { title: 'Settings',       defaultPos: { x: 300, y: 80  }, defaultSize: { width: 440, height: 640 } },
   clippy:     { title: 'Ask Clippy',    defaultPos: { x: 220, y: 55  }, defaultSize: { width: 420, height: 560 } },
   writing:    { title: 'Writing',       defaultPos: { x: 240, y: 40  }, defaultSize: { width: 880, height: 640 } },
+  guide:      { title: 'AI Guide',      defaultPos: { x: 90,  y: 40  }, defaultSize: { width: 900, height: 660 } },
 }
 
 function buildInitialWindows() {

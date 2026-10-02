@@ -4,7 +4,13 @@
    TAILWIND THEME EXTENSIONS
    ============================================ */
 @theme {
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-mono: 'Courier Prime', 'Courier New', Courier, monospace;
+  /* Sharper corners everywhere: an editor, not a toy */
+  --radius-md: 0.1875rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.3125rem;
+  --radius-2xl: 0.375rem;
+  --radius-3xl: 0.5rem;
 }
 
 /* ============================================
@@ -24,18 +30,18 @@
   --accent-900: #7c2d12;
 
   /* Neutral colors */
-  --white: #faf6f1;
-  --gray-50: #f5f0e8;
-  --gray-100: #ebe5db;
-  --gray-200: #ddd5c8;
-  --gray-300: #c9bfb0;
-  --gray-400: #a89e8e;
-  --gray-500: #7a7060;
-  --gray-600: #52525b;
-  --gray-700: #3f3f46;
-  --gray-800: #27272a;
-  --gray-900: #18181b;
-  --black: #0a0a0a;
+  --white: #f6f3ec;
+  --gray-50: #efebe2;
+  --gray-100: #e3ded2;
+  --gray-200: #d3cdbf;
+  --gray-300: #b9b2a2;
+  --gray-400: #8f8878;
+  --gray-500: #6a6455;
+  --gray-600: #4f4b41;
+  --gray-700: #36342d;
+  --gray-800: #1f1f1c;
+  --gray-900: #121210;
+  --black: #070707;
 
   /* Semantic Variables (Light Mode) */
   --bg-primary: var(--white);
@@ -62,13 +68,21 @@
   --shadow-color: rgba(0, 0, 0, 0.1);
   --shadow-accent: rgba(249, 115, 22, 0.4);
 
-  --glass-bg: rgba(250, 246, 241, 0.85);
-  --glass-border: rgba(250, 246, 241, 0.3);
+  --glass-bg: rgba(246, 243, 236, 0.94);
+  --glass-border: rgba(18, 18, 16, 0.16);
 
   /* OS-specific */
-  --win-bg: rgba(250, 246, 241, 0.92);
-  --win-border: rgba(0, 0, 0, 0.1);
-  --dock-icon-color: rgba(0, 0, 0, 0.45);
+  --win-bg: rgba(246, 243, 236, 0.97);
+  --win-border: rgba(18, 18, 16, 0.22);
+  --dock-icon-color: rgba(18, 18, 16, 0.55);
+
+  /* Developer chrome: grid + code tokens */
+  --grid-line: rgba(18, 18, 16, 0.045);
+  --code-bg: #ebe7dc;
+  --code-border: rgba(18, 18, 16, 0.14);
+  --ok: #1a7f4b;
+  --warn: #a15c00;
+  --danger: #b42318;
 
   --wallpaper-tint-1: color-mix(in srgb, var(--accent-200) 38%, transparent);
   --wallpaper-tint-2: color-mix(in srgb, var(--accent-300) 24%, transparent);
@@ -76,7 +90,8 @@
 
   --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+  color-scheme: light;
   line-height: 1.6;
   font-weight: 400;
   scroll-behavior: smooth;
@@ -84,16 +99,17 @@
 
 /* Dark Mode Overrides */
 [data-theme="dark"] {
-  --bg-primary: var(--gray-900);
-  --bg-secondary: var(--gray-800);
-  --bg-tertiary: var(--gray-800);
-  --bg-elevated: var(--gray-800);
+  color-scheme: dark;
+  --bg-primary: #0b0c0e;
+  --bg-secondary: #121417;
+  --bg-tertiary: #121417;
+  --bg-elevated: #171a1e;
   --bg-inverse: var(--gray-100);
 
-  --text-primary: var(--gray-100);
-  --text-secondary: var(--gray-300);
-  --text-tertiary: var(--gray-400);
-  --text-inverse: var(--gray-900);
+  --text-primary: #e6e8eb;
+  --text-secondary: #bfc4cb;
+  --text-tertiary: #8b929b;
+  --text-inverse: #0b0c0e;
 
   --accent-primary: var(--accent-400);
   --accent-secondary: var(--accent-500);
@@ -101,18 +117,25 @@
   --accent-lighter: var(--accent-50);
   --accent-dark: var(--accent-600);
 
-  --border-light: var(--gray-700);
-  --border-medium: var(--gray-600);
+  --border-light: #23272d;
+  --border-medium: #343a42;
   --border-accent: var(--accent-600);
 
-  --shadow-color: rgba(0, 0, 0, 0.3);
+  --shadow-color: rgba(0, 0, 0, 0.45);
 
-  --glass-bg: rgba(24, 24, 27, 0.85);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(14, 16, 19, 0.94);
+  --glass-border: rgba(255, 255, 255, 0.12);
 
-  --win-bg: rgba(24, 24, 27, 0.92);
-  --win-border: rgba(255, 255, 255, 0.08);
-  --dock-icon-color: rgba(255, 255, 255, 0.45);
+  --win-bg: rgba(11, 12, 14, 0.97);
+  --win-border: rgba(255, 255, 255, 0.14);
+  --dock-icon-color: rgba(230, 232, 235, 0.55);
+
+  --grid-line: rgba(255, 255, 255, 0.035);
+  --code-bg: #0f1114;
+  --code-border: rgba(255, 255, 255, 0.1);
+  --ok: #4ade80;
+  --warn: #fbbf24;
+  --danger: #f87171;
 
   --wallpaper-tint-1: color-mix(in srgb, var(--accent-900) 50%, transparent);
   --wallpaper-tint-2: color-mix(in srgb, var(--accent-800) 28%, transparent);
@@ -145,6 +168,26 @@ a:hover {
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
   font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent-500) 35%, transparent);
+  color: var(--text-primary);
+}
+
+code, kbd, pre, samp {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-500);
+  outline-offset: 2px;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-medium) transparent;
 }
 
 img {
@@ -157,6 +200,8 @@ img {
    ============================================ */
 .os-wallpaper {
   background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / 32px 32px,
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 32px 32px,
     radial-gradient(120% 100% at 12% 0%, var(--wallpaper-tint-1), transparent 62%),
     radial-gradient(110% 90% at 100% 100%, var(--wallpaper-tint-2), transparent 58%),
     var(--bg-primary);
@@ -204,8 +249,6 @@ img {
    ============================================ */
 .os-menubar {
   background: var(--glass-bg);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid var(--glass-border);
 }
 
@@ -214,18 +257,18 @@ img {
    ============================================ */
 .os-dock {
   background: var(--glass-bg);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid var(--glass-border);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 0 var(--glass-border), 0 12px 28px rgba(0, 0, 0, 0.14);
 }
 
 .os-dock-icon {
-  background: rgba(128, 128, 128, 0.08);
+  background: rgba(128, 128, 128, 0.1);
+  border: 1px solid transparent;
 }
 
 .os-dock-icon:hover {
-  background: rgba(128, 128, 128, 0.18);
+  background: rgba(128, 128, 128, 0.2);
+  border-color: var(--glass-border);
 }
 
 .os-dock-icon-active {
@@ -255,8 +298,6 @@ img {
 
 .os-window-content {
   background: var(--win-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
 }
 
 .os-window-open {
