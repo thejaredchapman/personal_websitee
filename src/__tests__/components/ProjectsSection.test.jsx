@@ -24,9 +24,11 @@ describe('ProjectsSection — heading', () => {
 
 describe('ProjectsSection — main projects', () => {
   const titles = [
+    'AI Ready Reps',
+    'The Nonprofit AI Almanac',
     'Evalforge Lite',
     "Tag, You're It",
-    'AI Explorer',
+    'AI-Explorer: a field guide to AI',
     'LLM Frameworks',
     'DJ Master Academy',
     'LoanLens',
@@ -46,10 +48,10 @@ describe('ProjectsSection — main projects', () => {
     })
   }
 
-  it('renders 16 "Visit Project" CTAs', () => {
+  it('renders 18 "Visit Project" CTAs', () => {
     render(<ProjectsSection />)
     const ctaLinks = screen.getAllByText('Visit Project')
-    expect(ctaLinks.length).toBe(16)
+    expect(ctaLinks.length).toBe(18)
   })
 
   it('main project links open in a new tab', () => {

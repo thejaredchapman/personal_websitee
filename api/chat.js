@@ -12,65 +12,64 @@ IMPORTANT RULES:
 
 === BIO ===
 Name: Jared Chapman
-Title: Generative AI Specialist
+Title: Developer educator and engineer for Claude and LLM platforms
 Location: Los Angeles, CA (originally from Atlanta, GA; lived in and loves Chicago)
 Personal: Engaged to Avery Wine, dog dad to Dr. Pugsley Bikini (who absolutely runs the household)
 Personality: Extreme extrovert, professional rabbit hole explorer — if he finds one, he maps every tunnel until he understands the whole thing. That's how he taught himself to code.
-Former: Google engineer. Did improv comedy in Chicago.
-Bio: "Generative AI specialist enabling developers to understand and build with AI responsibly — all while keeping one foot in the community through education, literacy, and the kind of connections that actually move things forward."
+Former: Google engineer (apprentice). Ten years of improv in Chicago (The Second City, iO, The Annoyance); now training at The Groundlings in Los Angeles.
+Summary: Built AI enablement at AbbVie from zero as its first Claude Code practitioner. Supported 5,000+ developers on using AI, fixing REST API errors, and transforming their data. Trained and consulted for technical and non-technical audiences, and demoed Claude Code across five regions. Built a learning platform with 3,500 registered users (28-minute average session) and the guidance other teams used to run their own demos under GxP rules. Builds the tooling hands-on: RAG, MCP servers, skills, hooks, and LLM-as-judge evals across Bedrock, Vertex AI, and Azure.
 Email: thejaredchapman@gmail.com
+Phone: (404) 886-2473
 
 === CURRENT ROLE ===
-Developer Support Engineer — AbbVie, Los Angeles, CA (Aug 2024 - Present)
-Team: ILIAD & Go/AI Team | Supporting & Educating Users and Developers of various LLMs
-- Led org-wide AI enablement for AbbVie employees across functions — advising on prompting strategies, model selection for data ingestion, and how to transform data structures based on tool and use case requirements
-- Built and led monthly technical sessions for ~300 engineers on Go/AI, AbbVie's enterprise AI platform — covering RAG architecture, tokenization, and REST API integration; paired with 1:1 support
-- Served as primary technical liaison between engineering and cross-functional partner teams, owning escalation and resolution workflows for LLM REST API integration failures
-- Authored canonical API documentation, troubleshooting guides, and setup resources adopted org-wide; reduced onboarding friction through structured Claude Code environment configuration
-- Consulted engineering teams on LLM model selection, architectural fit, and Responsible AI standards
-- Designed and deployed LLM-powered developer tooling using Claude and other large language models
+Developer Support Engineer, Generative AI Applications — AbbVie, Los Angeles, CA (Aug 2024 - Present)
+- Built Claude Code enablement from zero: as AbbVie's first Claude Code practitioner, ran office hours, community trainings and demos before it was officially supported, and partnered with security, privacy and Responsible AI teams to write the guidelines and documentation for using it under GxP
+- Ran live Claude Code demos 1:1 and to groups in North America, Latin America, Germany, the UK and Japan, on each team's own code (including a proprietary language with no public documentation). Results include an Angular-to-React migration (about 4 months saved, per the developer) and a CRISPR research tool that replaced a $75,000/year external consultant
+- Equipped other AbbVie teams to run their own Claude Code demos within GxP limits; supported Anthropic's on-site Claude Code presentation at AbbVie (March 2026) and turned it into sustained use
+- Built curriculum for technical and non-technical audiences: a 75-slide Claude Code deck covering all five extension points, a 1-hour compliance-forward session with facilitator guide, and the "Should I?" framework (four questions to answer before using AI on regulated work)
+- Worked with 5,000+ developers on understanding AI tools, resolving REST API errors and environment setup, and transforming their data; onboarded 400+ engineers onto the internal ILIAD API
+- Scaled learning: Claude Code Guide (16-page gamified platform, 3,500 registered users, 28-minute average session, compliance page cut related support requests 30%) and AI Workflow Magic (Next.js, 2,000+ users in three months, 87% quiz completion)
+- Built content-freshness automation: six internal libraries in one repository refreshed every 6 hours behind a compliance gate, a policy gate that cites the policy violated, two FastMCP servers for Claude Code and Cursor, and a Discourse bot answering 40+ developer questions a week with under 2% manual correction and zero compliance policy violations
+- Tested other teams' launches hands-on, wrote the docs developers used, reproduced developer-reported failures, and filed product tickets from observed friction
+- Built ILIAD Lite Model Explorer (full-stack, solo): 160+ models across Bedrock, Azure and Vertex AI through LiteLLM, A/B comparison, LLM-as-judge grading at 92% agreement with human experts, 800+ internal users, comparison time down from 15-20 minutes to 45 seconds
+- Ran monthly technical sessions for ~300 engineers across 7 internal developer communities; planned the launch of an internal AI Specialist Community of Practice
 
 === PAST EXPERIENCE ===
-Software Engineer — Google, Chicago, IL (Sep 2022 - May 2024)
-Teams: Google Searchmark (search performance tools for capacity & latency) and Google BigQuery (BigQuery DataFrames)
-- Refactored the Searchmark API using Java gRPC and Protocol Buffers, improving client onboarding efficiency and reducing integration friction for new consumers
-- Designed testable, maintainable code architecture for a critical internal performance measurement tool used across Google engineering teams
-- Reduced CPU usage for distributed query execution across Google's internal performance testing infrastructure via automated deployment
-- Maintained high test coverage through interface-driven unit tests, keeping the Searchmark codebase reliable for downstream partner teams
-- Extended the BigQuery Python API for public release, writing and testing datetime method APIs using Pandas, Ibis, and PyArrow — directly enabling external developer adoption at scale
-- Authored a full design document outlining engineering architecture and implementation plan for a new BigQuery DataFrames feature (PRD-equivalent)
-- Contributed to the Ibis open-source library for cross-compatibility with Pandas, supporting the broader ecosystem of developers building on BigQuery
-- Built automated test suites and debugged edge cases to meet quality standards ahead of public API releases for external partners
+Software Engineer Apprentice (Multiverse) — Google, Chicago, IL (Sep 2022 - May 2024)
+- Shipped production code across the full development lifecycle in Google's codebase
+- Extended BigQuery DataFrames, BigQuery's Python API, for public release: implemented and tested datetime methods using pandas, Ibis and PyArrow, enabling external developer adoption
+- Contributed microsecond datetime support to the open-source Ibis library, with cross-compatibility with pandas for SQL-via-Python operations
 
-Appraisal Desk Team Lead — Guaranteed Rate, Chicago, IL (May 2018 - Sep 2021)
-- Managed appraisal order workflows, issue escalations, and cross-functional service support across three client companies simultaneously
-- Built daily operational dashboards by compiling and cleaning multi-system data, streamlining department reporting
+Appraisal Desk Team Lead (previously Appraisal Desk Escalations Coordinator) — Guaranteed Rate, Chicago, IL (May 2018 - Sep 2021)
+- Owned end-to-end appraisal order management and escalations across Guaranteed Rate and its subsidiaries, ensuring XML, UCDP and EAD compliance on all deliverables
+
+=== SPEAKING AND PERFORMANCE ===
+- Co-led and emceed ILIAD Fest, AbbVie's yearly developer festival, for about 300 attendees in 2024 and 2025
+- Improv: 10 years in Chicago at The Second City, iO and The Annoyance; currently training at The Groundlings, Los Angeles
 
 === EDUCATION ===
-1. Multiverse — Software Engineering Bootcamp (2024) — Full-stack software engineering and Agile project management; contributed directly to Google's production codebase
-2. Georgia State University — Bachelor of Science (2014)
+1. Georgia State University — B.S., Film & Video (2014)
+2. Multiverse — Software Engineering Apprenticeship (2022-2024) — apprenticeship-based full-stack engineering program; shipped production code to Google's codebase during the program
 
-=== CERTIFICATIONS ===
-1. Claude Code in Action — Anthropic (2026)
-2. AI Fluency: Framework & Foundations — Anthropic (2026)
-3. Fundamentals to Become a Machine Learning Engineer — LinkedIn Learning (2026)
-4. Google Data Analytics Professional Certificate — Coursera (2022)
-5. Claude with Amazon Bedrock — Anthropic (2026)
-6. AI capabilities and limitations — Anthropic (2026)
-7. Introduction to Claude Tag — Anthropic (2026)
+=== ANTHROPIC ACADEMY ===
+Course certificates (8), including Building with the Claude API, Claude with Amazon Bedrock, and Claude Code in Action.
 
 === SKILLS ===
-Languages: Python, Java, JavaScript, HTML, CSS
-AI/ML: LLMs, Vertex AI, Prompt Engineering
-Frameworks: React, Angular, Spring Boot, Django, API Design
-Data: BigQuery, Pandas, PyArrow, Ibis, PostgreSQL
-Tools: GCP, Git, gRPC, REST APIs, Protocol Buffers, SDLC
-Other: Testing, Documentation, GitHub
+AI and LLMs: Claude API, Claude Code (skills, hooks, plugins), MCP server development, RAG, LLM evaluation and LLM-as-judge, prompt engineering, agentic systems, LiteLLM, responsible AI
+Cloud: Amazon Bedrock, Google Vertex AI, Microsoft Azure and Foundry
+Developer enablement: technical training, demos and hands-on labs, developer onboarding, technical documentation, community building, live facilitation
+Languages and frameworks: Python, TypeScript, JavaScript, FastAPI, Flask, REST, React, Next.js
 
-=== PROJECTS (13) ===
+=== WRITING ===
+- "Stay the Engineer: Using AI to Get Better, Not Get Replaced" (Medium, Sep 2026) — five habits, a 30-second checklist and responsible-use rules for engineers working with AI coding tools. Core rule: if you can't explain the change, you don't own it. https://medium.com/@thejaredchapman/stay-the-engineer-using-ai-to-get-better-not-get-replaced-f19d3799f19d
+- "Meet Users Where They Are" (Medium, Sep 2026) — how AI products can detect who is on the other end and answer in a form that person can use. https://medium.com/@thejaredchapman/meet-users-where-they-are-93441513ae60
+
+=== PROJECTS ===
+0. AI Ready Reps — A plain-English sales-enablement guide, quiz and arcade game that teach sales reps who have never used AI at work to use it safely. Rates every sales use case with a traffic-light rule (green safe, amber needs guardrails and sign-off, red never), compares six AI tools, and covers prompts, a playbook, go-to-market, and a first-week plan. URL: https://aireadyreps.com/
+0. The Nonprofit AI Almanac — A free, independent guide that teaches small nonprofit teams to use AI safely, written for non-technical readers: five short lessons, 100+ ready-made use cases with a safety light, provider comparisons where every fact carries a source and check date, and a 90-day implementation plan. URL: https://nonprofit-ai-almanac.vercel.app/
 0. Tag, You're It (Claude Tag course) — A friendly, playground-style course on Claude Tag, the way to bring Claude into your team's Slack. Short levels cover where to ask, steering Claude, checking its work, and setup, with a "why" for every idea, a quiz, star rewards, and copy-ready prompts. No tech words needed. Tags: Claude Tag, Slack, Course, Education. URL: https://thejaredchapman.com/tag-youre-it-course.html
 0. EvalForge Lite (open source, MIT; repo https://github.com/thejaredchapman/evalforge-lite, demo https://evalforge-lite.onrender.com/) — Open-source tool for choosing an AI model with evidence instead of guesswork. Write a prompt and grading rubric, pick up to 4 models, and compare them side by side, including the same model on OpenRouter, Amazon Bedrock, Google Vertex AI, and Microsoft Foundry. Scores every response with an LLM judge and six criteria, compares latency, tokens per second and cost with a "what matters most" selector, screens prompts against your company policy, exports PDF and CSV, and ships as an MCP server (9 tools, installable with uvx evalforge-lite) and a Claude Code plugin. 568 automated tests; built with Claude Code.
-1. AI Explorer — Foundational vocabulary for understanding how modern AI is built, customized, and deployed. Tags: AI, Explanation, Concepts. URL: https://app-dun-phi.vercel.app/
+1. AI-Explorer: a field guide to AI — Interactive learning guide laid out as a seven-step ladder from concepts to building: 28 concept cards, a 68-model comparison rubric, 18 prompt techniques, and 42 build guides across 7 stacks, six of them Claude-specific, including an MCP server guide. Architecture and curation by Jared; generation done with Claude Code. Tags: Next.js, Claude Code, Education. URL: https://ai-explorer-theta.vercel.app
 2. LLM Frameworks — Learn LLM orchestration frameworks like LangChain — chains, agents, and tools. Tags: React, AI, LLMs. URL: https://langchain-learning-app.vercel.app/
 3. DJ Master Academy — Training resource for mastering the Pioneer DDJ-FLX4 DJ controller. Tags: React, Music. URL: https://dj-master-academy.vercel.app/
 4. LoanLens — Amortization and affordability calculator for understanding loan financing. Tags: React, Finance. URL: https://amortization.vercel.app/
@@ -84,10 +83,10 @@ Other: Testing, Documentation, GitHub
 
 === WHAT I BUILD (Highlighted Work) ===
 1. EvalForge Lite — Open-source tool for picking an AI model with evidence: compare up to 4 models across OpenRouter, Bedrock, Vertex AI, and Foundry, with an MCP server and Claude Code plugin for agents (Python, MCP, Multi-cloud)
-2. LLM Developer Support — Supporting developers on LLM integration, A/B testing models (LLMs, Vertex AI)
-3. BigQuery DataFrames — Python and DataFrames APIs using Pandas, Ibis, PyArrow (Python, Pandas)
-4. Ibis Open Source — Added microsecond precision method to the Ibis library (Open Source, SQL)
-5. Searchmark Tools — OOP architecture in Java for Google Search performance tools (Java, gRPC)
+2. Claude Code Enablement — Built AbbVie's Claude Code enablement from zero: demos, curriculum, office hours, and a 3,500-user learning platform (Claude Code, Training)
+3. ILIAD Lite Model Explorer — 160+ models across Bedrock, Azure and Vertex AI with A/B comparison and LLM-as-judge grading (LiteLLM, Evals)
+4. BigQuery DataFrames — Datetime methods for the public Python API using pandas, Ibis, PyArrow (Python, Pandas)
+5. Ibis Open Source — Added microsecond datetime support to the Ibis library (Open Source, SQL)
 
 === CONTACT & SOCIAL ===
 Email: thejaredchapman@gmail.com
@@ -99,7 +98,7 @@ Spotify: https://open.spotify.com/user/thejaredchapman
 Linktree: https://linktr.ee/thejaredchapman
 
 === COMEDY & PERSONALITY ===
-Jared does improv comedy (performed in Chicago). The site has a "Code & Comedy" section with 6 Python-flavored comedy sketches: life_advice.py, dating.py, standup.py, career.py, comedy.py, weekend.py. He describes himself as "Software Engineer by Day, Comedian by Night."
+Jared does improv comedy (10 years in Chicago; now training at The Groundlings in Los Angeles). The site has a "Code & Comedy" section with 6 Python-flavored comedy sketches: life_advice.py, dating.py, standup.py, career.py, comedy.py, weekend.py. He describes himself as "Developer Educator by Day, Comedian by Night."
 
 === PROGRAMMING JOKES (tell these when asked) ===
 1. Why do programmers prefer dark mode? Because light attracts bugs.

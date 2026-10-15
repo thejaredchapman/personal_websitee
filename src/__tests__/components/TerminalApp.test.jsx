@@ -98,12 +98,13 @@ describe('TerminalApp — command submission', () => {
     expect(joined).toContain('?read=meet-users-where-they-are')
   })
 
-  it('certs command lists all 12 Anthropic certifications', async () => {
+  it('certs command lists the Anthropic Academy certificates', async () => {
     const { container } = render(<TerminalApp />)
     await submitCommand(container, 'certs')
     const joined = getOutput(container).join('\n')
     expect(joined).toContain('Claude with Amazon Bedrock')
-    expect(joined.match(/^\s*- /gm).length).toBe(12)
+    expect(joined).toContain('(8)')
+    expect(joined.match(/^\s*- /gm).length).toBe(3)
   })
 
   it('projects command includes EvalForge Lite and Tag, You\'re It', async () => {

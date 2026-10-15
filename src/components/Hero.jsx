@@ -84,7 +84,7 @@ function Hero({ onPlayGame }) {
             style={{ color: 'var(--text-secondary)' }}
           >
             <span className="relative opacity-90" style={{ color: 'var(--accent-primary)' }}>
-              Software Engineer
+              Developer Educator
             </span>{' '}
             by Day,{' '}
             <span className="relative opacity-90" style={{ color: 'var(--accent-primary)' }}>

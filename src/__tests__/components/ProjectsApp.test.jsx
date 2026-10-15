@@ -16,9 +16,11 @@ describe('ProjectsApp — heading', () => {
 
 describe('ProjectsApp — main projects', () => {
   const titles = [
+    'AI Ready Reps',
+    'The Nonprofit AI Almanac',
     'Evalforge Lite',
     "Tag, You're It",
-    'AI Explorer',
+    'AI-Explorer: a field guide to AI',
     'LLM Frameworks',
     'DJ Master Academy',
     'LoanLens',
@@ -38,11 +40,11 @@ describe('ProjectsApp — main projects', () => {
     })
   }
 
-  it('renders 17 main project links', () => {
+  it('renders 18 vercel-hosted main project links', () => {
     render(<ProjectsApp />)
     const allLinks = screen.getAllByRole('link')
     const vercelAndRenderLinks = allLinks.filter((a) => a.href.includes('vercel.app') || a.href.includes('onrender.com') || a.href.endsWith('/tag-youre-it-course.html'))
-    expect(vercelAndRenderLinks.length).toBe(17)
+    expect(vercelAndRenderLinks.length).toBe(18)
   })
 
   it('main project links open in a new tab', () => {

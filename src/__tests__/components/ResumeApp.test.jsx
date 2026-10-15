@@ -27,9 +27,9 @@ describe('ResumeApp — section labels', () => {
     expect(screen.getByText('Experience')).toBeInTheDocument()
   })
 
-  it('renders the Projects section label', () => {
+  it('renders the Portfolio section label', () => {
     render(<ResumeApp />)
-    expect(screen.getByText('Projects')).toBeInTheDocument()
+    expect(screen.getByText('Portfolio: guides, tools and writing')).toBeInTheDocument()
   })
 
   it('renders the Education section label', () => {
@@ -37,9 +37,14 @@ describe('ResumeApp — section labels', () => {
     expect(screen.getByRole('heading', { name: 'Education' })).toBeInTheDocument()
   })
 
-  it('renders the Certifications section label', () => {
+  it('renders the Anthropic Academy section label', () => {
     render(<ResumeApp />)
-    expect(screen.getByText('Certifications')).toBeInTheDocument()
+    expect(screen.getByText('Anthropic Academy')).toBeInTheDocument()
+  })
+
+  it('renders the Speaking and Performance section label', () => {
+    render(<ResumeApp />)
+    expect(screen.getByText('Speaking and Performance')).toBeInTheDocument()
   })
 
   it('renders the Skills section label', () => {
@@ -48,33 +53,24 @@ describe('ResumeApp — section labels', () => {
   })
 })
 
-describe('ResumeApp — main projects', () => {
-  it('renders ILIAD LiteLLM Model Explorer', () => {
-    render(<ResumeApp />)
-    expect(screen.getByText('ILIAD LiteLLM Model Explorer')).toBeInTheDocument()
-  })
+describe('ResumeApp — portfolio', () => {
+  const portfolio = [
+    { title: 'AI Ready Reps', url: 'https://aireadyreps.com/' },
+    { title: 'The Nonprofit AI Almanac', url: 'https://nonprofit-ai-almanac.vercel.app/' },
+    { title: 'EvalForge Lite', url: 'https://github.com/thejaredchapman/evalforge-lite' },
+    { title: 'AI-Explorer: a field guide to AI', url: 'https://ai-explorer-theta.vercel.app' },
+    { title: 'Stay the Engineer: Using AI to Get Better, Not Get Replaced', url: 'https://medium.com/@thejaredchapman/stay-the-engineer-using-ai-to-get-better-not-get-replaced-f19d3799f19d' },
+    { title: 'Meet Users Where They Are', url: 'https://medium.com/@thejaredchapman/meet-users-where-they-are-93441513ae60' },
+  ]
 
-  it('renders Enterprise RAG Pipeline', () => {
-    render(<ResumeApp />)
-    expect(screen.getByText('Enterprise RAG Pipeline')).toBeInTheDocument()
-  })
-
-  it('renders BigQuery DataFrames Python API (Google)', () => {
-    render(<ResumeApp />)
-    expect(screen.getByText('BigQuery DataFrames Python API (Google)')).toBeInTheDocument()
-  })
-
-  it('renders Production status badge for ILIAD', () => {
-    render(<ResumeApp />)
-    const badges = screen.getAllByText('Production')
-    expect(badges.length).toBeGreaterThanOrEqual(2)
-  })
-
-  it('renders Open Source status badge for BigQuery project', () => {
-    render(<ResumeApp />)
-    const badges = screen.getAllByText('Open Source')
-    expect(badges.length).toBeGreaterThanOrEqual(1)
-  })
+  for (const { title, url } of portfolio) {
+    it(`renders "${title}" linking to ${url}`, () => {
+      render(<ResumeApp />)
+      const link = screen.getByText(title).closest('a')
+      expect(link).toHaveAttribute('href', url)
+      expect(link).toHaveAttribute('target', '_blank')
+    })
+  }
 })
 
 describe('ResumeApp — Developer Improvements section', () => {
@@ -112,17 +108,17 @@ describe('ResumeApp — Developer Improvements section', () => {
     })
   }
 
-  it('renders 5 dev improvement project links to GitHub', () => {
+  it('renders 6 GitHub links (5 dev improvements + EvalForge Lite)', () => {
     render(<ResumeApp />)
     const allLinks = screen.getAllByRole('link')
     const githubLinks = allLinks.filter((a) => a.href.includes('github.com/thejaredchapman'))
-    expect(githubLinks.length).toBe(5)
+    expect(githubLinks.length).toBe(6) // 5 dev improvements + EvalForge Lite
   })
 
   it('renders Open Source badge for all dev improvement projects', () => {
     render(<ResumeApp />)
     const badges = screen.getAllByText('Open Source')
-    expect(badges.length).toBe(8) // EvalForge Lite + 1 BigQuery + 6 dev improvements
+    expect(badges.length).toBe(7) // EvalForge Lite + 6 dev improvements
   })
 
   it('renders the Cost Tracking tag', () => {
@@ -146,34 +142,46 @@ describe('ResumeApp — Developer Improvements section', () => {
   })
 })
 
-describe('ResumeApp — experience', () => {
-  it('renders AbbVie role', () => {
+describe('ResumeApp — summary', () => {
+  it('renders the resume tagline', () => {
     render(<ResumeApp />)
-    expect(screen.getByText('Developer Support, Generative AI Applications')).toBeInTheDocument()
-  })
-
-  it('renders a single combined Google role', () => {
-    render(<ResumeApp />)
-    expect(screen.getByText('Software Engineer')).toBeInTheDocument()
-    expect(screen.getByText('Google — Chicago, IL')).toBeInTheDocument()
-    expect(screen.getByText('Sep 2022 — May 2024')).toBeInTheDocument()
+    expect(screen.getByText('Developer educator and engineer for Claude and LLM platforms')).toBeInTheDocument()
   })
 })
 
-describe('ResumeApp — certifications', () => {
-  it('renders Claude Code in Action certification', () => {
+describe('ResumeApp — experience', () => {
+  it('renders AbbVie role', () => {
     render(<ResumeApp />)
-    expect(screen.getByText('Claude Code in Action')).toBeInTheDocument()
+    expect(screen.getByText('Developer Support Engineer, Generative AI Applications')).toBeInTheDocument()
   })
 
-  it('renders Model Context Protocol: Advanced Topics certification', () => {
+  it('renders the Google apprentice role', () => {
     render(<ResumeApp />)
-    expect(screen.getByText('Model Context Protocol: Advanced Topics')).toBeInTheDocument()
+    expect(screen.getByText('Software Engineer Apprentice (Multiverse)')).toBeInTheDocument()
+    expect(screen.getByText('Google — Chicago, IL')).toBeInTheDocument()
+    expect(screen.getByText('Sep 2022 — May 2024')).toBeInTheDocument()
   })
 
-  it('renders 12 certifications total', () => {
+  it('renders the Guaranteed Rate role', () => {
     render(<ResumeApp />)
-    const anthropicLabels = screen.getAllByText('Anthropic')
-    expect(anthropicLabels.length).toBe(12)
+    expect(screen.getByText('Appraisal Desk Team Lead (previously Appraisal Desk Escalations Coordinator)')).toBeInTheDocument()
+  })
+})
+
+describe('ResumeApp — education and Anthropic Academy', () => {
+  it('renders B.S., Film & Video', () => {
+    render(<ResumeApp />)
+    expect(screen.getByText('B.S., Film & Video')).toBeInTheDocument()
+  })
+
+  it('renders the Multiverse apprenticeship', () => {
+    render(<ResumeApp />)
+    expect(screen.getByText('Software Engineering Apprenticeship')).toBeInTheDocument()
+  })
+
+  it('renders the course certificate count and highlights', () => {
+    render(<ResumeApp />)
+    expect(screen.getByText('Course certificates (8)')).toBeInTheDocument()
+    expect(screen.getByText(/Building with the Claude API, Claude with Amazon Bedrock, Claude Code in Action/)).toBeInTheDocument()
   })
 })

@@ -21,7 +21,7 @@ function AboutApp() {
             <div className="flex items-center gap-2 mb-1 max-[768px]:justify-center">
               <h1 className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>Jared Chapman</h1>
             </div>
-            <p className="text-sm font-medium mb-2" style={{ color: 'var(--accent-500)' }}>Developer Education &amp; AI Enablement Engineer</p>
+            <p className="text-sm font-medium mb-2" style={{ color: 'var(--accent-500)' }}>Developer educator and engineer for Claude and LLM platforms</p>
             <div className="flex items-center gap-3 text-xs flex-wrap max-[768px]:justify-center" style={{ color: 'var(--text-tertiary)' }}>
               <span className="flex items-center gap-1">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3 h-3"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -50,7 +50,7 @@ function AboutApp() {
             <h3 className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>What I Do</h3>
           </div>
           <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            I'm an engineer who teaches. I build demos, hands-on labs, and curriculum that help teams get real value from AI: LLM tools and agent workflows, turned into hands-on training, clear documentation, and working demos. I run office hours, coach sales and technical teams, and build self-service resources so people can learn without me in the room. Whether it's a first prompt or a production rollout, I bridge what the tools can technically do and what actually works for the people using them, in any environment, regulated or not.
+            I'm an engineer who teaches. I built AI enablement at AbbVie from zero as its first Claude Code practitioner, supporting 5,000+ developers on using AI, fixing REST API errors, and transforming their data. I build demos, hands-on labs, and curriculum for technical and non-technical audiences, and the tooling behind it: RAG, MCP servers, skills, hooks, and LLM-as-judge evals across Bedrock, Vertex AI, and Azure. Whether it's a first prompt or a production rollout, I bridge what the tools can technically do and what actually works for the people using them, in regulated environments or not.
           </p>
         </div>
 
@@ -64,8 +64,9 @@ function AboutApp() {
           <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
             Self-taught software engineer who started during the pandemic, teaching himself
             Python and landing a spot in Google's software engineering apprenticeship program —
-            a non-traditional path from mortgage-industry admin work to building latency and
-            reliability tooling for Google Search and BigQuery.
+            a non-traditional path from mortgage-industry appraisal desk work to shipping
+            production code at Google. Then AbbVie, where he became its first Claude Code
+            practitioner and built AI enablement from zero.
           </p>
         </div>
 
@@ -77,9 +78,10 @@ function AboutApp() {
             <h3 className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>The Vibe</h3>
           </div>
           <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            A decade of improv training at Chicago's Second City and iO Theater shapes how he
-            communicates technical ideas across business and technical audiences — B.S. in Film
-            &amp; Video from Georgia State, twelve Anthropic certifications, and an extreme extrovert
+            Ten years of Chicago improv at The Second City, iO, and The Annoyance, and now training
+            at The Groundlings, shape how he communicates technical ideas across business and
+            technical audiences — B.S. in Film &amp; Video from Georgia State, eight Anthropic
+            Academy course certificates, and an extreme extrovert
             who goes deep on everything that catches his curiosity. Originally from Atlanta with
             a deep love for Chicago, now soaking up everything California has to offer alongside
             his fianc&eacute;e Avery Wine and their son, Dr. Pugsley Bikini. If you're even
@@ -94,7 +96,7 @@ function AboutApp() {
         {[
           { emoji: '🍑', label: 'From', value: 'Atlanta' },
           { emoji: '🌴', label: 'Based In', value: 'Los Angeles' },
-          { emoji: '🤖', label: 'Focus', value: 'Generative AI' },
+          { emoji: '🤖', label: 'Focus', value: 'Claude & LLMs' },
           { emoji: '🐶', label: 'Son', value: 'Dr. Pugsley Bikini', href: 'https://www.instagram.com/drpugsleybikini' },
         ].map((stat) => (
           <div key={stat.label} className="flex-1 min-w-0 rounded-lg py-2.5 px-3 border text-center" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border-light)' }}>
@@ -116,10 +118,10 @@ function AboutApp() {
         <div className="grid grid-cols-2 gap-3 max-[768px]:grid-cols-1">
           {[
             { title: 'EvalForge Lite', desc: "Open-source tool for picking an AI model with evidence, not guesswork. Compare up to 4 models side by side across OpenRouter, Bedrock, Vertex AI, and Foundry, with an MCP server and Claude Code plugin for agents", tags: ['Python', 'MCP', 'Multi-cloud'], icon: '⚖️' },
-            { title: 'LLM Developer Support', desc: 'Supporting developers on LLM integration, A/B testing models', tags: ['LLMs', 'Vertex AI'], icon: '🧠' },
-            { title: 'BigQuery DataFrames', desc: 'Python and DataFrames APIs using Pandas, Ibis, PyArrow', tags: ['Python', 'Pandas'], icon: '📊' },
-            { title: 'Ibis Open Source', desc: 'Added microsecond precision method to the Ibis library', tags: ['Open Source', 'SQL'], icon: '🔓' },
-            { title: 'Searchmark Tools', desc: 'OOP architecture in Java for Google Search performance tools', tags: ['Java', 'gRPC'], icon: '🔍' },
+            { title: 'Claude Code Enablement', desc: 'Built AbbVie\'s Claude Code enablement from zero: demos, curriculum, office hours, and a 3,500-user learning platform', tags: ['Claude Code', 'Training'], icon: '🧠' },
+            { title: 'ILIAD Lite Model Explorer', desc: '160+ models across Bedrock, Azure, and Vertex AI with A/B comparison and LLM-as-judge grading', tags: ['LiteLLM', 'Evals'], icon: '🧪' },
+            { title: 'BigQuery DataFrames', desc: 'Datetime methods for the public Python API using pandas, Ibis, PyArrow', tags: ['Python', 'Pandas'], icon: '📊' },
+            { title: 'Ibis Open Source', desc: 'Added microsecond datetime support to the Ibis library', tags: ['Open Source', 'SQL'], icon: '🔓' },
           ].map((item) => (
             <div key={item.title} className="group rounded-xl p-4 border transition-all duration-200 hover:border-[var(--accent-300)] hover:-translate-y-0.5" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border-light)' }}>
               <div className="flex items-start gap-3">

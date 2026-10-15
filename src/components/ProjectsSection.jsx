@@ -140,11 +140,33 @@ const mcpProjects = [
 function ProjectsSection() {
   const [hoveredIndex, setHoveredIndex] = useState(null)
   const [sectionRef, isVisible] = useScrollAnimation({ threshold: 0.05 })
-  const [cardsRef, visibleCards] = useStaggerAnimation(16, { baseDelay: 100 })
+  const [cardsRef, visibleCards] = useStaggerAnimation(18, { baseDelay: 100 })
   const [devCardsRef, visibleDevCards] = useStaggerAnimation(6, { baseDelay: 100 })
   const [mcpCardsRef, visibleMcpCards] = useStaggerAnimation(3, { baseDelay: 100 })
 
   const projects = [
+    {
+      title: 'AI Ready Reps',
+      description: 'A plain-English sales-enablement guide, quiz and arcade game that teach sales reps who have never used AI at work to use it safely. Rates every sales use case with a traffic-light rule (green safe, amber needs guardrails and sign-off, red never), compares six AI tools, and covers prompts, a playbook, go-to-market, and a first-week plan.',
+      tags: ['Sales Enablement', 'Responsible AI', 'Quiz', 'Game'],
+      url: 'https://aireadyreps.com/',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+          <path d="M12 2l3 6 6 .9-4.5 4.4 1 6.2L12 16.5 6.5 19.5l1-6.2L3 8.9 9 8z" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )
+    },
+    {
+      title: 'The Nonprofit AI Almanac',
+      description: 'A free, independent guide that teaches small nonprofit teams to use AI safely, written for non-technical readers: five short lessons, 100+ ready-made use cases with a safety light showing what is safe to paste, provider comparisons where every fact carries a source and check date and is re-checked within 90 days, and a 90-day implementation plan.',
+      tags: ['Nonprofit', 'Responsible AI', 'Education'],
+      url: 'https://nonprofit-ai-almanac.vercel.app/',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+          <path d="M12 2l3 6 6 .9-4.5 4.4 1 6.2L12 16.5 6.5 19.5l1-6.2L3 8.9 9 8z" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )
+    },
     {
       title: 'Evalforge Lite',
       description: "Open-source tool for choosing an AI model with evidence instead of guesswork. Write a prompt and grading rubric, pick up to 4 models, and compare them side by side, including the same model on OpenRouter, Amazon Bedrock, Google Vertex AI, and Microsoft Foundry. Scores every response with an LLM judge and six criteria, compares latency, tokens per second, and cost with a \"what matters most\" selector, screens prompts against your company policy, exports PDF and CSV reports, and ships as an MCP server (9 tools, installable with uvx evalforge-lite) and a Claude Code plugin.",
@@ -170,9 +192,9 @@ function ProjectsSection() {
       )
     },
     {
-      title: 'AI Explorer',
-      description: 'The core AI concepts outlined on the AI Explorer site provide a foundational vocabulary for understanding how modern artificial intelligence is built, customized, and deployed.',
-      tags: ['AI', 'Explanation', 'What is AI?', 'Concepts', 'Tools'],
+      title: 'AI-Explorer: a field guide to AI',
+      description: 'Interactive learning guide laid out as a seven-step ladder from concepts to building: 28 concept cards, a 68-model comparison rubric, 18 prompt techniques, and 42 build guides across 7 stacks, six of them Claude-specific, including an MCP server guide. Architecture and curation are mine; generation was done with Claude Code.',
+      tags: ['Next.js', 'Claude Code', 'MCP', 'Education'],
       url: 'https://ai-explorer-theta.vercel.app/',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">

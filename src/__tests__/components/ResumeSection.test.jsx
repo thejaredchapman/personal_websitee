@@ -28,14 +28,19 @@ describe('ResumeSection — section headings', () => {
     expect(screen.getByRole('heading', { name: 'Education' })).toBeInTheDocument()
   })
 
-  it('renders the Certifications heading', () => {
+  it('renders the Anthropic Academy heading', () => {
     render(<ResumeSection />)
-    expect(screen.getByText('Certifications')).toBeInTheDocument()
+    expect(screen.getByText('Anthropic Academy')).toBeInTheDocument()
   })
 
-  it('renders the Projects heading', () => {
+  it('renders the Portfolio heading', () => {
     render(<ResumeSection />)
-    expect(screen.getByText('Projects')).toBeInTheDocument()
+    expect(screen.getByText('Portfolio: guides, tools and writing')).toBeInTheDocument()
+  })
+
+  it('renders the Speaking and Performance heading', () => {
+    render(<ResumeSection />)
+    expect(screen.getByText('Speaking and Performance')).toBeInTheDocument()
   })
 
   it('renders the Skills heading', () => {
@@ -44,21 +49,21 @@ describe('ResumeSection — section headings', () => {
   })
 })
 
-describe('ResumeSection — main projects', () => {
-  it('renders ILIAD LiteLLM Model Explorer', () => {
-    render(<ResumeSection />)
-    expect(screen.getByText('ILIAD LiteLLM Model Explorer')).toBeInTheDocument()
-  })
+describe('ResumeSection — portfolio', () => {
+  const portfolio = [
+    { title: 'AI Ready Reps', url: 'https://aireadyreps.com/' },
+    { title: 'The Nonprofit AI Almanac', url: 'https://nonprofit-ai-almanac.vercel.app/' },
+    { title: 'EvalForge Lite', url: 'https://github.com/thejaredchapman/evalforge-lite' },
+    { title: 'AI-Explorer: a field guide to AI', url: 'https://ai-explorer-theta.vercel.app' },
+    { title: 'Meet Users Where They Are', url: 'https://medium.com/@thejaredchapman/meet-users-where-they-are-93441513ae60' },
+  ]
 
-  it('renders Enterprise RAG Pipeline', () => {
-    render(<ResumeSection />)
-    expect(screen.getByText('Enterprise RAG Pipeline')).toBeInTheDocument()
-  })
-
-  it('renders BigQuery DataFrames Python API (Google)', () => {
-    render(<ResumeSection />)
-    expect(screen.getByText('BigQuery DataFrames Python API (Google)')).toBeInTheDocument()
-  })
+  for (const { title, url } of portfolio) {
+    it(`renders "${title}" linking to ${url}`, () => {
+      render(<ResumeSection />)
+      expect(screen.getByText(title).closest('a')).toHaveAttribute('href', url)
+    })
+  }
 })
 
 describe('ResumeSection — Developer Improvements section', () => {
@@ -96,11 +101,11 @@ describe('ResumeSection — Developer Improvements section', () => {
     })
   }
 
-  it('renders 5 dev improvement links to GitHub', () => {
+  it('renders 6 GitHub links (5 dev improvements + EvalForge Lite)', () => {
     render(<ResumeSection />)
     const allLinks = screen.getAllByRole('link')
     const githubLinks = allLinks.filter((a) => a.href.includes('github.com/thejaredchapman'))
-    expect(githubLinks.length).toBe(5)
+    expect(githubLinks.length).toBe(6) // 5 dev improvements + EvalForge Lite
   })
 
   it('renders Open Source badges for dev improvement projects', () => {
@@ -133,30 +138,30 @@ describe('ResumeSection — Developer Improvements section', () => {
 describe('ResumeSection — experience', () => {
   it('renders AbbVie role title', () => {
     render(<ResumeSection />)
-    expect(screen.getByText('Developer Support, Generative AI Applications')).toBeInTheDocument()
+    expect(screen.getByText('Developer Support Engineer, Generative AI Applications')).toBeInTheDocument()
   })
 
-  it('renders a single combined Google role', () => {
+  it('renders the Google apprentice role', () => {
     render(<ResumeSection />)
-    expect(screen.getByText('Software Engineer')).toBeInTheDocument()
-    expect(screen.getByText('September 2022 - May 2024')).toBeInTheDocument()
+    expect(screen.getByText('Software Engineer Apprentice (Multiverse)')).toBeInTheDocument()
+    expect(screen.getByText('Sep 2022 — May 2024')).toBeInTheDocument()
   })
 
   it('renders Guaranteed Rate role', () => {
     render(<ResumeSection />)
-    expect(screen.getByText('Team Lead, Appraisal Operations')).toBeInTheDocument()
+    expect(screen.getByText('Appraisal Desk Team Lead (previously Appraisal Desk Escalations Coordinator)')).toBeInTheDocument()
   })
 })
 
-describe('ResumeSection — certifications', () => {
-  it('renders Claude Code in Action', () => {
+describe('ResumeSection — education and Anthropic Academy', () => {
+  it('renders B.S., Film & Video', () => {
     render(<ResumeSection />)
-    expect(screen.getByText('Claude Code in Action')).toBeInTheDocument()
+    expect(screen.getByText('B.S., Film & Video')).toBeInTheDocument()
   })
 
-  it('renders Model Context Protocol: Advanced Topics', () => {
+  it('renders the course certificate count', () => {
     render(<ResumeSection />)
-    expect(screen.getByText('Model Context Protocol: Advanced Topics')).toBeInTheDocument()
+    expect(screen.getByText('Course certificates (8)')).toBeInTheDocument()
   })
 })
 
