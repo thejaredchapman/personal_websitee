@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
 import { useWindows } from '../context/WindowContext'
-import { useColor } from '../context/ColorContext'
-import { characterThemes } from '../data/characterThemes'
 import { getLinkedArticleId } from '../utils/articleLink'
-import GeometricWallpaper from './GeometricWallpaper'
 import { APP_COMPONENTS, DOCK_APPS, DOCK_CLIPPY, DOCK_GAME } from './appRegistry'
 
 const HOME_ICON = (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg>
 )
+
+// The About tile uses a photo instead of the generic person glyph
+const ABOUT_PHOTO = '/about-icon.jpg'
 
 const GRID_APPS = [...DOCK_APPS, DOCK_CLIPPY, DOCK_GAME]
 const SHORTCUT_IDS = ['about', 'projects', 'resume', 'contact']
@@ -25,10 +25,6 @@ function Clock() {
 
 function MobileShell({ onOpenGame }) {
   const { windows, activeWindow, openWindow, minimizeAllWindows } = useWindows()
-  const { activeCharacter } = useColor()
-  const wallpaperConfig = activeCharacter && characterThemes[activeCharacter]
-    ? characterThemes[activeCharacter].wallpaper
-    : null
 
   const current = activeWindow && windows[activeWindow]?.isOpen && !windows[activeWindow].isMinimized
     ? activeWindow
@@ -47,11 +43,7 @@ function MobileShell({ onOpenGame }) {
   const currentTitle = current ? windows[current].title : null
 
   return (
-    <div
-      className="fixed inset-0 os-wallpaper flex flex-col overflow-hidden"
-      style={wallpaperConfig ? { background: wallpaperConfig.background } : undefined}
-    >
-      {!wallpaperConfig && <GeometricWallpaper />}
+    <div className="fixed inset-0 os-wallpaper flex flex-col overflow-hidden">
 
       {/* Status bar / app header */}
       <header
@@ -90,10 +82,12 @@ function MobileShell({ onOpenGame }) {
               aria-label={item.label}
             >
               <span
-                className="os-dock os-dock-icon flex items-center justify-center w-[60px] h-[60px] rounded-[16px]"
+                className="os-dock os-dock-icon flex items-center justify-center w-[60px] h-[60px] rounded-[16px] overflow-hidden"
                 style={{ color: 'var(--accent-400)' }}
               >
-                <span className="w-7 h-7">{item.icon}</span>
+                {item.id === 'about'
+                  ? <img src={ABOUT_PHOTO} alt="" className="w-full h-full object-cover" />
+                  : <span className="w-7 h-7">{item.icon}</span>}
               </span>
               <span className="text-[11px] font-medium leading-tight text-center line-clamp-2" style={{ color: 'var(--text-primary)' }}>
                 {item.label}
@@ -137,10 +131,12 @@ function MobileShell({ onOpenGame }) {
             <button
               key={item.id}
               onClick={() => (isHome ? minimizeAllWindows() : openWindow(item.id))}
-              className={`flex items-center justify-center w-12 h-12 rounded-2xl border-none cursor-pointer p-0 ${active ? 'os-dock-icon-active' : 'os-dock-icon'}`}
+              className={`flex items-center justify-center w-12 h-12 rounded-2xl border-none cursor-pointer p-0 overflow-hidden ${active ? 'os-dock-icon-active' : 'os-dock-icon'}`}
               aria-label={item.label}
             >
-              <span className="w-6 h-6" style={{ color: active ? '#fff' : 'var(--dock-icon-color)' }}>{item.icon}</span>
+              {item.id === 'about'
+                ? <img src={ABOUT_PHOTO} alt="" className="w-full h-full object-cover" style={{ opacity: active ? 1 : 0.9 }} />
+                : <span className="w-6 h-6" style={{ color: active ? '#fff' : 'var(--dock-icon-color)' }}>{item.icon}</span>}
             </button>
           )
         })}

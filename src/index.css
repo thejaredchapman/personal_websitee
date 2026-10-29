@@ -1,4 +1,10 @@
 @import "tailwindcss";
+@import "./themes/xp.css";
+@import "./themes/win95.css";
+@import "./themes/myspace.css";
+@import "./themes/ubuntu.css";
+@import "./themes/macos.css";
+@import "./themes/tandy.css";
 
 /* ============================================
    TAILWIND THEME EXTENSIONS
@@ -11,7 +17,7 @@
    CSS CUSTOM PROPERTIES
    ============================================ */
 :root {
-  /* Dynamic Accent Colors (set by ColorContext) */
+  /* Accent colors (fallback orange; each OS theme in src/themes/ overrides them) */
   --accent-50: #fff7ed;
   --accent-100: #ffedd5;
   --accent-200: #fed7aa;
@@ -81,6 +87,8 @@
   font-weight: 400;
   scroll-behavior: smooth;
 }
+
+html[data-os] body { font-family: var(--os-font); }
 
 /* Dark Mode Overrides */
 [data-theme="dark"] {
@@ -153,84 +161,45 @@ img {
 }
 
 /* ============================================
-   OS WALLPAPER
+   OS CHROME (base rules read the --os-* tokens each OS theme defines)
    ============================================ */
 .os-wallpaper {
-  background:
-    radial-gradient(120% 100% at 12% 0%, var(--wallpaper-tint-1), transparent 62%),
-    radial-gradient(110% 90% at 100% 100%, var(--wallpaper-tint-2), transparent 58%),
-    var(--bg-primary);
+  background: var(--os-wallpaper);
+  background-size: var(--os-wallpaper-size, auto);
   transition: background 0.5s ease;
 }
 
-.os-wallpaper-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.3;
-  animation: pulse 8s ease-in-out infinite;
-  pointer-events: none;
-}
-
-.os-wallpaper-blob-1 {
-  width: 40vw;
-  height: 40vw;
-  top: -10%;
-  left: -10%;
-  background: var(--accent-500);
-  animation-delay: 0s;
-}
-
-.os-wallpaper-blob-2 {
-  width: 35vw;
-  height: 35vw;
-  bottom: -5%;
-  right: -10%;
-  background: var(--accent-400);
-  animation-delay: -3s;
-}
-
-.os-wallpaper-blob-3 {
-  width: 25vw;
-  height: 25vw;
-  top: 40%;
-  left: 50%;
-  background: var(--accent-600);
-  animation-delay: -5s;
-}
-
-/* ============================================
-   OS MENUBAR
-   ============================================ */
 .os-menubar {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid var(--glass-border);
+  --text-primary: var(--os-bar-fg);
+  --text-secondary: var(--os-bar-fg);
+  background: var(--os-bar-bg);
+  color: var(--os-bar-fg);
+  border-bottom: var(--os-bar-border);
+  font-family: var(--os-font);
 }
 
-/* ============================================
-   OS DOCK
-   ============================================ */
 .os-dock {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  --dock-icon-color: var(--os-dock-fg);
+  background: var(--os-dock-bg);
+  border: var(--os-dock-border);
+  box-shadow: var(--os-dock-shadow);
+  border-radius: var(--os-dock-radius);
 }
 
 .os-dock-icon {
-  background: rgba(128, 128, 128, 0.08);
+  background: var(--os-dock-icon-bg);
 }
 
 .os-dock-icon:hover {
-  background: rgba(128, 128, 128, 0.18);
+  background: var(--os-dock-icon-hover);
 }
 
 .os-dock-icon-active {
-  background: var(--accent-500);
-  background: linear-gradient(135deg, var(--accent-400), var(--accent-600));
+  background: var(--os-dock-icon-active);
+}
+
+.os-dock-icon-active > span {
+  color: var(--os-dock-active-fg) !important;
 }
 
 .os-tooltip {
@@ -239,24 +208,72 @@ img {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* ============================================
-   OS WINDOW
-   ============================================ */
+.os-start {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--os-start-h, 22px);
+  padding: var(--os-start-pad, 0 10px);
+  border: var(--os-start-border, none);
+  border-radius: var(--os-start-radius, 4px);
+  background: var(--os-start-bg);
+  color: var(--os-start-fg);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--os-start-shadow, none);
+}
+
+.os-window {
+  border-radius: var(--os-radius);
+  font-family: var(--os-font);
+}
+
+.os-titlebar-active,
+.os-titlebar-inactive {
+  --text-primary: var(--os-title-fg);
+  color: var(--os-title-fg);
+  padding: var(--os-title-pad, 10px 16px);
+}
+
 .os-titlebar-active {
-  background: var(--glass-bg);
-  border-bottom: 1px solid var(--glass-border);
+  background: var(--os-title-bg);
+  border-bottom: var(--os-title-border);
 }
 
 .os-titlebar-inactive {
-  background: var(--glass-bg);
-  border-bottom: 1px solid var(--glass-border);
-  opacity: 0.75;
+  background: var(--os-title-bg-inactive);
+  border-bottom: var(--os-title-border);
 }
+
+.os-title-text { order: var(--os-title-order, 1); text-align: var(--os-title-align, left); }
+.os-layout-btn { order: 2; }
+.os-wb-cluster { order: var(--os-wb-cluster-order, 3); gap: var(--os-wb-gap, 4px); }
+.os-wb-min { order: var(--os-wb-min-order, 1); background: var(--os-wb-min-bg, var(--os-wb-bg)); }
+.os-wb-max { order: var(--os-wb-max-order, 2); background: var(--os-wb-max-bg, var(--os-wb-bg)); }
+.os-wb-close { order: var(--os-wb-close-order, 3); }
+
+.os-wb {
+  width: var(--os-wb-size, 20px);
+  height: var(--os-wb-h, var(--os-wb-size, 20px));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  border: var(--os-wb-border, none);
+  border-radius: var(--os-wb-radius, 4px);
+  background: var(--os-wb-bg);
+  color: var(--os-wb-fg);
+  box-shadow: var(--os-wb-shadow, none);
+}
+.os-wb:hover { filter: brightness(1.1); color: var(--os-wb-hover-fg, var(--os-wb-fg)); }
+.os-wb-close { background: var(--os-wb-close-bg, var(--os-wb-bg)); color: var(--os-wb-close-fg, var(--os-wb-fg)); }
+.os-wb-close:hover { color: var(--os-wb-hover-fg, var(--os-wb-close-fg, var(--os-wb-fg))); }
 
 .os-window-content {
   background: var(--win-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
 }
 
 .os-window-open {
@@ -269,6 +286,10 @@ img {
 
 .os-window-minimize {
   animation: windowMinimize 0.25s ease forwards;
+}
+
+@media (max-width: 768px) {
+  .os-window { border-radius: 0; }
 }
 
 /* ============================================

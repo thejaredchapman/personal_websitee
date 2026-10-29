@@ -1,0 +1,129 @@
+/* macOS — warm glass, traffic lights on the left, orange accent (the original JaredOS look) */
+
+html[data-os="macos"] {
+  --accent-50: #fff7ed;
+  --accent-100: #ffedd5;
+  --accent-200: #fed7aa;
+  --accent-300: #fdba74;
+  --accent-400: #fb923c;
+  --accent-500: #f97316;
+  --accent-600: #ea580c;
+  --accent-700: #c2410c;
+  --accent-800: #9a3412;
+  --accent-900: #7c2d12;
+
+  --bg-primary: #faf6f1;
+  --bg-secondary: #f5f0e8;
+  --bg-tertiary: #fff7ed;
+  --bg-elevated: #faf6f1;
+  --bg-inverse: #18181b;
+  --text-primary: #18181b;
+  --text-secondary: #3f3f46;
+  --text-tertiary: #7a7060;
+  --text-inverse: #faf6f1;
+  --border-light: #ebe5db;
+  --border-medium: #ddd5c8;
+  --border-accent: var(--accent-300);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-accent: rgba(249, 115, 22, 0.4);
+  --glass-bg: rgba(250, 246, 241, 0.85);
+  --glass-border: rgba(250, 246, 241, 0.3);
+  --win-bg: rgba(250, 246, 241, 0.92);
+  --win-border: rgba(0, 0, 0, 0.1);
+
+  --os-font: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', system-ui, sans-serif;
+  --os-radius: 12px;
+  --os-wallpaper:
+    radial-gradient(120% 100% at 12% 0%, color-mix(in srgb, var(--accent-200) 38%, transparent), transparent 62%),
+    radial-gradient(110% 90% at 100% 100%, color-mix(in srgb, var(--accent-300) 24%, transparent), transparent 58%),
+    #faf6f1;
+
+  --os-bar-bg: rgba(250, 246, 241, 0.85);
+  --os-bar-fg: #18181b;
+  --os-bar-border: 1px solid rgba(250, 246, 241, 0.3);
+  --os-dock-bg: rgba(250, 246, 241, 0.85);
+  --os-dock-border: 1px solid rgba(250, 246, 241, 0.3);
+  --os-dock-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  --os-dock-radius: 16px;
+  --os-dock-fg: rgba(0, 0, 0, 0.45);
+  --os-dock-icon-bg: rgba(128, 128, 128, 0.08);
+  --os-dock-icon-hover: rgba(128, 128, 128, 0.18);
+  --os-dock-icon-active: linear-gradient(135deg, var(--accent-400), var(--accent-600));
+  --os-dock-active-fg: #ffffff;
+
+  --os-start-bg: linear-gradient(135deg, var(--accent-400), var(--accent-600));
+  --os-start-fg: #ffffff;
+  --os-start-radius: 5px;
+  --os-start-h: 16px;
+  --os-start-pad: 0 5px;
+
+  --os-title-bg: rgba(250, 246, 241, 0.85);
+  --os-title-bg-inactive: rgba(250, 246, 241, 0.85);
+  --os-title-fg: #18181b;
+  --os-title-border: 1px solid rgba(250, 246, 241, 0.3);
+  --os-title-pad: 10px 16px;
+  --os-title-align: center;
+
+  --os-wb-size: 12px;
+  --os-wb-radius: 50%;
+  --os-wb-gap: 8px;
+  --os-wb-cluster-order: 0;
+  --os-wb-close-order: 1;
+  --os-wb-min-order: 2;
+  --os-wb-max-order: 3;
+  --os-wb-bg: #28c840;
+  --os-wb-close-bg: #ff5f57;
+  --os-wb-min-bg: #febc2e;
+  --os-wb-max-bg: #28c840;
+  --os-wb-fg: transparent;
+  --os-wb-close-fg: transparent;
+  --os-wb-hover-fg: rgba(0, 0, 0, 0.55);
+}
+
+html[data-os="macos"][data-theme="dark"] {
+  --bg-primary: #18181b;
+  --bg-secondary: #27272a;
+  --bg-tertiary: #27272a;
+  --bg-elevated: #27272a;
+  --bg-inverse: #ebe5db;
+  --text-primary: #ebe5db;
+  --text-secondary: #c9bfb0;
+  --text-tertiary: #a89e8e;
+  --text-inverse: #18181b;
+  --border-light: #3f3f46;
+  --border-medium: #52525b;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --glass-bg: rgba(24, 24, 27, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --win-bg: rgba(24, 24, 27, 0.92);
+  --win-border: rgba(255, 255, 255, 0.08);
+
+  --os-wallpaper:
+    radial-gradient(120% 100% at 12% 0%, color-mix(in srgb, var(--accent-900) 50%, transparent), transparent 62%),
+    radial-gradient(110% 90% at 100% 100%, color-mix(in srgb, var(--accent-800) 28%, transparent), transparent 58%),
+    #18181b;
+
+  --os-bar-bg: rgba(24, 24, 27, 0.85);
+  --os-bar-fg: #ebe5db;
+  --os-bar-border: 1px solid rgba(255, 255, 255, 0.08);
+  --os-dock-bg: rgba(24, 24, 27, 0.85);
+  --os-dock-border: 1px solid rgba(255, 255, 255, 0.08);
+  --os-dock-fg: rgba(255, 255, 255, 0.45);
+  --os-title-bg: rgba(24, 24, 27, 0.85);
+  --os-title-bg-inactive: rgba(24, 24, 27, 0.85);
+  --os-title-fg: #ebe5db;
+  --os-title-border: 1px solid rgba(255, 255, 255, 0.08);
+  --os-wb-hover-fg: rgba(0, 0, 0, 0.6);
+}
+
+html[data-os="macos"] .os-menubar,
+html[data-os="macos"] .os-dock {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+html[data-os="macos"] .os-window-content {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+html[data-os="macos"] .os-titlebar-inactive { opacity: 0.75; }
+html[data-os="macos"] .os-start { font-size: 10px; font-weight: 800; }

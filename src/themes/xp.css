@@ -1,0 +1,111 @@
+/* Windows XP — Luna (light) and a night-blue variant (dark) */
+
+html[data-os="xp"] {
+  --accent-50: #eaf2ff;
+  --accent-100: #d3e4fb;
+  --accent-200: #a9c8f5;
+  --accent-300: #7aa7ee;
+  --accent-400: #4c86e3;
+  --accent-500: #245edb;
+  --accent-600: #1a47b8;
+  --accent-700: #123a99;
+  --accent-800: #0c2c75;
+  --accent-900: #08204f;
+
+  --bg-primary: #ffffff;
+  --bg-secondary: #f1efe2;
+  --bg-tertiary: #e6edfb;
+  --bg-elevated: #ffffff;
+  --bg-inverse: #0a2a6e;
+  --text-primary: #1b1b1b;
+  --text-secondary: #333333;
+  --text-tertiary: #6b6b5e;
+  --text-inverse: #ffffff;
+  --border-light: #d4d0c0;
+  --border-medium: #aca899;
+  --border-accent: var(--accent-300);
+  --shadow-color: rgba(0, 0, 0, 0.25);
+  --shadow-accent: rgba(36, 94, 219, 0.4);
+  --glass-bg: rgba(236, 233, 216, 0.96);
+  --glass-border: #aca899;
+  --win-bg: #f5f4ea;
+  --win-border: #0831d9;
+
+  --os-font: Tahoma, 'Trebuchet MS', 'Segoe UI', Verdana, sans-serif;
+  --os-radius: 8px 8px 0 0;
+  --os-wallpaper:
+    radial-gradient(ellipse 130% 52% at 25% 108%, #6cbb43 0 54%, transparent 55%),
+    radial-gradient(ellipse 110% 44% at 90% 114%, #4aa02e 0 54%, transparent 55%),
+    linear-gradient(180deg, #2f6fd8 0%, #6fa8f0 45%, #bcdcff 78%, #e8f3ff 100%);
+
+  --os-bar-bg: linear-gradient(180deg, #3d86f5 0%, #245edb 12%, #1d54cf 85%, #1941a5 100%);
+  --os-bar-fg: #ffffff;
+  --os-bar-border: 1px solid #0c3a96;
+  --os-dock-bg: linear-gradient(180deg, #3d86f5 0%, #245edb 14%, #1d54cf 85%, #1941a5 100%);
+  --os-dock-border: 1px solid #0c3a96;
+  --os-dock-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+  --os-dock-radius: 8px;
+  --os-dock-fg: rgba(255, 255, 255, 0.92);
+  --os-dock-icon-bg: rgba(255, 255, 255, 0.12);
+  --os-dock-icon-hover: rgba(255, 255, 255, 0.28);
+  --os-dock-icon-active: linear-gradient(180deg, #12308a, #2a6fe0);
+  --os-dock-active-fg: #ffffff;
+
+  --os-start-bg: linear-gradient(180deg, #5cb85c, #3c9a3c 50%, #2e7d2e);
+  --os-start-fg: #ffffff;
+  --os-start-radius: 0 12px 12px 0;
+  --os-start-shadow: 1px 0 3px rgba(0, 0, 0, 0.4);
+
+  --os-title-bg: linear-gradient(180deg, #0997ff 0%, #0053ee 8%, #0050ee 40%, #0066ff 88%, #003dd7 100%);
+  --os-title-bg-inactive: linear-gradient(180deg, #7ea2ec, #7a9be8 50%, #6a8bdc);
+  --os-title-fg: #ffffff;
+  --os-title-border: none;
+  --os-title-pad: 4px 6px 4px 10px;
+  --os-title-align: left;
+
+  --os-wb-size: 21px;
+  --os-wb-radius: 3px;
+  --os-wb-border: 1px solid #ffffff;
+  --os-wb-bg: linear-gradient(135deg, #3d82f5, #1d4fd0);
+  --os-wb-fg: #ffffff;
+  --os-wb-close-bg: linear-gradient(135deg, #e8836a, #c3361a);
+}
+
+html[data-os="xp"][data-theme="dark"] {
+  --bg-primary: #1f2533;
+  --bg-secondary: #262d3f;
+  --bg-tertiary: #2a3350;
+  --bg-elevated: #2b3347;
+  --bg-inverse: #e9edf7;
+  --text-primary: #e9edf7;
+  --text-secondary: #c4cce0;
+  --text-tertiary: #8d98b5;
+  --text-inverse: #1b1b1b;
+  --border-light: #323b52;
+  --border-medium: #46526f;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --glass-bg: rgba(31, 37, 51, 0.95);
+  --glass-border: #46526f;
+  --win-bg: #1b2130;
+  --win-border: #0b1a4a;
+
+  --os-wallpaper:
+    radial-gradient(ellipse 130% 52% at 25% 108%, #1a4a1c 0 54%, transparent 55%),
+    radial-gradient(ellipse 110% 44% at 90% 114%, #123a16 0 54%, transparent 55%),
+    linear-gradient(180deg, #050b1f 0%, #10214f 50%, #26407e 100%);
+
+  --os-bar-bg: linear-gradient(180deg, #4a5a80 0%, #2b3a5c 12%, #222f4d 85%, #161f36 100%);
+  --os-bar-border: 1px solid #0b1226;
+  --os-dock-bg: linear-gradient(180deg, #4a5a80 0%, #2b3a5c 14%, #222f4d 85%, #161f36 100%);
+  --os-dock-border: 1px solid #0b1226;
+  --os-dock-icon-active: linear-gradient(180deg, #0f1a38, #2f4a8f);
+
+  --os-title-bg: linear-gradient(180deg, #4b5f95 0%, #2b3d70 10%, #243461 88%, #1a2548 100%);
+  --os-title-bg-inactive: linear-gradient(180deg, #4a5270, #3a4260);
+  --os-wb-bg: linear-gradient(135deg, #5a78c8, #2f4a9a);
+}
+
+html[data-os="xp"] .os-start { font-style: italic; font-size: 14px; letter-spacing: 0.02em; }
+html[data-os="xp"] .os-titlebar-active span.os-title-text,
+html[data-os="xp"] .os-titlebar-inactive span.os-title-text { font-weight: 700; text-shadow: 1px 1px 0 #0f1089; }
+html[data-os="xp"] .os-window { border-width: 3px; box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45); }

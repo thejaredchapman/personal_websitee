@@ -1,8 +1,25 @@
 import { defineConfig } from 'vite'
 import { pathToFileURL } from 'node:url'
 import { resolve } from 'node:path'
+import { execSync } from 'node:child_process'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+
+// Latest commit, baked into the bundle for the boot splash. Falls back to
+// Vercel's build env when .git isn't available.
+function latestCommit() {
+  try {
+    const [hash, date, subject] = execSync('git log -1 --format=%h%n%cI%n%s', { encoding: 'utf8' }).trim().split('\n')
+    return { hash, date, subject }
+  } catch {
+    const sha = process.env.VERCEL_GIT_COMMIT_SHA
+    return {
+      hash: sha ? sha.slice(0, 7) : 'unknown',
+      date: new Date().toISOString(),
+      subject: (process.env.VERCEL_GIT_COMMIT_MESSAGE ?? 'latest build').split('\n')[0],
+    }
+  }
+}
 
 function vercelApiProxy() {
   return {
@@ -40,6 +57,7 @@ function vercelApiProxy() {
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss(), vercelApiProxy()],
+  define: { __GIT_COMMIT__: JSON.stringify(latestCommit()) },
   test: {
     environment: 'jsdom',
     globals: true,

@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import { useWindows } from '../context/WindowContext'
 import { useTheme } from '../context/ThemeContext'
+import { OS_THEMES } from '../themes/themes'
 
 function MenuBar() {
   const { activeWindow, windows, openWindow, cascadeWindows, stackWindows, cycleWindow, minimizeAllWindows, closeAllWindows } = useWindows()
-  const { theme, toggleTheme } = useTheme()
+  const { theme, toggleTheme, os } = useTheme()
+  const startLabel = OS_THEMES.find((t) => t.id === os)?.startLabel ?? 'J'
   const [time, setTime] = useState(new Date())
 
   useEffect(() => {
@@ -37,12 +39,11 @@ function MenuBar() {
       {/* Left: OS mark + app name */}
       <div className="flex items-center gap-2.5">
         <button
-          className="flex items-center justify-center w-4 h-4 rounded-[5px] border-none cursor-pointer p-0 text-[10px] font-extrabold transition-transform hover:scale-110"
-          style={{ background: 'linear-gradient(135deg, var(--accent-400), var(--accent-600))', color: 'white' }}
+          className="os-start"
           onClick={() => openWindow('about')}
           aria-label="About JaredOS"
         >
-          J
+          {startLabel}
         </button>
         <span className="text-[13px] font-bold" style={{ color: 'var(--text-primary)' }}>
           {activeTitle}
@@ -142,9 +143,6 @@ function MenuBar() {
             </svg>
           )}
         </button>
-
-        {/* Accent color dot */}
-        <div className="w-2.5 h-2.5 rounded-full" style={{ background: 'var(--accent-500)' }} />
 
         {/* Date & Time */}
         <span className="text-[12px] tabular-nums" style={{ color: 'var(--text-secondary)' }}>

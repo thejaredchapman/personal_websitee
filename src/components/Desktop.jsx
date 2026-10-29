@@ -1,12 +1,9 @@
 import { useEffect } from 'react'
 import { useWindows } from '../context/WindowContext'
-import { useColor } from '../context/ColorContext'
-import { characterThemes } from '../data/characterThemes'
 import Window from './Window'
 import { APP_COMPONENTS } from './appRegistry'
 
 import { getLinkedArticleId } from '../utils/articleLink'
-import GeometricWallpaper from './GeometricWallpaper'
 import DesktopIcons from './DesktopIcons'
 
 function Notifications() {
@@ -40,10 +37,6 @@ function Notifications() {
 
 function Desktop() {
   const { windows, openWindow, notify } = useWindows()
-  const { activeCharacter } = useColor()
-  const wallpaperConfig = activeCharacter && characterThemes[activeCharacter]
-    ? characterThemes[activeCharacter].wallpaper
-    : null
 
   // Auto-open About on first render
   useEffect(() => {
@@ -57,45 +50,7 @@ function Desktop() {
   }, [])
 
   return (
-    <div
-      className="fixed inset-0 os-wallpaper"
-      style={wallpaperConfig ? { background: wallpaperConfig.background, transition: 'background 0.8s ease' } : { transition: 'background 0.8s ease' }}
-    >
-      {/* Wallpaper */}
-      {wallpaperConfig ? (
-        <>
-          {/* Character theme blobs */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {wallpaperConfig.blobs.map((blob, i) => (
-              <div
-                key={i}
-                className="absolute rounded-[50%] pointer-events-none"
-                style={{
-                  width: blob.width,
-                  height: blob.height,
-                  top: blob.top,
-                  left: blob.left,
-                  bottom: blob.bottom,
-                  right: blob.right,
-                  background: blob.color,
-                  filter: `blur(${blob.blur}px)`,
-                  opacity: blob.opacity,
-                  animation: 'pulse 8s ease-in-out infinite',
-                  animationDelay: `${-i * 2.5}s`,
-                  transition: 'opacity 0.8s ease',
-                }}
-              />
-            ))}
-          </div>
-          {wallpaperConfig.overlay && (
-            <div className="absolute inset-0 pointer-events-none" style={wallpaperConfig.overlay} />
-          )}
-        </>
-      ) : (
-        /* Default geometric wallpaper */
-        <GeometricWallpaper />
-      )}
-
+    <div className="fixed inset-0 os-wallpaper">
       {/* Windows area (below menubar, above dock) */}
       <div className="absolute inset-0 top-7 bottom-14">
         <DesktopIcons />
