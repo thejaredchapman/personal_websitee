@@ -1,4 +1,4 @@
-export const DEFAULT_OS = 'tandy'
+export const DEFAULT_OS = 'xp'
 
 // Registry of OS themes. Each id has a matching stylesheet in this folder
 // that defines its light and dark token sets under html[data-os="<id>"].

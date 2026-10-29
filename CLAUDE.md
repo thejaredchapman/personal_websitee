@@ -25,7 +25,7 @@ The site is a **macOS desktop simulator** — not a traditional scrolling websit
 
 ### Context Providers (`src/context/`)
 
-- **ThemeContext** — Two independent choices mirrored to `<html data-os data-theme>`: the OS theme (`xp | win95 | macos | myspace | ubuntu | tandy`, default `tandy`, persisted to `localStorage` key `os-theme`; registry in `src/themes/themes.js`) and light/dark (follows the system `prefers-color-scheme` live until the visitor toggles; only that explicit choice is persisted to `theme-preference`). Exposes `{ theme, toggleTheme, os, setOs }`.
+- **ThemeContext** — Two independent choices mirrored to `<html data-os data-theme>`: the OS theme (`xp | win95 | macos | myspace | ubuntu | tandy`, default `xp`, persisted to `localStorage` key `os-theme`; registry in `src/themes/themes.js`) and light/dark (follows the system `prefers-color-scheme` live until the visitor toggles; only that explicit choice is persisted to `theme-preference`). Exposes `{ theme, toggleTheme, os, setOs }`.
 - **WindowContext** — Manages all window states (open/minimized/maximized/position/size/zIndex) via `useReducer`. Default positions/sizes defined in `WINDOW_CONFIGS`. Window positions do **not** persist across page loads.
 
 ### Window System
