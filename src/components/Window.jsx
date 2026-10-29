@@ -281,7 +281,7 @@ function Window({ id, children }) {
           ${closing ? 'os-window-close' : ''}
           ${opening && !isMinimized ? 'os-window-open' : ''}
           ${isActive ? 'shadow-[0_24px_80px_rgba(0,0,0,0.45)]' : 'shadow-[0_8px_30px_rgba(0,0,0,0.25)]'}
-          rounded-xl overflow-hidden border
+          os-window rounded-xl overflow-hidden border
           max-[768px]:!top-7 max-[768px]:!left-0 max-[768px]:!right-0 max-[768px]:!bottom-14 max-[768px]:!w-auto max-[768px]:!h-auto max-[768px]:rounded-none
         `}
         style={{
@@ -301,41 +301,40 @@ function Window({ id, children }) {
           onTouchStart={handleTouchStart}
           onDoubleClick={() => toggleMaximize(id)}
         >
-          {/* Traffic lights */}
-          <div className="flex gap-2 shrink-0">
+          {/* Window controls (look and position come from the OS theme) */}
+          <div className="os-wb-cluster flex gap-2 shrink-0">
             <button
-              className="window-btn w-3 h-3 rounded-full bg-[#ff5f57] border-none cursor-pointer hover:brightness-110 transition-all flex items-center justify-center group"
+              className="window-btn os-wb os-wb-close"
               onClick={handleClose}
               aria-label="Close"
             >
-              <svg viewBox="0 0 8 8" className="w-2 h-2 opacity-0 group-hover:opacity-100 transition-opacity" stroke="#4a0002" strokeWidth="1.5">
+              <svg viewBox="0 0 8 8" className="w-2 h-2" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
                 <path d="M1 1l6 6M7 1l-6 6" />
               </svg>
             </button>
             <button
-              className="window-btn w-3 h-3 rounded-full bg-[#febc2e] border-none cursor-pointer hover:brightness-110 transition-all flex items-center justify-center group"
+              className="window-btn os-wb os-wb-min"
               onClick={() => minimizeWindow(id)}
               aria-label="Minimize"
             >
-              <svg viewBox="0 0 8 8" className="w-2 h-2 opacity-0 group-hover:opacity-100 transition-opacity" stroke="#995700" strokeWidth="1.5">
-                <path d="M1 4h6" />
+              <svg viewBox="0 0 8 8" className="w-2 h-2" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                <path d="M1 6.5h6" />
               </svg>
             </button>
             <button
-              className="window-btn w-3 h-3 rounded-full bg-[#28c840] border-none cursor-pointer hover:brightness-110 transition-all flex items-center justify-center group"
+              className="window-btn os-wb os-wb-max"
               onClick={() => toggleMaximize(id)}
               aria-label="Maximize"
             >
-              <svg viewBox="0 0 8 8" className="w-1.5 h-1.5 opacity-0 group-hover:opacity-100 transition-opacity" stroke="#006500" strokeWidth="1.2">
-                {isMaximized ? <path d="M1 3h2V1h4v4H5v2H1V3z" fill="none" /> : <path d="M1 1h6v6H1z" fill="none" />}
+              <svg viewBox="0 0 8 8" className="w-2 h-2" fill="none" stroke="currentColor" strokeWidth="1.3">
+                {isMaximized ? <path d="M2.5 2.5V1h4.5v4.5H5.5M1 2.5h4.5V7H1z" /> : <path d="M1 1h6v6H1z" />}
               </svg>
             </button>
           </div>
 
           {/* Title */}
           <span
-            className={`flex-1 text-center text-[13px] font-medium truncate pr-4 ${isActive ? 'opacity-90' : 'opacity-50'}`}
-            style={{ color: 'var(--text-primary)' }}
+            className={`os-title-text flex-1 text-center text-[13px] font-medium truncate pr-4 ${isActive ? 'opacity-90' : 'opacity-60'}`}
           >
             {win.title}
           </span>
@@ -343,9 +342,9 @@ function Window({ id, children }) {
           {/* Layout picker trigger */}
           <button
             ref={layoutBtnRef}
-            className="window-btn w-6 h-6 rounded-md flex items-center justify-center shrink-0 transition-opacity"
+            className="window-btn os-layout-btn w-6 h-6 rounded-md flex items-center justify-center shrink-0 transition-opacity"
             style={{
-              color: 'var(--text-primary)',
+              color: 'var(--os-title-fg)',
               background: showLayoutPicker ? 'color-mix(in srgb, var(--accent-400) 20%, transparent)' : 'transparent',
               opacity: isActive ? (showLayoutPicker ? 1 : 0.45) : 0.2,
               border: 'none',

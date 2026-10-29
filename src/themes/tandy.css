@@ -1,0 +1,123 @@
+/* Tandy 1000 / DeskMate — CGA cyan, blue and magenta. Light is the cyan desktop; dark is the black screen. */
+
+html[data-os="tandy"] {
+  --accent-50: #eaeaff;
+  --accent-100: #cfcfff;
+  --accent-200: #a0a0ff;
+  --accent-300: #6a6aff;
+  --accent-400: #3535e0;
+  --accent-500: #0000aa;
+  --accent-600: #000088;
+  --accent-700: #000066;
+  --accent-800: #000044;
+  --accent-900: #000033;
+
+  --bg-primary: #ffffff;
+  --bg-secondary: #d8d8d8;
+  --bg-tertiary: #e4e4ff;
+  --bg-elevated: #ffffff;
+  --bg-inverse: #000000;
+  --text-primary: #000000;
+  --text-secondary: #1a1a1a;
+  --text-tertiary: #555555;
+  --text-inverse: #ffffff;
+  --border-light: #7a7a7a;
+  --border-medium: #000000;
+  --border-accent: #0000aa;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --shadow-accent: rgba(0, 0, 170, 0.5);
+  --glass-bg: #d8d8d8;
+  --glass-border: #000000;
+  --win-bg: #d8d8d8;
+  --win-border: #000000;
+
+  --tandy-line: #000000;
+  --os-font: 'JetBrains Mono', 'Courier New', monospace;
+  --os-radius: 0;
+  --os-wallpaper:
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0 1px, transparent 1px 3px),
+    #00aaaa;
+
+  --os-bar-bg: #000000;
+  --os-bar-fg: #55ffff;
+  --os-bar-border: 2px solid #aa00aa;
+  --os-dock-bg: #000000;
+  --os-dock-border: 2px solid #55ffff;
+  --os-dock-shadow: 4px 4px 0 rgba(0, 0, 0, 0.6);
+  --os-dock-radius: 0;
+  --os-dock-fg: #55ffff;
+  --os-dock-icon-bg: transparent;
+  --os-dock-icon-hover: rgba(85, 255, 255, 0.2);
+  --os-dock-icon-active: #aa00aa;
+  --os-dock-active-fg: #ffffff;
+
+  --os-start-bg: #aa00aa;
+  --os-start-fg: #ffffff;
+  --os-start-radius: 0;
+  --os-start-border: 2px solid #ff55ff;
+
+  --os-title-bg: #0000aa;
+  --os-title-bg-inactive: #555555;
+  --os-title-fg: #ffffff;
+  --os-title-border: 2px solid #000000;
+  --os-title-pad: 3px 6px;
+  --os-title-align: left;
+
+  --os-wb-size: 18px;
+  --os-wb-radius: 0;
+  --os-wb-gap: 4px;
+  --os-wb-border: 2px solid #000000;
+  --os-wb-bg: #55ffff;
+  --os-wb-fg: #000000;
+  --os-wb-close-bg: #ff55ff;
+}
+
+html[data-os="tandy"][data-theme="dark"] {
+  --accent-400: #55ffff;
+  --accent-500: #008c8c;
+  --accent-600: #006e6e;
+  --accent-300: #55ffff;
+  --accent-50: #0a2a2a;
+  --accent-100: #0e3a3a;
+  --bg-primary: #000000;
+  --bg-secondary: #0a0a22;
+  --bg-tertiary: #101040;
+  --bg-elevated: #0a0a22;
+  --bg-inverse: #55ffff;
+  --text-primary: #e8e8e8;
+  --text-secondary: #bdbdbd;
+  --text-tertiary: #8a8a8a;
+  --text-inverse: #000000;
+  --border-light: #2a2a6a;
+  --border-medium: #55ffff;
+  --glass-bg: #0a0a22;
+  --glass-border: #55ffff;
+  --win-bg: #0a0a22;
+  --win-border: #55ffff;
+
+  --tandy-line: #55ffff;
+  --os-wallpaper:
+    repeating-linear-gradient(0deg, rgba(85, 255, 255, 0.06) 0 1px, transparent 1px 3px),
+    #000000;
+
+  --os-bar-bg: #0000aa;
+  --os-bar-fg: #ffffff;
+  --os-bar-border: 2px solid #55ffff;
+  --os-dock-bg: #0000aa;
+  --os-dock-border: 2px solid #55ffff;
+  --os-dock-fg: #ffffff;
+  --os-title-bg: #0000aa;
+  --os-title-bg-inactive: #2a2a2a;
+  --os-title-border: 2px solid #55ffff;
+  --os-wb-border: 2px solid #55ffff;
+  --os-wb-bg: #0000aa;
+  --os-wb-fg: #ffffff;
+  --os-wb-close-bg: #aa00aa;
+}
+
+html[data-os="tandy"] .os-window {
+  border: 2px solid var(--tandy-line) !important;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.55) !important;
+}
+html[data-os="tandy"] .os-start { font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; }
+html[data-os="tandy"] .os-title-text { font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }

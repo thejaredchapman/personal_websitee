@@ -1,8 +1,10 @@
 import { createContext, useContext, useEffect, useState } from 'react'
+import { DEFAULT_OS, OS_IDS } from '../themes/themes'
 
 const ThemeContext = createContext(undefined)
 
 const THEME_KEY = 'theme-preference'
+const OS_KEY = 'os-theme'
 
 const DARK_QUERY = '(prefers-color-scheme: dark)'
 
@@ -15,6 +17,15 @@ function readStored() {
   }
 }
 
+function readStoredOs() {
+  try {
+    const stored = localStorage.getItem(OS_KEY)
+    return OS_IDS.includes(stored) ? stored : DEFAULT_OS
+  } catch {
+    return DEFAULT_OS
+  }
+}
+
 function systemTheme() {
   return window.matchMedia(DARK_QUERY).matches ? 'dark' : 'light'
 }
@@ -24,11 +35,16 @@ function systemTheme() {
 export function ThemeProvider({ children }) {
   const [override, setOverride] = useState(readStored)
   const [system, setSystem] = useState(() => (typeof window !== 'undefined' ? systemTheme() : 'light'))
+  const [os, setOsState] = useState(readStoredOs)
   const theme = override ?? system
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
   }, [theme])
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-os', os)
+  }, [os])
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(DARK_QUERY)
@@ -47,8 +63,18 @@ export function ThemeProvider({ children }) {
     }
   }
 
+  const setOs = (next) => {
+    if (!OS_IDS.includes(next)) return
+    setOsState(next)
+    try {
+      localStorage.setItem(OS_KEY, next)
+    } catch {
+      // storage unavailable: the choice still applies for this session
+    }
+  }
+
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, os, setOs }}>
       {children}
     </ThemeContext.Provider>
   )

@@ -1,0 +1,126 @@
+/* Windows 95 — gray bevels on teal (light) and a dark-gray variant (dark) */
+
+html[data-os="win95"] {
+  --accent-50: #eef3f9;
+  --accent-100: #d6e4f2;
+  --accent-200: #a6c8e6;
+  --accent-300: #5a9fd4;
+  --accent-400: #1084d0;
+  --accent-500: #000080;
+  --accent-600: #000070;
+  --accent-700: #000060;
+  --accent-800: #000050;
+  --accent-900: #000040;
+
+  --bg-primary: #c0c0c0;
+  --bg-secondary: #dfdfdf;
+  --bg-tertiary: #d4d4d4;
+  --bg-elevated: #ffffff;
+  --bg-inverse: #000000;
+  --text-primary: #000000;
+  --text-secondary: #1a1a1a;
+  --text-tertiary: #555555;
+  --text-inverse: #ffffff;
+  --border-light: #808080;
+  --border-medium: #404040;
+  --border-accent: #000080;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --shadow-accent: rgba(0, 0, 128, 0.4);
+  --glass-bg: #c0c0c0;
+  --glass-border: #808080;
+  --win-bg: #c0c0c0;
+  --win-border: #404040;
+
+  --bevel: inset -1px -1px #0a0a0a, inset 1px 1px #dfdfdf, inset -2px -2px #808080, inset 2px 2px #ffffff;
+  --bevel-edge-hi: #ffffff;
+  --bevel-edge-lo: #404040;
+
+  --os-font: 'MS Sans Serif', Tahoma, 'Segoe UI', Arial, sans-serif;
+  --os-radius: 0;
+  --os-wallpaper: #008080;
+
+  --os-bar-bg: #c0c0c0;
+  --os-bar-fg: #000000;
+  --os-bar-border: 2px solid #808080;
+  --os-dock-bg: #c0c0c0;
+  --os-dock-border: 2px solid #c0c0c0;
+  --os-dock-shadow: var(--bevel);
+  --os-dock-radius: 0;
+  --os-dock-fg: #000000;
+  --os-dock-icon-bg: transparent;
+  --os-dock-icon-hover: rgba(0, 0, 128, 0.12);
+  --os-dock-icon-active: #ffffff;
+  --os-dock-active-fg: #000080;
+
+  --os-start-bg: #c0c0c0;
+  --os-start-fg: #000000;
+  --os-start-radius: 0;
+  --os-start-shadow: var(--bevel);
+
+  --os-title-bg: linear-gradient(90deg, #000080, #1084d0);
+  --os-title-bg-inactive: linear-gradient(90deg, #808080, #b5b5b5);
+  --os-title-fg: #ffffff;
+  --os-title-border: none;
+  --os-title-pad: 3px 4px 3px 6px;
+  --os-title-align: left;
+
+  --os-wb-size: 16px;
+  --os-wb-h: 14px;
+  --os-wb-radius: 0;
+  --os-wb-gap: 2px;
+  --os-wb-bg: #c0c0c0;
+  --os-wb-fg: #000000;
+  --os-wb-shadow: var(--bevel);
+}
+
+html[data-os="win95"][data-theme="dark"] {
+  --bg-primary: #3b3b3b;
+  --bg-secondary: #333333;
+  --bg-tertiary: #444444;
+  --bg-elevated: #2a2a2a;
+  --bg-inverse: #e8e8e8;
+  --text-primary: #e8e8e8;
+  --text-secondary: #cfcfcf;
+  --text-tertiary: #9a9a9a;
+  --text-inverse: #101010;
+  --border-light: #555555;
+  --border-medium: #777777;
+  --accent-400: #4aa3ff;
+  --accent-500: #3a6ad4;
+  --accent-600: #2d55b0;
+  --glass-bg: #3b3b3b;
+  --glass-border: #555555;
+  --win-bg: #3b3b3b;
+  --win-border: #151515;
+
+  --bevel: inset -1px -1px #101010, inset 1px 1px #5a5a5a, inset -2px -2px #1f1f1f, inset 2px 2px #6e6e6e;
+  --bevel-edge-hi: #6e6e6e;
+  --bevel-edge-lo: #151515;
+
+  --os-wallpaper: #0b3d3d;
+  --os-bar-bg: #3b3b3b;
+  --os-bar-fg: #e8e8e8;
+  --os-bar-border: 2px solid #1f1f1f;
+  --os-dock-bg: #3b3b3b;
+  --os-dock-border: 2px solid #3b3b3b;
+  --os-dock-fg: #e8e8e8;
+  --os-dock-icon-hover: rgba(255, 255, 255, 0.1);
+  --os-dock-icon-active: #1f1f1f;
+  --os-dock-active-fg: #8fc3ff;
+  --os-start-bg: #3b3b3b;
+  --os-start-fg: #e8e8e8;
+  --os-title-bg: linear-gradient(90deg, #10104a, #3a6aa8);
+  --os-title-bg-inactive: linear-gradient(90deg, #444444, #666666);
+  --os-wb-bg: #3b3b3b;
+  --os-wb-fg: #e8e8e8;
+}
+
+html[data-os="win95"] .os-window {
+  border: 2px solid !important;
+  border-color: var(--bevel-edge-hi) var(--bevel-edge-lo) var(--bevel-edge-lo) var(--bevel-edge-hi) !important;
+  background: var(--win-bg);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5) !important;
+}
+html[data-os="win95"] .os-start { font-size: 13px; }
+html[data-os="win95"] .os-titlebar-active .os-title-text,
+html[data-os="win95"] .os-titlebar-inactive .os-title-text { font-weight: 700; }

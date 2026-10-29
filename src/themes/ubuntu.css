@@ -1,0 +1,107 @@
+/* Ubuntu — Yaru: aubergine top panel, orange accent. Light and dark window themes. */
+
+html[data-os="ubuntu"] {
+  --accent-50: #fdf0eb;
+  --accent-100: #fbd9cd;
+  --accent-200: #f6b09a;
+  --accent-300: #f18868;
+  --accent-400: #ec6a3c;
+  --accent-500: #e95420;
+  --accent-600: #c7431a;
+  --accent-700: #a53514;
+  --accent-800: #82280f;
+  --accent-900: #5e1c0a;
+
+  --bg-primary: #fafafa;
+  --bg-secondary: #f1efee;
+  --bg-tertiary: #fdf0eb;
+  --bg-elevated: #ffffff;
+  --bg-inverse: #2c001e;
+  --text-primary: #2c2c2c;
+  --text-secondary: #3d3d3d;
+  --text-tertiary: #77716c;
+  --text-inverse: #ffffff;
+  --border-light: #e2dedb;
+  --border-medium: #cdc7c2;
+  --border-accent: var(--accent-300);
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --shadow-accent: rgba(233, 84, 32, 0.4);
+  --glass-bg: rgba(250, 250, 250, 0.94);
+  --glass-border: #e2dedb;
+  --win-bg: #fafafa;
+  --win-border: rgba(0, 0, 0, 0.18);
+
+  --os-font: Ubuntu, Cantarell, 'Helvetica Neue', system-ui, sans-serif;
+  --os-radius: 10px;
+  --os-wallpaper:
+    radial-gradient(60% 50% at 20% 20%, rgba(255, 170, 120, 0.55), transparent 70%),
+    linear-gradient(135deg, #f08a5d 0%, #c4488a 45%, #6b2a63 100%);
+
+  --os-bar-bg: #2c001e;
+  --os-bar-fg: #ffffff;
+  --os-bar-border: none;
+  --os-dock-bg: rgba(44, 0, 30, 0.88);
+  --os-dock-border: 1px solid rgba(255, 255, 255, 0.12);
+  --os-dock-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+  --os-dock-radius: 16px;
+  --os-dock-fg: rgba(255, 255, 255, 0.8);
+  --os-dock-icon-bg: rgba(255, 255, 255, 0.08);
+  --os-dock-icon-hover: rgba(255, 255, 255, 0.2);
+  --os-dock-icon-active: #e95420;
+  --os-dock-active-fg: #ffffff;
+
+  --os-start-bg: rgba(255, 255, 255, 0.1);
+  --os-start-fg: #ffffff;
+  --os-start-radius: 12px;
+
+  --os-title-bg: #ebe8e5;
+  --os-title-bg-inactive: #f2f0ee;
+  --os-title-fg: #2c2c2c;
+  --os-title-border: 1px solid #d6d0cb;
+  --os-title-pad: 8px 12px;
+  --os-title-align: center;
+
+  --os-wb-size: 22px;
+  --os-wb-radius: 50%;
+  --os-wb-bg: rgba(0, 0, 0, 0.08);
+  --os-wb-fg: #2c2c2c;
+  --os-wb-close-bg: rgba(0, 0, 0, 0.08);
+}
+
+html[data-os="ubuntu"][data-theme="dark"] {
+  --bg-primary: #2b2b2b;
+  --bg-secondary: #333333;
+  --bg-tertiary: #3b2a35;
+  --bg-elevated: #3a3a3a;
+  --bg-inverse: #f2f0ee;
+  --text-primary: #f2f2f2;
+  --text-secondary: #d6d3d0;
+  --text-tertiary: #9c9792;
+  --text-inverse: #2c2c2c;
+  --border-light: #3f3f3f;
+  --border-medium: #555555;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --glass-bg: rgba(43, 43, 43, 0.94);
+  --glass-border: #444444;
+  --win-bg: #2b2b2b;
+  --win-border: rgba(255, 255, 255, 0.1);
+
+  --os-wallpaper:
+    radial-gradient(60% 50% at 20% 20%, rgba(233, 84, 32, 0.3), transparent 70%),
+    linear-gradient(135deg, #5e2750 0%, #2c001e 55%, #14000e 100%);
+
+  --os-bar-bg: #14000e;
+  --os-dock-bg: rgba(20, 0, 14, 0.9);
+  --os-title-bg: #1f1f1f;
+  --os-title-bg-inactive: #292929;
+  --os-title-fg: #f2f2f2;
+  --os-title-border: 1px solid #111111;
+  --os-wb-bg: rgba(255, 255, 255, 0.1);
+  --os-wb-fg: #f2f2f2;
+  --os-wb-close-bg: rgba(255, 255, 255, 0.1);
+}
+
+html[data-os="ubuntu"] .os-wb-cluster { gap: 8px; }
+html[data-os="ubuntu"] .os-wb-close:hover { background: #e95420; color: #fff; filter: none; }
+html[data-os="ubuntu"] .os-window { box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4); }
+html[data-os="ubuntu"] .os-menubar { border-radius: 0; }

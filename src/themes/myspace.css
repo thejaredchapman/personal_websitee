@@ -1,0 +1,113 @@
+/* MySpace — 2006 profile blues with orange highlights (light) and a night variant (dark) */
+
+html[data-os="myspace"] {
+  --accent-50: #f0f5fa;
+  --accent-100: #dde8f3;
+  --accent-200: #c2d5e8;
+  --accent-300: #94b6d8;
+  --accent-400: #6698cb;
+  --accent-500: #336699;
+  --accent-600: #264d73;
+  --accent-700: #1b3a58;
+  --accent-800: #12283d;
+  --accent-900: #0b1a29;
+
+  --bg-primary: #ffffff;
+  --bg-secondary: #f0f5fa;
+  --bg-tertiary: #dde8f3;
+  --bg-elevated: #ffffff;
+  --bg-inverse: #1b3a58;
+  --text-primary: #1a1a1a;
+  --text-secondary: #333333;
+  --text-tertiary: #667788;
+  --text-inverse: #ffffff;
+  --border-light: #c2d5e8;
+  --border-medium: #6698cb;
+  --border-accent: #ff9933;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --shadow-accent: rgba(255, 153, 51, 0.45);
+  --glass-bg: rgba(255, 255, 255, 0.97);
+  --glass-border: #6698cb;
+  --win-bg: #ffffff;
+  --win-border: #336699;
+
+  --os-font: Verdana, Arial, Helvetica, sans-serif;
+  --os-radius: 2px;
+  --os-wallpaper:
+    repeating-linear-gradient(135deg, rgba(102, 152, 203, 0.12) 0 2px, transparent 2px 14px),
+    linear-gradient(180deg, #dce9f7 0%, #b9d2ec 100%);
+
+  --os-bar-bg: #6698cb;
+  --os-bar-fg: #ffffff;
+  --os-bar-border: 2px solid #ff9933;
+  --os-dock-bg: #ffffff;
+  --os-dock-border: 1px solid #6698cb;
+  --os-dock-shadow: 0 0 0 2px #dde8f3, 2px 3px 8px rgba(0, 0, 0, 0.25);
+  --os-dock-radius: 2px;
+  --os-dock-fg: #336699;
+  --os-dock-icon-bg: #f0f5fa;
+  --os-dock-icon-hover: #dde8f3;
+  --os-dock-icon-active: #ff9933;
+  --os-dock-active-fg: #ffffff;
+
+  --os-start-bg: #ff9933;
+  --os-start-fg: #ffffff;
+  --os-start-radius: 2px;
+  --os-start-border: 1px solid #cc6600;
+
+  --os-title-bg: linear-gradient(180deg, #7aa7d3, #5588bb);
+  --os-title-bg-inactive: linear-gradient(180deg, #b9cfe5, #a2bfdb);
+  --os-title-fg: #ffffff;
+  --os-title-border: 2px solid #ff9933;
+  --os-title-pad: 5px 8px;
+  --os-title-align: left;
+
+  --os-wb-size: 17px;
+  --os-wb-radius: 2px;
+  --os-wb-border: 1px solid #336699;
+  --os-wb-bg: #ffffff;
+  --os-wb-fg: #336699;
+  --os-wb-close-bg: #ff9933;
+  --os-wb-close-fg: #ffffff;
+}
+
+html[data-os="myspace"][data-theme="dark"] {
+  --accent-400: #7fb0e0;
+  --bg-primary: #0f2236;
+  --bg-secondary: #14304a;
+  --bg-tertiary: #1b3a58;
+  --bg-elevated: #183450;
+  --bg-inverse: #dde8f3;
+  --text-primary: #e8f0f8;
+  --text-secondary: #c2d5e8;
+  --text-tertiary: #8aa4bd;
+  --text-inverse: #0b1a29;
+  --border-light: #24445f;
+  --border-medium: #3f6a91;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --glass-bg: rgba(15, 34, 54, 0.97);
+  --glass-border: #3f6a91;
+  --win-bg: #0f2236;
+  --win-border: #3f6a91;
+
+  --os-wallpaper:
+    repeating-linear-gradient(135deg, rgba(102, 152, 203, 0.08) 0 2px, transparent 2px 14px),
+    linear-gradient(180deg, #0b1a29 0%, #14304a 100%);
+
+  --os-bar-bg: #1b3a58;
+  --os-dock-bg: #14304a;
+  --os-dock-border: 1px solid #3f6a91;
+  --os-dock-shadow: 0 0 0 2px #0f2236, 2px 3px 8px rgba(0, 0, 0, 0.5);
+  --os-dock-fg: #94b6d8;
+  --os-dock-icon-bg: #1b3a58;
+  --os-dock-icon-hover: #24506f;
+  --os-title-bg: linear-gradient(180deg, #2f5b85, #264d73);
+  --os-title-bg-inactive: linear-gradient(180deg, #1f3b57, #1b3249);
+  --os-wb-bg: #14304a;
+  --os-wb-fg: #94b6d8;
+  --os-wb-border: 1px solid #3f6a91;
+}
+
+html[data-os="myspace"] .os-titlebar-active .os-title-text,
+html[data-os="myspace"] .os-titlebar-inactive .os-title-text { font-weight: 700; }
+html[data-os="myspace"] .os-window { border-width: 1px; box-shadow: 3px 4px 12px rgba(0, 0, 0, 0.3); }

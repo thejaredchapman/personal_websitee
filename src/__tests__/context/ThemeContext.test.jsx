@@ -30,6 +30,7 @@ function renderWithProvider(onRender) {
 beforeEach(() => {
   localStorage.clear()
   document.documentElement.removeAttribute('data-theme')
+  document.documentElement.removeAttribute('data-os')
   mockMatchMedia(false)
 })
 
@@ -176,5 +177,45 @@ describe('ThemeContext — useTheme throws outside provider', () => {
       render(<TestConsumer onRender={() => {}} />)
     }).toThrow('useTheme must be used within a ThemeProvider')
     spy.mockRestore()
+  })
+})
+
+describe('ThemeContext — OS theme', () => {
+  it('defaults to tandy and sets data-os', () => {
+    let ctx
+    renderWithProvider((c) => { ctx = c })
+    expect(ctx.os).toBe('tandy')
+    expect(document.documentElement.getAttribute('data-os')).toBe('tandy')
+  })
+
+  it('respects a stored os', () => {
+    localStorage.setItem('os-theme', 'xp')
+    let ctx
+    renderWithProvider((c) => { ctx = c })
+    expect(ctx.os).toBe('xp')
+  })
+
+  it('falls back to tandy for an invalid stored os', () => {
+    localStorage.setItem('os-theme', 'beos')
+    let ctx
+    renderWithProvider((c) => { ctx = c })
+    expect(ctx.os).toBe('tandy')
+  })
+
+  it('setOs persists and updates data-os', () => {
+    let ctx
+    renderWithProvider((c) => { ctx = c })
+    act(() => ctx.setOs('win95'))
+    expect(ctx.os).toBe('win95')
+    expect(localStorage.getItem('os-theme')).toBe('win95')
+    expect(document.documentElement.getAttribute('data-os')).toBe('win95')
+  })
+
+  it('ignores unknown os ids', () => {
+    let ctx
+    renderWithProvider((c) => { ctx = c })
+    act(() => ctx.setOs('nope'))
+    expect(ctx.os).toBe('tandy')
+    expect(localStorage.getItem('os-theme')).toBeNull()
   })
 })

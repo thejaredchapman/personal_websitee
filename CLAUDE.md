@@ -21,13 +21,12 @@ The site is a **macOS desktop simulator** — not a traditional scrolling websit
 
 ### Entry Flow
 
-`main.jsx` wraps `App` in three context providers (Theme → Color → Window). `App.jsx` renders `BootSequence` first, then `MenuBar` + `Desktop` + `Dock` once booted. `AsteroidsGame` is lazy-loaded via `React.lazy`.
+`main.jsx` wraps `App` in context providers (Theme → Window → Clippy). `App.jsx` renders `BootSequence` first, then `MenuBar` + `Desktop` + `Dock` once booted. `AsteroidsGame` is lazy-loaded via `React.lazy`.
 
 ### Context Providers (`src/context/`)
 
-- **ThemeContext** — Light/dark toggle. Follows the system `prefers-color-scheme` (live) until the visitor toggles; only that explicit choice is persisted to `localStorage` key `theme-preference`.
-- **ColorContext** — Accent color selection (8 presets + rainbow + custom hex picker). Generates full 50–900 shade palettes at runtime and sets CSS custom properties on `:root`. Persisted to `localStorage` key `accent-color`. Defaults to orange.
-- **WindowContext** — Manages all 9 window states (open/minimized/maximized/position/size/zIndex) via `useReducer`. Default positions/sizes defined in `WINDOW_CONFIGS`. Window positions do **not** persist across page loads.
+- **ThemeContext** — Two independent choices mirrored to `<html data-os data-theme>`: the OS theme (`xp | win95 | macos | myspace | ubuntu | tandy`, default `tandy`, persisted to `localStorage` key `os-theme`; registry in `src/themes/themes.js`) and light/dark (follows the system `prefers-color-scheme` live until the visitor toggles; only that explicit choice is persisted to `theme-preference`). Exposes `{ theme, toggleTheme, os, setOs }`.
+- **WindowContext** — Manages all window states (open/minimized/maximized/position/size/zIndex) via `useReducer`. Default positions/sizes defined in `WINDOW_CONFIGS`. Window positions do **not** persist across page loads.
 
 ### Window System
 
@@ -47,7 +46,11 @@ Content is duplicated between "Section" components (legacy scrolling page) and "
 
 ### Theming
 
-Dynamic accent colors use CSS custom properties (`--accent-50` through `--accent-900`) set by `ColorContext`. Semantic variables (`--bg-primary`, `--text-primary`, `--bg-secondary`, `--glass-bg`, `--win-bg`, etc.) switch between light/dark via `[data-theme="dark"]` in `src/index.css`. Tailwind's `@theme` directive sets the mono font to JetBrains Mono.
+Each OS theme is one stylesheet in `src/themes/` (`xp.css`, `win95.css`, `macos.css`, `myspace.css`, `ubuntu.css`, `tandy.css`) defining a light block `html[data-os="x"]` and a dark block `html[data-os="x"][data-theme="dark"]`. They set the semantic variables (`--bg-primary`, `--text-primary`, `--win-bg`, `--accent-50`…`--accent-900`, etc.) plus `--os-*` chrome tokens (wallpaper, bar, dock, title bar, window buttons, font, radius) that the base `.os-*` rules in `src/index.css` consume. To add an OS: add a CSS file, import it in `index.css`, add it to `OS_THEMES`, and add a boot skin in `src/components/boot/BootSkins.jsx` and `BootSequence.jsx`. There is no accent-color picker; accents come from the OS theme.
+
+### Boot splash
+
+`BootSequence` shows a skin per OS. `vite.config.js` injects the latest git commit (`git log -1`, falling back to Vercel env vars) as `__GIT_COMMIT__`; `utils/buildInfo.js` exposes it and `boot/bootLines.js` renders the "Latest commit" and `[ NEW ]` lines from it, so the splash updates itself on every build.
 
 ### Custom Hooks (`src/hooks/`)
 
@@ -60,4 +63,4 @@ Dynamic accent colors use CSS custom properties (`--accent-50` through `--accent
 
 ### Static Assets
 
-`public/` holds `jared_chapman_resume.html`, `resume.pdf`, `selfie.jpg`, `favicon.png`, and `photos/` for the gallery.
+`public/` holds `jared_chapman_resume.html`, `resume.pdf`, `selfie.jpg`, `about-icon.jpg` (square crop used as the About icon in `MobileShell`), `favicon.png`, and `photos/` for the gallery.
