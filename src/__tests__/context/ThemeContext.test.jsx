@@ -181,25 +181,25 @@ describe('ThemeContext — useTheme throws outside provider', () => {
 })
 
 describe('ThemeContext — OS theme', () => {
-  it('defaults to tandy and sets data-os', () => {
-    let ctx
-    renderWithProvider((c) => { ctx = c })
-    expect(ctx.os).toBe('tandy')
-    expect(document.documentElement.getAttribute('data-os')).toBe('tandy')
-  })
-
-  it('respects a stored os', () => {
-    localStorage.setItem('os-theme', 'xp')
+  it('defaults to xp and sets data-os', () => {
     let ctx
     renderWithProvider((c) => { ctx = c })
     expect(ctx.os).toBe('xp')
+    expect(document.documentElement.getAttribute('data-os')).toBe('xp')
   })
 
-  it('falls back to tandy for an invalid stored os', () => {
-    localStorage.setItem('os-theme', 'beos')
+  it('respects a stored os', () => {
+    localStorage.setItem('os-theme', 'tandy')
     let ctx
     renderWithProvider((c) => { ctx = c })
     expect(ctx.os).toBe('tandy')
+  })
+
+  it('falls back to xp for an invalid stored os', () => {
+    localStorage.setItem('os-theme', 'beos')
+    let ctx
+    renderWithProvider((c) => { ctx = c })
+    expect(ctx.os).toBe('xp')
   })
 
   it('setOs persists and updates data-os', () => {
@@ -215,7 +215,7 @@ describe('ThemeContext — OS theme', () => {
     let ctx
     renderWithProvider((c) => { ctx = c })
     act(() => ctx.setOs('nope'))
-    expect(ctx.os).toBe('tandy')
+    expect(ctx.os).toBe('xp')
     expect(localStorage.getItem('os-theme')).toBeNull()
   })
 })

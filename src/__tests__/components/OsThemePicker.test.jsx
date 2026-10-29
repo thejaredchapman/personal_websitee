@@ -18,19 +18,19 @@ function setup() {
 }
 
 describe('OsThemePicker', () => {
-  it('offers the six OS themes with Tandy 1000 selected by default', () => {
+  it('offers the six OS themes with Windows XP selected by default', () => {
     setup()
     for (const label of ['Windows XP', 'Windows 95', 'macOS', 'MySpace', 'Ubuntu', 'Tandy 1000']) {
       expect(screen.getByRole('button', { name: new RegExp(label) })).toBeInTheDocument()
     }
-    expect(screen.getByRole('button', { name: /Tandy 1000/ })).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.getByRole('button', { name: /Windows XP/ })).toHaveAttribute('aria-pressed', 'true')
   })
 
   it('switches the OS on click', () => {
     setup()
-    fireEvent.click(screen.getByRole('button', { name: /Windows XP/ }))
-    expect(document.documentElement.getAttribute('data-os')).toBe('xp')
-    expect(screen.getByRole('button', { name: /Windows XP/ })).toHaveAttribute('aria-pressed', 'true')
+    fireEvent.click(screen.getByRole('button', { name: /Tandy 1000/ }))
+    expect(document.documentElement.getAttribute('data-os')).toBe('tandy')
+    expect(screen.getByRole('button', { name: /Tandy 1000/ })).toHaveAttribute('aria-pressed', 'true')
   })
 
   it('switches between light and dark', () => {
