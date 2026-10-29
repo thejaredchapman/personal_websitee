@@ -216,13 +216,15 @@ function processCommand(input) {
       return [
         { text: '  Writing:', type: 'info' },
         { text: '' },
-        { text: '  [1] Does AI Know I\'m Not White?', type: 'accent' },
+        { text: '  [1] What Is an AI Agent, Really?', type: 'accent' },
+        { text: '      thejaredchapman.com/?read=what-is-an-ai-agent', type: 'link' },
+        { text: '  [2] Does AI Know I\'m Not White?', type: 'accent' },
         { text: '      thejaredchapman.com/?read=does-ai-know-im-not-white', type: 'link' },
-        { text: '  [2] Meet Users Where They Are', type: 'accent' },
+        { text: '  [3] Meet Users Where They Are', type: 'accent' },
         { text: '      thejaredchapman.com/?read=meet-users-where-they-are', type: 'link' },
-        { text: '  [3] Stay the Engineer', type: 'accent' },
+        { text: '  [4] Stay the Engineer', type: 'accent' },
         { text: '      thejaredchapman.com/?read=stay-the-engineer', type: 'link' },
-        { text: '  [4] From Vibe Coding to Agentic Engineering', type: 'accent' },
+        { text: '  [5] From Vibe Coding to Agentic Engineering', type: 'accent' },
         { text: '      thejaredchapman.com/?read=vibe-coding-to-agentic-engineering', type: 'link' },
       ]
 

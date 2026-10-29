@@ -18,7 +18,7 @@ const BOOT_LINES = [
   { text: '[  OK  ] gallery/ mounted (20 photos)', delay: 120, style: 'ok' },
   { text: '[ NEW  ] EvalForge Lite → compare models across Bedrock, Vertex & Foundry', delay: 400, style: 'new' },
   { text: '[ NEW  ] 3 more Anthropic certifications earned (12 total)', delay: 300, style: 'new' },
-  { text: '[ NEW  ] "Stay the Engineer" published → open Writing to read', delay: 400, style: 'new' },
+  { text: '[ NEW  ] "What Is an AI Agent, Really?" published → open Writing to read', delay: 400, style: 'new' },
   { text: '', delay: 200 },
   { text: 'All systems nominal. Loading desktop...', delay: 500, style: 'accent' },
 ]

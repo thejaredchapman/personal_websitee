@@ -15,7 +15,7 @@ describe('BootSequence — splash screen', () => {
   it('announces the newest article', () => {
     render(<BootSequence onComplete={() => {}} />)
     act(() => vi.advanceTimersByTime(6000))
-    expect(screen.getByText(/NEW.*"Stay the Engineer" published/)).toBeInTheDocument()
+    expect(screen.getByText(/NEW.*"What Is an AI Agent, Really\?" published/)).toBeInTheDocument()
     expect(screen.getByText(/NEW.*EvalForge Lite/)).toBeInTheDocument()
     expect(screen.getByText(/NEW.*12 total/)).toBeInTheDocument()
   })

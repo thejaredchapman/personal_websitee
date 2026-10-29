@@ -87,3 +87,19 @@ describe('WritingApp — full-fidelity HTML article', () => {
     expect(screen.getByRole('link', { name: 'Open full page' })).toHaveAttribute('href', '/does-ai-know-im-not-white.html')
   })
 })
+
+describe('WritingApp — What Is an AI Agent, Really?', () => {
+  const TITLE = 'What Is an AI Agent, Really?'
+
+  it('lists the article under Publications', () => {
+    render(<ThemeProvider><WritingApp /></ThemeProvider>)
+    expect(screen.getByText(TITLE)).toBeInTheDocument()
+  })
+
+  it('shows the interactive page in a frame with an open-full-page link', async () => {
+    render(<ThemeProvider><WritingApp /></ThemeProvider>)
+    await userEvent.click(screen.getByText(TITLE))
+    expect(screen.getByTitle(TITLE)).toHaveAttribute('src', '/what-is-an-ai-agent.html')
+    expect(screen.getByRole('link', { name: 'Open full page' })).toHaveAttribute('href', '/what-is-an-ai-agent.html')
+  })
+})

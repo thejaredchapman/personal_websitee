@@ -10,6 +10,13 @@ import toolEvalContent from './handouts/05-tool-evaluation.md?raw'
 
 export const publications = [
   {
+    id: 'what-is-an-ai-agent',
+    title: 'What Is an AI Agent, Really?',
+    description: 'An interactive guide to what an AI agent is, when you need one, and how to keep it in check, built on three working demos and their recorded runs. Includes a hands-on section for developers.',
+    tags: ['AI Agents', 'Interactive', 'For Developers'],
+    htmlSrc: '/what-is-an-ai-agent.html',
+  },
+  {
     id: 'evalforge-lite-guide',
     title: 'EvalForge Lite: How to Compare AI Models on Your Own Prompts',
     description: 'A plain-English guide to testing AI models on your own prompts: grading, speed and cost, a policy gate, and an MCP server for Claude.',
