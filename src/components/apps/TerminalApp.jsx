@@ -218,6 +218,14 @@ function processCommand(input) {
       { text: '    related support requests down 30%', type: 'info' },
       { text: '  • 12 Anthropic certifications', type: 'info' },
       { text: '' },
+      { text: '  ── Work sample: Claude for Work call plan ──', type: 'accent' },
+      { text: '  A discovery call plan for selling Claude for Work:', type: 'info' },
+      { text: '  verified product facts with sources and dates, a timed', type: 'info' },
+      { text: '  call flow, three public-data demo paths, eleven objections,', type: 'info' },
+      { text: '  and a 90-day pilot that follows the AI Ready Reps guardrails.', type: 'info' },
+      { text: '  Unlisted; direct URL only:', type: 'dim' },
+      { text: '  thejaredchapman.com/samples/claude-for-work-call-plan.pdf', type: 'link' },
+      { text: '' },
       { text: '  ── What drives me ──', type: 'accent' },
       { text: '  I love helping developers learn and grow.', type: 'joke' },
       { text: '' },
@@ -228,7 +236,7 @@ function processCommand(input) {
     echo: () => [{ text: `  ${args.slice(1).join(' ') || ''}` }],
     ls: () => [
       { text: '  about.txt  projects/  writing/  certs/  resume.pdf  jokes/  skills.json', type: 'info' },
-      { text: '  secret_plans.txt  definitely_not_bugs/', type: 'dim' },
+      { text: '  secret_plans.txt  definitely_not_bugs/  samples/', type: 'dim' },
     ],
     cat: () => {
       if (args[1] === 'secret_plans.txt') return [
@@ -236,6 +244,13 @@ function processCommand(input) {
         { text: '  Step 2: Do comedy', type: 'info' },
         { text: '  Step 3: ???', type: 'info' },
         { text: '  Step 4: Profit', type: 'accent' },
+      ]
+      if (args[1] === 'samples/' || args[1] === 'samples' || args[1] === 'samples/claude-for-work-call-plan.pdf') return [
+        { text: '  samples/claude-for-work-call-plan.pdf', type: 'accent' },
+        { text: '  Claude for Work discovery call plan: verified facts with sources', type: 'info' },
+        { text: '  and dates, a timed call flow, demo paths, objections, 90-day pilot.', type: 'info' },
+        { text: '  Unlisted; direct URL only:', type: 'dim' },
+        { text: '  thejaredchapman.com/samples/claude-for-work-call-plan.pdf', type: 'link' },
       ]
       return [{ text: '  Usage: cat <filename>', type: 'dim' }]
     },

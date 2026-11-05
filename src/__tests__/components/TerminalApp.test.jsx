@@ -1,6 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 import TerminalApp from '../../components/apps/TerminalApp'
 
 // processCommand is not exported, so we test through the rendered UI
@@ -446,5 +445,37 @@ describe('TerminalApp — link keywords', () => {
     expect(getOutput(container).join('\n')).toContain('thejaredchapman@gmail.com')
     expect(open).not.toHaveBeenCalled()
     open.mockRestore()
+  })
+})
+
+describe('TerminalApp — unlisted work sample', () => {
+  async function submitCommand(container, cmd) {
+    const input = container.querySelector('input[type="text"]')
+    fireEvent.change(input, { target: { value: cmd } })
+    fireEvent.submit(container.querySelector('form'))
+  }
+  const url = 'thejaredchapman.com/samples/claude-for-work-call-plan.pdf'
+
+  it('anthropic command mentions the call plan and its URL', async () => {
+    const { container } = render(<TerminalApp />)
+    await submitCommand(container, 'anthropic')
+    const joined = getOutput(container).join('\n')
+    expect(joined).toContain('Claude for Work call plan')
+    expect(joined).toContain(url)
+  })
+
+  it('ls lists samples/ and cat samples/ prints the URL', async () => {
+    const { container } = render(<TerminalApp />)
+    await submitCommand(container, 'ls')
+    expect(getOutput(container).join('\n')).toContain('samples/')
+    await submitCommand(container, 'cat samples/')
+    expect(getOutput(container).join('\n')).toContain(url)
+  })
+
+  it('renders the sample URL as text, not an anchor', async () => {
+    const { container } = render(<TerminalApp />)
+    await submitCommand(container, 'anthropic')
+    const anchors = Array.from(container.querySelectorAll('a')).map((a) => a.textContent)
+    expect(anchors.some((t) => t.includes(url))).toBe(false)
   })
 })
