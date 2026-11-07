@@ -16,7 +16,7 @@ const experience = [
     ],
   },
   {
-    role: 'Software Engineer',
+    role: 'Software Engineer Apprentice (Multiverse)',
     company: 'Google — Chicago, IL',
     period: 'Sep 2022 — May 2024',
     bullets: [
@@ -43,6 +43,18 @@ const projects = [
     status: 'Open Source',
     description: "Open-source tool for choosing an AI model with evidence instead of guesswork. Write a prompt and grading rubric, pick up to 4 models, and compare them side by side, including the same model on OpenRouter, Amazon Bedrock, Google Vertex AI, and Microsoft Foundry. Scores every response with an LLM judge and six criteria, compares latency, tokens per second, and cost with a \"what matters most\" selector, screens prompts against your company policy, exports PDF and CSV reports, and ships as an MCP server (9 tools, installable with uvx evalforge-lite) and a Claude Code plugin. Engineering: Python and Flask with no database, thin REST clients (AWS SigV4 signing through botocore), a single gateway that routes every call to the right backend, input validation against SSRF, secret scrubbing on every error message, and 568 automated tests that never touch the network. Built with Claude Code using a spec, plan, implement loop with independent reviewer agents.",
     tags: ['Python', 'Flask', 'Amazon Bedrock', 'Vertex AI', 'Foundry', 'MCP', 'Claude Code'],
+  },
+  {
+    name: "AI Platform Field Guide",
+    status: "Live",
+    description: "Independent, interactive field guide to Claude, ChatGPT, Gemini, and Copilot: plans and team costs, API pricing with a token-cost calculator, model lineups, privacy, AI constitutions, 200 use cases for developers and business, and a 12-step secure-use checklist. Every claim is sourced, and a scheduled Claude Haiku routine checks for platform news weekly and logs each change with its source (content-freshness automation).",
+    tags: ["Claude", "Enablement", "Content Freshness", "Education"],
+  },
+  {
+    name: "Claude Agent Demos",
+    status: "Open Source",
+    description: "Three Claude agents built on the Messages API with tool use, each with business and developer guides and evals: an expense-policy checker that flags prompt-injection text in receipts, a research analyst whose quotes are verified against passages it read (zero made-up answers across 60 runs), and a scheduler with no sending tool, so a person approves every proposal (98% success across 48 runs). Demos for the article \"What Is an AI Agent, Really?\"",
+    tags: ["Claude API", "Tool Use", "Agents", "Evals", "Python"],
   },
   {
     name: 'ILIAD LiteLLM Model Explorer',
@@ -110,8 +122,8 @@ const devImprovements = [
 ]
 
 const education = [
-  { school: 'Multiverse', degree: 'Software Engineering Bootcamp', year: '2022 - 2024' },
-  { school: 'Georgia State University', degree: 'B.S., Communications', year: '2014' },
+  { school: 'Multiverse', degree: 'Software Engineering Apprenticeship', year: '2022 - 2024' },
+  { school: 'Georgia State University', degree: 'B.S., Film & Video', year: '2014' },
 ]
 
 const certifications = [

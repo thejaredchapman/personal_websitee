@@ -24,6 +24,7 @@ describe('ProjectsSection — heading', () => {
 
 describe('ProjectsSection — main projects', () => {
   const titles = [
+    'AI Platform Field Guide',
     'Evalforge Lite',
     "Tag, You're It",
     'AI Explorer',
@@ -46,10 +47,10 @@ describe('ProjectsSection — main projects', () => {
     })
   }
 
-  it('renders 16 "Visit Project" CTAs', () => {
+  it('renders 19 "Visit Project" CTAs', () => {
     render(<ProjectsSection />)
     const ctaLinks = screen.getAllByText('Visit Project')
-    expect(ctaLinks.length).toBe(16)
+    expect(ctaLinks.length).toBe(19)
   })
 
   it('main project links open in a new tab', () => {
@@ -105,17 +106,17 @@ describe('ProjectsSection — Developer Improvements section', () => {
     })
   }
 
-  it('renders 9 "View on GitHub" CTAs', () => {
+  it('renders 15 "View on GitHub" CTAs', () => {
     render(<ProjectsSection />)
     const ctaLinks = screen.getAllByText('View on GitHub')
-    expect(ctaLinks.length).toBe(9)
+    expect(ctaLinks.length).toBe(15)
   })
 
   it('all dev project links open in a new tab with noopener noreferrer', () => {
     render(<ProjectsSection />)
     const allLinks = screen.getAllByRole('link')
     const githubLinks = allLinks.filter((a) => a.href.includes('github.com/thejaredchapman'))
-    expect(githubLinks.length).toBe(8)
+    expect(githubLinks.length).toBe(14)
     for (const link of githubLinks) {
       expect(link).toHaveAttribute('target', '_blank')
       expect(link).toHaveAttribute('rel', 'noopener noreferrer')
@@ -142,5 +143,27 @@ describe('ProjectsSection — Developer Improvements section', () => {
   it('renders the Deep Learning tag for AI Explained', () => {
     render(<ProjectsSection />)
     expect(screen.getByText('Deep Learning')).toBeInTheDocument()
+  })
+})
+
+describe('ProjectsSection — Claude Agents & Platform Builds', () => {
+  const builds = ['Expense Policy Agent', 'Scheduler Agent', 'Research Analyst Agent', 'Spend Explainer', 'Claude Code Policy Kit', 'Docs Quality Demo', 'Client Firewall', 'Anchor: Claude Impact Lab OC']
+
+  it('renders the section heading', () => {
+    render(<ProjectsSection />)
+    expect(screen.getByText('Claude Agents & Platform Builds')).toBeInTheDocument()
+  })
+
+  for (const title of builds) {
+    it(`renders "${title}"`, () => {
+      render(<ProjectsSection />)
+      expect(((t) => screen.getByRole('heading', { name: t }))(title)).toBeInTheDocument()
+    })
+  }
+
+  it('lists AI Ready Reps and no longer lists the midterms tracker', () => {
+    render(<ProjectsSection />)
+    expect(screen.queryByText('2026 Midterms Tracker')).toBeNull()
+    expect(screen.getAllByText('AI Ready Reps').length).toBeGreaterThanOrEqual(1)
   })
 })

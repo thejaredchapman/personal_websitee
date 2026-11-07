@@ -90,6 +90,105 @@ const devProjects = [
   },
 ]
 
+const claudeBuilds = [
+  {
+    title: "Expense Policy Agent",
+    description: "A Claude agent that audits an expense against a company policy. It calls four tools to look up the receipt, the employee, and the policy, warns when a receipt contains instruction-like text, and returns approve, flag for a human, or reject, citing the rule. Ships with a business guide and a developer guide.",
+    tags: ["Claude API", "Tool Use", "Agents", "Evals"],
+    url: "https://github.com/thejaredchapman/expense-policy-agent",
+    cta: "View on GitHub",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <path d="M6 2h9l5 5v15H6z" strokeLinecap="round" strokeLinejoin="round" /><path d="M9 13l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    )
+  },
+  {
+    title: "Scheduler Agent",
+    description: "A Claude agent that finds a meeting time and room with read-only tools, then hands a proposal to a person. It has no sending tool, so nothing goes out without approval. Evals: 98% success across 48 runs, up from 79% after splitting the final tool in two.",
+    tags: ["Claude API", "Tool Use", "Human in the Loop", "Evals"],
+    url: "https://github.com/thejaredchapman/scheduler-agent",
+    cta: "View on GitHub",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <rect x="3" y="5" width="18" height="16" rx="2" /><path d="M3 10h18M8 3v4M16 3v4" strokeLinecap="round" />
+      </svg>
+    )
+  },
+  {
+    title: "Research Analyst Agent",
+    description: "A Claude agent that answers from a fixed library of seven public-domain books and attaches quotes, and software checks that every quote appears in a passage it read. Across 60 runs it made up zero answers: anything the library cannot answer gets \"not found.\"",
+    tags: ["Claude API", "Tool Use", "Citations", "Evals"],
+    url: "https://github.com/thejaredchapman/research-analyst-agent",
+    cta: "View on GitHub",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <path d="M4 19V5a2 2 0 012-2h12v18H6a2 2 0 01-2-2z" strokeLinecap="round" strokeLinejoin="round" /><circle cx="12" cy="10" r="3" /><path d="M14.2 12.2L16 14" strokeLinecap="round" />
+      </svg>
+    )
+  },
+  {
+    title: "Spend Explainer",
+    description: "Explains why a Claude bill went up, using the Usage and Cost Analytics API, and refuses to show an AI-written explanation unless its numbers check out against the data, falling back to a rule-based answer. Ships as a Claude Code plugin with a bundled skill.",
+    tags: ["Claude API", "Skills", "Claude Code Plugin", "Cost"],
+    url: "https://github.com/thejaredchapman/spend-explainer",
+    cta: "View on GitHub",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <path d="M3 3v18h18" strokeLinecap="round" strokeLinejoin="round" /><path d="M7 15l4-4 3 3 5-6" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    )
+  },
+  {
+    title: "Claude Code Policy Kit",
+    description: "One Claude Code policy across a company, where each team owns its part. Team markdown files compile into a managed CLAUDE.md, per-team managed settings, and a hook that blocks a prompt or tool call and names the rule that fired.",
+    tags: ["Claude Code", "Hooks", "Managed Settings", "Governance"],
+    url: "https://github.com/thejaredchapman/claude-code-policy-kit",
+    cta: "View on GitHub",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z" strokeLinecap="round" strokeLinejoin="round" /><path d="M9 12l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    )
+  },
+  {
+    title: "Docs Quality Demo",
+    description: "Docs CI that enforces its own style guide on every pull request: Vale for wording, structure checks per content type, a UI-drift check that fails the PR when the app renames a button, and a Claude reviewer whose agreement with hand labels is measured with Cohen's kappa.",
+    tags: ["Claude", "Docs as Code", "GitHub Actions", "Evals"],
+    url: "https://thejaredchapman.github.io/docs-quality-demo/",
+    cta: "Visit Project",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z" strokeLinecap="round" strokeLinejoin="round" /><path d="M14 3v6h6M9 15l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    )
+  },
+  {
+    title: "Client Firewall",
+    description: "A Claude Project template for people who work inside several companies at once. Before Claude drafts anything, it checks the message against that client's rules and answers green, amber, or red. Includes a site, a printable handout, and a script that measures the cost per check.",
+    tags: ["Claude Projects", "Data Safety", "Enablement"],
+    url: "https://client-firewall.vercel.app",
+    cta: "Visit Project",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 10h18M3 15h18M9 4v6M15 10v5M9 15v5" strokeLinecap="round" />
+      </svg>
+    )
+  },
+  {
+    title: "Anchor: Claude Impact Lab OC",
+    description: "Built with a four-person team at the Orange County Claude Impact Lab for Illumination Health + Home: a referral-intake tool that checks faxed hospital referrals against 155 admission rules. Sonnet maps pages and checks quotes, Opus extracts facts, Haiku answers questions, and a person verifies every fact.",
+    tags: ["Claude Impact Lab", "Multi-model", "Nonprofit", "Healthcare"],
+    url: "https://github.com/thejaredchapman/team-beacon-anchor",
+    cta: "View on GitHub",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <path d="M12 3v14M7 8h10" strokeLinecap="round" /><path d="M4 14a8 8 0 0016 0" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    )
+  },
+]
+
 const mcpProjects = [
   {
     title: 'Spotify Direct MCP',
@@ -140,11 +239,24 @@ const mcpProjects = [
 function ProjectsSection() {
   const [hoveredIndex, setHoveredIndex] = useState(null)
   const [sectionRef, isVisible] = useScrollAnimation({ threshold: 0.05 })
-  const [cardsRef, visibleCards] = useStaggerAnimation(16, { baseDelay: 100 })
+  const [cardsRef, visibleCards] = useStaggerAnimation(17, { baseDelay: 100 })
+  const [buildCardsRef, visibleBuildCards] = useStaggerAnimation(8, { baseDelay: 100 })
   const [devCardsRef, visibleDevCards] = useStaggerAnimation(6, { baseDelay: 100 })
   const [mcpCardsRef, visibleMcpCards] = useStaggerAnimation(3, { baseDelay: 100 })
 
   const projects = [
+    {
+      title: 'AI Platform Field Guide',
+      description: 'An independent, interactive field guide to Claude, ChatGPT, Gemini, and Copilot: plans and team costs, API pricing with a token-cost calculator, model lineups, privacy, AI constitutions, 200 use cases for developers and business, and a 12-step secure-use checklist. Every claim is sourced, and a scheduled Claude Haiku routine checks for platform news weekly and logs changes with sources, so the content never goes stale.',
+      tags: ['Claude', 'Enablement', 'API Pricing', 'Content Freshness', 'Education'],
+      url: 'https://ai-platform-field-guide.vercel.app/',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+          <path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3V6z" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M9 3v15M15 6v15" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )
+    },
     {
       title: 'Evalforge Lite',
       description: "Open-source tool for choosing an AI model with evidence instead of guesswork. Write a prompt and grading rubric, pick up to 4 models, and compare them side by side, including the same model on OpenRouter, Amazon Bedrock, Google Vertex AI, and Microsoft Foundry. Scores every response with an LLM judge and six criteria, compares latency, tokens per second, and cost with a \"what matters most\" selector, screens prompts against your company policy, exports PDF and CSV reports, and ships as an MCP server (9 tools, installable with uvx evalforge-lite) and a Claude Code plugin.",
@@ -170,9 +282,21 @@ function ProjectsSection() {
       )
     },
     {
+      title: "AI Ready Reps",
+      description: "Teaches sales reps who are new to AI to use it safely: 287 sales use cases rated green, amber, or red, 25 copy-ready prompts, customer scripts, a quiz and an 8-bit sorting game, and an advanced track on agents with tool access. Includes a 90-day pilot kit.",
+      tags: ["Sales Enablement", "Course", "Responsible AI"],
+      url: "https://aireadyreps.com",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+          <path d="M12 3l8 4-8 4-8-4 8-4z" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M6 10v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )
+    },
+    {
       title: 'AI Explorer',
-      description: 'The core AI concepts outlined on the AI Explorer site provide a foundational vocabulary for understanding how modern artificial intelligence is built, customized, and deployed.',
-      tags: ['AI', 'Explanation', 'What is AI?', 'Concepts', 'Tools'],
+      description: "A seven-step ladder from AI concepts to building: 28 concept cards, 18 prompt techniques, and 42 build guides across 7 stacks. A weekly GitHub Action runs Claude Code headless with a custom refresh-content skill, checks official provider pages, and opens a PR, so the content stays current.",
+      tags: ["AI", "Education", "Claude Code", "Skills", "Content Freshness"],
       url: 'https://ai-explorer-theta.vercel.app/',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
@@ -337,19 +461,6 @@ function ProjectsSection() {
           <path d="M12 7l-4.5 3.5M12 7l4.5 3.5M6 14v3M18 14v3" strokeLinecap="round" />
         </svg>
       )
-    },
-    {
-      title: '2026 Midterms Tracker',
-      description: "Still being built, but here's what I've built so far. A tracker for the 2026 midterm elections that follows 62 of the most competitive Senate, governor, and House races in a searchable candidate matrix. It pairs each candidate with news and posts, race ratings, Trump endorsements, and how they voted on the OBBB, plus a summary of key developments and a countdown to Nov 3.",
-      tags: ['In Progress', 'React', 'Data', 'Politics'],
-      url: 'https://midterms-2026-dashboard.vercel.app/',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-          <path d="M3 21h18" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M5 21V10l7-6 7 6v11" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M9 21v-6h6v6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
     }
   ]
 
@@ -466,6 +577,42 @@ function ProjectsSection() {
               </span>
             </a>
           ))}
+        </div>
+
+        <div className="mt-20">
+          <h3 className={`text-2xl font-bold mb-2 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ color: 'var(--text-primary)' }}>Claude Agents &amp; Platform Builds</h3>
+          <p className={`mb-10 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ color: 'var(--text-secondary)' }}>
+            Agents, skills, plugins, and guardrails built on the Claude API and Claude Code
+          </p>
+          <div ref={buildCardsRef} className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-8 max-w-[1100px] mx-auto">
+            {claudeBuilds.map((project, index) => (
+              <a
+                key={index}
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`card card-top-border relative overflow-visible no-underline flex flex-col group transition-all duration-700 ${visibleBuildCards.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+                style={{ color: 'inherit' }}
+              >
+                <div className="w-12 h-12 mb-4 transition-all duration-300 group-hover:scale-120 group-hover:rotate-10" style={{ color: 'var(--accent-500)' }}>
+                  {project.icon}
+                </div>
+                <h3 className="text-2xl mb-3" style={{ color: 'var(--text-primary)' }}>{project.title}</h3>
+                <p className="mb-6 leading-7 flex-1" style={{ color: 'var(--text-secondary)' }}>{project.description}</p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.tags.map((tag, tagIndex) => (
+                    <span key={tagIndex} className="tag">{tag}</span>
+                  ))}
+                </div>
+                <span className="inline-flex items-center gap-2 font-semibold text-[0.95rem] transition-all duration-300 group-hover:gap-3" style={{ color: 'var(--accent-500)' }}>
+                  {project.cta}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true">
+                    <path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
 
         <div className="mt-20">

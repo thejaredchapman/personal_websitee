@@ -16,6 +16,7 @@ describe('ProjectsApp — heading', () => {
 
 describe('ProjectsApp — main projects', () => {
   const titles = [
+    'AI Platform Field Guide',
     'Evalforge Lite',
     "Tag, You're It",
     'AI Explorer',
@@ -38,11 +39,11 @@ describe('ProjectsApp — main projects', () => {
     })
   }
 
-  it('renders 17 main project links', () => {
+  it('renders 18 main project links', () => {
     render(<ProjectsApp />)
     const allLinks = screen.getAllByRole('link')
     const vercelAndRenderLinks = allLinks.filter((a) => a.href.includes('vercel.app') || a.href.includes('onrender.com') || a.href.endsWith('/tag-youre-it-course.html'))
-    expect(vercelAndRenderLinks.length).toBe(17)
+    expect(vercelAndRenderLinks.length).toBe(18)
   })
 
   it('main project links open in a new tab', () => {
@@ -99,7 +100,7 @@ describe('ProjectsApp — Developer Improvements section', () => {
     render(<ProjectsApp />)
     const allLinks = screen.getAllByRole('link')
     const githubLinks = allLinks.filter((a) => a.href.includes('github.com/thejaredchapman'))
-    expect(githubLinks.length).toBe(8)
+    expect(githubLinks.length).toBe(14)
     for (const link of githubLinks) {
       expect(link).toHaveAttribute('target', '_blank')
       expect(link).toHaveAttribute('rel', 'noopener noreferrer')
@@ -123,5 +124,27 @@ describe('ProjectsApp — Developer Improvements section', () => {
     const card = heading.closest('a')
     expect(within(card).getByText('RAG')).toBeInTheDocument()
     expect(within(card).getByText('Developer Tools')).toBeInTheDocument()
+  })
+})
+
+describe('ProjectsApp — Claude Agents & Platform Builds', () => {
+  const builds = ['Expense Policy Agent', 'Scheduler Agent', 'Research Analyst Agent', 'Spend Explainer', 'Claude Code Policy Kit', 'Docs Quality Demo', 'Client Firewall', 'Anchor: Claude Impact Lab OC']
+
+  it('renders the section heading', () => {
+    render(<ProjectsApp />)
+    expect(screen.getByText('Claude Agents & Platform Builds')).toBeInTheDocument()
+  })
+
+  for (const title of builds) {
+    it(`renders "${title}"`, () => {
+      render(<ProjectsApp />)
+      expect((screen.getByText)(title)).toBeInTheDocument()
+    })
+  }
+
+  it('lists AI Ready Reps and no longer lists the midterms tracker', () => {
+    render(<ProjectsApp />)
+    expect(screen.queryByText('2026 Midterms Tracker')).toBeNull()
+    expect(screen.getAllByText('AI Ready Reps').length).toBeGreaterThanOrEqual(1)
   })
 })
