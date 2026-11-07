@@ -1,5 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { Analytics } from '@vercel/analytics/react'
 import { ThemeProvider } from './context/ThemeContext'
 import { WindowProvider } from './context/WindowContext'
 import { ClippyProvider } from './context/ClippyContext'
@@ -12,6 +13,7 @@ createRoot(document.getElementById('root')).render(
       <WindowProvider>
         <ClippyProvider>
           <App />
+          <Analytics />
         </ClippyProvider>
       </WindowProvider>
     </ThemeProvider>
