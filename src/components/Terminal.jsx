@@ -53,8 +53,8 @@ const ASCII_ART = [
 
 const SKILLS_DATA = {
   languages: ['Python', 'Java', 'JavaScript', 'HTML', 'CSS'],
-  ai: ['LLMs', 'Claude Code', 'MCP', 'Tool Use', 'Anthropic API', 'Prompt Engineering'],
-  enablement: ['Demos', 'Hands-on Labs', 'Office Hours', 'Training', 'Docs'],
+  ai: ['Claude Code', 'Anthropic API', 'MCP', 'Tool Use', 'Agents', 'Bedrock', 'Vertex AI', 'Foundry'],
+  enablement: ['Demos', 'Hands-on Labs', 'Curriculum', 'Office Hours', 'Field Coaching', 'Content-Freshness Automation'],
   frameworks: ['React', 'Angular', 'Spring Boot', 'Django'],
   data: ['BigQuery', 'Pandas', 'PyArrow', 'Ibis', 'PostgreSQL'],
   tools: ['GCP', 'Git', 'gRPC', 'REST APIs'],
@@ -75,6 +75,8 @@ function processCommand(input) {
         { text: 'Available commands:', type: 'info' },
         { text: '' },
         { text: '  help          Show this help message', type: 'help-cmd' },
+        { text: '  claude        How this site was made', type: 'help-cmd' },
+        { text: '  anthropic     Why I fit the Claude Platform role', type: 'help-cmd' },
         { text: '  about         Learn about Jared', type: 'help-cmd' },
         { text: '  skills        View technical skills', type: 'help-cmd' },
         { text: '  joke          Get a programmer/comedy joke', type: 'help-cmd' },
@@ -176,24 +178,24 @@ function processCommand(input) {
       return [
         { text: '  Featured Projects:', type: 'info' },
         { text: '' },
-        { text: '  [1] EvalForge Lite      - Multi-cloud model comparison', type: 'accent' },
+        { text: '  [1] AI Platform Field Guide  Claude, ChatGPT, Gemini, Copilot, sourced', type: 'accent' },
+        { text: '      ai-platform-field-guide.vercel.app', type: 'link' },
+        { text: '  [2] EvalForge Lite      Multi-cloud model comparison + MCP', type: 'accent' },
         { text: '      evalforge-lite.onrender.com', type: 'link' },
-        { text: '  [2] Tag, You\'re It      - Claude Tag course', type: 'accent' },
+        { text: '  [3] Tag, You\'re It      Claude Tag course', type: 'accent' },
         { text: '      thejaredchapman.com/tag-youre-it-course.html', type: 'link' },
-        { text: '  [3] LoanLens            - Amortization calculator', type: 'accent' },
-        { text: '      amortization.vercel.app', type: 'link' },
-        { text: '  [4] Art Portfolio       - Gallery showcase', type: 'accent' },
-        { text: '      art-portfolio-navy.vercel.app', type: 'link' },
-        { text: '  [5] DJ Master Academy   - DDJ-FLX4 trainer', type: 'accent' },
-        { text: '      dj-master-academy.vercel.app', type: 'link' },
-        { text: '  [6] Chess Learning App  - Chess platform', type: 'accent' },
-        { text: '      chess-learning-app-teal.vercel.app', type: 'link' },
-        { text: '  [7] AI Explorer         - AI experimentation', type: 'accent' },
+        { text: '  [4] AI Explorer         Core AI vocabulary', type: 'accent' },
         { text: '      ai-explorer-theta.vercel.app', type: 'link' },
-        { text: '  [8] Break Into Tech     - Cybersecurity guide', type: 'accent' },
-        { text: '      break-into-tech.vercel.app', type: 'link' },
-        { text: '  [9] LLM Frameworks      - LangChain learning', type: 'accent' },
+        { text: '  [5] LLM Frameworks      LangChain learning', type: 'accent' },
         { text: '      langchain-learning-app.vercel.app', type: 'link' },
+        { text: '  [6] PyTorch Guide       Interactive ML fundamentals', type: 'accent' },
+        { text: '      pytorch-interactive-guide.vercel.app', type: 'link' },
+        { text: '  [7] Break Into Tech     Cybersecurity guide', type: 'accent' },
+        { text: '      break-into-tech.vercel.app', type: 'link' },
+        { text: '  [8] DJ Master Academy   DDJ-FLX4 trainer', type: 'accent' },
+        { text: '      dj-master-academy.vercel.app', type: 'link' },
+        { text: '  [9] LoanLens            Amortization calculator', type: 'accent' },
+        { text: '      amortization.vercel.app', type: 'link' },
         { text: '' },
         { text: '  Open the Projects window for live demos!', type: 'dim' },
       ]
@@ -202,14 +204,15 @@ function processCommand(input) {
       return [
         { text: '  Work Experience:', type: 'info' },
         { text: '' },
-        { text: '  [2024 - Now]  AbbVie - Developer Support Engineer (GenAI)', type: 'accent' },
-        { text: '                Claude Code enablement, office hours, live demos, learning platforms' },
+        { text: '  [2024 - Now]  AbbVie: Developer Support, Generative AI Applications', type: 'accent' },
+        { text: '                First Claude Code practitioner: office hours, 1:1 installs,' },
+        { text: '                live demos in 5 regions, a 3,500-user learning platform' },
         { text: '' },
-        { text: '  [2022 - 2024] Google - Software Engineer', type: 'accent' },
-        { text: '                Searchmark tools, BigQuery DataFrames' },
+        { text: '  [2022 - 2024] Google: Software Engineer Apprentice (Multiverse)', type: 'accent' },
+        { text: '                Searchmark tools, BigQuery DataFrames, Ibis open source' },
         { text: '' },
-        { text: '  [2018 - 2021] Guaranteed Rate - Appraisal Desk Team Lead', type: 'accent' },
-        { text: '                Automated dashboards, managed appraisal orders' },
+        { text: '  [2018 - 2021] Guaranteed Rate: Team Lead, Appraisal Operations', type: 'accent' },
+        { text: '                Escalations, cross-functional delivery, dashboards' },
       ]
 
     case 'writing':
@@ -261,26 +264,72 @@ function processCommand(input) {
 
     case 'anthropic':
       return [
-        { text: '  Hey Anthropic 👋🏿 — you already know. Short version:', type: 'accent' },
+        { text: '  Hey Anthropic 👋🏿  Applying for Developer Education Lead,', type: 'accent' },
+        { text: '  Claude Platform. Here is the evidence, mapped to the role:', type: 'accent' },
         { text: '' },
-        { text: '  ── What I bring to the Claude Platform ──', type: 'accent' },
-        { text: '  • Engineer who teaches: demos, hands-on labs, curriculum', type: 'info' },
-        { text: '  • Claude Code as core infrastructure. First practitioner at', type: 'info' },
-        { text: '    AbbVie: office hours, 1:1 installs, training, guardrails', type: 'info' },
-        { text: '  • Live demos in 5 global regions; coached sales teams on', type: 'info' },
-        { text: '    what was available', type: 'info' },
-        { text: '  • Tool use + MCP: 4D Orchestrator, FastMCP servers,', type: 'info' },
-        { text: '    EvalForge Lite (MCP server, 9 tools)', type: 'info' },
-        { text: '  • Claude via Bedrock, Vertex AI, and Foundry, compared', type: 'info' },
-        { text: '    side by side in EvalForge Lite', type: 'info' },
-        { text: '  • Self-service learning: a 3,500-user learning platform;', type: 'info' },
-        { text: '    related support requests down 30%', type: 'info' },
-        { text: '  • 12 Anthropic certifications', type: 'info' },
+        { text: '  ── Launches → field-ready content ──', type: 'accent' },
+        { text: '  • AI Platform Field Guide: plans, API pricing, models, privacy,', type: 'info' },
+        { text: '    200 use cases. A weekly Claude Haiku routine checks for news', type: 'info' },
+        { text: '    and logs changes with sources (content-freshness automation)', type: 'info' },
+        { text: '  • Tag, You\'re It: a Claude Tag course for non-technical teams', type: 'info' },
         { text: '' },
-        { text: '  ── What drives me ──', type: 'accent' },
+        { text: '  ── Training + coaching the field ──', type: 'accent' },
+        { text: '  • Live Claude Code demos in 5 global regions, 1:1 and group', type: 'info' },
+        { text: '  • Monthly sessions for ~300 engineers in 7 developer communities', type: 'info' },
+        { text: '  • Recurring office hours; coached sales teams and demoed to', type: 'info' },
+        { text: '    sellers, scientists, and manufacturing audiences', type: 'info' },
+        { text: '' },
+        { text: '  ── Scaling beyond live sessions ──', type: 'accent' },
+        { text: '  • Gamified Claude Code learning platform: 3,500 users, 28-min', type: 'info' },
+        { text: '    average session, 76% quiz completion, support requests -30%', type: 'info' },
+        { text: '  • 75-slide hands-on training deck on all 5 extension points', type: 'info' },
+        { text: '' },
+        { text: '  ── Building on the Claude Platform ──', type: 'accent' },
+        { text: '  • Tool use + MCP: 4D Orchestrator, FastMCP servers, and', type: 'info' },
+        { text: '    EvalForge Lite (MCP server, 9 tools, Claude Code plugin)', type: 'info' },
+        { text: '  • Three Claude agents (expense checker, research analyst,', type: 'info' },
+        { text: '    scheduler): tool use, human approval, evals (98% success)', type: 'info' },
+        { text: '  • AI Explorer refreshes weekly: Claude Code in GitHub Actions', type: 'info' },
+        { text: '    runs a custom skill against official pages and opens a PR', type: 'info' },
+        { text: '  • Claude via Bedrock, Vertex AI, and Foundry, compared side by', type: 'info' },
+        { text: '    side in EvalForge Lite', type: 'info' },
+        { text: '  • Claude Code is daily infrastructure. This site included:', type: 'info' },
+        { text: '    type "claude"', type: 'info' },
+        { text: '' },
+        { text: '  ── Community ──', type: 'accent' },
+        { text: '  • Led teams at the Orange County and Life Sciences Claude', type: 'info' },
+        { text: '    Impact Labs; coach presenters at Claude Community events', type: 'info' },
+        { text: '' },
+        { text: '  ── Closing the loop with product ──', type: 'accent' },
+        { text: '  • Turned office-hours friction into tickets for owning teams', type: 'info' },
+        { text: '' },
+        { text: '  ── Work sample: Claude for Work call plan ──', type: 'accent' },
+        { text: '  Verified facts with sources and dates, a timed call flow, three', type: 'info' },
+        { text: '  demo paths, eleven objections, and a 90-day pilot plan.', type: 'info' },
+        { text: '  Unlisted; direct URL only:', type: 'dim' },
+        { text: '  thejaredchapman.com/samples/claude-for-work-call-plan.pdf', type: 'link' },
+        { text: '' },
+        { text: '  12 Anthropic certifications.', type: 'info' },
         { text: '  I love helping developers learn and grow.', type: 'joke' },
         { text: '' },
-        { text: '  Try: projects | experience | certs | hire', type: 'dim' },
+        { text: '  Try: claude | projects | experience | certs | hire', type: 'dim' },
+      ]
+
+    case 'claude':
+      return [
+        { text: '  ✻ Made with Claude', type: 'accent' },
+        { text: '' },
+        { text: '  Everything on this site was made with Claude: the code, the', type: 'info' },
+        { text: '  copy, the six OS themes, the boot screens, the projects window,', type: 'info' },
+        { text: '  and the terminal you\'re typing in right now.', type: 'info' },
+        { text: '' },
+        { text: '  It was built in Claude Code. I set the direction, reviewed', type: 'info' },
+        { text: '  every change, and decided what shipped. Claude did the rest.', type: 'info' },
+        { text: '' },
+        { text: '  That is the workflow I teach: you stay the engineer, and', type: 'joke' },
+        { text: '  Claude does the building.', type: 'joke' },
+        { text: '' },
+        { text: '  Read more: thejaredchapman.com/?read=stay-the-engineer', type: 'link' },
       ]
 
     case 'whoami':
@@ -383,6 +432,7 @@ function processCommand(input) {
         { text: '  ║  Let\'s connect:                ║', type: 'accent' },
         { text: '  ║  thejaredchapman@gmail.com     ║', type: 'accent' },
         { text: '  ╚════════════════════════════════╝', type: 'accent' },
+        { text: '  Based in Los Angeles. Will relocate to SF, NYC, or Seattle.', type: 'info' },
       ]
 
     case 'exit':
@@ -409,6 +459,7 @@ function Terminal() {
   const [sectionRef, isVisible] = useScrollAnimation({ threshold: 0.1 })
   const [history, setHistory] = useState([
     { text: '  Welcome to JaredOS v2.0', type: 'accent' },
+    { text: '  ✻ Everything here was made with Claude. Type "claude" for the story.', type: 'dim' },
     { text: '  Type "help" to see all commands, or try one of these:', type: 'dim' },
     { text: '' },
     { text: '    joke       — Get a programmer/comedy joke', type: 'help-cmd' },
@@ -490,7 +541,7 @@ function Terminal() {
       }
     } else if (e.key === 'Tab') {
       e.preventDefault()
-      const commands = ['help', 'about', 'skills', 'joke', 'projects', 'experience', 'writing', 'certs', 'social', 'ascii', 'whoami', 'date', 'echo', 'sudo', 'clear', 'exit', 'ls', 'cat', 'pwd', 'ping', 'coffee', 'matrix', 'hire', 'vim', ...LINK_COMMAND_NAMES]
+      const commands = ['help', 'about', 'skills', 'joke', 'projects', 'experience', 'writing', 'certs', 'social', 'ascii', 'whoami', 'date', 'echo', 'sudo', 'clear', 'exit', 'ls', 'cat', 'pwd', 'ping', 'coffee', 'matrix', 'hire', 'vim', 'anthropic', 'claude', ...LINK_COMMAND_NAMES]
       const match = commands.filter((c) => c.startsWith(input.toLowerCase()))
       if (match.length === 1) setInput(match[0])
     }
@@ -603,7 +654,7 @@ function Terminal() {
           </div>
 
           <div className="flex flex-wrap justify-center gap-2 mt-4">
-            {['help', 'joke', 'about', 'skills', 'projects', 'hire', 'sudo', 'matrix', 'coffee', 'ls'].map((cmd) => (
+            {['help', 'anthropic', 'claude', 'about', 'projects', 'skills', 'joke', 'hire', 'sudo', 'ls'].map((cmd) => (
               <button
                 key={cmd}
                 onClick={() => {

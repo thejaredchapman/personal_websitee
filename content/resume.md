@@ -15,7 +15,7 @@
 - **Period:** August 2024 - Present
 - **Description:** Supporting and educating developers on LLM integration, driving organizational adoption of generative AI products. Primary technical bridge between the EPIC team and internal developers.
 
-### Software Engineer
+### Software Engineer Apprentice (Multiverse)
 - **Company:** Google
 - **Location:** Chicago, Illinois
 - **Period:** September 2022 - May 2024
@@ -31,7 +31,7 @@
 
 ## Education
 
-### Software Development Bootcamp
+### Software Engineering Apprenticeship
 - **Institution:** Multiverse (2024)
 - **Focus:** Full Stack Development & Agile Frameworks
 
@@ -39,9 +39,9 @@
 - **Institution:** Google / Coursera (2022)
 - **Focus:** R, Tableau, Data Analytics
 
-### Bachelor of Science
+### B.S., Film & Video
 - **Institution:** Georgia State University (2014)
-- **Focus:** General Studies
+- **Focus:** Film & Video
 
 ---
 

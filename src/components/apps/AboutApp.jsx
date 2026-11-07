@@ -25,7 +25,7 @@ function AboutApp() {
             <div className="flex items-center gap-3 text-xs flex-wrap max-[768px]:justify-center" style={{ color: 'var(--text-tertiary)' }}>
               <span className="flex items-center gap-1">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3 h-3"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                Los Angeles, CA
+                Los Angeles, CA · will relocate (SF, NYC, Seattle)
               </span>
               <span className="flex items-center gap-1">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3 h-3"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
@@ -62,8 +62,8 @@ function AboutApp() {
             <h3 className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>The Journey</h3>
           </div>
           <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            Self-taught software engineer who started during the pandemic, teaching himself
-            Python and landing a spot in Google's software engineering apprenticeship program —
+            I'm a self-taught software engineer. I started during the pandemic, taught myself
+            Python, and landed a spot in Google's software engineering apprenticeship program:
             a non-traditional path from mortgage-industry admin work to building latency and
             reliability tooling for Google Search and BigQuery.
           </p>
@@ -77,14 +77,14 @@ function AboutApp() {
             <h3 className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>The Vibe</h3>
           </div>
           <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            A decade of improv training at Chicago's Second City and iO Theater shapes how he
-            communicates technical ideas across business and technical audiences — B.S. in Film
-            &amp; Video from Georgia State, twelve Anthropic certifications, and an extreme extrovert
-            who goes deep on everything that catches his curiosity. Originally from Atlanta with
-            a deep love for Chicago, now soaking up everything California has to offer alongside
-            his fianc&eacute;e Avery Wine and their son, Dr. Pugsley Bikini. If you're even
-            slightly interested in talking — reach out, because that's genuinely his favorite
-            thing to do.
+            A decade of improv training at Chicago's Second City and iO Theater shapes how I
+            explain technical ideas to business and technical audiences, and how I coach other
+            people to demo. I have a B.S. in Film &amp; Video from Georgia State and twelve Anthropic
+            certifications, and I'm an extreme extrovert who goes deep on everything that catches
+            my curiosity. I'm from Atlanta, Chicago holds my heart, and I'm now soaking up
+            everything California has to offer with my fianc&eacute;e Avery Wine and our son,
+            Dr. Pugsley Bikini. If you're even slightly interested in talking, reach out. It's
+            genuinely my favorite thing to do.
           </p>
         </div>
       </div>
@@ -115,6 +115,8 @@ function AboutApp() {
         </div>
         <div className="grid grid-cols-2 gap-3 max-[768px]:grid-cols-1">
           {[
+            { title: 'AI Platform Field Guide', desc: 'Sourced, interactive guide to Claude, ChatGPT, Gemini, and Copilot: plans, API pricing, privacy, and 200 use cases. A weekly Claude Haiku routine flags platform changes so the content stays current', tags: ['Enablement', 'Content Freshness'], icon: '🧭' },
+            { title: 'Claude Agent Demos', desc: 'Three Claude agents (expense checker, research analyst, scheduler) built on tool use, with human approval, citation checks, prompt-injection tests, and evals', tags: ['Claude API', 'Tool Use', 'Evals'], icon: '🤖' },
             { title: 'EvalForge Lite', desc: "Open-source tool for picking an AI model with evidence, not guesswork. Compare up to 4 models side by side across OpenRouter, Bedrock, Vertex AI, and Foundry, with an MCP server and Claude Code plugin for agents", tags: ['Python', 'MCP', 'Multi-cloud'], icon: '⚖️' },
             { title: 'LLM Developer Support', desc: 'Supporting developers on LLM integration, A/B testing models', tags: ['LLMs', 'Vertex AI'], icon: '🧠' },
             { title: 'BigQuery DataFrames', desc: 'Python and DataFrames APIs using Pandas, Ibis, PyArrow', tags: ['Python', 'Pandas'], icon: '📊' },

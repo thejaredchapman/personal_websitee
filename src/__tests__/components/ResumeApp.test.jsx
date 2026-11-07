@@ -122,7 +122,7 @@ describe('ResumeApp — Developer Improvements section', () => {
   it('renders Open Source badge for all dev improvement projects', () => {
     render(<ResumeApp />)
     const badges = screen.getAllByText('Open Source')
-    expect(badges.length).toBe(8) // EvalForge Lite + 1 BigQuery + 6 dev improvements
+    expect(badges.length).toBe(9) // EvalForge Lite + Claude Agent Demos + 1 BigQuery + 6 dev improvements
   })
 
   it('renders the Cost Tracking tag', () => {
@@ -154,7 +154,7 @@ describe('ResumeApp — experience', () => {
 
   it('renders a single combined Google role', () => {
     render(<ResumeApp />)
-    expect(screen.getByText('Software Engineer')).toBeInTheDocument()
+    expect(screen.getByText('Software Engineer Apprentice (Multiverse)')).toBeInTheDocument()
     expect(screen.getByText('Google — Chicago, IL')).toBeInTheDocument()
     expect(screen.getByText('Sep 2022 — May 2024')).toBeInTheDocument()
   })

@@ -29,22 +29,34 @@ const workProjects = [
 ]
 
 const personalProjects = [
+  { title: 'AI Platform Field Guide', desc: 'An independent, interactive field guide to Claude, ChatGPT, Gemini, and Copilot: plans and team costs, API pricing with a token-cost calculator, model lineups, privacy, AI constitutions, 200 use cases for developers and business, and a 12-step secure-use checklist. Every claim is sourced, and a scheduled Claude Haiku routine checks for platform news weekly and logs changes with sources, so the content never goes stale.', tags: ['Claude', 'Enablement', 'API Pricing', 'Content Freshness', 'Education'], url: 'https://ai-platform-field-guide.vercel.app/' },
   { title: 'Evalforge Lite', desc: "Open-source tool for choosing an AI model with evidence instead of guesswork. Write a prompt and grading rubric, pick up to 4 models, and compare them side by side, including the same model on OpenRouter, Amazon Bedrock, Google Vertex AI, and Microsoft Foundry. Scores every response with an LLM judge and six criteria, compares latency, tokens per second, and cost with a \"what matters most\" selector, screens prompts against your company policy, exports PDF and CSV reports, and ships as an MCP server (9 tools, installable with uvx evalforge-lite) and a Claude Code plugin.", tags: ['Python', 'Evaluation', 'LLM', 'OpenRouter', 'Bedrock', 'Vertex AI', 'Foundry', 'MCP'], url: 'https://evalforge-lite.onrender.com/' },
   { title: "Tag, You're It", desc: "A friendly, playground-style course on Claude Tag, the way to bring Claude into your team's Slack. Short levels cover where to ask, steering Claude, checking its work, and setup, with a \"why\" for every idea, a quiz, star rewards, and copy-ready prompts. No tech words needed.", tags: ['Claude Tag', 'Slack', 'Course', 'Education'], url: '/tag-youre-it-course.html' },
-  { title: 'AI Explorer', desc: 'Foundational vocabulary for understanding how modern AI is built, customized, and deployed.', tags: ['AI', 'Explanation', 'Concepts'], url: 'https://ai-explorer-theta.vercel.app/' },
+  { title: "AI Ready Reps", desc: "Teaches sales reps who are new to AI to use it safely: 287 sales use cases rated green, amber, or red, 25 copy-ready prompts, customer scripts, a quiz and an 8-bit sorting game, and an advanced track on agents with tool access. Includes a 90-day pilot kit.", tags: ["Sales Enablement", "Course", "Responsible AI"], url: "https://aireadyreps.com" },
+  { title: 'AI Explorer', desc: "A seven-step ladder from AI concepts to building: 28 concept cards, 18 prompt techniques, and 42 build guides across 7 stacks. A weekly GitHub Action runs Claude Code headless with a custom refresh-content skill, checks official provider pages, and opens a PR, so the content stays current.", tags: ["AI", "Education", "Claude Code", "Skills", "Content Freshness"], url: 'https://ai-explorer-theta.vercel.app/' },
   { title: 'LLM Frameworks', desc: 'Learn LLM orchestration frameworks like LangChain — chains, agents, and tools.', tags: ['React', 'AI', 'LLMs'], url: 'https://langchain-learning-app.vercel.app/' },
+  { title: 'PyTorch Interactive Guide', desc: 'Interactive educational tool for learning PyTorch and ML fundamentals.', tags: ['React', 'ML'], url: 'https://pytorch-interactive-guide.vercel.app/' },
+  { title: 'DSA General Prep', desc: 'A self-contained browser app for professional DS&A interview preparation — no build step required.', tags: ['JavaScript', 'Education'], url: 'https://dsa-general-prep.vercel.app/' },
+  { title: 'Break Into Tech', desc: 'Career transition platform for breaking into cybersecurity.', tags: ['Next.js', 'Security'], url: 'https://break-into-tech.vercel.app/' },
+  { title: 'Ensemble', desc: 'A collection of improvisational comedy games to play and practice improv with a group.', tags: ['React', 'Improv'], url: 'https://improv-studio.vercel.app/' },
   { title: 'DJ Master Academy', desc: 'Training resource for mastering the Pioneer DDJ-FLX4 DJ controller.', tags: ['React', 'Music'], url: 'https://dj-master-academy.vercel.app/' },
   { title: 'LoanLens', desc: 'Amortization and affordability calculator for understanding loan financing.', tags: ['React', 'Finance'], url: 'https://amortization.vercel.app/' },
-  { title: 'Art Portfolio', desc: 'Curated gallery showcasing original artwork and creative projects.', tags: ['React', 'Art'], url: 'https://art-portfolio-navy.vercel.app/' },
-  { title: 'Citizenship Pathways', desc: 'Guide for navigating residency requirements and citizenship options abroad.', tags: ['React', 'Guide'], url: 'https://citizenpathwayss.vercel.app/' },
   { title: 'Chess Learning App', desc: 'Interactive chess platform for studying openings and practicing tactics.', tags: ['Angular', 'Chess'], url: 'https://chess-learning-app-teal.vercel.app/' },
   { title: 'The Daily Impact', desc: 'Personalized news app curating impact-driven journalism.', tags: ['React', 'News'], url: 'https://news-impact-app-omega.vercel.app/' },
-  { title: 'Break Into Tech', desc: 'Career transition platform for breaking into cybersecurity.', tags: ['Next.js', 'Security'], url: 'https://break-into-tech.vercel.app/' },
+  { title: 'Art Portfolio', desc: 'Curated gallery showcasing original artwork and creative projects.', tags: ['React', 'Art'], url: 'https://art-portfolio-navy.vercel.app/' },
+  { title: 'Citizenship Pathways', desc: 'Guide for navigating residency requirements and citizenship options abroad.', tags: ['React', 'Guide'], url: 'https://citizenpathwayss.vercel.app/' },
   { title: 'Camp Javery Wedding', desc: 'Summer camp-themed wedding celebration site.', tags: ['React', 'Event'], url: 'https://simple-summer-camp-wedding.vercel.app/' },
-  { title: 'PyTorch Interactive Guide', desc: 'Interactive educational tool for learning PyTorch and ML fundamentals.', tags: ['React', 'ML'], url: 'https://pytorch-interactive-guide.vercel.app/' },
-  { title: 'Ensemble', desc: 'A collection of improvisational comedy games to play and practice improv with a group.', tags: ['React', 'Improv'], url: 'https://improv-studio.vercel.app/' },
-  { title: 'DSA General Prep', desc: 'A self-contained browser app for professional DS&A interview preparation — no build step required.', tags: ['JavaScript', 'Education'], url: 'https://dsa-general-prep.vercel.app/' },
-  { title: '2026 Midterms Tracker', desc: "Still being built, but here's what I've built so far. A tracker for the 2026 midterm elections that follows 62 of the most competitive Senate, governor, and House races in a searchable candidate matrix. It pairs each candidate with news and posts, race ratings, Trump endorsements, and how they voted on the OBBB, plus a summary of key developments and a countdown to Nov 3.", tags: ['In Progress', 'React', 'Data', 'Politics'], url: 'https://midterms-2026-dashboard.vercel.app/' },
+]
+
+const claudeBuilds = [
+  { title: "Expense Policy Agent", desc: "A Claude agent that audits an expense against a company policy. It calls four tools to look up the receipt, the employee, and the policy, warns when a receipt contains instruction-like text, and returns approve, flag for a human, or reject, citing the rule. Ships with a business guide and a developer guide.", tags: ["Claude API", "Tool Use", "Agents", "Evals"], url: "https://github.com/thejaredchapman/expense-policy-agent" },
+  { title: "Scheduler Agent", desc: "A Claude agent that finds a meeting time and room with read-only tools, then hands a proposal to a person. It has no sending tool, so nothing goes out without approval. Evals: 98% success across 48 runs, up from 79% after splitting the final tool in two.", tags: ["Claude API", "Tool Use", "Human in the Loop", "Evals"], url: "https://github.com/thejaredchapman/scheduler-agent" },
+  { title: "Research Analyst Agent", desc: "A Claude agent that answers from a fixed library of seven public-domain books and attaches quotes, and software checks that every quote appears in a passage it read. Across 60 runs it made up zero answers: anything the library cannot answer gets \"not found.\"", tags: ["Claude API", "Tool Use", "Citations", "Evals"], url: "https://github.com/thejaredchapman/research-analyst-agent" },
+  { title: "Spend Explainer", desc: "Explains why a Claude bill went up, using the Usage and Cost Analytics API, and refuses to show an AI-written explanation unless its numbers check out against the data, falling back to a rule-based answer. Ships as a Claude Code plugin with a bundled skill.", tags: ["Claude API", "Skills", "Claude Code Plugin", "Cost"], url: "https://github.com/thejaredchapman/spend-explainer" },
+  { title: "Claude Code Policy Kit", desc: "One Claude Code policy across a company, where each team owns its part. Team markdown files compile into a managed CLAUDE.md, per-team managed settings, and a hook that blocks a prompt or tool call and names the rule that fired.", tags: ["Claude Code", "Hooks", "Managed Settings", "Governance"], url: "https://github.com/thejaredchapman/claude-code-policy-kit" },
+  { title: "Docs Quality Demo", desc: "Docs CI that enforces its own style guide on every pull request: Vale for wording, structure checks per content type, a UI-drift check that fails the PR when the app renames a button, and a Claude reviewer whose agreement with hand labels is measured with Cohen's kappa.", tags: ["Claude", "Docs as Code", "GitHub Actions", "Evals"], url: "https://thejaredchapman.github.io/docs-quality-demo/" },
+  { title: "Client Firewall", desc: "A Claude Project template for people who work inside several companies at once. Before Claude drafts anything, it checks the message against that client's rules and answers green, amber, or red. Includes a site, a printable handout, and a script that measures the cost per check.", tags: ["Claude Projects", "Data Safety", "Enablement"], url: "https://client-firewall.vercel.app" },
+  { title: "Anchor: Claude Impact Lab OC", desc: "Built with a four-person team at the Orange County Claude Impact Lab for Illumination Health + Home: a referral-intake tool that checks faxed hospital referrals against 155 admission rules. Sonnet maps pages and checks quotes, Opus extracts facts, Haiku answers questions, and a person verifies every fact.", tags: ["Claude Impact Lab", "Multi-model", "Nonprofit", "Healthcare"], url: "https://github.com/thejaredchapman/team-beacon-anchor" },
 ]
 
 const devProjects = [
@@ -100,6 +112,37 @@ function ProjectsApp() {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Claude Agents & Platform Builds */}
+      <div className="pb-7 mb-7 border-b" style={{ borderColor: 'var(--border-light)' }}>
+        <h3 className="text-base font-semibold mb-0.5" style={{ color: 'var(--text-primary)' }}>Claude Agents &amp; Platform Builds</h3>
+        <p className="text-xs mb-4" style={{ color: 'var(--text-tertiary)' }}>Agents, skills, plugins, and guardrails built on the Claude API and Claude Code</p>
+        <div className="grid grid-cols-2 gap-3 max-[768px]:grid-cols-1">
+          {claudeBuilds.map((p) => (
+            <a
+              key={p.title}
+              href={p.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group rounded-xl p-4 border no-underline transition-all duration-200 hover:border-[var(--accent-300)] hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--shadow-accent)]"
+              style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border-light)', color: 'inherit' }}
+            >
+              <div className="flex items-start justify-between mb-2">
+                <h3 className="font-semibold text-sm" style={{ color: 'var(--text-primary)' }}>{p.title}</h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5 shrink-0 opacity-30 group-hover:opacity-80 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" style={{ color: 'var(--accent-500)' }}>
+                  <path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+              <p className="text-xs leading-relaxed mb-3" style={{ color: 'var(--text-tertiary)' }}>{p.desc}</p>
+              <div className="flex gap-1 flex-wrap">
+                {p.tags.map((t) => (
+                  <span key={t} className="text-[10px] py-0.5 px-2 rounded-full font-medium" style={{ background: 'var(--accent-100)', color: 'var(--accent-700)' }}>{t}</span>
+                ))}
+              </div>
+            </a>
+          ))}
+        </div>
       </div>
 
       {/* Personal Projects */}

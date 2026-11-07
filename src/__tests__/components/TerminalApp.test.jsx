@@ -14,6 +14,7 @@ describe('TerminalApp — initial render', () => {
     const lines = getOutput(container)
     const joined = lines.join(' ')
     expect(joined).toContain('Welcome to JaredOS Terminal')
+    expect(joined).toContain('made with Claude')
   })
 
   it('shows command hint buttons', () => {
@@ -113,6 +114,30 @@ describe('TerminalApp — command submission', () => {
     expect(joined).toContain("Tag, You're It")
   })
 
+  it('projects command leads with the AI Platform Field Guide', async () => {
+    const { container } = render(<TerminalApp />)
+    await submitCommand(container, 'projects')
+    const joined = getOutput(container).join('\n')
+    expect(joined).toContain('[1] AI Platform Field Guide')
+    expect(joined).toContain('ai-platform-field-guide.vercel.app')
+  })
+
+  it('claude command credits Claude for the site', async () => {
+    const { container } = render(<TerminalApp />)
+    await submitCommand(container, 'claude')
+    const joined = getOutput(container).join('\n')
+    expect(joined).toContain('Made with Claude')
+    expect(joined).toContain('Everything on this site was made with Claude')
+  })
+
+  it('anthropic command maps evidence to the Developer Education Lead role', async () => {
+    const { container } = render(<TerminalApp />)
+    await submitCommand(container, 'anthropic')
+    const joined = getOutput(container).join('\n')
+    expect(joined).toContain('Developer Education Lead')
+    expect(joined).toContain('content-freshness automation')
+  })
+
   it('projects command lists projects', async () => {
     const { container } = render(<TerminalApp />)
     await submitCommand(container, 'projects')
@@ -146,6 +171,7 @@ describe('TerminalApp — command submission', () => {
     const lines = getOutput(container)
     const joined = lines.join('\n')
     expect(joined).toContain('thejaredchapman@gmail.com')
+    expect(joined).toContain('Will relocate to SF, NYC, or Seattle')
   })
 
   it('anthropic command lists capabilities and the developer-growth line', async () => {

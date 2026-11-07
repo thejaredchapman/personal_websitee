@@ -138,7 +138,7 @@ describe('ResumeSection — experience', () => {
 
   it('renders a single combined Google role', () => {
     render(<ResumeSection />)
-    expect(screen.getByText('Software Engineer')).toBeInTheDocument()
+    expect(screen.getByText('Software Engineer Apprentice (Multiverse)')).toBeInTheDocument()
     expect(screen.getByText('September 2022 - May 2024')).toBeInTheDocument()
   })
 
