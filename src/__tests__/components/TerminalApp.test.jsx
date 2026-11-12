@@ -130,11 +130,11 @@ describe('TerminalApp — command submission', () => {
     expect(joined).toContain('Everything on this site was made with Claude')
   })
 
-  it('anthropic command maps evidence to the Developer Education Lead role', async () => {
+  it('anthropic command shows the developer-education evidence', async () => {
     const { container } = render(<TerminalApp />)
     await submitCommand(container, 'anthropic')
     const joined = getOutput(container).join('\n')
-    expect(joined).toContain('Developer Education Lead')
+    expect(joined).toContain('I teach developers to build with Claude')
     expect(joined).toContain('content-freshness automation')
   })
 
