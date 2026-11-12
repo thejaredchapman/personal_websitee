@@ -76,7 +76,7 @@ function processCommand(input) {
         { text: '' },
         { text: '  help          Show this help message', type: 'help-cmd' },
         { text: '  claude        How this site was made', type: 'help-cmd' },
-        { text: '  anthropic     Why I fit the Claude Platform role', type: 'help-cmd' },
+        { text: '  anthropic     My developer education work', type: 'help-cmd' },
         { text: '  about         Learn about Jared', type: 'help-cmd' },
         { text: '  skills        View technical skills', type: 'help-cmd' },
         { text: '  joke          Get a programmer/comedy joke', type: 'help-cmd' },
@@ -266,8 +266,8 @@ function processCommand(input) {
 
     case 'anthropic':
       return [
-        { text: '  Hey Anthropic 👋🏿  Applying for Developer Education Lead,', type: 'accent' },
-        { text: '  Claude Platform. Here is the evidence, mapped to the role:', type: 'accent' },
+        { text: '  Hey Anthropic 👋🏿  I teach developers to build with Claude.', type: 'accent' },
+        { text: '  Here is the developer-education evidence:', type: 'accent' },
         { text: '' },
         { text: '  ── Launches → field-ready content ──', type: 'accent' },
         { text: '  • AI Platform Field Guide: plans, API pricing, models, privacy,', type: 'info' },
@@ -312,6 +312,7 @@ function processCommand(input) {
         { text: '  thejaredchapman.com/samples/claude-for-work-call-plan.pdf', type: 'link' },
         { text: '' },
         { text: '  12 Anthropic certifications.', type: 'info' },
+        { text: '  Please check my writings: type "writing"', type: 'accent' },
         { text: '  I love helping developers learn and grow.', type: 'joke' },
         { text: '' },
         { text: '  Try: claude | projects | experience | certs | hire', type: 'dim' },
