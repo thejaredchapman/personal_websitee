@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fixing Hallucinated Tool Calls</title><meta name="description" content="A made-up billing incident, the checks that explain it, and a sandbox where you can break the call yourself.">
+<link rel="canonical" href="https://www.thejaredchapman.com/fixing-hallucinated-tool-calls.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fixing Hallucinated Tool Calls">
+<meta property="og:description" content="A made-up billing incident, the checks that explain it, and a sandbox where you can break the call yourself.">
+<meta property="og:url" content="https://www.thejaredchapman.com/fixing-hallucinated-tool-calls.html">
+<meta property="og:image" content="https://www.thejaredchapman.com/fixing-hallucinated-tool-calls-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta property="og:image:alt" content="A switchboard where one orange cable reaches for a blank spot with no socket.">
+<meta property="og:site_name" content="Jared Chapman">
+<meta property="article:author" content="Jared Chapman">
+<meta property="article:published_time" content="2026-11-12">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fixing Hallucinated Tool Calls">
+<meta name="twitter:description" content="A made-up billing incident, the checks that explain it, and a sandbox where you can break the call yourself.">
+<meta name="twitter:image" content="https://www.thejaredchapman.com/fixing-hallucinated-tool-calls-og.jpg">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#faf8f2;color:#202e2b;font:18px/1.62 "Source Sans 3",system-ui,sans-serif}main{max-width:790px;margin:auto;padding:48px 24px 80px}header{border-top:5px solid #206757;padding-top:18px}h1,h2{font-family:"Source Serif 4",Georgia,serif;line-height:1.1}h1{font-size:clamp(44px,8vw,76px);margin:.35em 0}h2{font-size:32px;margin-top:1.6em}p{margin:.8em 0}code,pre,textarea{font-family:"IBM Plex Mono",monospace}code{font-size:.88em}pre{background:#18332e;color:#e4f7e9;border-radius:6px;padding:18px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px}details{border-bottom:1px solid #becbc3;padding:10px 0}summary,label{font-weight:650}summary,button,select{cursor:pointer}.lab{margin:36px 0;background:#e7eee7;padding:clamp(16px,4vw,32px);border-radius:8px}.lab h2{margin-top:0}button,select,textarea{font-size:16px;padding:9px;border:1px solid #82958a;border-radius:4px}textarea{width:100%;height:175px;display:block;margin:6px 0 12px}button{background:#205f50;color:white;padding:8px 18px}label{display:block;margin-top:12px}a{color:#175c4a}.byline{font-size:16px;color:#4f625c}:focus-visible{outline:3px solid #985431;outline-offset:2px}
+.types{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,255px),1fr));gap:12px;margin:22px 0}.types div{background:#f4e9df;border-left:4px solid #985431;padding:15px}.types div+div{background:#e7eee7;border-color:#206757}.types code,.types span{display:block;margin-top:6px}.types span{font-size:16px}
+.hero{display:block;width:100%;height:auto;aspect-ratio:2/1;object-fit:cover;object-position:62% center;border-radius:8px;margin:6px 0 4px}
+.goal{font-style:italic;color:#4f625c;margin-top:0}.takeaway{border-left:4px solid #206757;padding:2px 0 2px 14px;margin:1.4em 0}.note{background:#f4e9df;padding:14px 18px;border-radius:6px;font-size:16px}</style><main><header><img class="hero" src="fixing-hallucinated-tool-calls-header.jpg" width="1600" height="893" alt="A green switchboard full of sockets. One orange cable reaches toward a blank spot on the panel where no socket exists."><h1>Fixing hallucinated tool calls</h1><p>A made-up billing incident, the checks that explain it, and a sandbox where you can break the call yourself.</p><p class="byline">By Jared Chapman · November 12, 2026</p></header>
+<p class="note"><strong>Read this first.</strong> The incident is invented for teaching. The customer, the account, and the tool names are made up. The sandbox runs in your browser and never calls an AI model. The failure itself is one that any app that lets a model call tools can hit.</p>
+
+<h2>1. The log that stayed empty</h2>
+<p class="goal">After this section you can say what a hallucinated tool call is and why it leaves no trace downstream.</p>
+<p>A customer asks, “Show me the last 30 days of billing for CUST-12345.” A moment later the agent reports an error. You open the billing service logs. Nothing. No request, no error, no trace.</p>
+<p>Here is why. A tool is a function your code offers to the model: a name, a description, and a list of arguments. The model never runs it. The model writes a proposal, a short piece of JSON that says which tool it wants and with what values. Your code decides whether to run it. The part of your code that makes that decision is the dispatcher.</p>
+<p>In this turn your app offered one tool, <code>query_customer_db</code>. The model asked for <code>search_database</code>. No such tool exists. The dispatcher looked up the name, found no handler, and stopped. The billing service was never called, so it had nothing to log.</p>
+<p>That is a hallucinated tool call: a proposal for a tool you never offered.</p>
+<p>You already know this rule from code. If you use a variable, it has to exist. Use one you never defined and Python stops with a <code>NameError</code> the moment it reaches that line. Tools follow the same rule. If the model calls a tool, that tool has to exist. The difference is who checks. In your code, the interpreter checks for you. With tools, nothing checks unless your dispatcher does.</p>
+<p class="takeaway"><strong>Takeaway:</strong> An empty log downstream means the call died upstream. Open the dispatcher first.</p>
+
+<h2>2. Compare three things before you touch the prompt</h2>
+<p class="goal">After this section you can tell a model mistake from a deployment mistake.</p>
+<p>Pull three things from that one turn.</p>
+<ol><li>The tool definitions the model received.</li><li>The name the model returned.</li><li>The handlers registered for that user.</li></ol>
+<p>Here, the first and the third agree. Only the second differs. The model made the name up.</p>
+<p>If the offered name were missing from the registry, you would see the same lookup error for a different reason. That is a deployment problem, and no prompt change fixes it. Build the tool list and the dispatch table from one registry and the two cannot drift apart.</p>
+<p>Then look at what the model had to go on. The description said “Gets customer information.” Three words. It does not say which customer, by what key, or whether billing is included. A model left to guess reaches for whatever sounds right, and <code>search_database</code> sounds right.</p>
+<p>The revised description says the tool retrieves one account by a known customer ID and can include thirty days of billing. The dispatcher also learns to return an unknown-tool error when a name is missing, so a bad guess ends in a useful response instead of an unhandled exception.</p>
+<details><summary>Inspect the original definition</summary><pre id="before"></pre></details>
+<details open><summary>Inspect the revised contract</summary><pre id="after"></pre></details>
+<p class="takeaway"><strong>Takeaway:</strong> Fix the contract before the prompt. One registry, one clear description, one error for unknown names.</p>
+
+<h2>3. The right tool, the wrong value</h2>
+<p class="goal">After this section you can explain why valid JSON can still be a bad call.</p>
+<p>On the next run the model picks the right tool. Now look at the billing flag. Both lines below are valid JSON. Only one is the type the handler expects.</p><aside class="types" aria-label="Compare the billing flag types"><div><strong>String · rejected</strong><code>{"include_billing": "true"}</code><span>The quotes turn the value into text.</span></div><div><strong>Boolean · accepted</strong><code>{"include_billing": true}</code><span>The validator receives a boolean.</span></div></aside>
+<p>The original schema had a second gap. It accepted an empty object. Declaring a property only describes its value when the property is present. It does not make the property required. The revised schema adds three things.</p>
+<ul><li><code>required</code> makes a missing field an error.</li><li><code>pattern</code> checks the shape of the customer ID.</li><li><code>additionalProperties: false</code> rejects misspelled and unexpected keys.</li></ul>
+<p>The <a href="https://json-schema.org/understanding-json-schema/reference/object">JSON Schema object reference</a> covers each of these keywords.</p>
+<p>Use schema-constrained generation where your provider supports the keywords you need. Then check again at the edge of your own app, in this order: parse the arguments once, validate them against the registered tool’s schema, and check that the caller may see that account and its billing. A correctly formatted ID can still belong to someone else.</p>
+<p class="takeaway"><strong>Takeaway:</strong> Valid JSON is the lowest bar. Check the type, check the shape, then check who is asking.</p>
+
+<h2>4. Tell the model what went wrong</h2>
+<p class="goal">After this section you can write an error the model can act on, and decide when to stop retrying.</p>
+<p>Return a short error as a tool result tied to the original call ID. Keep the assistant’s call in the conversation. For the quoted billing flag, the feedback can be this small:</p>
+<pre>{"code":"invalid_argument","field":"include_billing",
+ "message":"Expected a JSON boolean (true or false, no quotes). Received the string \"true\"."}</pre>
+<p>The message says what the validator saw. It does not say which value to send. The dispatcher knows the schema. It does not know what the customer asked for. The model does.</p>
+<p>Three rules for the retry.</p>
+<ul><li>Give the model the same tools, and validate the new proposal from the beginning.</li><li>If it fails a second time, stop and report the field that is still wrong.</li><li>If the user never gave an ID and there is no trusted account context, ask for it. A made-up ID that passes the pattern would hide the real problem.</li></ul>
+<details><summary>What if a valid call still fails?</summary><p>An access denial ends the lookup. A database timeout belongs to the service’s timeout and retry policy. For an operation that changes state, a timeout can mean the change already happened. Check its outcome or use an idempotency key before you replay it. Send the model a sanitized outcome and keep internal exceptions in your application logs.</p></details>
+<p class="takeaway"><strong>Takeaway:</strong> Report what you saw, let the model choose the fix, and stop after one retry.</p>
+
+<section class="lab"><h2>Break it yourself</h2><p>This sandbox replays the billing request against a simulated account. The editor starts with the quoted boolean from section 3.</p><ol><li>Select <strong>Run call</strong> and read the trace under the button.</li><li>In the editor, change <code>"true"</code> to <code>true</code>. Run it again and check the handler count.</li><li>Choose <strong>Unknown tool</strong> from the menu to see where the very first call stopped.</li></ol>
+<label for="scenario">Starting call</label><select id="scenario"></select>
+<label for="editor">Tool proposal · editable JSON</label><textarea spellcheck="false" id="editor"></textarea><button id="run">Run call</button><pre id="trace" role="status" aria-live="polite">Ready to run.</pre></section>
+
+<h2>5. Find where it stopped</h2>
+<p class="goal">After this section you can read a trace and name the stage that failed.</p>
+<p>With the revised contract in place, replay the proposal. The trace now says how far it got.</p>
+<pre>Attempt 1 · query_customer_db
+{"customer_id":"CUST-12345","include_billing":"true"}
+
+JSON parsing     passed
+Tool lookup      passed
+Schema check     failed at /include_billing
+Account access   not reached
+Handler calls    0</pre>
+<details><summary>Why did JSON parsing pass?</summary><p>Both <code>"true"</code> and <code>true</code> are legal JSON. The quotes tell the parser to produce a string. The validator compares that string with the boolean the schema declares and rejects the call. The billing service has still received zero requests, so its logs still show nothing.</p></details>
+<pre>Attempt 2 · query_customer_db
+{"customer_id":"CUST-12345","include_billing":true}
+
+JSON parsing     passed
+Tool lookup      passed
+Schema check     passed
+Account access   granted
+Handler calls    1</pre>
+<p>Between the two attempts the dispatcher sent back the error from section 4. The model removed the quotes and kept the customer ID. You can reproduce both runs in the sandbox: choose <strong>Quoted boolean</strong>, run it, then edit that one value.</p>
+<details><summary>Check yourself · What if the model sends false instead?</summary><p>The schema accepts <code>false</code>, and the handler returns the account with no billing. Every check passes. The customer still did not get what they asked for. To catch this in an evaluation, assert that the response contains the billing history. A call that passes validation is not the same as a correct answer.</p></details>
+<p class="takeaway"><strong>Takeaway:</strong> A trace that names the stage tells you which code to open.</p>
+
+<h2>6. Keep it fixed</h2>
+<p class="goal">After this section you can turn the incident into a test that fails if it comes back.</p>
+<p>Replay each proposal through your real dispatcher, with a test handler that counts how many times it runs.</p>
+<pre>Replayed proposal                 Handler calls
+Unknown tool name                 0
+Missing customer ID               0
+Quoted boolean                    0
+Valid call, authorized user       1
+Valid call, access denied         0
+Two invalid proposals in a row    0, loop stops</pre>
+<p>Then log five fields for every call: the tool name, the schema version, the stage that failed, the error code, and how the retry ended. Those five let you tell a stale deployment from a repeating model mistake, and none of them is customer billing data.</p>
+<p class="takeaway"><strong>Takeaway:</strong> Count handler calls. Zero when the call is wrong, one when it is right, never two.</p>
+
+<h2>7. The one question to ask first</h2>
+<p>The empty billing log was the first clue. The code that writes that log never ran. <code>search_database</code> stopped at tool lookup. <code>"true"</code> got one stage further and stopped at the schema check. Once the name, the arguments, and the access check all matched, the lookup ran once.</p>
+<p>The next time an agent reports a tool error, ask this before anything else.</p>
+<p><strong>What was the last step that succeeded?</strong></p>
+<p>Compare the proposal at that step with the contract your code enforces. That is where the fix goes. Then replay the customer’s original request and look at what they received. Here, done means they can see the thirty days of billing they asked for.</p>
+</main><script>
+const toolName='query_customer_db';
+const schema={type:'object',properties:{customer_id:{type:'string',pattern:'^CUST-[0-9]{5}$'},include_billing:{type:'boolean',description:'Use true when the user requests billing history, otherwise false.'}},required:['customer_id','include_billing'],additionalProperties:false};
+const pretty=value=>JSON.stringify(value,null,2);
+const el=id=>document.getElementById(id);
+el('before').textContent=pretty({name:toolName,description:'Gets customer information.',parameters:{type:'object',properties:{customer_id:{type:'string'}}}});
+el('after').textContent=pretty({name:toolName,description:'Look up one known customer account by ID. Include the last 30 days of billing on request. For a missing ID, ask the user. Product searches use a separate workflow.',parameters:schema});
+const args={customer_id:'CUST-12345',include_billing:true};
+const scenarios=[['Unknown tool','search_database',args],['Quoted boolean',toolName,{...args,include_billing:'true'}],['Missing ID',toolName,{include_billing:true}],['Malformed ID',toolName,{...args,customer_id:'12345'}],['Unexpected field',toolName,{...args,billing:true}],['Valid call',toolName,args]];
+for(const [label] of scenarios)el('scenario').add(new Option(label));
+function load(){const [,name,params]=scenarios[el('scenario').selectedIndex];el('editor').value=pretty({name,arguments:params});el('trace').textContent='Ready to run.'}
+const stages=['JSON parsing','Tool lookup','Schema check','Account access'];
+function report(failedAt,note){
+ const ran=failedAt<0;
+ const lines=stages.map((stage,i)=>stage.padEnd(17)+(ran||i<failedAt?(i===3?'granted':'passed'):i===failedAt?(i===3?'denied':'failed'):'not reached'));
+ lines.push('Handler calls'.padEnd(17)+(ran?'1 (simulated)':'0'));
+ return lines.join('\n')+'\n\n'+note;
+}
+function inspect(raw){
+ let call;try{call=JSON.parse(raw)}catch{return report(0,'Check JSON quotes, commas, and brackets.')}
+ if(call?.name!==toolName)return report(1,'No handler is registered under that name. Available tool: '+toolName+'.');
+ const a=call.arguments;
+ const fail=message=>report(2,message);
+ if(!a||typeof a!=='object'||Array.isArray(a))return fail('Supply an arguments object.');
+ for(const key of schema.required)if(!Object.hasOwn(a,key))return fail('Missing required field: '+key+'.');
+ for(const key of Object.keys(a))if(!Object.hasOwn(schema.properties,key))return fail('Remove unexpected field: '+key+'.');
+ if(typeof a.customer_id!=='string'||!new RegExp(schema.properties.customer_id.pattern).test(a.customer_id))return fail('Use the customer ID from the request, including CUST- and five digits.');
+ if(typeof a.include_billing!=='boolean')return fail('include_billing requires true or false without quotes.');
+ if(a.customer_id!==args.customer_id)return report(3,'This demo caller can only view '+args.customer_id+'.');
+ return report(-1,a.include_billing?'Returned account and 30 days of billing.':'Returned account only. The call omitted the billing history the user requested.');
+}
+el('scenario').selectedIndex=1;el('scenario').onchange=load;el('run').onclick=()=>el('trace').textContent=inspect(el('editor').value);load();
+</script></html>

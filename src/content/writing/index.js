@@ -17,6 +17,13 @@ export const publications = [
     htmlSrc: '/what-is-an-ai-agent.html',
   },
   {
+    id: 'fixing-hallucinated-tool-calls',
+    title: 'Fixing Hallucinated Tool Calls',
+    description: 'A made-up billing incident, the checks that explain it, and a sandbox where you can break the call yourself. For developers building with tool use.',
+    tags: ['Tool Use', 'Interactive', 'For Developers'],
+    htmlSrc: '/fixing-hallucinated-tool-calls.html',
+  },
+  {
     id: 'evalforge-lite-guide',
     title: 'EvalForge Lite: How to Compare AI Models on Your Own Prompts',
     description: 'A plain-English guide to testing AI models on your own prompts: grading, speed and cost, a policy gate, and an MCP server for Claude.',
