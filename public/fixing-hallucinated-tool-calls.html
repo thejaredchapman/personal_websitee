@@ -142,4 +142,6 @@ function inspect(raw){
  return report(-1,a.include_billing?'Returned account and 30 days of billing.':'Returned account only. The call omitted the billing history the user requested.');
 }
 el('scenario').selectedIndex=1;el('scenario').onchange=load;el('run').onclick=()=>el('trace').textContent=inspect(el('editor').value);load();
-</script></html>
+</script><script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</html>
